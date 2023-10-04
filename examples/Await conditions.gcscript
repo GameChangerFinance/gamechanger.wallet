@@ -1,0 +1,42 @@
+{
+  "title": "Await conditions",
+  "description": "This demo will wait for a timer to reach it's timeout and then for the current wallet to receive at least 5.25 coins",
+  "type": "script",
+  "run": {
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "wait": {
+      "type": "await",
+      "until": {
+        "A": {
+          "kind": "timer",
+          "value": 15
+        },
+        "B": {
+          "kind": "balance",
+          "asset": {
+            "policyId": "ada",
+            "assetName": "ada",
+            "quantity": "5250000"
+          }
+        },
+        "C": {
+          "kind": "balance",
+          "address": "addr_test1qp2p02eeg04pyf770r6lusj85kq5zes2muh47atxd2e00sztk7jgzmssy6fsmvlw4vfwdk83jmazq9lz6zlgerpwat8sxv2n7j",
+          "is": "equal",
+          "asset": {
+            "policyId": "d491234d8b40b63aceab0d7329c6db111c3634d9e0d3c6166c66c13b",
+            "assetName": "FakeUSD",
+            "quantity": "5"
+          }
+        },
+        "D": {
+          "kind": "timer",
+          "unit": "days",
+          "value": 365
+        }
+      }
+    }
+  }
+}

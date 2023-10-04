@@ -1,0 +1,20 @@
+{
+  "title": "Import Wallet Config Demo",
+  "description": "Script that will import and run your saved wallet configuration script. Run SAVE_WALLET_CONFIG_DEMO first.",
+  "type": "script",
+  "return": {
+    "mode": "last"
+  },
+  "exportAs": "ImportWalletConfigDemo",
+  "run": {
+    "decryptedScript": {
+      "type": "importAsScript",
+      "decryptWith": {
+        "kind": "system"
+      },
+      "from": [
+        "gcfs://1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57.gc_settings@latest://scripts/config.gcscript.sys"
+      ]
+    }
+  }
+}

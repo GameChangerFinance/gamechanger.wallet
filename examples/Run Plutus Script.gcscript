@@ -1,0 +1,161 @@
+{
+  "type": "script",
+  "title": "Run Plutus Script",
+  "description": "Demo that locks and redeem some coin from a smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "RunPlutustDemo",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "lock": {
+          "type": "data",
+          "value": {
+            "coin": "2600000",
+            "datumHex": "1a0027ac40",
+            "datumHashHex": "bdfeadeebc2251f45aadab51bd9ff21deb8692da6a75e5559bd5daba8c0aa253"
+          }
+        },
+        "stakeCredential": {
+          "type": "data",
+          "value": "ad03a4ae45b21f50fde67956365cff94db41bc08a2c2862403d8a234"
+        },
+        "contract": {
+          "type": "plutusScript",
+          "script": {
+            "scriptHex": "4746010000222499",
+            "lang": "plutus_v2"
+          }
+        },
+        "address": {
+          "type": "buildAddress",
+          "name": "ContractAddress",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.dependencies.stakeCredential')}"
+          }
+        }
+      }
+    },
+    "buildLock": {
+      "type": "buildTx",
+      "name": "built-lock",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.dependencies.address')}",
+            "datum": {
+              "datumHashHex": "{get('cache.dependencies.lock.datumHashHex')}"
+            },
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "{get('cache.dependencies.lock.coin')}"
+              }
+            ]
+          }
+        ],
+        "options": {
+          "changeOptimizer": "NO"
+        }
+      }
+    },
+    "signLock": {
+      "type": "signTxs",
+      "namePattern": "signed-lock",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.buildLock.txHex')}"
+      ]
+    },
+    "submitLock": {
+      "type": "submitTxs",
+      "namePattern": "submitted-lock",
+      "txs": "{get('cache.signLock')}"
+    },
+    "buildUnlock": {
+      "type": "buildTx",
+      "name": "built-unlock",
+      "parentTxHash": "{get('cache.buildLock.txHash')}",
+      "tx": {
+        "inputs": [
+          {
+            "txHash": "{get('cache.buildLock.txHash')}",
+            "index": 0,
+            "idPattern": "locked-input"
+          }
+        ],
+        "witnesses": {
+          "plutus": {
+            "scripts": [
+              {
+                "scriptHex": "{get('cache.dependencies.contract.scriptHex')}",
+                "lang": "{get('cache.dependencies.contract.lang')}"
+              }
+            ],
+            "consumers": [
+              {
+                "scriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
+                "datum": {
+                  "dataHex": "{get('cache.dependencies.lock.datumHex')}"
+                },
+                "redeemer": {
+                  "type": "spend",
+                  "itemIdPattern": "locked-input"
+                }
+              }
+            ]
+          }
+        },
+        "options": {
+          "collateralCoinSelection": "LASLAD"
+        }
+      }
+    },
+    "signUnlock": {
+      "type": "signTxs",
+      "namePattern": "signed-unlock",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.buildUnlock.txHex')}"
+      ]
+    },
+    "submitUnlock": {
+      "type": "submitTxs",
+      "namePattern": "submitted-unlock",
+      "txs": "{get('cache.signUnlock')}"
+    },
+    "finally": {
+      "type": "script",
+      "run": {
+        "lock": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.lock')}"
+        },
+        "smartContract": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.contract.scriptHex')}"
+        },
+        "smartContractHash": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.contract.scriptHashHex')}"
+        },
+        "smartContractAddress": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.address')}"
+        },
+        "lockTx": {
+          "type": "macro",
+          "run": "{get('cache.buildLock.txHash')}"
+        },
+        "unlockTx": {
+          "type": "macro",
+          "run": "{get('cache.buildUnlock.txHash')}"
+        }
+      }
+    }
+  }
+}

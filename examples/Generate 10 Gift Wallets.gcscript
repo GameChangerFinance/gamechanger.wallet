@@ -1,0 +1,20 @@
+{
+  "type": "script",
+  "title": "Generate 10 Gift Wallets",
+  "description": "Generate 10 QR Encrypted Gift Wallets for onboarding students in a class. Files will be downloaded as PNG files for printing or showing on screens",
+  "exportAs": "onboarding",
+  "run": {
+    "students": {
+      "type": "walletGenerator",
+      "amount": 10,
+      "defaultNamePattern": "Student {index}",
+      "defaultPasswordPattern": "PaSsWoRd{index}",
+      "defaultDescriptionPattern": "Wallet for Student #{index}",
+      "defaultKeyPattern": "student_{index}",
+      "defaultHintPattern": "your password is '{password}'",
+      "qr": true,
+      "download": true,
+      "legacy": false
+    }
+  }
+}

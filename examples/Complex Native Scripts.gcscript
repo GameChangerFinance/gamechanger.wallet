@@ -1,0 +1,221 @@
+{
+  "title": "Complex Native Scripts",
+  "description": "Nested, tagged, complex native script building",
+  "type": "script",
+  "run": {
+    "derivations": {
+      "type": "deriveKeys",
+      "keys": {
+        "James": {
+          "name": "James",
+          "kind": "spend",
+          "accountIndex": 34,
+          "addressIndex": 423
+        },
+        "Robe": {
+          "name": "Robe",
+          "kind": "stake",
+          "accountIndex": 632,
+          "addressIndex": 7434
+        },
+        "Julie": {
+          "name": "Julie",
+          "kind": "spend",
+          "accountIndex": 26,
+          "addressIndex": 754
+        }
+      }
+    },
+    "dependencies": {
+      "type": "script",
+      "exportAs": "pubKeys",
+      "run": {
+        "James": {
+          "type": "macro",
+          "run": "{get('cache.derivations.James')}"
+        },
+        "Robe": {
+          "type": "macro",
+          "run": "{get('cache.derivations.Robe')}"
+        },
+        "Julie": {
+          "type": "macro",
+          "run": "{get('cache.derivations.Julie')}"
+        },
+        "Member01": {
+          "type": "data",
+          "value": {
+            "pubKeyHex": "84f1d9ae83c8a78520d98dd762310ad02c14e951cd745782cc337f2251db7229",
+            "pubKeyHashHex": "cc70614c5869a7111bab031145f758342e94a8251bd06cf0d8afc8b6"
+          }
+        },
+        "Member02": {
+          "type": "data",
+          "value": {
+            "pubKeyHex": "8a76f4801b8268481eb8045f8d0653abab130faaafafd793214562a7e2dbeb44",
+            "pubKeyHashHex": "91a471e331588b2d1d6eb98772fee21cd34f5cccbdce05f6d19401b7"
+          }
+        },
+        "Member03": {
+          "type": "data",
+          "value": {
+            "pubKeyHex": "32b4a480c627c3550736e40e62a895c1c31ca78f836719ddfd9301554aee0142",
+            "pubKeyHashHex": "4b361fca48172296e8b3b3e3ca28dfaacce268d39d987ef9cb46590b"
+          }
+        },
+        "Member04": {
+          "type": "data",
+          "value": {
+            "pubKeyHex": "c886cfba8859cb7cdc296ea6b811a7df1a102434f92a5d63f600df9dc6e322a0",
+            "pubKeyHashHex": "5936ec5e04ba6eb23641dd83a95a8774048a125e23b9cb58c8694aed"
+          }
+        },
+        "Member05": {
+          "type": "data",
+          "value": {
+            "pubKeyHex": "a9aed4fd3192bd5102e2df05ac52a8aa1ea3bdab639818b1930e2d4546b80b7e",
+            "pubKeyHashHex": "6f6101bade176b56b208a0f9a469d7de956b6568370c03d79a97f18d"
+          }
+        }
+      }
+    },
+    "scripts": {
+      "type": "script",
+      "exportAs": "scripts",
+      "run": {
+        "consensus": {
+          "type": "nativeScript",
+          "script": {
+            "any": {
+              "Founders": {
+                "atLeast": 2,
+                "ofThese": [
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.James.pubKeyHashHex')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Robe.pubKeyHashHex')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Julie.pubKeyHashHex')}"
+                  }
+                ]
+              },
+              "Members": {
+                "all": [
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Member01.pubKeyHashHex')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Member02.pubKeyHashHex')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Member03.pubKeyHashHex')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Member04.pubKeyHashHex')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.Member05.pubKeyHashHex')}"
+                  },
+                  {
+                    "any": [
+                      {
+                        "pubKeyHashHex": "{get('cache.dependencies.James.pubKeyHashHex')}"
+                      },
+                      {
+                        "pubKeyHashHex": "{get('cache.dependencies.Robe.pubKeyHashHex')}"
+                      },
+                      {
+                        "pubKeyHashHex": "{get('cache.dependencies.Julie.pubKeyHashHex')}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "timeWindow": {
+          "type": "nativeScript",
+          "script": {
+            "any": {
+              "month01": {
+                "all": [
+                  {
+                    "slotNumStart": "383245"
+                  },
+                  {
+                    "slotNumEnd": "383945"
+                  }
+                ]
+              },
+              "month02": {
+                "all": [
+                  {
+                    "slotNumStart": "483245"
+                  },
+                  {
+                    "slotNumEnd": "483945"
+                  }
+                ]
+              },
+              "month03": {
+                "all": [
+                  {
+                    "slotNumStart": "583245"
+                  },
+                  {
+                    "slotNumEnd": "583945"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "externalMintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "scriptHex": "82018382041a0005d90d8200581c111fc9cc6fd34bd2783001b3fbf7b456beb93a38d24a1e06542dc6fb82051a0008e909"
+          }
+        },
+        "voting": {
+          "type": "nativeScript",
+          "script": {
+            "all": [
+              {
+                "scriptHex": "{get('cache.scripts.consensus.scriptHex')}"
+              },
+              {
+                "scriptHex": "{get('cache.scripts.timeWindow.scriptHex')}"
+              },
+              {
+                "scriptHex": "{get('cache.scripts.externalMintingPolicy.scriptHex')}"
+              }
+            ]
+          }
+        },
+        "multisigAddress": {
+          "type": "buildAddress",
+          "name": "multisigAddress",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.scripts.voting.scriptHashHex')}"
+          }
+        }
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "VotingScript",
+      "return": {
+        "mode": "last"
+      },
+      "run": [
+        {
+          "type": "macro",
+          "run": "{get('cache.scripts.voting')}"
+        }
+      ]
+    }
+  }
+}

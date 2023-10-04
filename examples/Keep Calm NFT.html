@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Keep Calm NFT</title>
+    <meta name="title" content="Keep Calm NFT">
+    <meta name="description" content="Keep Calm NFT Demo, dinamically generates the image">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#6d41a1" />
+
+    <!-- 
+        For gzip and base64url encodings no external dependencies are required, it's 100% browser native code. In other words: 
+        GCWallet is the first wallet that doesn't inject code into websites and that has also zero-dependencies integrations
+        For json-url-lzma encoding, this is the only dependency: 
+    -->
+    <script type="text/javascript" src="https://unpkg.com/json-url@3.1.0/dist/browser/json-url.js"></script>  
+
+    <script>
+        let handleSetEncoder;
+
+        ///////////////////////////
+        ////    Dapp Logic    /////
+        ///////////////////////////
+        async function main() {
+            //Dapp <--> GameChanger Wallet connections can use URL redirections
+            let   actionUrl   = "";
+            let   resultObj   = undefined;
+            let   error       = ""; 
+            let   useCodec    = 'gzip';
+
+            //GameChanger Wallet is pure Web3, zero backend procesing of user data. 
+            //Dapp connector links are fully processed on end-user browsers.
+            const gcApiUrl    = "http://localhost:3000/api/2/run/";
+            const currentUrl  = window.location.href;
+
+            //UI components:
+            const connectForm = document.getElementById("dappConnectorBox");
+            const actionBtn   = document.getElementById("connectBtn");
+            const errorsBox   = document.getElementById("errorBox");
+            const resultsBox  = document.getElementById("resultBox");
+            const encodersBox = document.getElementById("encodersBox");
+
+            //here we register a function to change connection encoding/compression
+            handleSetEncoder=(codec)=>{
+                useCodec=codec;
+                updateUI();
+                return false;
+            }
+            async function updateUI() {
+                error="";
+                actionUrl="";
+
+                //GameChanger Wallet support arbitrary data returning from script execution, encoded in a redirect URL
+                //Head to http://localhost:3000/doc/api/v2/api.html#returnURLPattern to learn ways how to customize this URL
+
+                //lets try to capture the execution results by decoding/decompressing the return URL
+                try{                
+                    const resultRaw   = (new URL(currentUrl)).searchParams.get("result");
+                    if(resultRaw){
+                        resultObj     = await gcDecoder(resultRaw);
+                        //avoids current url carrying latest results all the time 
+                        history.pushState({}, '', window.location.pathname);
+                    }
+                }catch(err){
+                    error+=`Failed to decode results.${err?.message||"unknown error"}`;
+                    console.error(err);
+                }
+
+
+                //This is the GCScript code, packed into a URL, that GameChanger Wallet will execute
+                //lets try to generate this connection URL by encoding/compressing the gcscript code
+                try{                
+                    //GCScript (dapp connector code) will be packed inside this URL    
+                    actionUrl   = await buildActionUrl(); 
+                }catch(err){
+                    error+=`Failed to build URL.${err?.message||"unknown error"}`
+                    console.error(err);
+                }
+                
+                //Now lets render the current application state
+                if(error){
+                    errorBox.innerHTML="Error: " + error;
+                }
+                if(actionUrl){
+                    errorBox.innerHTML="";
+                    actionBtn.href=actionUrl;
+                    actionBtn.innerHTML = `Connect`;
+                }else{
+                    actionBtn.href      = '#';
+                    actionBtn.innerHTML = "Loading...";
+                }
+
+                if(resultObj){
+                    resultsBox.innerHTML=JSON.stringify(resultObj,null,2);
+                }
+                encodersBox.innerHTML="Encoding: "
+                encodersBox.innerHTML+=Object.keys(codecs)
+                    .map(codec=>`<a href="#" class="a-unstyled" ${codec===useCodec?'style="font-weight:bold;""':''} onclick="return handleSetEncoder('${codec}')">${codec}</a>`)
+                    .join(" | ");               
+
+            }
+
+            async function buildActionUrl(args){
+                //This is the GCScript code that GameChanger Wallet will execute
+                //JSON code that will be encoded/compressed inside 'actionUrl'
+                var gcscript = {
+  "type": "script",
+  "title": "Keep Calm NFT",
+  "description": "Keep Calm NFT Demo, dinamically generates the image",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "imageText": {
+          "type": "data",
+          "value": {
+            "A": "USE",
+            "B": "GC WALLET"
+          }
+        },
+        "imageFile": {
+          "type": "data",
+          "value": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNjA0IDg1MCIgd2lkdGg9IjYwNCIgaGVpZ2h0PSI4NTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3QgeD0iLTAuMDM1IiB5PSItMi4yNzIiIHdpZHRoPSI2MDEuNzIzIiBoZWlnaHQ9Ijg1MC4xNTUiIHN0eWxlPSJzdHJva2U6IHJnYigwLCAwLCAwKTsgZmlsbDogcmdiKDI1NSwgMCwgMCk7Ii8+CiAgPGcgaWQ9ImcxMzgiIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDE0Mi4xMjMyMTUsIC03MCkiPgogICAgPGcgaWQ9ImcyMzAiIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIC0xMzguODQwNjIyLCAwKSIvPgogICAgPHRleHQgaWQ9InRleHQxNDciIHN0eWxlPSJmaWxsOmJsYWNrO2ZpbGwtb3BhY2l0eToxO2xpbmUtaGVpZ2h0OjEuMjU7c3Ryb2tlOm5vbmU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7d2hpdGUtc3BhY2U6cHJlO3NoYXBlLWluc2lkZTp1cmwoI3JlY3QxNDkpOyIvPgogICAgPHRleHQgaWQ9InRleHQxNTMiIHN0eWxlPSJmaWxsOmJsYWNrO2ZpbGwtb3BhY2l0eToxO2xpbmUtaGVpZ2h0OjEuMjU7c3Ryb2tlOm5vbmU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7d2hpdGUtc3BhY2U6cHJlO3NoYXBlLWluc2lkZTp1cmwoI3JlY3QxNTUpOyIvPgogICAgPHRleHQgaWQ9InRleHQxNTkiIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjExMnB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE2MSk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSIxMDYzLjA5MSIgeT0iMjA5LjI0OSI+PHRzcGFuIHg9IjE1OS44NzciIHk9IjMxNy40NjgiIHN0eWxlPSJmb250LXNpemU6IDExMnB4OyB3b3JkLXNwYWNpbmc6IDBweDsiPjx0c3BhbiBzdHlsZT0iZm9udC1zdHlsZTogbm9ybWFsOyBmb250LXZhcmlhbnQ6IG5vcm1hbDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZvbnQtc3RyZXRjaDogbm9ybWFsOyBmb250LXNpemU6IDExMnB4OyBmb250LWZhbWlseTogc2Fucy1zZXJpZjsgdGV4dC1hbGlnbjogY2VudGVyOyB0ZXh0LWFuY2hvcjogbWlkZGxlOyBmaWxsOiByZ2IoMjU1LCAyNTUsIDI1NSk7IHdvcmQtc3BhY2luZzogMHB4OyI+S0VFUDwvdHNwYW4+PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dCBpZD0idGV4dDE2NyIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MTEycHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpzYW5zLXNlcmlmO3RleHQtYWxpZ246Y2VudGVyO3doaXRlLXNwYWNlOnByZTtzaGFwZS1pbnNpZGU6dXJsKCNyZWN0MTY5KTtmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmUiIHg9IjEwOTMuNDAzIiB5PSIzMjkuMjQ5Ij48dHNwYW4geD0iMTU5Ljg3NyIgeT0iNDM3LjQ2OCIgc3R5bGU9ImZvbnQtc2l6ZTogMTEycHg7IHdvcmQtc3BhY2luZzogMHB4OyI+PHRzcGFuIHN0eWxlPSJmb250LXN0eWxlOiBub3JtYWw7IGZvbnQtdmFyaWFudDogbm9ybWFsOyBmb250LXdlaWdodDogYm9sZDsgZm9udC1zdHJldGNoOiBub3JtYWw7IGZvbnQtc2l6ZTogMTEycHg7IGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmOyB0ZXh0LWFsaWduOiBjZW50ZXI7IHRleHQtYW5jaG9yOiBtaWRkbGU7IGZpbGw6IHJnYigyNTUsIDI1NSwgMjU1KTsgd29yZC1zcGFjaW5nOiAwcHg7Ij5DQUxNPC90c3Bhbj48L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IGlkPSJ0ZXh0MTczIiBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZTo2NHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE3NSk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSI5OTUuNjY1IiB5PSI0NjkuMjQ5Ij48dHNwYW4geD0iMTU5Ljg3NyIgeT0iNTM0Ljk5OSIgc3R5bGU9ImZvbnQtc2l6ZTogNjRweDsgd29yZC1zcGFjaW5nOiAwcHg7Ij48dHNwYW4gc3R5bGU9ImZvbnQtc3R5bGU6IG5vcm1hbDsgZm9udC12YXJpYW50OiBub3JtYWw7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXN0cmV0Y2g6IG5vcm1hbDsgZm9udC1zaXplOiA2NHB4OyBmb250LWZhbWlseTogc2Fucy1zZXJpZjsgdGV4dC1hbGlnbjogY2VudGVyOyB0ZXh0LWFuY2hvcjogbWlkZGxlOyBmaWxsOiByZ2IoMjU1LCAyNTUsIDI1NSk7IHdvcmQtc3BhY2luZzogMHB4OyI+QU5EPC90c3Bhbj48L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IGlkPSJ0ZXh0MTc5IiBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZTo4MHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE4NSk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSIxMDY1LjgzNyIgeT0iNTY5LjI0OSI+PHRzcGFuIHg9IjE1OS44NzciIHk9IjY0OS4xNTUiIHN0eWxlPSJmb250LXNpemU6IDgwcHg7IHdvcmQtc3BhY2luZzogMHB4OyI+PHRzcGFuIHN0eWxlPSJmb250LXN0eWxlOiBub3JtYWw7IGZvbnQtdmFyaWFudDogbm9ybWFsOyBmb250LXdlaWdodDogYm9sZDsgZm9udC1zdHJldGNoOiBub3JtYWw7IGZvbnQtc2l6ZTogODBweDsgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7IHRleHQtYWxpZ246IGNlbnRlcjsgdGV4dC1hbmNob3I6IG1pZGRsZTsgZmlsbDogcmdiKDI1NSwgMjU1LCAyNTUpOyB3b3JkLXNwYWNpbmc6IDBweDsiPlRFWFRfQTwvdHNwYW4+PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dCBpZD0idGV4dDE4MyIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6OTMuMzMzM3B4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE4Nyk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSIxMTA3Ljk4MiIgeT0iNjY5LjI0OSI+PHRzcGFuIHg9IjE1OS44NzciIHk9Ijc2MC45NTIiIHN0eWxlPSJmb250LXNpemU6IDkzLjNweDsgd29yZC1zcGFjaW5nOiAwcHg7Ij48dHNwYW4gc3R5bGU9ImZvbnQtc3R5bGU6IG5vcm1hbDsgZm9udC12YXJpYW50OiBub3JtYWw7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXN0cmV0Y2g6IG5vcm1hbDsgZm9udC1zaXplOiA5My4zcHg7IGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmOyB0ZXh0LWFsaWduOiBjZW50ZXI7IHRleHQtYW5jaG9yOiBtaWRkbGU7IGZpbGw6IHJnYigyNTUsIDI1NSwgMjU1KTsgd29yZC1zcGFjaW5nOiAwcHg7Ij5URVhUX0I8L3RzcGFuPjwvdHNwYW4+PC90ZXh0PgogIDwvZz4KPC9zdmc+"
+        },
+        "imageProcessing": {
+          "type": "macro",
+          "run": [
+            "{set('image',base64ToStr(get('cache.dependencies.imageFile')))}",
+            "{set('image',replaceAll(get('global.image'),'TEXT_A',get('cache.dependencies.imageText.A')))}",
+            "{set('image',replaceAll(get('global.image'),'TEXT_B',get('cache.dependencies.imageText.B')))}",
+            "{set('image',strToBase64(get('global.image')))}",
+            "{set('image',replaceAll('data:image/svg+xml;base64,DATA','DATA',get('global.image')))}"
+          ]
+        },
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+        },
+        "assetName": {
+          "type": "data",
+          "value": "KeepCalmUseGC"
+        },
+        "quantity": {
+          "type": "data",
+          "value": "100"
+        },
+        "currentSlotNumber": {
+          "type": "getCurrentSlot"
+        },
+        "deadlineSlotNumber": {
+          "type": "macro",
+          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),'86400')}"
+        },
+        "mintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "all": {
+              "issuer": {
+                "pubKeyHashHex": "{get('cache.dependencies.addressInfo.paymentKeyHash')}"
+              },
+              "timeLock": {
+                "slotNumEnd": "{get('cache.dependencies.deadlineSlotNumber')}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "name": "built-NFTMint",
+      "title": "NFT Minting Demo",
+      "tx": {
+        "ttl": {
+          "until": "{get('cache.dependencies.deadlineSlotNumber')}"
+        },
+        "mints": [
+          {
+            "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetName": "{get('cache.dependencies.assetName')}",
+                "quantity": "{get('cache.dependencies.quantity')}"
+              }
+            ]
+          }
+        ],
+        "witnesses": {
+          "nativeScripts": {
+            "mintingScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+          }
+        },
+        "auxiliaryData": {
+          "721": {
+            "{get('cache.dependencies.mintingPolicy.scriptHashHex')}": {
+              "{get('cache.dependencies.assetName')}": {
+                "name": "{get('cache.dependencies.assetName')}",
+                "author": "GC Wallet",
+                "image": "{strToMetadataStr(get('global.image'))}",
+                "mediaType": "image/svg+xml"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-NFTMint",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "namePattern": "submitted-NFTMint",
+      "txs": "{get('cache.sign')}"
+    }
+  }
+};
+                //This is a patch to adapt the return URL of the script to the origin that is hosting this html file.
+                //so this way executed scripts data exports can be captured back on dapp side
+                gcscript.returnURLPattern  = window.location.origin +  window.location.pathname ;
+                const encoded=await gcEncoder(gcscript,useCodec);
+                return `${gcApiUrl}${encoded}`;
+            }
+
+            updateUI();
+        }
+
+
+
+
+
+        ///////////////////////////
+        //// Encoding Helpers /////
+        ///////////////////////////
+
+        //https://github.com/blakeembrey/universal-base64/blob/master/src/browser.ts
+        function base64Encode(str){
+            const percentToByte=(p)=>String.fromCharCode(parseInt(p.slice(1), 16));
+            return btoa(encodeURIComponent(str).replace(/%[0-9A-F]{2}/g, percentToByte));
+        }
+        function base64Decode(str){
+            const byteToPercent=(b)=>`%${`00${b.charCodeAt(0).toString(16)}`.slice(-2)}`;
+            return decodeURIComponent(Array.from(atob(str), byteToPercent).join(""));
+        }
+        //https://github.com/blakeembrey/universal-base64url/blob/master/src/index.ts
+        function base64urlDecode(str){
+            return base64Decode(str.replace(/\-/g, "+").replace(/_/g, "/"));
+        }
+        function base64urlEncode(str){
+            return base64Encode(str)
+                .replace(/\//g, "_")
+                .replace(/\+/g, "-")
+                .replace(/=+$/, "");
+        }
+
+
+
+        async function base64ToBytes(base64) {
+            const res = await fetch("data:application/octet-stream;base64,"+base64);
+            return new Uint8Array(await res.arrayBuffer());
+        }
+        function urlSafeBase64Encode(safeBase64) {
+            return safeBase64
+                .replace(/\+/g, '-') // Convert '+' to '-'
+                .replace(/\//g, '_') // Convert '/' to '_'
+                .replace(/=+$/, ''); // Remove ending '='
+        };
+        function urlSafeBase64Decode(safeBase64,padding=true) {
+            // Add removed at end '='
+            let unsafeBase64=safeBase64
+            if(padding)
+                unsafeBase64 += Array(5 - unsafeBase64.length % 4).join('=');
+            unsafeBase64 = unsafeBase64
+                .replace(/\-/g, '+') // Convert '-' to '+'
+                .replace(/\_/g, '/'); // Convert '_' to '/'
+            //return new Buffer(unsafeBase64, 'base64');
+            return unsafeBase64;
+        };
+        function compress(string, encoding) {
+            const byteArray = new TextEncoder().encode(string);
+            const cs = new CompressionStream(encoding);
+            const writer = cs.writable.getWriter();
+            writer.write(byteArray);
+            writer.close();
+            return new Response(cs.readable).arrayBuffer();
+        }
+        function decompress(byteArray, encoding) {
+            const cs = new DecompressionStream(encoding);
+            const writer = cs.writable.getWriter();
+            writer.write(byteArray);
+            writer.close();
+            return new Response(cs.readable).arrayBuffer().then(function (arrayBuffer) {
+                return new TextDecoder().decode(arrayBuffer);
+            });
+        }
+        async function encodeByteArray(array) {
+            return new Promise((resolve) => {
+                const blob = new Blob([array]);
+                const reader = new FileReader();
+
+                reader.onload = (event) => {
+                    const dataUrl = event.target.result;
+                    const [_, base64] = dataUrl.split(',');
+
+                    resolve(base64);
+                };
+
+                reader.readAsDataURL(blob);
+            });
+        }
+
+        const codecs={
+            'gzip':{
+                header:'1-',
+                encoder:async function(code){
+                    var header       = '1-';
+                    // Compact JSON
+                    var json         = JSON.stringify(code);
+                    // Compress JSON with gzip
+                    var encoded_data = await compress(json, "gzip")
+                    // Base64url encode data
+                    var buffer       = await encodeByteArray(encoded_data);
+                    var base64String = urlSafeBase64Encode(buffer.toString())
+                    var msg          =`${header}${base64String}`;
+                    return msg;
+                },
+                decoder:async function (msg){
+                    var header       = '1-';
+                    var base64url    = msg.replace(header,'');
+                    // base64ToBytes() requires base64 without padding, so we pass padding=false
+                    var base64       = urlSafeBase64Decode(base64url,false);
+                    var encoded_data = await base64ToBytes(base64)
+                    var json         = await decompress(encoded_data,"gzip");
+                    var obj          = JSON.parse(json);
+                    return obj;
+                },
+            },
+            'json-url-lzma':{
+                header:'XQ',
+                encoder:async function(code){
+                    const lzma   = JsonUrl('lzma'); // JsonUrl is added to the window object 
+                    const msg    = await lzma.compress(code);
+                    return msg;
+                },
+                decoder:async function (msg){
+                    const lzma   = JsonUrl('lzma');
+                    const obj    = await lzma.decompress(msg);
+                    return obj;
+                },
+            },
+            'base64url':{
+                header:'0-',
+                encoder:async function(code){
+                    var header       = '0-';
+                    var json         = JSON.stringify(code);
+                    var base64String = base64urlEncode(json);
+                    var msg          =`${header}${base64String}`;
+                    return Promise.resolve(msg);
+                },
+                decoder:async function (msg){
+                    var header       = '0-';
+                    var base64String = msg.replace(header,'');
+                    var json         = base64urlDecode(base64String);
+                    var obj          = JSON.parse(json);
+                    return Promise.resolve(obj);
+                },
+            },
+        }
+        function gcEncoder(obj,codec='gzip'){
+            return codecs[codec].encoder(obj);
+        }
+        function gcDecoder(msg,codec){
+            let _useCodec=codec;
+            if(!_useCodec)
+                Object.keys(codecs).forEach(_codec=>{
+                    const header=codecs[_codec].header;
+                    if(msg.startsWith(header))
+                        _useCodec=_codec;
+                });
+            return codecs[_useCodec].decoder(msg);
+        }
+
+
+        window.onload = function () {
+            main();
+        }
+
+    </script>
+
+    <style>
+        body {
+            background: fixed;
+            background-image: linear-gradient(to left top, #097790, #006c8a, #006184, #00567c, #0b4b74, #184878, #26457b, #35417c, #514187, #6f3e8d, #8d378e, #ab2b89);
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(222, 222, 222);
+            text-align: center;
+            margin: 12px;
+        }
+
+        .box {
+            background: #332f39;
+            margin: auto;
+            padding: 30px;
+            border: thin solid black;
+            border-radius: 30px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.2), 
+              0 4px 4px rgba(0,0,0,0.2), 
+              0 8px 8px rgba(0,0,0,0.2), 
+              0 16px 16px rgba(0,0,0,0.2), 
+              0 32px 32px rgba(0,0,0,0.15);
+            max-width: 600px;
+        }
+
+        a:link {
+            color: rgb(174, 47, 174);
+        }
+
+        /* visited link */
+        a:visited {
+            color: rgb(76, 122, 171);
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: rgb(203, 64, 215);
+        }
+
+        /* selected link */
+        a:active {
+            color: blue;
+        }
+        #errorBox{
+            color: #f58000;
+            font-weight: bold;
+        }
+        .console {
+            overflow: auto;
+            text-align: left;
+            background-color: rgb(30, 30, 30);
+            color: green;
+            min-height: 200px;
+            padding: 8px;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.11), 
+            inset 5px 2px 2px 2px rgba(0,0,0,0.2), 
+            inset 5px 4px 4px rgba(0,0,0,0.2), 
+            inset  0 8px 8px rgba(0,0,0,0.2), 
+            inset   0 16px 16px rgba(0,0,0,0.2), 
+            inset  0 32px 32px rgba(0,0,0,0.15);
+        }
+
+        .flexrow {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 10px;
+        }
+
+        form{
+            width: 100%;
+        }
+        .a-unstyled, .a-unstyled > *{
+            color: inherit;
+            text-decoration: none; 
+        }
+        .a-unstyled:link { color: inherit;text-decoration: none; }
+        .a-unstyled:visited { color: inherit;text-decoration: none; }
+        .a-unstyled:hover { color: inherit;text-decoration: none; }
+        .a-unstyled:active { color: inherit;text-decoration: none; }
+        .button {
+            display:inline-block;
+            background-color: #181818;
+            color: rgb(222, 222, 222);
+            border: thin solid white;
+            width: 100%;
+            margin: 10px 0px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.2), 
+              0 4px 4px rgba(0,0,0,0.2), 
+              0 8px 8px rgba(0,0,0,0.2), 
+              0 16px 16px rgba(0,0,0,0.11);
+            background-color:#734cad60;
+        }
+        .button:hover {
+            background:linear-gradient(to bottom, #734cad 5%, #644b8a 100%);
+            background-color:#734cad;
+        }
+        .button:active {
+            position:relative;
+            top:1px;
+        }
+
+        /* ===== Scrollbar CSS ===== */
+        /* Firefox */
+        * {
+            scrollbar-width: 10px!important;
+            scrollbar-color: gray rgb(30, 30, 30,0);
+        }
+
+        /* Chrome, Edge, and Safari */
+        *::-webkit-scrollbar {
+            width: 10px!important;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: rgb(30, 30, 30,0);
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: gray;
+            border-radius: 10px;
+            border: 3px solid rgb(30, 30, 30,0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Keep Calm NFT</h1>
+        <p><i>Keep Calm NFT Demo, dinamically generates the image</i></p>
+         
+            <div id="dappConnectorBox">
+                <a href="#" id="connectBtn" class="button a-unstyled">
+                    Loading....
+                </a>
+            </div>
+
+        <pre id="errorBox"  class="errors"></pre>
+        <pre id="resultBox" class="console">Results will appear here after you connect with the wallet</pre>
+
+        <pre id="encodersBox"></pre>
+
+        <h6><i> 💪 Lets turn Cardano into the Blockchain of the Web! 💪 </i> </h6>
+
+        <i>Generated with ❤️ 
+        <br/>
+        by <b>
+            <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/playground"> GameChanger Wallet Playground IDE</a>
+        </b>
+        <br/>
+         2023 </i></p>
+        </p>
+
+        <h6 class="flexrow">
+            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/GameChangerOk">Twitter News</a> 
+            <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/vpbfyRaDKG">Discord Support</a> 
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@gamechanger.finance">Youtube Tutorials</a>
+            <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/doc/api/v2/api.html">GCScript DSL Documentation</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://gamechanger.finance">Website</a>
+        </h6>
+    </div>
+</body>
+
+</html>
+

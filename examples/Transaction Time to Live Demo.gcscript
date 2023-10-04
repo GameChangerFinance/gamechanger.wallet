@@ -1,0 +1,133 @@
+{
+  "title": "Transaction Time to Live Demo",
+  "description": "Script that will try the different time validity interval parameters of transaction builder",
+  "type": "script",
+  "run": {
+    "currentSlotNumber": {
+      "type": "getCurrentSlot"
+    },
+    "build": {
+      "type": "script",
+      "run": [
+        {
+          "type": "buildTx",
+          "title": "TTL: no setup",
+          "tx": {}
+        },
+        {
+          "type": "buildTx",
+          "title": "TTL: from",
+          "tx": {
+            "ttl": {
+              "from": "{get('cache.currentSlotNumber')}"
+            }
+          }
+        },
+        {
+          "type": "buildTx",
+          "title": "TTL: until",
+          "tx": {
+            "ttl": {
+              "until": "23432401234"
+            }
+          }
+        },
+        {
+          "type": "buildTx",
+          "title": "TTL: from until",
+          "tx": {
+            "ttl": {
+              "from": "{get('cache.currentSlotNumber')}",
+              "until": "23432401234"
+            }
+          }
+        },
+        {
+          "type": "buildTx",
+          "title": "TTL: from duration",
+          "tx": {
+            "ttl": {
+              "from": "{get('cache.currentSlotNumber')}",
+              "duration": "2592000000"
+            }
+          }
+        },
+        {
+          "type": "buildTx",
+          "title": "TTL: validFromNow duration",
+          "tx": {
+            "ttl": {
+              "duration": "2592000000"
+            },
+            "options": {
+              "validFromNow": true
+            }
+          }
+        },
+        {
+          "type": "buildTx",
+          "title": "TTL: ttl calc error",
+          "tx": {
+            "ttl": {
+              "from": "23432401234",
+              "until": "{get('cache.currentSlotNumber')}"
+            }
+          }
+        }
+      ]
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-{key}",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.0.txHex')}",
+        "{get('cache.build.1.txHex')}",
+        "{get('cache.build.2.txHex')}",
+        "{get('cache.build.3.txHex')}",
+        "{get('cache.build.4.txHex')}",
+        "{get('cache.build.5.txHex')}",
+        "{get('cache.build.6.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "namePattern": "submitted-{key}",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "LoremIpsumTest",
+      "run": [
+        {
+          "type": "macro",
+          "run": "{get('cache.build.0.txHash')}"
+        },
+        {
+          "type": "macro",
+          "run": "{get('cache.build.1.txHash')}"
+        },
+        {
+          "type": "macro",
+          "run": "{get('cache.build.2.txHash')}"
+        },
+        {
+          "type": "macro",
+          "run": "{get('cache.build.3.txHash')}"
+        },
+        {
+          "type": "macro",
+          "run": "{get('cache.build.4.txHash')}"
+        },
+        {
+          "type": "macro",
+          "run": "{get('cache.build.5.txHash')}"
+        },
+        {
+          "type": "macro",
+          "run": "{get('cache.build.6.txHash')}"
+        }
+      ]
+    }
+  }
+}

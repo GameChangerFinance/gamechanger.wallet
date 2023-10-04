@@ -1,0 +1,84 @@
+{
+  "title": "Delegate to [PEACE]",
+  "description": "About to delegate your ADA to 'PEACEpool Cardano ecosystem developers' stake pool",
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+        },
+        "poolKeyHash": {
+          "type": "data",
+          "value": "bd24b3372791f401cc029455c44ea77f3c8750ce3b804a354af0ff16"
+        }
+      }
+    },
+    "registrationCert": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}"
+      }
+    },
+    "deregistrationCert": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDeregistration",
+        "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}"
+      }
+    },
+    "delegationCert": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDelegation",
+        "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}",
+        "poolKeyHashHex": "{get('cache.dependencies.poolKeyHash')}"
+      }
+    },
+    "txs": {
+      "type": "script",
+      "run": {
+        "buildTransaction": {
+          "type": "buildTx",
+          "name": "Delegate to [PEACE]",
+          "tx": {
+            "certificates": [
+              {
+                "certHex": "{get('cache.registrationCert.certHex')}"
+              },
+              {
+                "certHex": "{get('cache.delegationCert.certHex')}"
+              }
+            ]
+          }
+        },
+        "signTransaction": {
+          "type": "signTx",
+          "txHex": "{get('cache.txs.buildTransaction.txHex')}"
+        },
+        "submitTransaction": {
+          "type": "submitTx",
+          "later": false,
+          "wait": true,
+          "txHex": "{get('cache.txs.signTransaction.txHex')}"
+        }
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "data",
+      "run": {
+        "txHash": {
+          "type": "macro",
+          "run": "{get('cache.txs.signTransaction.txHash')}"
+        }
+      }
+    }
+  }
+}

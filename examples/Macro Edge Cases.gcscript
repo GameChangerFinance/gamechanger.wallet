@@ -1,0 +1,22 @@
+{
+  "title": "Macro Edge Cases",
+  "description": "This demo will test some edge cases around macro solver and syntax",
+  "type": "script",
+  "exportAs": "MacroEdgeTestsDemo",
+  "run": {
+    "test": {
+      "type": "macro",
+      "run": [
+        null,
+        {
+          "foo": {},
+          "bar": [],
+          "baz": 1234567891234568000,
+          "undefined": "{get('cache.unexistantProperty')}",
+          "syntaxError": "{unknownFunction('cache.test')}",
+          "circularHell": "{get('cache.test')}"
+        }
+      ]
+    }
+  }
+}

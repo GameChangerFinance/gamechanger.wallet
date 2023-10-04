@@ -1,0 +1,43 @@
+{
+  "title": "Metadatum Label Edge Cases",
+  "description": "Script that will allow checking the full circuit, from building a tx with edge metadatum label cases, to query it then with the APIs on UI to check if there are any encoding issues, overflows or manipulations",
+  "type": "script",
+  "run": {
+    "buildTransaction": {
+      "type": "buildTx",
+      "name": "MetadatumTest",
+      "tx": {
+        "auxiliaryData": {
+          "1": "",
+          "999999999999999": "len15",
+          "9999999999999999": "len16",
+          "99999999999999999": "len17",
+          "999999999999999999": "len18",
+          "000000000000000": "len15 0",
+          "0000000000000000": "len16 0"
+        }
+      }
+    },
+    "signTransaction": {
+      "type": "signTxs",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.buildTransaction.txHex')}"
+      ]
+    },
+    "submitTransaction": {
+      "type": "submitTxs",
+      "txs": "{get('cache.signTransaction')}"
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "MetadatumTest",
+      "run": {
+        "txHash": {
+          "type": "macro",
+          "run": "{get('cache.submitTransaction.txHash')}"
+        }
+      }
+    }
+  }
+}

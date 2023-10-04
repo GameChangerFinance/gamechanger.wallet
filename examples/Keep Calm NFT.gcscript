@@ -1,0 +1,119 @@
+{
+  "type": "script",
+  "title": "Keep Calm NFT",
+  "description": "Keep Calm NFT Demo, dinamically generates the image",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "imageText": {
+          "type": "data",
+          "value": {
+            "A": "USE",
+            "B": "GC WALLET"
+          }
+        },
+        "imageFile": {
+          "type": "data",
+          "value": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNjA0IDg1MCIgd2lkdGg9IjYwNCIgaGVpZ2h0PSI4NTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3QgeD0iLTAuMDM1IiB5PSItMi4yNzIiIHdpZHRoPSI2MDEuNzIzIiBoZWlnaHQ9Ijg1MC4xNTUiIHN0eWxlPSJzdHJva2U6IHJnYigwLCAwLCAwKTsgZmlsbDogcmdiKDI1NSwgMCwgMCk7Ii8+CiAgPGcgaWQ9ImcxMzgiIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDE0Mi4xMjMyMTUsIC03MCkiPgogICAgPGcgaWQ9ImcyMzAiIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIC0xMzguODQwNjIyLCAwKSIvPgogICAgPHRleHQgaWQ9InRleHQxNDciIHN0eWxlPSJmaWxsOmJsYWNrO2ZpbGwtb3BhY2l0eToxO2xpbmUtaGVpZ2h0OjEuMjU7c3Ryb2tlOm5vbmU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7d2hpdGUtc3BhY2U6cHJlO3NoYXBlLWluc2lkZTp1cmwoI3JlY3QxNDkpOyIvPgogICAgPHRleHQgaWQ9InRleHQxNTMiIHN0eWxlPSJmaWxsOmJsYWNrO2ZpbGwtb3BhY2l0eToxO2xpbmUtaGVpZ2h0OjEuMjU7c3Ryb2tlOm5vbmU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjQwcHg7d2hpdGUtc3BhY2U6cHJlO3NoYXBlLWluc2lkZTp1cmwoI3JlY3QxNTUpOyIvPgogICAgPHRleHQgaWQ9InRleHQxNTkiIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjExMnB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE2MSk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSIxMDYzLjA5MSIgeT0iMjA5LjI0OSI+PHRzcGFuIHg9IjE1OS44NzciIHk9IjMxNy40NjgiIHN0eWxlPSJmb250LXNpemU6IDExMnB4OyB3b3JkLXNwYWNpbmc6IDBweDsiPjx0c3BhbiBzdHlsZT0iZm9udC1zdHlsZTogbm9ybWFsOyBmb250LXZhcmlhbnQ6IG5vcm1hbDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZvbnQtc3RyZXRjaDogbm9ybWFsOyBmb250LXNpemU6IDExMnB4OyBmb250LWZhbWlseTogc2Fucy1zZXJpZjsgdGV4dC1hbGlnbjogY2VudGVyOyB0ZXh0LWFuY2hvcjogbWlkZGxlOyBmaWxsOiByZ2IoMjU1LCAyNTUsIDI1NSk7IHdvcmQtc3BhY2luZzogMHB4OyI+S0VFUDwvdHNwYW4+PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dCBpZD0idGV4dDE2NyIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MTEycHg7bGluZS1oZWlnaHQ6MS4yNTtmb250LWZhbWlseTpzYW5zLXNlcmlmO3RleHQtYWxpZ246Y2VudGVyO3doaXRlLXNwYWNlOnByZTtzaGFwZS1pbnNpZGU6dXJsKCNyZWN0MTY5KTtmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmUiIHg9IjEwOTMuNDAzIiB5PSIzMjkuMjQ5Ij48dHNwYW4geD0iMTU5Ljg3NyIgeT0iNDM3LjQ2OCIgc3R5bGU9ImZvbnQtc2l6ZTogMTEycHg7IHdvcmQtc3BhY2luZzogMHB4OyI+PHRzcGFuIHN0eWxlPSJmb250LXN0eWxlOiBub3JtYWw7IGZvbnQtdmFyaWFudDogbm9ybWFsOyBmb250LXdlaWdodDogYm9sZDsgZm9udC1zdHJldGNoOiBub3JtYWw7IGZvbnQtc2l6ZTogMTEycHg7IGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmOyB0ZXh0LWFsaWduOiBjZW50ZXI7IHRleHQtYW5jaG9yOiBtaWRkbGU7IGZpbGw6IHJnYigyNTUsIDI1NSwgMjU1KTsgd29yZC1zcGFjaW5nOiAwcHg7Ij5DQUxNPC90c3Bhbj48L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IGlkPSJ0ZXh0MTczIiBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZTo2NHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE3NSk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSI5OTUuNjY1IiB5PSI0NjkuMjQ5Ij48dHNwYW4geD0iMTU5Ljg3NyIgeT0iNTM0Ljk5OSIgc3R5bGU9ImZvbnQtc2l6ZTogNjRweDsgd29yZC1zcGFjaW5nOiAwcHg7Ij48dHNwYW4gc3R5bGU9ImZvbnQtc3R5bGU6IG5vcm1hbDsgZm9udC12YXJpYW50OiBub3JtYWw7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXN0cmV0Y2g6IG5vcm1hbDsgZm9udC1zaXplOiA2NHB4OyBmb250LWZhbWlseTogc2Fucy1zZXJpZjsgdGV4dC1hbGlnbjogY2VudGVyOyB0ZXh0LWFuY2hvcjogbWlkZGxlOyBmaWxsOiByZ2IoMjU1LCAyNTUsIDI1NSk7IHdvcmQtc3BhY2luZzogMHB4OyI+QU5EPC90c3Bhbj48L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IGlkPSJ0ZXh0MTc5IiBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZTo4MHB4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE4NSk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSIxMDY1LjgzNyIgeT0iNTY5LjI0OSI+PHRzcGFuIHg9IjE1OS44NzciIHk9IjY0OS4xNTUiIHN0eWxlPSJmb250LXNpemU6IDgwcHg7IHdvcmQtc3BhY2luZzogMHB4OyI+PHRzcGFuIHN0eWxlPSJmb250LXN0eWxlOiBub3JtYWw7IGZvbnQtdmFyaWFudDogbm9ybWFsOyBmb250LXdlaWdodDogYm9sZDsgZm9udC1zdHJldGNoOiBub3JtYWw7IGZvbnQtc2l6ZTogODBweDsgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7IHRleHQtYWxpZ246IGNlbnRlcjsgdGV4dC1hbmNob3I6IG1pZGRsZTsgZmlsbDogcmdiKDI1NSwgMjU1LCAyNTUpOyB3b3JkLXNwYWNpbmc6IDBweDsiPlRFWFRfQTwvdHNwYW4+PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dCBpZD0idGV4dDE4MyIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6OTMuMzMzM3B4O2xpbmUtaGVpZ2h0OjEuMjU7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjt0ZXh0LWFsaWduOmNlbnRlcjt3aGl0ZS1zcGFjZTpwcmU7c2hhcGUtaW5zaWRlOnVybCgjcmVjdDE4Nyk7ZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lIiB4PSIxMTA3Ljk4MiIgeT0iNjY5LjI0OSI+PHRzcGFuIHg9IjE1OS44NzciIHk9Ijc2MC45NTIiIHN0eWxlPSJmb250LXNpemU6IDkzLjNweDsgd29yZC1zcGFjaW5nOiAwcHg7Ij48dHNwYW4gc3R5bGU9ImZvbnQtc3R5bGU6IG5vcm1hbDsgZm9udC12YXJpYW50OiBub3JtYWw7IGZvbnQtd2VpZ2h0OiBib2xkOyBmb250LXN0cmV0Y2g6IG5vcm1hbDsgZm9udC1zaXplOiA5My4zcHg7IGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmOyB0ZXh0LWFsaWduOiBjZW50ZXI7IHRleHQtYW5jaG9yOiBtaWRkbGU7IGZpbGw6IHJnYigyNTUsIDI1NSwgMjU1KTsgd29yZC1zcGFjaW5nOiAwcHg7Ij5URVhUX0I8L3RzcGFuPjwvdHNwYW4+PC90ZXh0PgogIDwvZz4KPC9zdmc+"
+        },
+        "imageProcessing": {
+          "type": "macro",
+          "run": [
+            "{set('image',base64ToStr(get('cache.dependencies.imageFile')))}",
+            "{set('image',replaceAll(get('global.image'),'TEXT_A',get('cache.dependencies.imageText.A')))}",
+            "{set('image',replaceAll(get('global.image'),'TEXT_B',get('cache.dependencies.imageText.B')))}",
+            "{set('image',strToBase64(get('global.image')))}",
+            "{set('image',replaceAll('data:image/svg+xml;base64,DATA','DATA',get('global.image')))}"
+          ]
+        },
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+        },
+        "assetName": {
+          "type": "data",
+          "value": "KeepCalmUseGC"
+        },
+        "quantity": {
+          "type": "data",
+          "value": "100"
+        },
+        "currentSlotNumber": {
+          "type": "getCurrentSlot"
+        },
+        "deadlineSlotNumber": {
+          "type": "macro",
+          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),'86400')}"
+        },
+        "mintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "all": {
+              "issuer": {
+                "pubKeyHashHex": "{get('cache.dependencies.addressInfo.paymentKeyHash')}"
+              },
+              "timeLock": {
+                "slotNumEnd": "{get('cache.dependencies.deadlineSlotNumber')}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "name": "built-NFTMint",
+      "title": "NFT Minting Demo",
+      "tx": {
+        "ttl": {
+          "until": "{get('cache.dependencies.deadlineSlotNumber')}"
+        },
+        "mints": [
+          {
+            "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetName": "{get('cache.dependencies.assetName')}",
+                "quantity": "{get('cache.dependencies.quantity')}"
+              }
+            ]
+          }
+        ],
+        "witnesses": {
+          "nativeScripts": {
+            "mintingScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+          }
+        },
+        "auxiliaryData": {
+          "721": {
+            "{get('cache.dependencies.mintingPolicy.scriptHashHex')}": {
+              "{get('cache.dependencies.assetName')}": {
+                "name": "{get('cache.dependencies.assetName')}",
+                "author": "GC Wallet",
+                "image": "{strToMetadataStr(get('global.image'))}",
+                "mediaType": "image/svg+xml"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-NFTMint",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "namePattern": "submitted-NFTMint",
+      "txs": "{get('cache.sign')}"
+    }
+  }
+}

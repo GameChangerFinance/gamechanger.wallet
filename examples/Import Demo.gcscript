@@ -1,0 +1,52 @@
+{
+  "title": "Import Demo",
+  "description": "Script that will import data and scripts from different kind of allowed sources",
+  "type": "script",
+  "run": {
+    "data": {
+      "type": "importAsData",
+      "from": {
+        "A": "gcfs://1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57.gc.disk@latest://foo/bar/baz/readme.txt",
+        "B": "gcfs://1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57.gc.disk@latest://data/encryptedData.crypt",
+        "C": "0xf09f9a802048656c6c6f20576f726c64206f6620496e6c696e65642048657861646563696d616c204461746120617320616e2055524921"
+      }
+    },
+    "secureScript": {
+      "type": "importAsScript",
+      "decryptWith": {
+        "kind": "system"
+      },
+      "from": [
+        "gcfs://1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57.gc_settings@latest://scripts/config.gcscript"
+      ]
+    },
+    "secureData": {
+      "type": "importAsData",
+      "from": {
+        "A": "gcfs://1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57.gc_settings@latest://scripts/config.gcscript"
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "importDemo",
+      "run": {
+        "data": {
+          "type": "macro",
+          "run": "{get('cache.data')}"
+        },
+        "secureData": {
+          "type": "macro",
+          "run": "{get('cache.secureData')}"
+        },
+        "protectedScriptResults": {
+          "type": "macro",
+          "run": "{get('cache.secureScript')}"
+        },
+        "sharedScriptResults": {
+          "type": "macro",
+          "run": "{get('exports.connect')}"
+        }
+      }
+    }
+  }
+}

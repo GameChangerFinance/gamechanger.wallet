@@ -1,0 +1,378 @@
+{
+  "type": "script",
+  "run": {
+    "createUtxos": {
+      "title": "UTXO Generator",
+      "description": "Generates required amount of UTXOs in your wallet to fulfill future tasks",
+      "type": "script",
+      "exportAs": "data",
+      "isolateCache": true,
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "build": {
+          "type": "buildTx",
+          "title": "UTXO Generator",
+          "name": "UTXO Generator",
+          "description": "Generates required amount of UTXOs in your wallet to fulfill future tasks",
+          "tx": {
+            "outputs": [
+              {
+                "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+                "assets": [
+                  {
+                    "assetName": "ada",
+                    "policyId": "ada",
+                    "quantity": "80000000"
+                  }
+                ]
+              },
+              {
+                "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+                "assets": [
+                  {
+                    "assetName": "ada",
+                    "policyId": "ada",
+                    "quantity": "80000000"
+                  }
+                ]
+              },
+              {
+                "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+                "assets": [
+                  {
+                    "assetName": "ada",
+                    "policyId": "ada",
+                    "quantity": "80000000"
+                  }
+                ]
+              }
+            ],
+            "options": {
+              "coinSelection": "FMR",
+              "changeOptimizer": "BAL",
+              "autoProvision": {
+                "workspaceNativeScript": true
+              },
+              "autoOptionalSigners": {
+                "nativeScript": true
+              }
+            }
+          }
+        },
+        "sign": {
+          "type": "signTxs",
+          "namePattern": "UTXO Generator Signed",
+          "detailedPermissions": false,
+          "txs": [
+            "{get('cache.build.txHex')}"
+          ]
+        },
+        "submit": {
+          "type": "submitTxs",
+          "mode": "parallel",
+          "namePattern": "UTXO Generator Submittted",
+          "txs": "{get('cache.sign')}"
+        }
+      }
+    },
+    "profile": {
+      "type": "saveConfig",
+      "layers": {
+        "workspaces": {
+          "type": "Workspace",
+          "namePattern": "demo_{key}",
+          "items": {
+            "default": {
+              "titlePattern": "Default",
+              "descriptionPattern": "Your Main wallet only"
+            },
+            "multi_delegations": {
+              "titlePattern": "Multi Delegation",
+              "descriptionPattern": "Your delegation portfolio, each address stake rights can be delegated to a different staking pool"
+            },
+            "hd": {
+              "titlePattern": "Hierarchical Deterministic",
+              "descriptionPattern": "Access to your Yoroi or Daedalus wallet child addresses"
+            },
+            "anonymous": {
+              "titlePattern": "Anonymous",
+              "descriptionPattern": "Pure Enterprise child addresses, without staking rights. Don't combine with other workspaces to increase anonymity"
+            },
+            "anonymous_multi_delegations": {
+              "titlePattern": "Anonymous Multi Delegation",
+              "descriptionPattern": "Child addresses, with staking rights allowing anonymous portfolio multi delegations to different stake pools. Don't combine with other workspaces to increase anonymity"
+            }
+          }
+        },
+        "mainKeys": {
+          "type": "Key",
+          "namePattern": "hd_{kind}_main",
+          "items": {
+            "mainSpendKey": {
+              "workspaceIds": [
+                "demo_default",
+                "demo_multi_delegations"
+              ],
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            "mainStakeKey": {
+              "workspaceIds": [
+                "demo_default",
+                "demo_hd"
+              ],
+              "kind": "stake",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          }
+        },
+        "spendKeys": {
+          "type": "Key",
+          "workspaceIds": [
+            "demo_hd",
+            "demo_anonymous",
+            "demo_anonymous_multi_delegations"
+          ],
+          "namePattern": "hd_{kind}_{key}",
+          "kind": "spend",
+          "items": [
+            {
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            {
+              "accountIndex": 0,
+              "addressIndex": 1
+            },
+            {
+              "accountIndex": 0,
+              "addressIndex": 2
+            },
+            {
+              "accountIndex": 0,
+              "addressIndex": 3
+            },
+            {
+              "accountIndex": 0,
+              "addressIndex": 4
+            },
+            {
+              "accountIndex": 0,
+              "addressIndex": 5
+            },
+            {
+              "accountIndex": 0,
+              "addressIndex": 6
+            }
+          ]
+        },
+        "stakeKeys": {
+          "type": "Key",
+          "workspaceIds": [
+            "demo_multi_delegations",
+            "demo_anonymous_multi_delegations"
+          ],
+          "namePattern": "hd_{kind}_{key}",
+          "kind": "stake",
+          "items": {
+            "A": {
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            "B": {
+              "accountIndex": 0,
+              "addressIndex": 1
+            },
+            "C": {
+              "accountIndex": 0,
+              "addressIndex": 2
+            },
+            "D": {
+              "accountIndex": 0,
+              "addressIndex": 3
+            },
+            "E": {
+              "accountIndex": 0,
+              "addressIndex": 4
+            }
+          }
+        },
+        "default": {
+          "type": "Address",
+          "workspaceIds": [
+            "demo_default"
+          ],
+          "namePattern": "demo_main",
+          "items": [
+            {
+              "spendPubKeyName": "hd_spend_main",
+              "stakePubKeyName": "hd_stake_main"
+            }
+          ]
+        },
+        "hierarchicalDeterministic": {
+          "type": "Address",
+          "workspaceIds": [
+            "demo_hd"
+          ],
+          "namePattern": "hd_{key}",
+          "items": [
+            {
+              "spendPubKeyName": "hd_spend_0",
+              "stakePubKeyName": "hd_stake_main"
+            },
+            {
+              "spendPubKeyName": "hd_spend_1",
+              "stakePubKeyName": "hd_stake_main"
+            },
+            {
+              "spendPubKeyName": "hd_spend_2",
+              "stakePubKeyName": "hd_stake_main"
+            },
+            {
+              "spendPubKeyName": "hd_spend_3",
+              "stakePubKeyName": "hd_stake_main"
+            },
+            {
+              "spendPubKeyName": "hd_spend_4",
+              "stakePubKeyName": "hd_stake_main"
+            },
+            {
+              "spendPubKeyName": "hd_spend_5",
+              "stakePubKeyName": "hd_stake_main"
+            }
+          ]
+        },
+        "delegationPortfolio": {
+          "type": "Address",
+          "workspaceIds": [
+            "demo_multi_delegations"
+          ],
+          "namePattern": "pool_{key}",
+          "items": [
+            {
+              "spendPubKeyName": "hd_spend_main",
+              "stakePubKeyName": "hd_stake_A"
+            },
+            {
+              "spendPubKeyName": "hd_spend_main",
+              "stakePubKeyName": "hd_stake_B"
+            },
+            {
+              "spendPubKeyName": "hd_spend_main",
+              "stakePubKeyName": "hd_stake_C"
+            },
+            {
+              "spendPubKeyName": "hd_spend_main",
+              "stakePubKeyName": "hd_stake_D"
+            },
+            {
+              "spendPubKeyName": "hd_spend_main",
+              "stakePubKeyName": "hd_stake_E"
+            }
+          ]
+        },
+        "reward": {
+          "type": "Address",
+          "workspaceIds": [
+            "demo_multi_delegations",
+            "demo_anonymous_multi_delegations"
+          ],
+          "namePattern": "reward_{key}",
+          "items": {
+            "main": {
+              "workspaceIds": [
+                "demo_default"
+              ],
+              "stakePubKeyName": "hd_stake_main"
+            },
+            "A": {
+              "stakePubKeyName": "hd_stake_A"
+            },
+            "B": {
+              "stakePubKeyName": "hd_stake_B"
+            },
+            "C": {
+              "stakePubKeyName": "hd_stake_C"
+            },
+            "D": {
+              "stakePubKeyName": "hd_stake_D"
+            },
+            "E": {
+              "stakePubKeyName": "hd_stake_E"
+            }
+          }
+        },
+        "anonymousHierachicalDeterministic": {
+          "type": "Address",
+          "workspaceIds": [
+            "demo_anonymous"
+          ],
+          "namePattern": "anon_{key}",
+          "items": [
+            {
+              "spendPubKeyName": "hd_spend_0"
+            },
+            {
+              "spendPubKeyName": "hd_spend_1"
+            },
+            {
+              "spendPubKeyName": "hd_spend_2"
+            },
+            {
+              "spendPubKeyName": "hd_spend_3"
+            },
+            {
+              "spendPubKeyName": "hd_spend_4"
+            }
+          ]
+        },
+        "anonymousStaking": {
+          "type": "Address",
+          "workspaceIds": [
+            "demo_anonymous_multi_delegations"
+          ],
+          "namePattern": "anonstake_{key}",
+          "items": [
+            {
+              "spendPubKeyName": "hd_spend_0",
+              "stakePubKeyName": "hd_stake_A"
+            },
+            {
+              "spendPubKeyName": "hd_spend_1",
+              "stakePubKeyName": "hd_stake_B"
+            },
+            {
+              "spendPubKeyName": "hd_spend_2",
+              "stakePubKeyName": "hd_stake_C"
+            },
+            {
+              "spendPubKeyName": "hd_spend_3",
+              "stakePubKeyName": "hd_stake_D"
+            },
+            {
+              "spendPubKeyName": "hd_spend_4",
+              "stakePubKeyName": "hd_stake_E"
+            }
+          ]
+        }
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "SetupDemo",
+      "run": {
+        "results": {
+          "type": "macro",
+          "run": "{get('cache.profile')}"
+        }
+      }
+    }
+  },
+  "title": "Save Wallet Config Demo",
+  "description": "Script that will save wallet artifacts on default wallet settings GCFS DiskNFT. Settings can be derived child keys, built child addresses and even setup address books, all these inside different wallet workspaces. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires."
+}

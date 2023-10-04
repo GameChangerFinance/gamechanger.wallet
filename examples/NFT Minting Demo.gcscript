@@ -1,0 +1,155 @@
+{
+  "type": "script",
+  "title": "NFT Minting Demo",
+  "description": "Demo that creates a native script and use it as policy to mint an NFT. Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "NFTMintingDemo",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+        },
+        "assetName": {
+          "type": "data",
+          "value": "GameChangerNFT"
+        },
+        "quantity": {
+          "type": "data",
+          "value": "100"
+        },
+        "currentSlotNumber": {
+          "type": "getCurrentSlot"
+        },
+        "deadlineSlotNumber": {
+          "type": "macro",
+          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),'86400')}"
+        },
+        "mintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "all": {
+              "issuer": {
+                "pubKeyHashHex": "{get('cache.dependencies.addressInfo.paymentKeyHash')}"
+              },
+              "timeLock": {
+                "slotNumEnd": "{get('cache.dependencies.deadlineSlotNumber')}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "name": "built-NFTMint",
+      "title": "NFT Minting Demo",
+      "tx": {
+        "ttl": {
+          "until": "{get('cache.dependencies.deadlineSlotNumber')}"
+        },
+        "mints": [
+          {
+            "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetName": "{get('cache.dependencies.assetName')}",
+                "quantity": "{get('cache.dependencies.quantity')}"
+              }
+            ]
+          }
+        ],
+        "outputs": {
+          "exampleDrop01": {
+            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "2000000"
+              },
+              {
+                "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+                "assetName": "{get('cache.dependencies.assetName')}",
+                "quantity": "1"
+              }
+            ]
+          }
+        },
+        "witnesses": {
+          "nativeScripts": {
+            "mintingScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+          }
+        },
+        "auxiliaryData": {
+          "721": {
+            "{get('cache.dependencies.mintingPolicy.scriptHashHex')}": {
+              "{get('cache.dependencies.assetName')}": {
+                "url": "https://gamechanger.finance",
+                "name": "{get('cache.dependencies.assetName')}",
+                "description": "{replaceAll('Only __QUANTITY__ NFTs were minted','__QUANTITY__',get('cache.dependencies.quantity'))}",
+                "author": "GameChanger Wallet",
+                "image": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+                "version": "1.0",
+                "mediaType": "image/png",
+                "files": [
+                  {
+                    "mediaType": "image/png",
+                    "src": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+                    "arweaveId": "jn5d55VbVdpvA3y9WAlzRRBP1zhkq8l3QiUR-vVHb-0",
+                    "sha256": "5b8ee29640bf24074a3988bb6b852165731fe8612793ef5a74433f1689e2cb4b"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-NFTMint",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "namePattern": "submitted-NFTMint",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "script",
+      "run": {
+        "txHash": {
+          "type": "macro",
+          "run": "{get('cache.build.txHash')}"
+        },
+        "assetName": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.assetName')}"
+        },
+        "policyId": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}"
+        },
+        "canMintUntilSlotNumber": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.deadlineSlotNumber')}"
+        },
+        "mintingScript": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+        }
+      }
+    }
+  }
+}

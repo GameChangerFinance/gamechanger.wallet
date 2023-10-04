@@ -1,0 +1,432 @@
+{
+  "title": "Script Return Modes Demo",
+  "description": "Script that will test and explore the different types of script return modes, allowing batch only operations, data formatting and even data privacy by choosing only what to return from block code context",
+  "type": "script",
+  "exportAs": "ReturnModesDemo",
+  "run": {
+    "withChildrenMap": {
+      "title": "Key-Value Maps",
+      "description": "Testing Key-Value Mappings",
+      "type": "script",
+      "return": {
+        "mode": "all"
+      },
+      "run": {
+        "none": {
+          "type": "script",
+          "return": {
+            "mode": "none"
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        },
+        "all": {
+          "type": "script",
+          "return": {
+            "mode": "all"
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        },
+        "first": {
+          "type": "script",
+          "return": {
+            "mode": "first"
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        },
+        "last": {
+          "type": "script",
+          "return": {
+            "mode": "last"
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        },
+        "one": {
+          "type": "script",
+          "return": {
+            "mode": "one",
+            "key": "C"
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        },
+        "some": {
+          "type": "script",
+          "return": {
+            "mode": "some",
+            "keys": [
+              "B",
+              "D"
+            ]
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        },
+        "macro": {
+          "type": "script",
+          "return": {
+            "mode": "macro",
+            "run": "{get('cache.withChildrenMap.macro.C')}"
+          },
+          "run": {
+            "A": {
+              "type": "data",
+              "value": "Data of A"
+            },
+            "B": {
+              "type": "data",
+              "value": "Data of B"
+            },
+            "C": {
+              "type": "data",
+              "value": "Data of C"
+            },
+            "D": {
+              "type": "data",
+              "value": "Data of D"
+            },
+            "E": {
+              "type": "data",
+              "value": "Data of E"
+            }
+          }
+        }
+      }
+    },
+    "withChildrenList": {
+      "title": "Lists",
+      "description": "Testing lists",
+      "type": "script",
+      "return": {
+        "mode": "all"
+      },
+      "run": {
+        "none": {
+          "type": "script",
+          "return": {
+            "mode": "none"
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        },
+        "all": {
+          "type": "script",
+          "return": {
+            "mode": "all"
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        },
+        "first": {
+          "type": "script",
+          "return": {
+            "mode": "first"
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        },
+        "last": {
+          "type": "script",
+          "return": {
+            "mode": "last"
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        },
+        "one": {
+          "type": "script",
+          "return": {
+            "mode": "one",
+            "key": "2"
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        },
+        "some": {
+          "type": "script",
+          "return": {
+            "mode": "some",
+            "keys": [
+              "1",
+              "3"
+            ]
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        },
+        "macro": {
+          "type": "script",
+          "return": {
+            "mode": "macro",
+            "run": "{get('cache.withChildrenList.macro.2')}"
+          },
+          "run": [
+            {
+              "type": "data",
+              "value": "Data of A"
+            },
+            {
+              "type": "data",
+              "value": "Data of B"
+            },
+            {
+              "type": "data",
+              "value": "Data of C"
+            },
+            {
+              "type": "data",
+              "value": "Data of D"
+            },
+            {
+              "type": "data",
+              "value": "Data of E"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

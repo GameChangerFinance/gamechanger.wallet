@@ -1,0 +1,17 @@
+{
+  "type": "script",
+  "run": [
+    {
+      "type": "data",
+      "value": "data of 0"
+    },
+    {
+      "type": "data",
+      "value": "data of 1"
+    },
+    {
+      "type": "data",
+      "value": "data of 2"
+    }
+  ]
+}

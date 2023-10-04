@@ -1,0 +1,130 @@
+{
+  "title": "Transaction Pipeline",
+  "description": "3 transactions will be build first, then signed and later submitted at the same time. There is no need of random coin selection because GC reserves UTXOs for each of them automatically to avoid conflicts between them",
+  "type": "script",
+  "run": {
+    "template": {
+      "type": "data",
+      "value": {
+        "outputs": {
+          "toBuyer": {
+            "address": "addr1q98f06pcrsn8x03uw0vlejw684fcu02waffvfscdsz0djgqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq2vsyn7",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              }
+            ]
+          },
+          "toIntermediary": {
+            "address": "addr1q9cyzfctymllue5gx93mxnrymlzzxejkzgsrkgwq7upje4gd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqpnzcra",
+            "assets": {
+              "ada1": {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              },
+              "ada2": {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              }
+            }
+          }
+        },
+        "auxiliaryData": {
+          "73": {
+            "v": "2.0",
+            "type": "tx"
+          },
+          "721": {
+            "bar": 1,
+            "baz": [
+              3,
+              5,
+              "boo",
+              7,
+              {
+                "a": "z"
+              }
+            ],
+            "bax": "foo"
+          }
+        }
+      }
+    },
+    "_txs": {
+      "type": "script",
+      "run": {
+        "tx01": {
+          "type": "buildTx",
+          "title": "Half templated Tx",
+          "name": "built-tx01",
+          "description": "Simple GameChanger Transaction",
+          "tx": {
+            "outputs": {
+              "1": "{get('cache.template.outputs.toBuyer')}",
+              "2": {
+                "address": "addr1qyygq384vhtcys27wedeh7r6jd0arwefvfxt6ggwjld0mjqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqa24x5g",
+                "assets": [
+                  {
+                    "policyId": "ada",
+                    "assetName": "ada",
+                    "quantity": "123"
+                  }
+                ]
+              }
+            },
+            "options": {
+              "coinSelection": "FMR",
+              "changeOptimizer": "BAL"
+            }
+          }
+        },
+        "tx02": {
+          "type": "buildTx",
+          "title": "Pure Coin Selection Tx",
+          "name": "built-tx02",
+          "description": "Simple GameChanger Transaction",
+          "tx": {
+            "outputs": "{get('cache.template.outputs')}",
+            "auxiliaryData": {
+              "73": {
+                "v": "2.0",
+                "type": "tx"
+              }
+            },
+            "options": {
+              "coinSelection": "NCR",
+              "changeOptimizer": "SVC-XS"
+            }
+          }
+        },
+        "tx03": {
+          "type": "buildTx",
+          "title": "Fully templated Tx",
+          "name": "built-tx03",
+          "description": "Simple GameChanger Transaction",
+          "tx": "{get('cache.template')}"
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-tx0{key}",
+      "txs": [
+        "{get('cache._txs.tx01.txHex')}",
+        "{get('cache._txs.tx02.txHex')}",
+        "{get('cache._txs.tx03.txHex')}"
+      ],
+      "detailedPermissions": false
+    },
+    "submit": {
+      "type": "submitTxs",
+      "mode": "parallel",
+      "namePattern": "submitted-tx0{key}",
+      "txs": "{get('cache.sign')}"
+    }
+  }
+}

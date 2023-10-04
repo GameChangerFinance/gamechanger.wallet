@@ -1,0 +1,173 @@
+{
+  "title": "Multi Signing Demo",
+  "description": "Demo that tries to sign 3 transactions with internal spending and staking private keys with any desired multisig provider. Partially sign them over and over again combining providers to try it out.",
+  "type": "script",
+  "exportAs": "MultiSig",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "return": {
+        "mode": "some",
+        "keys": [
+          "mainSpendKeyHash",
+          "mainStakeKeyHash",
+          "currentSpendKeyHash",
+          "currentStakeKeyHash",
+          "internalMintingPolicy"
+        ]
+      },
+      "run": {
+        "mainAddress": {
+          "type": "getMainAddress"
+        },
+        "currentAddress": {
+          "type": "getCurrentAddress"
+        },
+        "mainAddressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.mainAddress'))}"
+        },
+        "currentAddressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.currentAddress'))}"
+        },
+        "mainRewardAddress": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mainAddressInfo.rewardAddress')}"
+        },
+        "currentRewardAddress": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.currentAddressInfo.rewardAddress')}"
+        },
+        "mainSpendKeyHash": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mainAddressInfo.paymentKeyHash')}"
+        },
+        "mainStakeKeyHash": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mainAddressInfo.stakingKeyHash')}"
+        },
+        "currentSpendKeyHash": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.currentAddressInfo.paymentKeyHash')}"
+        },
+        "currentStakeKeyHash": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.currentAddressInfo.stakingKeyHash')}"
+        },
+        "internalMintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.currentSpendKeyHash')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.currentStakeKeyHash')}"
+                  },
+                  {
+                    "scriptHex": "8200581ca8f97104c6b8cc5d197fe136d813e92d8ce417bfa2df44b43331f5fc"
+                  }
+                ]
+              },
+              {
+                "atLeast": 1,
+                "ofThese": [
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.mainSpendKeyHash')}"
+                  },
+                  {
+                    "pubKeyHashHex": "{get('cache.dependencies.mainStakeKeyHash')}"
+                  },
+                  {
+                    "scriptHex": "8200581ca8f97104c6b8cc5d197fe136d813e92d8ce417bfa2df44b43331f5fc"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "script",
+      "run": {
+        "withAllKeys": {
+          "type": "buildTx",
+          "name": "withAllKeys",
+          "tx": {
+            "outputs": {
+              "toExternalWallet": {
+                "address": "addr_test1qrl07u9ssdtdwtzhrt0zrrr79yejxhfvmsmjt9jxqyaz0ktp6ydulqht6r9z4ld0jms3a3c7gw45u32vhc2ftdp2f6rqvz02jw",
+                "assets": [
+                  {
+                    "assetName": "IOwnThisKeys",
+                    "policyId": "{get('cache.dependencies.internalMintingPolicy.scriptHashHex')}",
+                    "quantity": "2"
+                  }
+                ]
+              }
+            },
+            "mints": [
+              {
+                "policyId": "{get('cache.dependencies.internalMintingPolicy.scriptHashHex')}",
+                "assets": [
+                  {
+                    "assetName": "IOwnThisKeys",
+                    "quantity": "10"
+                  }
+                ]
+              }
+            ],
+            "witnesses": {
+              "nativeScripts": {
+                "internalMintingPolicyScript": "{get('cache.dependencies.internalMintingPolicy.scriptHex')}"
+              }
+            },
+            "optionalSigners": {
+              "mainSpendKeyHash": "{get('cache.dependencies.mainSpendKeyHash')}",
+              "mainStakeKeyHash": "{get('cache.dependencies.mainStakeKeyHash')}",
+              "currentSpendKeyHash": "{get('cache.dependencies.currentSpendKeyHash')}",
+              "currentStakeKeyHash": "{get('cache.dependencies.currentStakeKeyHash')}"
+            }
+          }
+        },
+        "withSpendingKeys": {
+          "type": "buildTx",
+          "name": "withSpendingKeys",
+          "tx": {
+            "requiredSigners": {
+              "mainSpendKeyHash": "{get('cache.dependencies.mainSpendKeyHash')}",
+              "currentSpendKeyHash": "{get('cache.dependencies.currentSpendKeyHash')}"
+            }
+          }
+        },
+        "withStakingKeys": {
+          "type": "buildTx",
+          "name": "withStakingKeys",
+          "tx": {
+            "requiredSigners": {
+              "mainStakeKeyHash": "{get('cache.dependencies.mainStakeKeyHash')}",
+              "currentStakeKeyHash": "{get('cache.dependencies.currentStakeKeyHash')}"
+            }
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "InternalMultiSig-{key}",
+      "extras": true,
+      "txs": "{\n                    getArray(\n                        get('cache.build.withAllKeys.txHex'),\n                        get('cache.build.withSpendingKeys.txHex'),\n                        get('cache.build.withStakingKeys.txHex'),\n                    )\n                }",
+      "detailedPermissions": false
+    },
+    "submit": {
+      "type": "submitTxs",
+      "mode": "later",
+      "namePattern": "MultiSig-{key}",
+      "txs": "{get('cache.sign.txList')}"
+    }
+  }
+}

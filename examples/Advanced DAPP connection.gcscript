@@ -1,0 +1,44 @@
+{
+  "type": "script",
+  "exportAs": "connect",
+  "run": {
+    "data": {
+      "type": "script",
+      "run": {
+        "name": {
+          "type": "getName"
+        },
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "spendPubKey": {
+          "type": "getSpendingPublicKey"
+        },
+        "stakePubKey": {
+          "type": "getStakingPublicKey"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.data.address'))}"
+        },
+        "agreement": {
+          "type": "macro",
+          "run": "{replaceAll('Myself, the user of wallet ADDRESS accepts to share all this information in order to connect with the dapp','ADDRESS',get('cache.data.address'))}"
+        },
+        "salt": {
+          "type": "macro",
+          "run": "{uuid()}"
+        }
+      }
+    },
+    "hash": {
+      "type": "macro",
+      "run": "{sha512(objToJson(get('cache.data')))}"
+    },
+    "sign": {
+      "type": "signDataWithAddress",
+      "address": "{get('cache.data.address')}",
+      "dataHex": "{get('cache.hash')}"
+    }
+  }
+}

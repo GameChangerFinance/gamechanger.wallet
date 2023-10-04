@@ -1,0 +1,70 @@
+{
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "keys": {
+          "type": "deriveKeys",
+          "keys": {
+            "A": {
+              "name": "A",
+              "kind": "stake",
+              "accountIndex": 34,
+              "addressIndex": 423
+            },
+            "B": {
+              "name": "B",
+              "kind": "stake",
+              "accountIndex": 632,
+              "addressIndex": 7434
+            },
+            "C": {
+              "name": "C",
+              "kind": "stake",
+              "accountIndex": 26,
+              "addressIndex": 754
+            }
+          }
+        }
+      }
+    },
+    "txs": {
+      "type": "script",
+      "run": {
+        "buildMultiSign": {
+          "type": "buildTx",
+          "name": "MultiSignTx",
+          "tx": {
+            "requiredSigners": {
+              "A": "{get('cache.dependencies.keys.A.pubKeyHashHex')}",
+              "B": "{get('cache.dependencies.keys.B.pubKeyHashHex')}",
+              "C": "{get('cache.dependencies.keys.C.pubKeyHashHex')}"
+            }
+          }
+        },
+        "signMultiSign": {
+          "type": "signTxs",
+          "detailedPermissions": false,
+          "txs": [
+            "{get('cache.txs.buildMultiSign.txHex')}"
+          ]
+        },
+        "submitMultiSign": {
+          "type": "submitTxs",
+          "txs": "{get('cache.signMultiSign')}"
+        }
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "MultiSign",
+      "run": {
+        "txHash": {
+          "type": "macro",
+          "run": "{get('cache.txs.buildMultiSign.txHash')}"
+        }
+      }
+    }
+  }
+}

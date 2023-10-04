@@ -1,0 +1,220 @@
+{
+  "title": "CIP-8 Data Signing and Encrypting Demo",
+  "description": "Demo that signs data with main and current addresses and their associated reward ones, verifies the signatures and encrypt and decrypt the data using the signatures. Run 'Wallet Setup Demo' or create some Workspaces first and switch current addresses to test it out",
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "mainAddress": {
+          "type": "getMainAddress"
+        },
+        "currentAddress": {
+          "type": "getCurrentAddress"
+        },
+        "mainAddressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.mainAddress'))}"
+        },
+        "currentAddressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.currentAddress'))}"
+        },
+        "mainRewardAddress": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mainAddressInfo.rewardAddress')}"
+        },
+        "currentRewardAddress": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.currentAddressInfo.rewardAddress')}"
+        },
+        "data": {
+          "type": "data",
+          "value": "🚀 Hello World of CIP-8 data signing!"
+        },
+        "dataHex": {
+          "type": "macro",
+          "run": "{strToHex(get('cache.dependencies.data'))}"
+        }
+      }
+    },
+    "data": {
+      "type": "script",
+      "exportAs": "InputData",
+      "run": {
+        "data": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.data')}"
+        },
+        "dataHex": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.dataHex')}"
+        }
+      }
+    },
+    "usingMainAddress": {
+      "type": "script",
+      "exportAs": "UsingMainAddress",
+      "run": {
+        "address": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mainAddress')}"
+        },
+        "sign": {
+          "type": "signDataWithAddress",
+          "address": "{get('cache.usingMainAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "verify": {
+          "type": "verifySignatureWithAddress",
+          "address": "{get('cache.usingMainAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}",
+          "dataSignature": "{get('cache.usingMainAddress.sign')}"
+        },
+        "encryptedHex": {
+          "type": "encrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingMainAddress.sign.signature')}"
+          },
+          "messageHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "decryptedHex": {
+          "type": "decrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to decrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingMainAddress.sign.signature')}"
+          },
+          "encryptedMessageHex": "{get('cache.usingMainAddress.encryptedHex')}"
+        }
+      }
+    },
+    "usingMainRewardAddress": {
+      "type": "script",
+      "exportAs": "UsingMainRewardAddress",
+      "run": {
+        "address": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mainRewardAddress')}"
+        },
+        "sign": {
+          "type": "signDataWithAddress",
+          "address": "{get('cache.usingMainRewardAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "verify": {
+          "type": "verifySignatureWithAddress",
+          "address": "{get('cache.usingMainRewardAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}",
+          "dataSignature": "{get('cache.usingMainRewardAddress.sign')}"
+        },
+        "encryptedHex": {
+          "type": "encrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingMainRewardAddress.sign.signature')}"
+          },
+          "messageHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "decryptedHex": {
+          "type": "decrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingMainRewardAddress.sign.signature')}"
+          },
+          "encryptedMessageHex": "{get('cache.usingMainRewardAddress.encryptedHex')}"
+        }
+      }
+    },
+    "usingCurrentAddress": {
+      "type": "script",
+      "exportAs": "UsingCurrentAddress",
+      "run": {
+        "address": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.currentAddress')}"
+        },
+        "sign": {
+          "type": "signDataWithAddress",
+          "address": "{get('cache.usingCurrentAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "verify": {
+          "type": "verifySignatureWithAddress",
+          "address": "{get('cache.usingCurrentAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}",
+          "dataSignature": "{get('cache.usingCurrentAddress.sign')}"
+        },
+        "encryptedHex": {
+          "type": "encrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingCurrentAddress.sign.signature')}"
+          },
+          "messageHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "decryptedHex": {
+          "type": "decrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to decrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingCurrentAddress.sign.signature')}"
+          },
+          "encryptedMessageHex": "{get('cache.usingCurrentAddress.encryptedHex')}"
+        }
+      }
+    },
+    "usingCurrentRewardAddress": {
+      "type": "script",
+      "exportAs": "UsingCurrentRewardAddress",
+      "run": {
+        "address": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.currentRewardAddress')}"
+        },
+        "sign": {
+          "type": "signDataWithAddress",
+          "address": "{get('cache.usingCurrentRewardAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "verify": {
+          "type": "verifySignatureWithAddress",
+          "address": "{get('cache.usingCurrentRewardAddress.address')}",
+          "dataHex": "{get('cache.dependencies.dataHex')}",
+          "dataSignature": "{get('cache.usingCurrentRewardAddress.sign')}"
+        },
+        "encryptedHex": {
+          "type": "encrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingCurrentRewardAddress.sign.signature')}"
+          },
+          "messageHex": "{get('cache.dependencies.dataHex')}"
+        },
+        "decryptedHex": {
+          "type": "decrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to decrypt this message",
+            "weak": true,
+            "default": "{get('cache.usingCurrentRewardAddress.sign.signature')}"
+          },
+          "encryptedMessageHex": "{get('cache.usingCurrentRewardAddress.encryptedHex')}"
+        }
+      }
+    }
+  }
+}

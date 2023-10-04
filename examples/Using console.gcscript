@@ -1,0 +1,35 @@
+{
+  "type": "script",
+  "title": "Using console",
+  "description": "Let's use dapp connector internal console to log or debug some events. Run and go to Advanced - Console to read them.",
+  "run": {
+    "typesOfMessages": {
+      "type": "macro",
+      "run": [
+        "{console('log','Log message')}",
+        "{console('info','Info message')}",
+        "{console('warn','Warning message!')}",
+        "{console('error','Error message!!!')}"
+      ]
+    },
+    "setGlobalAndLog": {
+      "type": "macro",
+      "run": "{\n                    set('temp1','hello');\n                    set('temp2',123);\n                    console('log',get('global'));\n                    console('info',get('global.temp1'));\n                    console('warn',get('global.temp2'));\n                    console('error',get('global.thisDoesNotExist')); \n                    return('goodbye!');         \n                }"
+    },
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "logCache": {
+      "type": "macro",
+      "run": "{console('log',get('cache'))}"
+    },
+    "logMultipleThings": {
+      "type": "macro",
+      "run": {
+        "address": "{console('log','my address is',get('cache.address'))}",
+        "uuid": "{console('log',uuid(),uuid(),uuid())}",
+        "hash": "{console('log',sha256(get('cache.address')))}"
+      }
+    }
+  }
+}

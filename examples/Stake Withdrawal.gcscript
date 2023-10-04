@@ -1,0 +1,71 @@
+{
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "keys": {
+          "type": "deriveKeys",
+          "keys": {
+            "StakeKey": {
+              "name": "StakeKey",
+              "kind": "stake",
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            "PaymentKey": {
+              "name": "PaymentKey",
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          }
+        },
+        "RewardAddress": {
+          "type": "buildAddress",
+          "name": "RewardAddress",
+          "addr": {
+            "stakePubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
+          }
+        }
+      }
+    },
+    "txs": {
+      "type": "script",
+      "run": {
+        "buildWithdraw": {
+          "type": "buildTx",
+          "name": "WithdrawTx",
+          "tx": {
+            "withdrawals": {
+              "A": {
+                "address": "{get('cache.dependencies.RewardAddress')}",
+                "quantity": "1000000"
+              }
+            }
+          }
+        },
+        "signWithdraw": {
+          "type": "signTx",
+          "txHex": "{get('cache.txs.buildWithdraw.txHex')}"
+        },
+        "submitWithdraw": {
+          "type": "submitTx",
+          "later": false,
+          "wait": true,
+          "txHex": "{get('cache.txs.signWithdraw.txHex')}"
+        }
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "SingleWithdraw",
+      "run": {
+        "txHash": {
+          "type": "run",
+          "run": "{get('cache.txs.signWithdraw.txHash')}"
+        }
+      }
+    }
+  }
+}

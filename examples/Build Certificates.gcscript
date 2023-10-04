@@ -1,0 +1,130 @@
+{
+  "type": "script",
+  "run": {
+    "derivations": {
+      "type": "deriveKeys",
+      "keys": {
+        "Bob": {
+          "name": "Bob",
+          "kind": "stake",
+          "accountIndex": 34,
+          "addressIndex": 423
+        }
+      }
+    },
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "RPST": {
+          "type": "data",
+          "value": "9eb76bb591d689dd06304c77c0df7871df76e768577e26af10d32b0c"
+        },
+        "RPST1": {
+          "type": "data",
+          "value": "ff23a2a1c17e0230a68c824c37a088e0abf9f6522f473036719f3460"
+        },
+        "RPST2": {
+          "type": "data",
+          "value": "6d83dc3cc3d0c30628029cb81b111486ab90b5bddbc8ddde94675173"
+        },
+        "nativeScript01": {
+          "type": "nativeScript",
+          "script": {
+            "scriptHex": "82018382041a0005d90d8200581c111fc9cc6fd34bd2783001b3fbf7b456beb93a38d24a1e06542dc6fb82051a0008e909"
+          }
+        },
+        "smartContract01": {
+          "type": "plutusScript",
+          "script": {
+            "lang": "plutus_v2",
+            "scriptHex": "4e4d01000033222220051200120011"
+          }
+        }
+      }
+    },
+    "registrationCerts": {
+      "type": "script",
+      "exportAs": "RegistrationCerts",
+      "run": {
+        "User": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeRegistration",
+            "pubKeyHashHex": "{get('cache.derivations.Bob.pubKeyHashHex')}"
+          }
+        },
+        "Treasury": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeRegistration",
+            "scriptHashHex": "{get('cache.dependencies.nativeScript01.scriptHashHex')}"
+          }
+        },
+        "Dex": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeRegistration",
+            "scriptHashHex": "{get('cache.dependencies.smartContract01.scriptHashHex')}"
+          }
+        }
+      }
+    },
+    "deregistrationCerts": {
+      "type": "script",
+      "exportAs": "DeregistrationCerts",
+      "run": {
+        "User": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeDeregistration",
+            "pubKeyHashHex": "{get('cache.derivations.Bob.pubKeyHashHex')}"
+          }
+        },
+        "Treasury": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeDeregistration",
+            "scriptHashHex": "{get('cache.dependencies.nativeScript01.scriptHashHex')}"
+          }
+        },
+        "Dex": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeDeregistration",
+            "scriptHashHex": "{get('cache.dependencies.smartContract01.scriptHashHex')}"
+          }
+        }
+      }
+    },
+    "delegationCerts": {
+      "type": "script",
+      "exportAs": "DelegationCerts",
+      "run": {
+        "User": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeDelegation",
+            "pubKeyHashHex": "{get('cache.derivations.Bob.pubKeyHashHex')}",
+            "poolKeyHashHex": "{get('cache.dependencies.RPST')}"
+          }
+        },
+        "Treasury": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeDelegation",
+            "scriptHashHex": "{get('cache.dependencies.nativeScript01.scriptHashHex')}",
+            "poolKeyHashHex": "{get('cache.dependencies.RPST1')}"
+          }
+        },
+        "Dex": {
+          "type": "certificate",
+          "cert": {
+            "kind": "StakeDelegation",
+            "scriptHashHex": "{get('cache.dependencies.smartContract01.scriptHashHex')}",
+            "poolKeyHashHex": "{get('cache.dependencies.RPST2')}"
+          }
+        }
+      }
+    }
+  }
+}

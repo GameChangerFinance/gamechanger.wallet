@@ -1,0 +1,132 @@
+{
+  "title": "Get ready for some fun...",
+  "description": "Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script",
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "exportAs": "data",
+      "run": {
+        "jsonData": {
+          "type": "data",
+          "value": {
+            "foo": "1",
+            "bar": 2,
+            "baz": true,
+            "baf": null,
+            "more": {
+              "info": {
+                "here": "Encrypted with GC API v2"
+              }
+            }
+          }
+        },
+        "jsonScript": {
+          "type": "data",
+          "value": {
+            "type": "script",
+            "title": "Simple Wallet Auth",
+            "description": "Will sign a message containing wallet address, using wallet address to sign",
+            "returnURLPattern": "http://localhost:3000/demo/api/dapp",
+            "exportAs": "connect",
+            "return": {
+              "mode": "one",
+              "key": "signature"
+            },
+            "run": {
+              "privateDataThatShouldNotBeLeaked": {
+                "type": "data",
+                "value": "If you see this, the world is broken"
+              },
+              "address": {
+                "type": "getCurrentAddress"
+              },
+              "signature": {
+                "type": "signDataWithAddress",
+                "address": "{get('cache.address')}",
+                "dataHex": "{strToHex(get('cache.privateDataThatShouldNotBeLeaked'))}"
+              }
+            }
+          }
+        },
+        "hexData": {
+          "type": "macro",
+          "run": "{strToHex(objToJson(get('cache.dependencies.jsonData')))}"
+        },
+        "hexScript": {
+          "type": "macro",
+          "run": "{strToHex(objToJson(get('cache.dependencies.jsonScript')))}"
+        },
+        "encryptedHexData": {
+          "type": "encrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this data",
+            "weak": true,
+            "default": "xyz1234"
+          },
+          "messageHex": "{get('cache.dependencies.hexData')}"
+        },
+        "encryptedHexScript": {
+          "type": "encrypt",
+          "requirePassword": {
+            "kind": "modal",
+            "description": "A password is required to encrypt this script",
+            "weak": true,
+            "default": "xyz1234"
+          },
+          "messageHex": "{get('cache.dependencies.hexScript')}"
+        }
+      }
+    },
+    "buildTxs": {
+      "type": "buildFsTxs",
+      "description": "encryption tests",
+      "assetName": "gc.disk",
+      "replicas": "1",
+      "noAppend": false,
+      "noIndexFileNames": false,
+      "noIndexFileData": false,
+      "layers": [
+        {
+          "//info/updatedAt": {
+            "kind": "file",
+            "fileHex": "576564204f637420303420323032332031313a34313a303620474d542d30333030"
+          },
+          "//empty/dir": {
+            "kind": "directory"
+          },
+          "//data/encryptedData.crypt": {
+            "kind": "file",
+            "fileHex": "{strToHex(get('cache.dependencies.encryptedHexData'))}"
+          },
+          "//scripts/encryptedScript.crypt": {
+            "kind": "file",
+            "fileHex": "{strToHex(get('cache.dependencies.encryptedHexScript'))}"
+          }
+        }
+      ]
+    },
+    "signTxs": {
+      "type": "signTxs",
+      "namePattern": "GCFS_Signed_{key}",
+      "txs": "{get('cache.buildTxs.txList')}"
+    },
+    "submitTxs": {
+      "type": "submitTxs",
+      "mode": "parallel",
+      "namePattern": "GCFS_Submitted{key}",
+      "txs": "{get('cache.signTxs')}"
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "buildFs",
+      "run": {
+        "txs": {
+          "type": "macro",
+          "run": "{get('cache.submitTxs')}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "title": "String Manipulation Macros",
+  "description": "This demo will test and explore basic string convertion and manipulation macros",
+  "type": "script",
+  "exportAs": "StringMacrosDemo",
+  "run": {
+    "payload": {
+      "type": "data",
+      "value": "🖖 Space: the final frontier. These are the voyages of the starship Enterprise. Its continuing mission: to explore strange new worlds. To seek out new life and new civilizations. To boldly go where no one has gone before!"
+    },
+    "prefix": {
+      "type": "macro",
+      "run": "{truncate(get('cache.payload'),28,0,'')}"
+    },
+    "suffix": {
+      "type": "macro",
+      "run": "{truncate(get('cache.payload'),0,42,'')}"
+    },
+    "sandwich": {
+      "type": "macro",
+      "run": "{truncate(get('cache.payload'),28,42,'...')}"
+    },
+    "toBase64": {
+      "type": "macro",
+      "run": "{strToBase64(get('cache.payload'))}"
+    },
+    "toHex": {
+      "type": "macro",
+      "run": "{strToHex(get('cache.payload'))}"
+    },
+    "toMetadataString": {
+      "type": "macro",
+      "run": "{strToMetadataStr(get('cache.payload'))}"
+    },
+    "fromBase64": {
+      "type": "macro",
+      "run": "{base64ToStr(get('cache.toBase64'))}"
+    },
+    "fromHex": {
+      "type": "macro",
+      "run": "{hexToStr(get('cache.toHex'))}"
+    },
+    "fromMetadataString": {
+      "type": "macro",
+      "run": "{metadataStrToStr(get('cache.toMetadataString'))}"
+    }
+  }
+}

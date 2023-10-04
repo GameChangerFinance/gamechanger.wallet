@@ -1,0 +1,20 @@
+{
+  "title": "GCFS Multisig Witness Discovery Demo",
+  "description": "Demo that replicates the GCFS search query to retrieve all shared signatures of a particular transaction. The hash (txHash) used is calculated upon transaction cbor hex",
+  "type": "script",
+  "exportAs": "searchDemo",
+  "run": {
+    "full": {
+      "type": "searchFs",
+      "useFingerprintURIs": false,
+      "params": [
+        {
+          "keyWord": "836fe32d7d097f62df75deab6d189b32c8379608dc22849004f6ecebc3ab96ce"
+        },
+        {
+          "keyWord": ".txSignatures"
+        }
+      ]
+    }
+  }
+}

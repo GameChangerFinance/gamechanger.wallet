@@ -1,0 +1,122 @@
+{
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "currentAddress": {
+          "type": "getCurrentAddress"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.currentAddress'))}"
+        },
+        "PoolKeyHash": {
+          "type": "data",
+          "value": "9eb76bb591d689dd06304c77c0df7871df76e768577e26af10d32b0c"
+        },
+        "keys": {
+          "type": "deriveKeys",
+          "keys": {
+            "StakeKey": {
+              "name": "StakeKey",
+              "kind": "stake",
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            "PaymentKey": {
+              "name": "PaymentKey",
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          }
+        },
+        "Address": {
+          "type": "buildAddress",
+          "name": "DelegatedAddress",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.dependencies.keys.PaymentKey.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
+          }
+        },
+        "RewardAddress": {
+          "type": "buildAddress",
+          "name": "RewardAddress",
+          "addr": {
+            "stakePubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
+          }
+        }
+      }
+    },
+    "registrationCert": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
+      }
+    },
+    "deregistrationCert": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDeregistration",
+        "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
+      }
+    },
+    "delegationCert": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDelegation",
+        "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}",
+        "poolKeyHashHex": "{get('cache.dependencies.PoolKeyHash')}"
+      }
+    },
+    "txs": {
+      "type": "script",
+      "run": {
+        "buildDelegate": {
+          "type": "buildTx",
+          "name": "DelegateTx",
+          "tx": {
+            "certificates": [
+              {
+                "certHex": "{get('cache.registrationCert.certHex')}"
+              },
+              {
+                "certHex": "{get('cache.delegationCert.certHex')}"
+              }
+            ]
+          }
+        },
+        "signDelegate": {
+          "type": "signTx",
+          "txHex": "{get('cache.txs.buildDelegate.txHex')}"
+        },
+        "submitDelegate": {
+          "type": "submitTx",
+          "later": false,
+          "wait": true,
+          "txHex": "{get('cache.txs.signDelegate.txHex')}"
+        }
+      }
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "SingleDelegate",
+      "run": {
+        "IMPORTANT": {
+          "type": "data",
+          "value": "Please fund the address below in order to start delegating"
+        },
+        "address": {
+          "type": "run",
+          "run": "{get('cache.dependencies.Address')}"
+        },
+        "txHash": {
+          "type": "run",
+          "run": "{get('cache.txs.signDelegate.txHash')}"
+        }
+      }
+    }
+  }
+}

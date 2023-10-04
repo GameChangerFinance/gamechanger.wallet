@@ -1,0 +1,138 @@
+{
+  "title": "GC Transaction Features",
+  "description": "Script that will try out special GC transaction features",
+  "type": "script",
+  "run": {
+    "buildTransaction1": {
+      "type": "buildTx",
+      "title": "🚀 Lorem ipsum transactum dolor sit amet, consectetur adipiscing elit. Donec pulvinar ac augue non consectetur. Vestibulum suscipit hendrerit purus, ut ultrices nisi venenatis ut. Sed imperdiet vestibulum augue lobortis facilisis. Vivamus egestas elit a massa bibendum mollis. Vestibulum erat quam, varius in risus nec, viverra posuere erat. Duis posuere placerat elit in rutrum. Sed at posuere nisl gamer changum.",
+      "description": "Lorem ipsum transactum dolor sit amet, consectetur adipiscing elit. Donec pulvinar ac augue non consectetur. Vestibulum suscipit hendrerit purus, ut ultrices nisi venenatis ut. Sed imperdiet vestibulum augue lobortis facilisis. Vivamus egestas elit a massa bibendum mollis. Vestibulum erat quam, varius in risus nec, viverra posuere erat. Duis posuere placerat elit in rutrum. Sed at posuere nisl gamer changum.",
+      "id": "a57e59e87902a8f6fbd4e841c9213bd7a69acc679548118e1389978d1d46fa67",
+      "tags": [
+        "Lorem",
+        "ipsum",
+        "transactum",
+        "dolor",
+        "sit",
+        "amet🚀",
+        "consectetur",
+        "adipiscing",
+        "elit❤️",
+        "Donec",
+        "pulvinar",
+        "ac",
+        "augue",
+        "non",
+        "consectetur❤️",
+        "Vestibulum",
+        "suscipit",
+        "hendrerit",
+        "purus🚀",
+        "ut",
+        "ultrices",
+        "nisi",
+        "venenatis",
+        "ut❤️",
+        "Sed",
+        "imperdiet",
+        "vestibulum",
+        "augue",
+        "lobortis",
+        "facilisis❤️",
+        "Vivamus",
+        "egestas",
+        "elit",
+        "a",
+        "massa",
+        "bibendum",
+        "mollis❤️",
+        "Vestibulum",
+        "erat",
+        "quam🚀",
+        "varius",
+        "in",
+        "risus",
+        "nec🚀",
+        "viverra",
+        "posuere",
+        "erat❤️",
+        "Duis",
+        "posuere",
+        "placerat",
+        "elit",
+        "in",
+        "rutrum❤️",
+        "Sed",
+        "at",
+        "posuere",
+        "nisl",
+        "gamer",
+        "changum❤️",
+        "Lorem ipsum transactum dolor sit amet, consectetur adipiscing elit. Donec pulvinar ac augue non consectetur. Vestibulum suscipit hendrerit purus, ut ultrices nisi venenatis ut. Sed imperdiet vestibulum augue lobortis facilisis. Vivamus egestas elit a massa bibendum mollis. Vestibulum erat quam, varius in risus nec, viverra posuere erat. Duis posuere placerat elit in rutrum. Sed at posuere nisl gamer changum."
+      ],
+      "group": "LoremIpsumTransactumGroup",
+      "indexOf": 3,
+      "parentTxHash": "2b4809f4c76acdea20885f71f7aef5936220ab0baf1a1c86ad3709c7552f1beb",
+      "returnURLPattern": "https://preprod.cardanoscan.io/transaction/{txHash}",
+      "config": {
+        "noLock": true,
+        "agree": true
+      },
+      "name": "LoremIpsumTransactum1",
+      "tx": {
+        "outputs": [
+          {
+            "address": "addr_test1qps4apfve4nl2nzgd2hcsw6k33d0s5uvaw0pw93qvc09zpjcu6svq2sllftsk05ynh5fnty2alwqpeqhy39msz45j8rs3xwgmt",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              }
+            ]
+          }
+        ],
+        "auxiliaryData": {
+          "73": {
+            "index": 4
+          },
+          "123": {
+            "bar": "baz"
+          },
+          "674": {
+            "msg": [
+              "Created with GameChanger Wallet API. CIP-20 message ahead\n",
+              "Invoice-No: 1234567890\n",
+              "Customer-No: 555-1234\n",
+              "P.S.1: i will shop again at your store :-) ",
+              "I find you very sexy, what's your cardano address? ;-)"
+            ]
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-{key}",
+      "detailedPermissions": false,
+      "txs": {
+        "LoremIpsumTransactum1": "{get('cache.buildTransaction1.txHex')}"
+      }
+    },
+    "submitRegistrationOrFail": {
+      "type": "submitTxs",
+      "namePattern": "submitted-{key}",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "LoremIpsumTest",
+      "run": {
+        "txHash": {
+          "type": "macro",
+          "run": "{get('cache.buildTransaction1.txHash')}"
+        }
+      }
+    }
+  }
+}
