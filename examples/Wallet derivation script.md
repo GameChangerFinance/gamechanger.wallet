@@ -3,7 +3,7 @@
 
 ## **Wallet derivation script**
 
-    Will derive key pairs and build custom addresses
+Will derive key pairs and build custom addresses
 
 
 ## Try it online: 

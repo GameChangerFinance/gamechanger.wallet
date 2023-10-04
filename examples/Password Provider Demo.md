@@ -3,7 +3,7 @@
 
 ## **Password Provider Demo**
 
-    Script that will use password providers to encrypt and decrypt data using by default password a CIP8 signature with current wallet address
+Script that will use password providers to encrypt and decrypt data using by default password a CIP8 signature with current wallet address
 
 
 ## Try it online: 

@@ -3,7 +3,7 @@
 
 ## **Address Identity Tester**
 
-    This demo will test addresses default native scripts or 'Identities', and explore differencies between ways to obtain them
+This demo will test addresses default native scripts or 'Identities', and explore differencies between ways to obtain them
 
 
 ## Try it online: 

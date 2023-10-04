@@ -3,7 +3,7 @@
 
 ## **Load Wallet Config Demo**
 
-    Script that will build and load wallet artifacts: derive child keys, build child addresses and even setup address books on more than one wallet workspace. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires.
+Script that will build and load wallet artifacts: derive child keys, build child addresses and even setup address books on more than one wallet workspace. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires.
 
 
 ## Try it online: 

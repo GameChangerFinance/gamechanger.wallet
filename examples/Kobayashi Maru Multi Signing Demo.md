@@ -3,7 +3,7 @@
 
 ## **Kobayashi Maru Multi Signing Demo**
 
-    Demo that tries to sign 3 transactions with unobtainable foreign keys and internal spending and staking private keys
+Demo that tries to sign 3 transactions with unobtainable foreign keys and internal spending and staking private keys
 
 
 ## Try it online: 

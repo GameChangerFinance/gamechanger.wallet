@@ -3,7 +3,7 @@
 
 ## **CIP-8 Data Signing and Encrypting Demo**
 
-    Demo that signs data with main and current addresses and their associated reward ones, verifies the signatures and encrypt and decrypt the data using the signatures. Run 'Wallet Setup Demo' or create some Workspaces first and switch current addresses to test it out
+Demo that signs data with main and current addresses and their associated reward ones, verifies the signatures and encrypt and decrypt the data using the signatures. Run 'Wallet Setup Demo' or create some Workspaces first and switch current addresses to test it out
 
 
 ## Try it online: 

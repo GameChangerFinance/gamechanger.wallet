@@ -3,7 +3,7 @@
 
 ## **Deploy Plutus Script**
 
-    Demo that sends a transaction that includes an inlined Plutus Script and also a datum on outputs. Future transactions can reference this outputs without having to include on-chain the entire data again. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+Demo that sends a transaction that includes an inlined Plutus Script and also a datum on outputs. Future transactions can reference this outputs without having to include on-chain the entire data again. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
 
 
 ## Try it online: 

@@ -3,7 +3,7 @@
 
 ## **Multi Stake Delegation**
 
-    Script that sets up a wallet workspace to generate 3 addresses, to later fund them and delegate their stake to different staking pools on a single transaction. The optional registration transaction is meant to fail when keys are already registered, don't panic, script is built to succeed anyways
+Script that sets up a wallet workspace to generate 3 addresses, to later fund them and delegate their stake to different staking pools on a single transaction. The optional registration transaction is meant to fail when keys are already registered, don't panic, script is built to succeed anyways
 
 
 ## Try it online: 

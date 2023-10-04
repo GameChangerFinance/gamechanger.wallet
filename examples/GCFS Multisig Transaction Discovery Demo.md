@@ -3,7 +3,7 @@
 
 ## **GCFS Multisig Transaction Discovery Demo**
 
-    Demo that replicates the GCFS search query to retrieve all broadcasted transactions to be signed. The hash (rayId) used is calculated upon sorted transaction hashes (txHash)
+Demo that replicates the GCFS search query to retrieve all broadcasted transactions to be signed. The hash (rayId) used is calculated upon sorted transaction hashes (txHash)
 
 
 ## Try it online: 

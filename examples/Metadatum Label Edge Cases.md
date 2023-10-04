@@ -3,7 +3,7 @@
 
 ## **Metadatum Label Edge Cases**
 
-    Script that will allow checking the full circuit, from building a tx with edge metadatum label cases, to query it then with the APIs on UI to check if there are any encoding issues, overflows or manipulations
+Script that will allow checking the full circuit, from building a tx with edge metadatum label cases, to query it then with the APIs on UI to check if there are any encoding issues, overflows or manipulations
 
 
 ## Try it online: 

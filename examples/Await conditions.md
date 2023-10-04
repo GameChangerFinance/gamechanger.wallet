@@ -3,7 +3,7 @@
 
 ## **Await conditions**
 
-    This demo will wait for a timer to reach it's timeout and then for the current wallet to receive at least 5.25 coins
+This demo will wait for a timer to reach it's timeout and then for the current wallet to receive at least 5.25 coins
 
 
 ## Try it online: 

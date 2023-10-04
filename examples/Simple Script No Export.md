@@ -3,7 +3,7 @@
 
 ## **Simple Script No Export**
 
-    Simple script that has no exported data
+Simple script that has no exported data
 
 
 ## Try it online: 

@@ -3,7 +3,7 @@
 
 ## **Scopes Demo**
 
-    Script that will test and explore code scopes and inline scripting access reach
+Script that will test and explore code scopes and inline scripting access reach
 
 
 ## Try it online: 

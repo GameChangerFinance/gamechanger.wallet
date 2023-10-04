@@ -3,7 +3,7 @@
 
 ## **Search Demo**
 
-    Script that will search for files across all onchain GCFS file systems
+Script that will search for files across all onchain GCFS file systems
 
 
 ## Try it online: 

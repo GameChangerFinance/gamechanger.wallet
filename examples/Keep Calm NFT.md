@@ -3,7 +3,7 @@
 
 ## **Keep Calm NFT**
 
-    Keep Calm NFT Demo, dinamically generates the image
+Keep Calm NFT Demo, dinamically generates the image
 
 
 ## Try it online: 

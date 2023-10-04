@@ -3,7 +3,7 @@
 
 ## **Simple Script No Export No Return URL**
 
-    Simple script that has no exported data and no return URL
+Simple script that has no exported data and no return URL
 
 
 ## Try it online: 

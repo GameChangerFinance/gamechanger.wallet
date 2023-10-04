@@ -3,7 +3,7 @@
 
 ## **Official Workspaces Config Generator**
 
-    Generates wallet configuration layers to re-create official workspaces
+Generates wallet configuration layers to re-create official workspaces
 
 
 ## Try it online: 

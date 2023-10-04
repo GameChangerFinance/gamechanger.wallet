@@ -3,7 +3,7 @@
 
 ## **Stake Withdrawal**
 
-    Script that withdraw stake rewards from custom child derivation in a transaction
+Script that withdraw stake rewards from custom child derivation in a transaction
 
 
 ## Try it online: 

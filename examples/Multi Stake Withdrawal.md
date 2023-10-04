@@ -3,7 +3,7 @@
 
 ## **Multi Stake Withdrawal**
 
-    Script that requests 3 child wallet's reward addresses from an specific workspace, to later withdraw some staking rewards from each of them on a single transaction. You need to have staking rewards on each child wallet and run 'Multi Stake Delegation' demo first or load it's wallet configuration on this device
+Script that requests 3 child wallet's reward addresses from an specific workspace, to later withdraw some staking rewards from each of them on a single transaction. You need to have staking rewards on each child wallet and run 'Multi Stake Delegation' demo first or load it's wallet configuration on this device
 
 
 ## Try it online: 

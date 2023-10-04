@@ -3,7 +3,7 @@
 
 ## **Internal Multi Signing Demo**
 
-    Demo that tries to sign 3 transactions with internal spending and staking private keys with any desired multisig provider. Partially sign them over and over again combining providers to try it out.
+Demo that tries to sign 3 transactions with internal spending and staking private keys with any desired multisig provider. Partially sign them over and over again combining providers to try it out.
 
 
 ## Try it online: 

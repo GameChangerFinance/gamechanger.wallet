@@ -3,7 +3,7 @@
 
 ## **Lock and Redeem Smart Contract**
 
-    Coin locking transaction ( 5 eUTXOs) and later an unlocking one of previously locked coin, in 2 secuential transactions. Using deployed smart contract.
+Coin locking transaction ( 5 eUTXOs) and later an unlocking one of previously locked coin, in 2 secuential transactions. Using deployed smart contract.
 
 
 ## Try it online: 

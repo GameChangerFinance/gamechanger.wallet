@@ -3,7 +3,7 @@
 
 ## **Import transactions (CBOR)**
 
-    Import a list of transactions (CBOR hex) into localstorage for debugging and handling them manually with wallet user interface later
+Import a list of transactions (CBOR hex) into localstorage for debugging and handling them manually with wallet user interface later
 
 
 ## Try it online: 

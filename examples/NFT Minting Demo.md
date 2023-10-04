@@ -3,7 +3,7 @@
 
 ## **NFT Minting Demo**
 
-    Demo that creates a native script and use it as policy to mint an NFT. Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+Demo that creates a native script and use it as policy to mint an NFT. Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
 
 
 ## Try it online: 

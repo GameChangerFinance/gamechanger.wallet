@@ -3,7 +3,7 @@
 
 ## **Helios Timelock**
 
-    Builds an Helios Smart Contract on the fly. First transaction will lock coins setting main staking key as owner, second one will be able to unlock it only after some time and using main spending key. Burner/Gift wallets not recommended. Timelock not exactly tested.
+Builds an Helios Smart Contract on the fly. First transaction will lock coins setting main staking key as owner, second one will be able to unlock it only after some time and using main spending key. Burner/Gift wallets not recommended. Timelock not exactly tested.
 
 
 ## Try it online: 

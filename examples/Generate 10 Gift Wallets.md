@@ -3,7 +3,7 @@
 
 ## **Generate 10 Gift Wallets**
 
-    Generate 10 QR Encrypted Gift Wallets for onboarding students in a class. Files will be downloaded as PNG files for printing or showing on screens
+Generate 10 QR Encrypted Gift Wallets for onboarding students in a class. Files will be downloaded as PNG files for printing or showing on screens
 
 
 ## Try it online: 

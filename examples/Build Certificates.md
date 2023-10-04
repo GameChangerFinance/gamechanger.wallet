@@ -3,7 +3,7 @@
 
 ## **Build Certificates**
 
-    Script that builds or imports different kind of certificates
+Script that builds or imports different kind of certificates
 
 
 ## Try it online: 

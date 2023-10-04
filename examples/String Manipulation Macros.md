@@ -3,7 +3,7 @@
 
 ## **String Manipulation Macros**
 
-    This demo will test and explore basic string convertion and manipulation macros
+This demo will test and explore basic string convertion and manipulation macros
 
 
 ## Try it online: 

@@ -1,4 +1,6 @@
-# GameChanger Wallet Documentation
+# GameChanger Wallet v2 Beta Documentation
+
+[![GameChanger Wallet v2 Beta](gcw-logo-300x85.png)](https://beta-wallet.gamechanger.finance)
 
 The cutting edge, non-custodial, web meta wallet for Cardano. Easy to use for starters, full development environment for advanced users and developers. URL and JSON based universal dapp connector, multisig, multi-account, multi-transaction multi-outputs, friendly graphics. The wallet for freedom, the wallet for people.
 

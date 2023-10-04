@@ -3,7 +3,7 @@
 
 ## **Simple Export**
 
-    Simple script that exports data
+Simple script that exports data
 
 
 ## Try it online: 

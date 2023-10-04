@@ -3,7 +3,7 @@
 
 ## **Transaction Time to Live Demo**
 
-    Script that will try the different time validity interval parameters of transaction builder
+Script that will try the different time validity interval parameters of transaction builder
 
 
 ## Try it online: 

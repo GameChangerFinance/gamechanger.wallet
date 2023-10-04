@@ -3,7 +3,7 @@
 
 ## **Enable Terminal Mode**
 
-    Script that will adapt the application to work on public terminal devices. WARNING: this cannot be undone!, to revert this you will have to clear browser data
+Script that will adapt the application to work on public terminal devices. WARNING: this cannot be undone!, to revert this you will have to clear browser data
 
 
 ## Try it online: 

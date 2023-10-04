@@ -3,7 +3,7 @@
 
 ## **List addresses in workspace**
 
-    List and sort all addresses in current workspace
+List and sort all addresses in current workspace
 
 
 ## Try it online: 

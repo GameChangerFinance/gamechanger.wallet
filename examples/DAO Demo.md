@@ -3,7 +3,7 @@
 
 ## **DAO Demo**
 
-    This script will create a workspace to import addresses, scripts, manage funds and signatures from a DAO where you are a powerful member, you have full control when you use 2 of your keys. (Full support is coming)
+This script will create a workspace to import addresses, scripts, manage funds and signatures from a DAO where you are a powerful member, you have full control when you use 2 of your keys. (Full support is coming)
 
 
 ## Try it online: 

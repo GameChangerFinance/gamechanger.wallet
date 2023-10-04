@@ -3,7 +3,7 @@
 
 ## **Using console**
 
-    Let's use dapp connector internal console to log or debug some events. Run and go to Advanced - Console to read them.
+Let's use dapp connector internal console to log or debug some events. Run and go to Advanced - Console to read them.
 
 
 ## Try it online: 

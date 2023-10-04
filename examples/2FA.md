@@ -3,7 +3,7 @@
 
 ## **2FA**
 
-    Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor
+Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor
 
 
 ## Try it online: 

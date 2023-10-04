@@ -3,7 +3,7 @@
 
 ## **UTXO Generator**
 
-    Generates required amount of UTXOs in your wallet to improve multi-transaction concurrency capabilities, for dapps and GCFS filesystem write events. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+Generates required amount of UTXOs in your wallet to improve multi-transaction concurrency capabilities, for dapps and GCFS filesystem write events. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
 
 
 ## Try it online: 

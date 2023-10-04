@@ -3,7 +3,7 @@
 
 ## **Native asset minter and burner**
 
-    Native asset minter and later burner of previously minted assets, in 2 secuential transactions
+Native asset minter and later burner of previously minted assets, in 2 secuential transactions
 
 
 ## Try it online: 

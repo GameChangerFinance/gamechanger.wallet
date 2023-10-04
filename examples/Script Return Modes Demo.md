@@ -3,7 +3,7 @@
 
 ## **Script Return Modes Demo**
 
-    Script that will test and explore the different types of script return modes, allowing batch only operations, data formatting and even data privacy by choosing only what to return from block code context
+Script that will test and explore the different types of script return modes, allowing batch only operations, data formatting and even data privacy by choosing only what to return from block code context
 
 
 ## Try it online: 

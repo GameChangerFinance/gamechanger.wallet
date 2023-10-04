@@ -3,7 +3,7 @@
 
 ## **Dynamic Code Attempt Demo**
 
-    Illegal Script that will execute dynamic code using inline macros
+Illegal Script that will execute dynamic code using inline macros
 
 
 ## Try it online: 

@@ -3,7 +3,7 @@
 
 ## **🚀 Pay me 1 ADA**
 
-    This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
 
 
 ## Try it online: 

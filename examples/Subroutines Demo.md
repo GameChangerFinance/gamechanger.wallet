@@ -3,7 +3,7 @@
 
 ## **Subroutines Demo**
 
-    Script that will test and explore subroutines, similar to functions in structured programming.
+Script that will test and explore subroutines, similar to functions in structured programming.
 
 
 ## Try it online: 

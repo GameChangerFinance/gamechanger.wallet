@@ -3,7 +3,7 @@
 
 ## **Cryptographic Macros**
 
-    This demo will test and explore basic cryptographic macros
+This demo will test and explore basic cryptographic macros
 
 
 ## Try it online: 

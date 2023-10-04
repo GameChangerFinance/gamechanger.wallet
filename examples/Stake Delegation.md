@@ -3,7 +3,7 @@
 
 ## **Stake Delegation**
 
-    Script that registers and delegates stake from custom child derivation in a transaction
+Script that registers and delegates stake from custom child derivation in a transaction
 
 
 ## Try it online: 

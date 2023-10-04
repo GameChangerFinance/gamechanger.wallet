@@ -3,7 +3,7 @@
 
 ## **Delegate Current Address to PEACE (MAINNET)**
 
-    Script that delegates current address to [PEACE] pool (mainnet only)
+Script that delegates current address to [PEACE] pool (mainnet only)
 
 
 ## Try it online: 

@@ -3,7 +3,7 @@
 
 ## **Save Wallet Config Demo**
 
-    Script that will save wallet artifacts on default wallet settings GCFS DiskNFT. Settings can be derived child keys, built child addresses and even setup address books, all these inside different wallet workspaces. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires.
+Script that will save wallet artifacts on default wallet settings GCFS DiskNFT. Settings can be derived child keys, built child addresses and even setup address books, all these inside different wallet workspaces. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires.
 
 
 ## Try it online: 

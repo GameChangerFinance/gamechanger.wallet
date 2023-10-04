@@ -3,7 +3,7 @@
 
 ## **Arithmetic Macros**
 
-    This demo will test and explore basic arithmetic macros
+This demo will test and explore basic arithmetic macros
 
 
 ## Try it online: 

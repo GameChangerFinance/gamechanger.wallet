@@ -3,7 +3,7 @@
 
 ## **Encrypter Demo**
 
-    Encrypts data and exports a ready to use decrypter script
+Encrypts data and exports a ready to use decrypter script
 
 
 ## Try it online: 

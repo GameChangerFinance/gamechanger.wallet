@@ -3,7 +3,7 @@
 
 ## **List keys in workspace**
 
-    List and sort all keys in current workspace
+List and sort all keys in current workspace
 
 
 ## Try it online: 

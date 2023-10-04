@@ -3,7 +3,7 @@
 
 ## **Import Wallet Config Demo**
 
-    Script that will import and run your saved wallet configuration script. Run SAVE_WALLET_CONFIG_DEMO first.
+Script that will import and run your saved wallet configuration script. Run SAVE_WALLET_CONFIG_DEMO first.
 
 
 ## Try it online: 

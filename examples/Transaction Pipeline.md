@@ -3,7 +3,7 @@
 
 ## **Transaction Pipeline**
 
-    Transaction pipeline without UTXO consumption conflicts using deterministic coin selection and UTXO locking
+Transaction pipeline without UTXO consumption conflicts using deterministic coin selection and UTXO locking
 
 
 ## Try it online: 

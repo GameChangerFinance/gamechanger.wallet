@@ -3,7 +3,7 @@
 
 ## **Forty Two (untyped)**
 
-    This contract will lock up some tokens that can only be unlocked providing 42 as untyped redeemer and datum.. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+This contract will lock up some tokens that can only be unlocked providing 42 as untyped redeemer and datum.. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
 
 
 ## Try it online: 

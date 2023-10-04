@@ -3,7 +3,7 @@
 
 ## **Advanced DAPP connection**
 
-    Connection that requires some wallet data and then signs it with private keys
+Connection that requires some wallet data and then signs it with private keys
 
 
 ## Try it online: 

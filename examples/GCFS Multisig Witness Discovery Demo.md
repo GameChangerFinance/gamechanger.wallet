@@ -3,7 +3,7 @@
 
 ## **GCFS Multisig Witness Discovery Demo**
 
-    Demo that replicates the GCFS search query to retrieve all shared signatures of a particular transaction. The hash (txHash) used is calculated upon transaction cbor hex
+Demo that replicates the GCFS search query to retrieve all shared signatures of a particular transaction. The hash (txHash) used is calculated upon transaction cbor hex
 
 
 ## Try it online: 

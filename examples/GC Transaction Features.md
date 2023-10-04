@@ -3,7 +3,7 @@
 
 ## **GC Transaction Features**
 
-    Script that will try out special GC transaction features
+Script that will try out special GC transaction features
 
 
 ## Try it online: 

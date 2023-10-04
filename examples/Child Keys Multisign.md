@@ -3,7 +3,7 @@
 
 ## **Child Keys Multisign**
 
-    Script that requires signatures from derived child keys in a single simple transaction
+Script that requires signatures from derived child keys in a single simple transaction
 
 
 ## Try it online: 

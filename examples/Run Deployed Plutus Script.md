@@ -3,7 +3,7 @@
 
 ## **Run Deployed Plutus Script**
 
-    Demo that locks and redeem some coin from a previously deployed smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+Demo that locks and redeem some coin from a previously deployed smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
 
 
 ## Try it online: 

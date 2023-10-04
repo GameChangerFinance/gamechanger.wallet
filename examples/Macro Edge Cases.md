@@ -3,7 +3,7 @@
 
 ## **Macro Edge Cases**
 
-    This demo will test some edge cases around macro solver and syntax
+This demo will test some edge cases around macro solver and syntax
 
 
 ## Try it online: 
