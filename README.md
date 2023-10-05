@@ -19,7 +19,6 @@ The smart design principles of the wallet allows you to import or connect these 
 
  **One wallet to have them all, on Desktop and Mobile, with the same dapp connector.**
  
-
 ## Examples and special use cases:
 
 ### Dapps:
@@ -64,6 +63,16 @@ The smart design principles of the wallet allows you to import or connect these 
 - [Discord Support](https://discord.gg/vpbfyRaDKG)
 - [Twitter News](https://twitter.com/GameChangerOk)
 - [Website](https://gamechanger.finance)
+
+
+
+## Screenshots
+
+[![GameChanger Wallet v2 Beta](img/mobile1.jpg)](img/mobile1.jpg)
+[![GameChanger Wallet v2 Beta](img/mobile2.jpg)](img/mobile2.jpg)
+[![GameChanger Wallet v2 Beta](img/desktop1.jpg)](img/desktop1.jpg)
+[![GameChanger Wallet v2 Beta](img/desktop2.jpg)](img/desktop2.jpg)
+
 
 ## License
 MIT 
