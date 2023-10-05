@@ -46,6 +46,7 @@ You can use [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechan
 [![This GCScript/URL is too large! make it shorter uploading parts to GCFS. Unable to generate QR code](Simple%20Script%20No%20Export%20No%20Return%20URL.png)](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Simple%20Script%20No%20Export%20No%20Return%20URL.png)
 
 ## Resources
+- [Github Docs and examples](https://github.com/GameChangerFinance/gamechanger.wallet/)
 - [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 - [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)

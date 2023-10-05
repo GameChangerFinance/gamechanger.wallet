@@ -18,7 +18,12 @@ The smart design principles of the wallet allows you to import or connect these 
  And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet.
 
  **One wallet to have them all, on Desktop and Mobile, with the same dapp connector.**
- 
+
+## Links
+
+- [Mainnet wallet](https://beta-wallet.gamechanger.finance/)
+- [Preproduction Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
+
 ## Examples and special use cases:
 
 ### Dapps:

@@ -25,7 +25,12 @@ The smart design principles of the wallet allows you to import or connect these 
  And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet.
 
  **One wallet to have them all, on Desktop and Mobile, with the same dapp connector.**
- 
+
+## Links
+
+- [Mainnet wallet](https://beta-wallet.gamechanger.finance/)
+- [Preproduction Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
+
 ## What's new?
 
 Since 2021 empowering users with freedom and low barreer access, after almost 2 years of hard work and almost no funding, this is now in your hands:
@@ -126,7 +131,7 @@ Please unless on testnet (and only if you are not reusing the same keys elsewher
 This is a non custodial wallet, you are your own bank, nobody else is.
 
 Links:
-
+* [Github Docs and examples](https://github.com/GameChangerFinance/gamechanger.wallet)
 * [Discord **(Recomended)**](https://dsc.gg/gamechanger)
     * [#General Support](https://discord.com/channels/912354788795109396/912357076284604448)
     * [#Smart Send](https://discord.com/channels/912354788795109396/921686004514054194)
