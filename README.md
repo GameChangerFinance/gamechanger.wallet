@@ -46,13 +46,13 @@ The smart design principles of the wallet allows you to import or connect these 
 - [DCorps - Digital Companies Registry on Cardano](https://www.lidonation.com/zh/proposals/dcorps-digital-companies-registry-registering-your-catalyst-project-on-chain-f10) (GameChanger V1)
 - [Dandelion Contributor Portal](https://contrib.dandelion.link) (GameChanger V1)
 
-### Some videos:
+### Some videos and articles:
 
 - [NFTPass RareEvo - onboarding on Cardano at scale ](https://www.youtube.com/watch?v=C96IK0qztbo)
 - [GCFS - Permapinning files on Cardano forever](https://www.youtube.com/watch?v=tq3Sxuh_XGE)
 - [GCFS - Fiat Payroll using Oracles](https://www.youtube.com/watch?v=AMKhjJQH6cI&t=773s) (not focused on solving scheduling!)
 - [QR code payment requests - The magic behind M2Tec hardware dapps](https://www.youtube.com/watch?v=cq2YDDuao2o)
-
+- [Is Cardano ecosystem decentralized?](https://forum.cardano.org/t/is-cardano-ecosystem-decentralized/121882)
  
 
 ## Resources
