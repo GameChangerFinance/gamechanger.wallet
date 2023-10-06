@@ -25,7 +25,7 @@
             {
               "namePattern": "gc_pools_0",
               "titlePattern": "Legacy Multi Delegation",
-              "descriptionPattern": "Same spend, different stake credential. Each address can be delegated to a different staking pool.. Incompatible with some hardware wallets, use newer version."
+              "descriptionPattern": "Same spending, different stake credential. Each address can be delegated to a different staking pool.. Incompatible with some hardware wallets, use newer version."
             },
             {
               "namePattern": "gc_anons_0",

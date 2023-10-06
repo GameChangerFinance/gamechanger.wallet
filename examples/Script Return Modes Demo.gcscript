@@ -189,7 +189,7 @@
           "type": "script",
           "return": {
             "mode": "macro",
-            "run": "{get('cache.withChildrenMap.macro.C')}"
+            "exec": "{get('cache.withChildrenMap.macro.C')}"
           },
           "run": {
             "A": {
@@ -401,7 +401,7 @@
           "type": "script",
           "return": {
             "mode": "macro",
-            "run": "{get('cache.withChildrenList.macro.2')}"
+            "exec": "{get('cache.withChildrenList.macro.2')}"
           },
           "run": [
             {

@@ -82,7 +82,7 @@
       "tx": {
         "outputs": [
           {
-            "address": "addr_test1qps4apfve4nl2nzgd2hcsw6k33d0s5uvaw0pw93qvc09zpjcu6svq2sllftsk05ynh5fnty2alwqpeqhy39msz45j8rs3xwgmt",
+            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
             "assets": [
               {
                 "policyId": "ada",

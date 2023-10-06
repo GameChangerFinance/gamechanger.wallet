@@ -1,6 +1,6 @@
 {
   "title": "Import Demo",
-  "description": "Script that will import data and scripts from different kind of allowed sources",
+  "description": "Script that will import data and scripts from different kind of allowed sources. (example data is from preproduction testnet)",
   "type": "script",
   "run": {
     "data": {
