@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Get ready for some fun...</title>
-    <meta name="title" content="Get ready for some fun...">
-    <meta name="description" content="Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script">
+    <title>Shared Treasury - 3 of 4 signers - using addresses</title>
+    <meta name="title" content="Shared Treasury - 3 of 4 signers - using addresses">
+    <meta name="description" content="Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,134 +107,119 @@
                 //This is the GCScript code that GameChanger Wallet will execute
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
-  "title": "Get ready for some fun...",
-  "description": "Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script",
   "type": "script",
+  "title": "Shared Treasury - 3 of 4 signers - using addresses",
+  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.",
+  "exportAs": "Dao",
+  "return": {
+    "mode": "none"
+  },
   "run": {
-    "dependencies": {
-      "type": "script",
-      "exportAs": "data",
+    "addresses": {
+      "type": "macro",
       "run": {
-        "jsonData": {
-          "type": "data",
-          "value": {
-            "foo": "1",
-            "bar": 2,
-            "baz": true,
-            "baf": null,
-            "more": {
-              "info": {
-                "here": "Encrypted with GC API v2"
-              }
-            }
-          }
-        },
-        "jsonScript": {
-          "type": "data",
-          "value": {
-            "type": "script",
-            "title": "Simple Wallet Auth",
-            "description": "Will sign a message containing wallet address, using wallet address to sign",
-            "returnURLPattern": "http://localhost:3000/demo/api/dapp",
-            "exportAs": "connect",
-            "return": {
-              "mode": "one",
-              "key": "signature"
-            },
-            "run": {
-              "privateDataThatShouldNotBeLeaked": {
-                "type": "data",
-                "value": "If you see this, the world is broken"
-              },
-              "address": {
-                "type": "getCurrentAddress"
-              },
-              "signature": {
-                "type": "signDataWithAddress",
-                "address": "{get('cache.address')}",
-                "dataHex": "{strToHex(get('cache.privateDataThatShouldNotBeLeaked'))}"
-              }
-            }
-          }
-        },
-        "hexData": {
-          "type": "macro",
-          "run": "{strToHex(objToJson(get('cache.dependencies.jsonData')))}"
-        },
-        "hexScript": {
-          "type": "macro",
-          "run": "{strToHex(objToJson(get('cache.dependencies.jsonScript')))}"
-        },
-        "encryptedHexData": {
-          "type": "encrypt",
-          "requirePassword": {
-            "kind": "modal",
-            "description": "A password is required to encrypt this data",
-            "weak": true,
-            "default": "xyz1234"
-          },
-          "messageHex": "{get('cache.dependencies.hexData')}"
-        },
-        "encryptedHexScript": {
-          "type": "encrypt",
-          "requirePassword": {
-            "kind": "modal",
-            "description": "A password is required to encrypt this script",
-            "weak": true,
-            "default": "xyz1234"
-          },
-          "messageHex": "{get('cache.dependencies.hexScript')}"
-        }
+        "Member_0": "{getAddressInfo('addr1q98f06pcrsn8x03uw0vlejw684fcu02waffvfscdsz0djgqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq2vsyn7')}",
+        "Member_1": "{getAddressInfo('addr1q9cyzfctymllue5gx93mxnrymlzzxejkzgsrkgwq7upje4gd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqpnzcra')}",
+        "Member_2": "{getAddressInfo('addr1qyygq384vhtcys27wedeh7r6jd0arwefvfxt6ggwjld0mjqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqa24x5g')}",
+        "Member_3": "{getAddressInfo('addr1q9zlzmrvdrlt8f90va74qa4req68shy5kc54s8np4p6a2eqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqhq5g2r')}"
       }
     },
-    "buildTxs": {
-      "type": "buildFsTxs",
-      "description": "encryption tests",
-      "assetName": "gc.disk",
-      "replicas": "1",
-      "noAppend": false,
-      "noIndexFileNames": false,
-      "noIndexFileData": false,
+    "walletSetup": {
+      "type": "loadConfig",
+      "updateId": "Dao",
       "layers": [
         {
-          "//info/updatedAt": {
-            "kind": "file",
-            "fileHex": "467269204f637420313320323032332032333a35383a313520474d542d30333030"
-          },
-          "//empty/dir": {
-            "kind": "directory"
-          },
-          "//data/encryptedData.crypt": {
-            "kind": "file",
-            "fileHex": "{strToHex(get('cache.dependencies.encryptedHexData'))}"
-          },
-          "//scripts/encryptedScript.crypt": {
-            "kind": "file",
-            "fileHex": "{strToHex(get('cache.dependencies.encryptedHexScript'))}"
+          "type": "Workspace",
+          "items": [
+            {
+              "namePattern": "dao",
+              "titlePattern": "DAO",
+              "descriptionPattern": "Wallet settings that creates a shared treasury of at least 3 of 4 signers for spending and staking operations"
+            }
+          ]
+        },
+        {
+          "type": "Key",
+          "workspaceIds": [
+            "dao"
+          ],
+          "items": [
+            {
+              "namePattern": "spend-member",
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            {
+              "namePattern": "stake-member",
+              "kind": "stake",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          ]
+        },
+        {
+          "type": "NativeScript",
+          "workspaceIds": [
+            "dao"
+          ],
+          "namePattern": "dao_{key}_script",
+          "items": {
+            "spend": {
+              "atLeast": 3,
+              "ofThese": {
+                "Member_0": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_0.paymentKeyHash')}"
+                },
+                "Member_1": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_1.paymentKeyHash')}"
+                },
+                "Member_2": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_2.paymentKeyHash')}"
+                },
+                "Member_3": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_3.paymentKeyHash')}"
+                }
+              }
+            },
+            "stake": {
+              "atLeast": 3,
+              "ofThese": {
+                "Member_0": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_0.stakingKeyHash')}"
+                },
+                "Member_1": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_1.stakingKeyHash')}"
+                },
+                "Member_2": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_2.stakingKeyHash')}"
+                },
+                "Member_3": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_3.stakingKeyHash')}"
+                }
+              }
+            }
           }
+        },
+        {
+          "type": "Address",
+          "workspaceIds": [
+            "dao"
+          ],
+          "items": [
+            {
+              "namePattern": "Signer",
+              "spendPubKeyName": "spend-member",
+              "stakePubKeyName": "stake-member"
+            },
+            {
+              "namePattern": "Shared Treasury",
+              "spendNativeScriptName": "dao_spend_script",
+              "stakeNativeScriptName": "dao_stake_script"
+            }
+          ]
         }
       ]
-    },
-    "signTxs": {
-      "type": "signTxs",
-      "namePattern": "GCFS_Signed_{key}",
-      "txs": "{get('cache.buildTxs.txList')}"
-    },
-    "submitTxs": {
-      "type": "submitTxs",
-      "mode": "parallel",
-      "namePattern": "GCFS_Submitted{key}",
-      "txs": "{get('cache.signTxs')}"
-    },
-    "finally": {
-      "type": "script",
-      "exportAs": "buildFs",
-      "run": {
-        "txs": {
-          "type": "macro",
-          "run": "{get('cache.submitTxs')}"
-        }
-      }
     }
   }
 };
@@ -546,8 +531,8 @@
 
 <body>
     <div class="box">
-        <h1>Get ready for some fun...</h1>
-        <p><i>Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script</i></p>
+        <h1>Shared Treasury - 3 of 4 signers - using addresses</h1>
+        <p><i>Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

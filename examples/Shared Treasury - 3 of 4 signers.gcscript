@@ -1,0 +1,108 @@
+{
+  "type": "script",
+  "title": "Shared Treasury - 3 of 4 signers",
+  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.",
+  "exportAs": "Dao",
+  "return": {
+    "mode": "none"
+  },
+  "run": {
+    "walletSetup": {
+      "type": "loadConfig",
+      "updateId": "Dao",
+      "layers": [
+        {
+          "type": "Workspace",
+          "items": [
+            {
+              "namePattern": "dao",
+              "titlePattern": "DAO",
+              "descriptionPattern": "Wallet settings that creates a shared treasury of at least 3 of 4 signers for spending and staking operations"
+            }
+          ]
+        },
+        {
+          "type": "Key",
+          "workspaceIds": [
+            "dao"
+          ],
+          "items": [
+            {
+              "namePattern": "spend-member",
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            {
+              "namePattern": "stake-member",
+              "kind": "stake",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          ]
+        },
+        {
+          "type": "NativeScript",
+          "workspaceIds": [
+            "dao"
+          ],
+          "namePattern": "dao_{key}_script",
+          "items": {
+            "spend": {
+              "atLeast": 3,
+              "ofThese": {
+                "Member_0": {
+                  "pubKeyHashHex": "13e93a48c66322d79fcd83d581f2348b567039ab3d988ff8d6286b3d"
+                },
+                "Member_1": {
+                  "pubKeyHashHex": "4cd0faea320a38e4c49e32dc40df1ba4b8eadb0ef4c31522c3cc56f1"
+                },
+                "Member_2": {
+                  "pubKeyHashHex": "83a5351d7891145760ff96e29c375a43355b085d50313be266d4977d"
+                },
+                "Member_3": {
+                  "pubKeyHashHex": "755ff75c3a2cc16730139793bfca8f5a2b78c29547700080d34e2273"
+                }
+              }
+            },
+            "stake": {
+              "atLeast": 3,
+              "ofThese": {
+                "Member_0": {
+                  "pubKeyHashHex": "c235dad80af6f95715adfd7ecc3ffc844c502f335e37ba019a57b198"
+                },
+                "Member_1": {
+                  "pubKeyHashHex": "c8a058e99d844c47f47cb04cead9ea5a7ffca8432f7e054635298e47"
+                },
+                "Member_2": {
+                  "pubKeyHashHex": "abca9cd9d3bb75d7febd99dfeb8fba0e0550a038d9e09206a82b706f"
+                },
+                "Member_3": {
+                  "pubKeyHashHex": "814da95aef8621d4e4ba5a0f7c379a5583aaf1244ef04269d3f8ff93"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "Address",
+          "workspaceIds": [
+            "dao"
+          ],
+          "items": [
+            {
+              "namePattern": "Signer",
+              "spendPubKeyName": "spend-member",
+              "stakePubKeyName": "stake-member"
+            },
+            {
+              "namePattern": "Shared Treasury",
+              "spendNativeScriptName": "dao_spend_script",
+              "stakeNativeScriptName": "dao_stake_script"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

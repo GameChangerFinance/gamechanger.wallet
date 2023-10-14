@@ -1,0 +1,24 @@
+{
+  "type": "script",
+  "title": "Share your public key information?",
+  "description": "This dapp connection will ask your spending and staking public key hashes",
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "getSpendCredential": {
+      "type": "getSpendingPublicKey"
+    },
+    "getStakeCredential": {
+      "type": "getStakingPublicKey"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "spend": "{get('cache.getSpendCredential.pubKeyHashHex')}",
+        "stake": "{get('cache.getStakeCredential.pubKeyHashHex')}"
+      }
+    }
+  }
+}

@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Get ready for some fun...</title>
-    <meta name="title" content="Get ready for some fun...">
-    <meta name="description" content="Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script">
+    <title>Share your public key information?</title>
+    <meta name="title" content="Share your public key information?">
+    <meta name="description" content="This dapp connection will ask your spending and staking public key hashes">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,133 +107,25 @@
                 //This is the GCScript code that GameChanger Wallet will execute
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
-  "title": "Get ready for some fun...",
-  "description": "Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script",
   "type": "script",
+  "title": "Share your public key information?",
+  "description": "This dapp connection will ask your spending and staking public key hashes",
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
   "run": {
-    "dependencies": {
-      "type": "script",
-      "exportAs": "data",
-      "run": {
-        "jsonData": {
-          "type": "data",
-          "value": {
-            "foo": "1",
-            "bar": 2,
-            "baz": true,
-            "baf": null,
-            "more": {
-              "info": {
-                "here": "Encrypted with GC API v2"
-              }
-            }
-          }
-        },
-        "jsonScript": {
-          "type": "data",
-          "value": {
-            "type": "script",
-            "title": "Simple Wallet Auth",
-            "description": "Will sign a message containing wallet address, using wallet address to sign",
-            "returnURLPattern": "http://localhost:3000/demo/api/dapp",
-            "exportAs": "connect",
-            "return": {
-              "mode": "one",
-              "key": "signature"
-            },
-            "run": {
-              "privateDataThatShouldNotBeLeaked": {
-                "type": "data",
-                "value": "If you see this, the world is broken"
-              },
-              "address": {
-                "type": "getCurrentAddress"
-              },
-              "signature": {
-                "type": "signDataWithAddress",
-                "address": "{get('cache.address')}",
-                "dataHex": "{strToHex(get('cache.privateDataThatShouldNotBeLeaked'))}"
-              }
-            }
-          }
-        },
-        "hexData": {
-          "type": "macro",
-          "run": "{strToHex(objToJson(get('cache.dependencies.jsonData')))}"
-        },
-        "hexScript": {
-          "type": "macro",
-          "run": "{strToHex(objToJson(get('cache.dependencies.jsonScript')))}"
-        },
-        "encryptedHexData": {
-          "type": "encrypt",
-          "requirePassword": {
-            "kind": "modal",
-            "description": "A password is required to encrypt this data",
-            "weak": true,
-            "default": "xyz1234"
-          },
-          "messageHex": "{get('cache.dependencies.hexData')}"
-        },
-        "encryptedHexScript": {
-          "type": "encrypt",
-          "requirePassword": {
-            "kind": "modal",
-            "description": "A password is required to encrypt this script",
-            "weak": true,
-            "default": "xyz1234"
-          },
-          "messageHex": "{get('cache.dependencies.hexScript')}"
-        }
-      }
+    "getSpendCredential": {
+      "type": "getSpendingPublicKey"
     },
-    "buildTxs": {
-      "type": "buildFsTxs",
-      "description": "encryption tests",
-      "assetName": "gc.disk",
-      "replicas": "1",
-      "noAppend": false,
-      "noIndexFileNames": false,
-      "noIndexFileData": false,
-      "layers": [
-        {
-          "//info/updatedAt": {
-            "kind": "file",
-            "fileHex": "467269204f637420313320323032332032333a35383a313520474d542d30333030"
-          },
-          "//empty/dir": {
-            "kind": "directory"
-          },
-          "//data/encryptedData.crypt": {
-            "kind": "file",
-            "fileHex": "{strToHex(get('cache.dependencies.encryptedHexData'))}"
-          },
-          "//scripts/encryptedScript.crypt": {
-            "kind": "file",
-            "fileHex": "{strToHex(get('cache.dependencies.encryptedHexScript'))}"
-          }
-        }
-      ]
-    },
-    "signTxs": {
-      "type": "signTxs",
-      "namePattern": "GCFS_Signed_{key}",
-      "txs": "{get('cache.buildTxs.txList')}"
-    },
-    "submitTxs": {
-      "type": "submitTxs",
-      "mode": "parallel",
-      "namePattern": "GCFS_Submitted{key}",
-      "txs": "{get('cache.signTxs')}"
+    "getStakeCredential": {
+      "type": "getStakingPublicKey"
     },
     "finally": {
-      "type": "script",
-      "exportAs": "buildFs",
+      "type": "macro",
       "run": {
-        "txs": {
-          "type": "macro",
-          "run": "{get('cache.submitTxs')}"
-        }
+        "spend": "{get('cache.getSpendCredential.pubKeyHashHex')}",
+        "stake": "{get('cache.getStakeCredential.pubKeyHashHex')}"
       }
     }
   }
@@ -546,8 +438,8 @@
 
 <body>
     <div class="box">
-        <h1>Get ready for some fun...</h1>
-        <p><i>Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script</i></p>
+        <h1>Share your public key information?</h1>
+        <p><i>This dapp connection will ask your spending and staking public key hashes</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

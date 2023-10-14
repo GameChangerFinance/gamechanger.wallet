@@ -2,7 +2,7 @@
 # Cardano Example Dapps
 
 
-## **66 built-in examples on IDE**: 
+## **70 built-in examples on IDE**: 
 
 
 ### **1: 🚀 Pay me 1 ADA** 
@@ -411,7 +411,7 @@ Script that will create a GCFS Disk in more than one transaction using API 'buil
 
 - [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/GCFS%20Disk.html)        
 - [documentation](GCFS%20Disk.md)     
-- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VW34_aOBD-V6y80EqIsITbVXnj2m67p1W1Klvtw-lUmXhCXBw7tZ2FFPG_dyZxIAvd9qE9pJBkPJ5f3zee7CIvvYJoFr0DzyxwUbPMWOZMASyr9Gg0ioaRAJdaWXppNGoummfmc-7ZRirFUtzngXH27vX1gr2Rbs2kZoWxQEqaGY0PlmvHUzLBKif1is3vbthgWUklrt391g0YaFEaqf2IzZUzuBVY67b1sgINlvw0sZmsUcikAse8YUtgGyu9B3LH0pxLPWwct4oFk45hKKBTW5ceBMYarGN-vi6pBId3C76y-tPH2zuOFi0lnXtfzuJYmZSr3Dg_S8bjcSygMDEvZSx4WdLGCnV3WK8Sk0FfEhy9n9qHbWmsn-NaJLjnx41fnNFvSHLcFBQeuaqAxJkxKL1A0ZLbaDah-7do5m0F9JhFM10pNYyo_KQvdWbongO9R28PBdhIn1MVCIfHSbTH37AJoMX3JyGcptNRaCGLUgF74EohmeaVz8-480BIOrnSyJYCnOMrYKnRHuEiTmzarVwIi4vDwJSnUkKbLPwOTj0A0LuG9Ig6JVgYQfkgfVC8hpqSRY8c1yHaH9AqrXxEQhJg99gMi9xUSnww_m-4Bb4G8WwJo5uM1aZiDqhDJCZKXN4YqwTxdGnNGjQ5Cin3DK3Av66sBe3nYQ3VjsH10EEZRfaAMHeqPYPRDi29GKQ8zWEUpIOXewIMN72HLak4b-8NPr_o6f4q6cFLtNKSKYftCZkLnlrT0b1n3yy_3Jt_kHt9T_0uGnWdgebJfmP8jKi_Z741d3BwOCren6URlhrOfK2khTvuHMLXIL6WWlAsRnB1xv85K4MqAR12C6J0sNnwgQW6bLCiXWsLyHilMNtoW3-7mCRTijG0UIDrueQCDoPzvM4q-L9ndjg0_lxuHW4N7fAMpJGCA6WX1XHKnIUdgqOx5MH5pkecA_-BF027pSOB86ypR6lkyl04fLWZlxRGNMu4ckCCGwxqe40Difa6Hy20NApyxWuwqPbvLopjOqXjqkTcQcx9r9g04NAd3dpKTC-vJpevJuNpdplcTSfjZJxc4v8koStp3l8lHJ_p_yKZoObVVPw1nQhcSfAaU3HjGIrS17GQtucM3_AoNLZuVYiF8YEuFPyoZcdPwvvhmfEEsdO-GoR-i-MWF3d02SL7p50e-pwI8184Pp8SppMgeojlcbrQB87nBS6C-LzDwUDnpd-eHqcdA0d-eyudD33nqmUh_Ymfg2zYDZ2SWxp36hnfzQbM43nvIfbgNZMazdW_-AoJDXL8EPFPwjw5V_vOugRC--333wETnNJhUgoAAA)
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VW32_bNhD-Vwi9uAUMy7GcZPWb1y5thqAI5gx5KIaCFk8Wa4rUSCq2avh_351E2YrdtA_tDMiSjsf79X3H0y7y0iuIZtF78MwCFzXLjGXOFMCySo9Go2gYCXCplaWXRqPmonlmPueebaRSLMV9Hhhn79_eLNg76dZMalYYC6SkmdH4YLl2PCUTrHJSr9j8_pYNlpVU4sY9bN2AgRalkdqP2Fw5g1uBtW5bLyvQYMlPE5vJGoVMKnDMG7YEtrHSeyB3LM251MPGcatYMOkYhgI6tXXpQWCswTrm5-uSSnB4t-Arq__-6-6eo0VLSefel7M4ViblKjfOz5LxeBwLKEzMSxkLXpa0sULdHdarxGTQlwRH76f2YVsa6-e4Fgnu-XHjF2f0O5IcNwWFJ64qIHFmDEovULTkNppN6P41mnlbAT1m0UxXSg0jKj_pS50ZuudA79EfhwJspM-pCoTD0yTa42_YBNDi-50QTtPpKLSQRamAPXKlkEzzyudn3HkkJJ1caWRLAc7xFbDUaI9wESc27VYuhMXFYWDKcymhTRZ-BqceAOhdQ3pEnRIsjKB8kD4oXkNNyaJHjusQ7Q9olVY-ISEJsAdshkVuKiU-Gv873AFfg3ixhNFtxmpTMQfUIRITJS5vjFWCeLq0Zg2aHIWUe4ZW4N9W1oL287CGasfgeuigjCJ7RJg71Z7BaIeWXg1SnuYwCtLB6z0Bhps-wJZUnLcPBp9f9XR_lPTgNVppyZTD9oTMBU-t6ejes2-WXx7Mn8i9vqd-F426zkDzZL8xfkbUnzPfmjs4OBwVH87SCEsNZ_6tpIV77hzC1yC-llpQLEZwdcb_OSuDKgEddguidLDZ8IEFumywol1rC8h4pTDbaFt_vZgkU4oxtFCA66XkAg6D87zOKvi_Z3Y4NH5dbh1uDe3wDKSRggOll9VxypyFHYKjseTB-aZHnAP_kRdNu6UjgfOsqUepZMpdOHy1mZcURjTLuHJAglsManuDA4n2um8ttDQKcsVrsKj2aRfFMZ3ScVUi7iDmvldsGnDojm5tJaZX15OrN5PxNLtKrqeTcXKRJPg_Sehqn5KEJ5fJb_h_kVyi5vVUXE4nAjUSvMZU3DiGovR1LKTtOcM3PAqNrVsVYmF8oAsFP2rZ8Z3wvnlmPEPstK8God_iuMXFHV22yP5qp4c-J8L8E47P54TpJIgeYnmcLvSB83mBiyA-73Aw0Hnpt6fHacfAkd_eSedD37lqWUh_4ucgG3ZDp-SWxp16wXezAfN42XuIPXjNpEZz9Q--QkKDHD9E_LMwT87VvrMugdB--_1_KVLstFIKAAA)
 
 
 
@@ -591,7 +591,7 @@ This script will create a workspace to import addresses, scripts, manage funds a
 
 - [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/DAO%20Demo.html)        
 - [documentation](DAO%20Demo.md)     
-- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA51V227bMAz9FcEv24Cs8TV2-lZ0lxZbt2HtsIehGGiTjo3akiHJTYMi_z7KuTVNi6F9i0np8FDnkLn37KIj79gzha476408W9vGBT6cfBcfqFUcQlplayU5cVXVRqwCYl43jSg0gSUBYq70jemgIGGVqNtOaSsAUZMxZEbrO_yjBQkzEmUv0QiQKEw9k2B7PihKrVqGctXnFWkSC9UL0A6-U3PSZd-Iltqc9GhIVXDrkBwNJa1Wjbsmh1RvSIRCle5DixtamCNuhu4crxOzanHdoSauzs3de61C171UkrzlJvHr59cfYC25I15lbXc8HjeqgKZSxh5Hvu-PkYHG0NVjhK5ziP0Apyw3cTHw_UKLMzAVGRdfvzqCBT58C01PLnz-_ewLhyMq8jRCoiDEaIpZmqXFNM9SSgPKkrSYIMZZinFJaZEEaUR-nmdFGjPUx7bXM8UYAcaTMkqyHMJpEMYJ5ukUJvk0iVI_giAKaJJlkId-EtMEsiRP4xAnYcAYp6ARpPqkWCBYqw7og09FmQFNAshhmqcJRlHKPOMMYsAEA5iGAMh8gaD04zzMMPSW_IpzaBqyl_yW3YPmGwV4qmRZz7hm33EpOsc9WRpYkOb3-rO983tjMc7WltpVUkJLO4FmBYLaOHkX_uzEOq2gls5d-7benfo9UBWGrK3lzIgZSdLMDEW-YA86mTfmZ5Nvrc-IR97yejnaMmW5ucZ2JM7RUV1zu36evOlI4nvTKWmUZoCbWuImzJ9QFKyKPZdId96xz4HVfG0CjsAjQAs39ASgC78K8BSYzMupBYdIl03dvgIpPES6UCBZrouFdsvrpYDRnnDf2PK3dLnZh88q-ITp_m636E5esF8JjGXaI0-VVzz_NMS7Pl9vhDPHwbufkX37poCioqOntsaR2w1v3i09R_XFl1dr4dXXDzbCPtI3foqdMw7ia50P4vuqsQgPZThZSfSaGbrcmn0wwI-HNR_P1zAH-yf2BuYJ11b8d4RXPPmm14tNkYeuWQM9ssSA-79jwyMsl_8AhXUebpcHAAA)
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA51V227bMAz9FcEv24Cs8TV2-lZ0lxZbt2HtsIehGGiTjo3akiHJTYMi_z7KuTVNi6F9S0jp8FDnkL737KIj79gzha476408W9vGBT6cfBcfqFUcQlplayU5cVXVRqwCYl43jSg0gSUBYq70jemgIGGVqNtOaSsAUZMxZEbrO_yjBQkzEmUv0QiQKEw9k2B7PihKrVqGctXnFWkSC9UL0A6-U3PSZd-Iltqc9GhIVXDrkBwNJa1Wjbsmh1RvSIRCle6PFje0MEfcDN05Xidm1eK6Q01cnZu791qFrnupJHnLTeLXz68_wFpyR7zK2u54PG5UAU2ljD2OfN8fIwONoavHCF3nEPsBTllu4mLg-4UWZ2AqMi6-fnUEC3z4FpqeXPj8-9kXDkdU5GmEREGI0RSzNEuLaZ6llAaUJWkxQYyzFOOS0iIJ0oj8PM-KNGaoj22vZ4oxAownZZRkOYTTIIwTzNMpTPJpEqV-BEEU0CTLIA_9JKYJZEmexiFOwoAxTkEjSPVJsUCwVh3QB5-KMgOaBJDDNE8TjKKUecYZxIAJBjANAZD5AkHpx3mYYegt-RXn0DRkL_ktuwfNNwrwVMmynnHNvuNSdI57sjSwIM3v9Wd75_fGYpytLbWrpISWdgLNCgS1cfIu_NmJdVpBLZ279m29O_V7oCoMWVvLmREzkqSZGYp8wR50Mm_MzybfWp8Rj7zl9XK0Zcpyc43tSJyjo7rmdv08edORxPemU9IozQA3tcRNmP9CUbAq9lwi3XnHPgdW87UJOAKPAC3c0BOALvwqwFNgMi-nFhwiXTZ1-wqk8BDpQoFkuS4W2i2vlwJGe8J9Y8vf0uVmHz6r4BOm-7vdojt5wX4lMJZpjzxVXvH80xDv-ny9Ec4cB-9-RvbtmwKKio6e2hpHbje8ebf0HNUXX16thVdfP9gI-0jf-Cl2zjiIr3U-iO-rxiI8lOFkJdFrZuiSPyeDrwb9fzws-Xi8hjHYP7E3L0-YtuKvEV7x4JteLzZFHppmDfTIEQPu_44Nb7Bc_gP6ViHKlgcAAA)
 
 
 
@@ -635,17 +635,7 @@ Explore the different ways to derive/obtain keys and obtain all results under th
 
 
 
-### **64: 2FA** 
-
-Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor
-
-- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/2FA.html)        
-- [documentation](2FA.md)     
-- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA5VU227aQBD9lZVfkkgUUVpA5A2lqoIqRUhUykOFosE7vhR7195dYxzkf--sb5gQ2uYJ78zsmTNnznJ0TJGgc-9oV4WJcQaOCU1kA-PvCzpxrBOhFBR7UAgGGbBcqp1OwEWWhyagwDoAhZz9pAKdqYIB5wq1ZlvQFJaCjdsQ6iFbMI2uFLwrowITYA821KyQmWIxhKKrAs3WiRRaKmKGh0Qqs9A11W8YSwoqNJkipkcnltxOIaRAp6REVkWpclGD2VMzOgcDdHcPUWaPttvndO4BxOl8N51MZv4ev0wgNjxNgvk8mKdjcwheRzM3gIM_zfLc59Pf0_3Ic0dfxQQDfzwfF4e9pp89apWm8SH1RDIrslzMitR9zdJcWVZEZyk82eMSg6uqQSxf5-ijafjauls63t644AY4PE1yc3dXWrAcogjNmhRIeoCRBP4ghRf6hJolNCsu-ZlmERSoSI9f3Z3ndg2UDQ3GdVJAjCswBq3AztiD1iy94FvPnFLPFTvauzGh8DXzUaAiMpxtyS2MExdWX2NGMrc1GiG263fKTTnoOP7Aglp1hllyS7JitblOWico-CfdeWgXCt6G6QiuKzNhloLjwbkfDRxota8Dtv0bQAM7fAfQhv8HsD_RE5hwj-v2HV4Z7WILL8cdFuVL936b2Y_NVPRBylcvotAYefYrybYk3xMhXWhiTUmNuqJH0MGj5Vp5sWc-68dhAkWMwjR1N9aHJSHU4_-785l4H-ts75KPzjuXPTXbZ_5hj5z-YSplVte1agZd_W2mi2dDfj5Rq_D6e29Q7Fqr3GmtFfC1UptrS8lTG1LiD7p4G03ZBQAA)
-
-
-
-### **65: List addresses in workspace** 
+### **64: List addresses in workspace** 
 
 List and sort all addresses in current workspace
 
@@ -655,13 +645,63 @@ List and sort all addresses in current workspace
 
 
 
-### **66: List keys in workspace** 
+### **65: List keys in workspace** 
 
 List and sort all keys in current workspace
 
 - [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/List%20keys%20in%20workspace.html)        
 - [documentation](List%20keys%20in%20workspace.md)     
 - [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1WOSwrDMAwFr2K8zgmy6y7QUnIFxVZTkdQxskwTjO9emX6gK4mnGUnFyhHR9jY5pii2s0KytuBCScyCRzIUzHPjJUVwqIDHN0tb-GIQvEkba7OuP8dlZgzy5-IeFTslFT0IaMJZtxTbpFY_38woY55WcueWd208gghyO1mAhW7g5AoPrH2JeVJsgHQfcK9Kt1eUg-QweAqzrbW-AF6Ki9_pAAAA)
+
+
+
+### **66: 2FA** 
+
+Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Signer
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/2FA.html)        
+- [documentation](2FA.md)     
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA5VU227aQBD9lZVfkkgUUVpA5A2lqoIqRUhUykOFosE7vhR7195dYxzkf--sb5gQ2uYJ78zsmTNnznJ0TJGgc-9oV4WJcQaOCU1kA-PvCzpxrBOhFBR7UAgGGbBcqp1OwEWWhyagwDoAhZz9pAKdqYIB5wq1ZlvQFJaCjdsQ6iFbMI2uFLwrowITYA821KyQmWIxhKKrAs3WoS9QETE8JFKZha6ZfsNYUlChyRQRPTqx5HYIIQU6JSWyKkqVixrLnprJORigu3uIMnu0zT6ncw8gTue76WQy8_f4ZQKx4WkSzOfBPB2bQ_A6mrkBHPxpluc-n_6e7keeO_oqJhj44_m4OOw1_exRqzSND6knklmR5WJWpO5rlubKsiI6S-HJHpcYXFUNYvk6Rx9Nw9fW3dLx9sYFN8DhaZKbu7vSguUQRWjWpEDSA4wk8AcpvNAn1CyhWXHJzzSLoEBFevzq7jy3W6BsaDCukwJiXIExaAV2xh60XukF31rmlHqu2NHajQmFr5mPtEYiw9mWzMI4cWH1NWYkc1ufEWK7fafclIOO4w8sqFXnlyW3JCtWm-ukdYKCf9KJFFpaD-1CwdswHcF1ZSbMUnA8OPejgQOt9nXAtn8DaGCH7wDa8P8A9id6AhPucd0-wyujXWzh5bjDonzpnm8z-7GZij5I-epFFBojz34l2ZbkeyKkC02sKalRV_QIOni0XCsv9sxn_ThMoIhRmKbuxvqwJIR6_H93PhPvY53tXfLReeeyp2b7zD_ske4PphJmdV2qZs7V30a6eDVk5xOzCq-_9gbFbrXKnbZaAV8rtbm2lCy1ISH-AIiTaVnXBQAA)
+
+
+
+### **67: Share your public key information** 
+
+This dapp connection will ask your spending and staking public key hashes
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Share%20your%20public%20key%20information.html)        
+- [documentation](Share%20your%20public%20key%20information.md)     
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA3WQQWoDMQxFryK8SQolB-gmlG4C3RTSC6i2Eovx2MbW0AzD3L3yTFsS0nplf-k_fXkyMmYyT6bawlnMoxGW0ISjx0IwpqFAHj4CW-hoBI6nVHoUTnGvzY5Wnz7V8u65gsOcwaYYyTYZPjkEwNqtqJopOo5nwOigCnbtfsX3WD1VJdMlpyLPVbEOBVUpJEPRMZPpk2sJA1YxsxaGRT2THBv9pZCjKIyhqd_r_RR13Nsy7ZXG5m26pqB_TWvEG8-JI4YwXjX2aEsyv0mWJVWeFLDdWLSedvfpdrq2Eg-68YEum4dZAe1H6A_nbcR756znC6FNzx7LAQAA)
+
+
+
+### **68: Shared Treasury - 3 of 4 signers** 
+
+Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Please customize this code with real public key hashes, you can use 'Share your public key information' example on each member to obtain them. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Shared%20Treasury%20-%203%20of%204%20signers.html)        
+- [documentation](Shared%20Treasury%20-%203%20of%204%20signers.md)     
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA51VS2_bOBD-K4QuuaQBxYdI5ha0hwbd7RZIgB6KIBiRw1iILXlFetMg8H_fofyI89p0ezI1j2_mm49DP1T5fonVaZX82C1zdVzlLs-L4WIGIwZ2OSKk1XjPPjDJhsgUS91Nj2Oi0ICbrG7oKeEjRWZMDNjdMN6mJXhkPSwI4-jT2V9H7K7LM3IePQM-YhDCiCmxuxmOyCCzOXny03LsDuZzzIROISP-veoKRhxGlpbYh66_YdAHljLclvOwxBFKX-mEnbGEfiDnrs7QszzDgy67xHyBH9kCun4fB4manaofnbDLgZw93OCUm3dTSZj_gxEh-NU4Yp8ngEKl2IAtcNHieLxN39TYZ3V9ygjhhCaMP5fDmM8SjfcTDGQYMa9GmvZDtRhCkakfeqzW5FhN1s2YLihqWT634s4HCB-HPnY3BLFaBtLpPOwx53Bf9Dz9sY__vhsNebuMi42ziPkNcsbSQBWm3Om2PBpJ6Kf34tH1feqsMM6kUKIxktJ-f2fSZob7wZL2r9-E9CuqV-ur9fGezhe8p672ep-HwmcicPU2v6nCh41QlE0Fws5Kn-D9sOrzeR_wZ3XKybARb2co1Z_hUZP4Eq9YfwXvkM9XIvkPXuw29g1iL-S6frjF-_X1ftO3zB-2pOgA-Y8y8OpUHldDvJxhwmL-c2r6mpfzctXSOD9Dmn0ujVW1RCdBWd80UohgXPTByqBtHYVUttWN4dJBK4OzNkYbGmEb-ip3dotbv4arfOAREKTgIC0qrxxKEbziIdYtqNbSirQco_Ky1kJ46b1uYn2AK17DtRK01HUw1tW10qbhMboGhfPSaFBSat1yq4PmspYtiqYJyhlz2K98DddoHaPRXoLwvm6M5LV0xsk2erBRg2iN9cJpZQzn3PIgFQphZLVeE_LmGvyeAl5IHSBYDrGJTptaQ4jBoPcyRm-V8pqLSMRQmhZ47UCbtnb2PQW8Ba4tOhcKhjJRGd9y5WnuDkGDiYWakiIa5Fo1UgtHQpn3FIDWg_PBBdm2RgcTsQ1UhH5spP4IS3Pg0lIV7gRvwNLseBPfU8DWKoDTgNE2og4KVUtd8mhIWeKsSXmItVAKI1eiofqRLqSbFFgfbNfZZvP-_4uxeccpb9qnb1N7Xyni5WMyyf004PB1ePl4PPuH2dU4fAi2QGXPJ9_jnk_Yb4UW3y6UHpkrGsW_1sOdZxQIAAA)
+
+
+
+### **69: Shared Treasury - 3 of 4 signers - using addresses** 
+
+Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Please customize this code with real addresses. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Shared%20Treasury%20-%203%20of%204%20signers%20-%20using%20addresses.html)        
+- [documentation](Shared%20Treasury%20-%203%20of%204%20signers%20-%20using%20addresses.md)     
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VW2W7bOhD9FUIv7gVcQ5HlJXkL2ocG93YBEqAPRRCw5GixJUoiqc2G_71DypLtLEZd9PrFFodz5syQ58hbR7c5ODeOYjLOtTN2dKwTs3AfUQmcPEigqpQteU-mJAuIT1QcCpAKF0oVi5BQziUoBQqTOXQ4cSYQ4gPmalCEkjqTa5VTBkTQFFFHH2-_jkgd6wiDo2elRj0kqSOQQKgmCUb0KQFS0yQBjei4RUJRxgYjyCRROQhumQlOlKZr8zvLQVLDS03ILVHAMgz2dTJBdARHLGNFmIGXJKWxGPZRhWRt9dGEPGQYFDQEm6v7OSnQZzpCBFZKCUJbANOKWaMkhfQnyPE-vasxZMVCaaB8ghOGJs-kvlU43o80wwUJupQ47a2TZtwcnMgEODsMlHb1cDz4sD_slDJpc7stn23tJxcj2xD0bZdxJ4Ls3cikXxXXy8Cd50wqsWzcaVm7VQKrer70A1a6Xk2DoAoU42rj8lVY8PlqXrkBc30xgyj0rr22qRR-VaBkUaRNEYh80Za1WLSFV6lWLEb_7JDPnsjVGSKs3QRMt2mSlDALm-tp2giJj5tNA6v1JlRyHdbFosxX4IcXEcnFhkl6QsR7m0jbhsV06VeRZq3yFjVwiBZyvuIulTXgOBo9D8N6lXA3XV02Eer5zSw8ITI9M5FNskllxWWil8G1W9GFX1AfBTFfqqidrdnMV0uR-_mcenAZkaiYhZ40RHZ4nzq93eN1y4-uUpJR_iETQRwi2zLnKPg7PlzOhLZoFc7Nj2H_915jGI01pF3QuMI3qjWYm-xwm2uN6LCIjnFqMIfQd8vMSEej1BXqES2DDeajOjEOCkUTed1S1O_Yh7N73I2Hdv6FFlkNxnHHTT-2gce3-7MV3neKx2wswPtVfKSMZaXQd4JD49y4417B_YKp_gwPScJLPLP6O3jH_XzBJiu4718GbzT24rietmtod0_DS2Tf-XbflLEh_Z8ZuHMzHTtZ8BCBglPr2Tp5-RPH-Ymq6JMhZi_8uxGjLILJ4GKTPmOS0zZFH92n2Ft67CAX4l2dxfMuxvPO4k0vxpu-hmdk2R3z_zLh_eX_axM-h_cnEz6H9ycTfgXPfA7q2Nvv5YrvXuiYZ_XwzdL6gjtemoE9ztMNx-p-Kf5nfzX6GsdC3gMZndrYQacW-62tJtZvRZN4xFH8AslqjzovCgAA)
+
+
+
+### **70: Shared Treasury - 3 of 4 signers - funded - Gift Wallets** 
+
+Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Customize Gift Wallet generation with proper password settings and distribute them to the signers. This example is not secure as wallet creator has total control over the generated wallets. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Shared%20Treasury%20-%203%20of%204%20signers%20-%20funded%20-%20Gift%20Wallets.html)        
+- [documentation](Shared%20Treasury%20-%203%20of%204%20signers%20-%20funded%20-%20Gift%20Wallets.md)     
+- [standalone](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VX227jNhD9FVZF4V0gsZM4aAG_uQk2CbrdBo2LoGiDgJZGNhGJVEhqbcHwT_S92F_cT-gMSV18SbDetgYcSzPk4cyZCyeryFYFRKPIxFoUNjqKrLAZCe7mXEPCJhq4KXXFjtmQqZSdMyNmErRBQVrKBJccsyuRWnbPswysQYgEPJpQEoEuEMGCYZwtlH4yBY-BSZ7jxt7l-JceWwg7R2Vv68Ae40miwRi2mIMGxi3LUGM3zWALfyrDvUzDcykII1WamQJkIuSMcZkwY_kTPasCNCe7TJ-NmYFYobI-R0lm59CxUhgWE7xmOReyWccNGutO7_XZRKFS8hm4vbZmy4B9xSNEiEutQVoHQK6QjLMc8inoo7Ddn9HsEtJY4EkfGYZlobQdG6T3kisUaLClRrZXUa4SCl-GVEVrVJROGmiixxBwL7kCSYwojRg8V6W00eicIpjyMrMfMEy33Fog6OhnZxxbCYz6ch01qy7bcLeLfTa4SGCUWdj77c7mn6DaPuFxZ9G1kLZd9bsqNSu4MRiphILUW9Vv6x5uetbRyOoScLtayEzxxL8jG4FK6BKR81g7Cj1TwYYT1KxmYMd-x41M1Rt8fdOLeTyHfuCzX6_uB-Te27dkdxCfHgRyuh_k7CCQs_0gw4NAhhsgayTOL7jDLCs61BG3F0qmYoYnlUWCdX6TNDmZ8Qr7RDT6o1l_X5cWaoWF3CvlRpYlbq_rQq0QU2izr-wkGlaMxQo3WIbYKeKm5xhfg01hYu_Y30nMl3SNaP2wPmrcwdxFq5p-cZOQP86Bh5f9cycc-0LH3XhAUkupBuOYivCGCiAanTQZWwvo9C08NBJ28Uj6JXhdfz6gkx_hrr4JXnBsJ1yPqyeo1o_NDRI8XwWn8IHb90R4NBoeRSqdzMHAZqmtoqKcIp3X3MyvyTCXrHV2NlXbllvBqxzbZ9jSoyztVt2BeKev4p0djHf2Kt7wYLzhPjwqSx_m_4XhkPz_GcOv4X0Nw6_hfQ3De_Do01ZHaJ2HV7y_x3Gfq4dbZxbdrLvNwIVzc0G3uneLf2vCqM_oFnIAojp1urZOHfZLS0lXL8Um8UDJBrZt4O0lgOILP8x023uHo9DU1x3heM893N5OQCSnIkMnSS-9Wdu-It5Td3ggs0NcSYcTwebAg7cTR9yPPCvBRalQmYgrZx9PSOW2BBK85LnkEq-iCgWnJ_7jroBoWoosGQudaNW9EJ14suyM0Z8__fW3m4DqxfWs9tuv71vb59YWZjQYzHAWLqf9WOWDK7TjYs7lDPQ7IbmMYTBDUexF4cYeTDM1HdB0OoAlz4sMzMDz9N3ZSc0UPh7jd4hfleKfc_yGOy-o_CAfXmiYx58wzvdzupbskpxUpS1K61O8ZnqzrnYD3O-EpZ0q1lEboM3CdEJXfVhRvFyKTHBdXVLs0ILvfzh3M66ZUd3dQ4ZM4dStGHY89q5EXoHu9AuuEy7VN39KmoBwgBToLw3QbkgveJbTqormSKQzcct-rFiH8vDfDGoe1r7TImG78SbpZGkcQ64VdH3p5kjfLrELkV8PNMdYLjJIbkHnwhg3WIxSnhkaUU05zYXdc5STdw7bOKtjXmiFKSZNllUvD7ohBbYj6MPuQ-SHpzqPxv8-5N7CyZJa7BbONludJvwPn5Qii6UOAAA)
 
 
 Dapps code was autogenerated by [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)

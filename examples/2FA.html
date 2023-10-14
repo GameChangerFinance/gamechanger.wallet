@@ -5,7 +5,7 @@
 <head>
     <title>2FA</title>
     <meta name="title" content="2FA">
-    <meta name="description" content="Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor">
+    <meta name="description" content="Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Signer">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -109,7 +109,7 @@
                 var gcscript = {
   "type": "script",
   "title": "2FA",
-  "description": "Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor",
+  "description": "Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Signer",
   "exportAs": "2FADemo",
   "return": {
     "mode": "none"
@@ -193,7 +193,7 @@
           ],
           "items": [
             {
-              "namePattern": "Sponsor",
+              "namePattern": "Signer",
               "spendPubKeyName": "spend-sponsor",
               "stakePubKeyName": "stake-sponsor"
             },
@@ -517,7 +517,7 @@
 <body>
     <div class="box">
         <h1>2FA</h1>
-        <p><i>Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor</i></p>
+        <p><i>Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Signer</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

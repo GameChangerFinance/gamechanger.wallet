@@ -106,7 +106,7 @@
           ],
           "items": [
             {
-              "namePattern": "Sponsor",
+              "namePattern": "Signer",
               "spendPubKeyName": "spend-sponsor",
               "stakePubKeyName": "stake-sponsor"
             },

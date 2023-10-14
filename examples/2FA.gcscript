@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "2FA",
-  "description": "Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Sponsor",
+  "description": "Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Signer",
   "exportAs": "2FADemo",
   "return": {
     "mode": "none"
@@ -85,7 +85,7 @@
           ],
           "items": [
             {
-              "namePattern": "Sponsor",
+              "namePattern": "Signer",
               "spendPubKeyName": "spend-sponsor",
               "stakePubKeyName": "stake-sponsor"
             },
