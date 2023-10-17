@@ -28,7 +28,7 @@ The smart design principles of the wallet allows you to import or connect these 
 
 ### Dapps:
 
-- **[66+ full open source example dapps](examples/README.md)**
+- **[70+ full open source example dapps](examples/README.md)**
     - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://beta-wallet.gamechanger.finance/playground)
     - GCScript code
     - Full HTML5 frontend code with zero external dependencies, and zero backends!
@@ -61,14 +61,14 @@ The smart design principles of the wallet allows you to import or connect these 
 
 ## Resources
 - [Beta Release Notes](RELEASE.md)
-- [66+ open source example dapps](examples/README.md)
+- [70+ open source example dapps](examples/README.md)
+- [Universsal Dapp Connector documentation](DAPP_CONNECTOR.md)
 - [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 - [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)
 - [Discord Support](https://discord.gg/vpbfyRaDKG)
 - [Twitter News](https://twitter.com/GameChangerOk)
 - [Website](https://gamechanger.finance)
-
 
 
 ## Screenshots
