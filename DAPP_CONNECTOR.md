@@ -63,7 +63,7 @@ Both type of communications can be encapsulated on different transports ( [see T
 All transports can use these encodings/compression algorithms ([see Encodings](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html#encoding)):
 - base64url - for lightweight hardware clients, no compression
 - gzip - recommended - base64url encoded gzip compression. Natively supported on modern browsers, and languages like Python, C, Rust, etc without external libraries
-- json-url-lsma- external nodejs library that packs JSON into urls
+- json-url-lzma- external nodejs library that packs JSON into urls
 
 [![GameChanger Universal Dapp Connector Infografic](img/dappConnector.png)](img/dappConnector.png)
 
