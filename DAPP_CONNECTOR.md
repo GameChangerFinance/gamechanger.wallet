@@ -86,7 +86,7 @@ Suggested articles:
 
 ## Downsides
 
-- "UX": We are so used to desktop browser extension wallets that conveniently pops up when needed that we are willing to accept code injections on all our websites and to limit entire blockchain ecosystems only to desktop scope. Yes, pop ups are more confortable than URL redirections. Everyone is free to compromise what it sees fit. 
+- "UX": We are so used to desktop browser extension wallets that conveniently pops up when needed that we are willing to accept code injections on all our websites and to limit entire blockchain ecosystems only to desktop scope. Yes, pop ups are more comfortable than URL redirections. Everyone is free to compromise what it sees fit. 
 - "All connections goes through GameChanger Wallet", and it's not fully open source: The wallet has been created by a solo-developer and his colaborator team, we want to be very clear about this: we want to opensource it and make this wallet the wallet of Cardano's people, but with very little funding support, running costs out of our savings and our partnership's, and 2 years of underpayed hard work, we need to ensure our sustainability first. If we manage to compensate the efforts and ensure our future to keep building without worrying too much about the money, the wallet will be yours. We want to make it open source as we love this project since 2021 and we truly believe this is something Cardano needs. We want to keep helping, but for that we need your help as well.
 
 ## Resources
