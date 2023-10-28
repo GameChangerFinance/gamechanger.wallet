@@ -1,0 +1,78 @@
+{
+  "title": "Multisig using Unimatrix and Roundtable",
+  "description": "Builds 3 multisig transactions and tries to sign them only with local private keys and with remote signers using Unimatrix Sync and Roundtable. Customize required keys to real ones or experience a Kobayashi Maru scenario",
+  "exportAs": "multisig",
+  "return": {
+    "mode": "last"
+  },
+  "type": "script",
+  "run": {
+    "build1": {
+      "type": "buildTx",
+      "tx": {
+        "requiredSigners": {
+          "Alice": "13e93a48c66322d79fcd83d581f2348b567039ab3d988ff8d6286b3d"
+        }
+      }
+    },
+    "build2": {
+      "type": "buildTx",
+      "tx": {
+        "requiredSigners": {
+          "Bob": "4cd0faea320a38e4c49e32dc40df1ba4b8eadb0ef4c31522c3cc56f1"
+        }
+      }
+    },
+    "build3": {
+      "type": "buildTx",
+      "tx": {
+        "requiredSigners": {
+          "Charles": "83a5351d7891145760ff96e29c375a43355b085d50313be266d4977d"
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "Smart Send",
+      "detailedPermissions": false,
+      "multisig": [
+        {
+          "kind": "MainAddress"
+        },
+        {
+          "kind": "CurrentWorkspace"
+        },
+        {
+          "kind": "Roundtable",
+          "share": true
+        },
+        {
+          "id": "multisig_1234",
+          "kind": "Unimatrix",
+          "share": true,
+          "shareTxs": true,
+          "announceTxHashes": true
+        }
+      ],
+      "txs": [
+        "{get('cache.build1.txHex')}",
+        "{get('cache.build2.txHex')}",
+        "{get('cache.build3.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "txHash": [
+          "{get('cache.build1.txHash')}",
+          "{get('cache.build2.txHash')}",
+          "{get('cache.build3.txHash')}"
+        ]
+      }
+    }
+  }
+}
