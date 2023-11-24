@@ -1,4 +1,6 @@
 {
+  "title": "🚀 Connect with dapp?",
+  "description": "About to share your public wallet information and a CIP-8 signature to verify this data",
   "type": "script",
   "exportAs": "connect",
   "run": {

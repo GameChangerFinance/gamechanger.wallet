@@ -12,11 +12,9 @@
     <meta name="theme-color" content="#6d41a1" />
 
     <!-- 
-        For gzip and base64url encodings no external dependencies are required, it's 100% browser native code. In other words: 
-        GCWallet is the first wallet that doesn't inject code into websites and that has also zero-dependencies integrations
-        For json-url-lzma encoding, this is the only dependency: 
+        Official GameChanger Wallet library and CLI: https://www.npmjs.com/package/@gamechanger-finance/gc
     -->
-    <script type="text/javascript" src="https://unpkg.com/json-url@3.1.0/dist/browser/json-url.js"></script>  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@gamechanger-finance/gc@0.1/dist/browser.min.js"></script>  
 
     <script>
         let handleSetEncoder;
@@ -25,11 +23,15 @@
         ////    Dapp Logic    /////
         ///////////////////////////
         async function main() {
+            // import gc from '@gamechanger-finance/gc'
+            const {gc} = window;
+
             //Dapp <--> GameChanger Wallet connections can use URL redirections
             let   actionUrl   = "";
             let   resultObj   = undefined;
             let   error       = ""; 
             let   useCodec    = 'gzip';
+            let   codecs      = ['gzip','base64url','json-url-lzma']
 
             //GameChanger Wallet is pure Web3, zero backend procesing of user data. 
             //Dapp connector links are fully processed on end-user browsers.
@@ -60,7 +62,7 @@
                 try{                
                     const resultRaw   = (new URL(currentUrl)).searchParams.get("result");
                     if(resultRaw){
-                        resultObj     = await gcDecoder(resultRaw);
+                        resultObj     = await gc.encodings.msg.decoder(resultRaw);
                         //avoids current url carrying latest results all the time 
                         history.pushState({}, '', window.location.pathname);
                     }
@@ -97,7 +99,7 @@
                     resultsBox.innerHTML=JSON.stringify(resultObj,null,2);
                 }
                 encodersBox.innerHTML="Encoding: "
-                encodersBox.innerHTML+=Object.keys(codecs)
+                encodersBox.innerHTML+=codecs
                     .map(codec=>`<a href="#" class="a-unstyled" ${codec===useCodec?'style="font-weight:bold;""':''} onclick="return handleSetEncoder('${codec}')">${codec}</a>`)
                     .join(" | ");               
 
@@ -309,166 +311,16 @@
                 //This is a patch to adapt the return URL of the script to the origin that is hosting this html file.
                 //so this way executed scripts data exports can be captured back on dapp side
                 gcscript.returnURLPattern  = window.location.origin +  window.location.pathname ;
-                const encoded=await gcEncoder(gcscript,useCodec);
-                return `${gcApiUrl}${encoded}`;
+                const url=await gc.encode.url({
+                  input:JSON.stringify(gcscript),
+                  apiVersion:'2',
+                  network:'mainnet',
+                  encoding:useCodec,
+                });
+                return url;
             }
 
             updateUI();
-        }
-
-
-
-
-
-        ///////////////////////////
-        //// Encoding Helpers /////
-        ///////////////////////////
-
-        //https://github.com/blakeembrey/universal-base64/blob/master/src/browser.ts
-        function base64Encode(str){
-            const percentToByte=(p)=>String.fromCharCode(parseInt(p.slice(1), 16));
-            return btoa(encodeURIComponent(str).replace(/%[0-9A-F]{2}/g, percentToByte));
-        }
-        function base64Decode(str){
-            const byteToPercent=(b)=>`%${`00${b.charCodeAt(0).toString(16)}`.slice(-2)}`;
-            return decodeURIComponent(Array.from(atob(str), byteToPercent).join(""));
-        }
-        //https://github.com/blakeembrey/universal-base64url/blob/master/src/index.ts
-        function base64urlDecode(str){
-            return base64Decode(str.replace(/\-/g, "+").replace(/_/g, "/"));
-        }
-        function base64urlEncode(str){
-            return base64Encode(str)
-                .replace(/\//g, "_")
-                .replace(/\+/g, "-")
-                .replace(/=+$/, "");
-        }
-
-
-
-        async function base64ToBytes(base64) {
-            const res = await fetch("data:application/octet-stream;base64,"+base64);
-            return new Uint8Array(await res.arrayBuffer());
-        }
-        function urlSafeBase64Encode(safeBase64) {
-            return safeBase64
-                .replace(/\+/g, '-') // Convert '+' to '-'
-                .replace(/\//g, '_') // Convert '/' to '_'
-                .replace(/=+$/, ''); // Remove ending '='
-        };
-        function urlSafeBase64Decode(safeBase64,padding=true) {
-            // Add removed at end '='
-            let unsafeBase64=safeBase64
-            if(padding)
-                unsafeBase64 += Array(5 - unsafeBase64.length % 4).join('=');
-            unsafeBase64 = unsafeBase64
-                .replace(/\-/g, '+') // Convert '-' to '+'
-                .replace(/\_/g, '/'); // Convert '_' to '/'
-            //return new Buffer(unsafeBase64, 'base64');
-            return unsafeBase64;
-        };
-        function compress(string, encoding) {
-            const byteArray = new TextEncoder().encode(string);
-            const cs = new CompressionStream(encoding);
-            const writer = cs.writable.getWriter();
-            writer.write(byteArray);
-            writer.close();
-            return new Response(cs.readable).arrayBuffer();
-        }
-        function decompress(byteArray, encoding) {
-            const cs = new DecompressionStream(encoding);
-            const writer = cs.writable.getWriter();
-            writer.write(byteArray);
-            writer.close();
-            return new Response(cs.readable).arrayBuffer().then(function (arrayBuffer) {
-                return new TextDecoder().decode(arrayBuffer);
-            });
-        }
-        async function encodeByteArray(array) {
-            return new Promise((resolve) => {
-                const blob = new Blob([array]);
-                const reader = new FileReader();
-
-                reader.onload = (event) => {
-                    const dataUrl = event.target.result;
-                    const [_, base64] = dataUrl.split(',');
-
-                    resolve(base64);
-                };
-
-                reader.readAsDataURL(blob);
-            });
-        }
-
-        const codecs={
-            'gzip':{
-                header:'1-',
-                encoder:async function(code){
-                    var header       = '1-';
-                    // Compact JSON
-                    var json         = JSON.stringify(code);
-                    // Compress JSON with gzip
-                    var encoded_data = await compress(json, "gzip")
-                    // Base64url encode data
-                    var buffer       = await encodeByteArray(encoded_data);
-                    var base64String = urlSafeBase64Encode(buffer.toString())
-                    var msg          =`${header}${base64String}`;
-                    return msg;
-                },
-                decoder:async function (msg){
-                    var header       = '1-';
-                    var base64url    = msg.replace(header,'');
-                    // base64ToBytes() requires base64 without padding, so we pass padding=false
-                    var base64       = urlSafeBase64Decode(base64url,false);
-                    var encoded_data = await base64ToBytes(base64)
-                    var json         = await decompress(encoded_data,"gzip");
-                    var obj          = JSON.parse(json);
-                    return obj;
-                },
-            },
-            'json-url-lzma':{
-                header:'XQ',
-                encoder:async function(code){
-                    const lzma   = JsonUrl('lzma'); // JsonUrl is added to the window object 
-                    const msg    = await lzma.compress(code);
-                    return msg;
-                },
-                decoder:async function (msg){
-                    const lzma   = JsonUrl('lzma');
-                    const obj    = await lzma.decompress(msg);
-                    return obj;
-                },
-            },
-            'base64url':{
-                header:'0-',
-                encoder:async function(code){
-                    var header       = '0-';
-                    var json         = JSON.stringify(code);
-                    var base64String = base64urlEncode(json);
-                    var msg          =`${header}${base64String}`;
-                    return Promise.resolve(msg);
-                },
-                decoder:async function (msg){
-                    var header       = '0-';
-                    var base64String = msg.replace(header,'');
-                    var json         = base64urlDecode(base64String);
-                    var obj          = JSON.parse(json);
-                    return Promise.resolve(obj);
-                },
-            },
-        }
-        function gcEncoder(obj,codec='gzip'){
-            return codecs[codec].encoder(obj);
-        }
-        function gcDecoder(msg,codec){
-            let _useCodec=codec;
-            if(!_useCodec)
-                Object.keys(codecs).forEach(_codec=>{
-                    const header=codecs[_codec].header;
-                    if(msg.startsWith(header))
-                        _useCodec=_codec;
-                });
-            return codecs[_useCodec].decoder(msg);
         }
 
 

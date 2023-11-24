@@ -90,6 +90,7 @@ Suggested articles:
 - "All connections goes through GameChanger Wallet", and it's not fully open source: The wallet has been created by a solo-developer and his colaborator team, we want to be very clear about this: we want to opensource it and make this wallet the wallet of Cardano's people, but with very little funding support, running costs out of our savings and our partnership's, and 2 years of underpayed hard work, we need to ensure our sustainability first. If we manage to compensate the efforts and ensure our future to keep building without worrying too much about the money, the wallet will be yours. We want to make it open source as we love this project since 2021 and we truly believe this is something Cardano needs. We want to keep helping, but for that we need your help as well.
 
 ## Resources
+- [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [70+ open source example dapps](examples/README.md)
 - [Beta Release Notes](RELEASE.md)
 - [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)

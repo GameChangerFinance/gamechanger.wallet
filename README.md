@@ -27,12 +27,23 @@ The smart design principles of the wallet allows you to import or connect these 
 ## Examples and special use cases:
 
 ### Dapps:
-
+- Examples using **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:
+    - [URL](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/URL.txt)
+    - [QR (png)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.png)
+    - [QR (svg)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.svg)
+    - [Button](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/button.html)
+    - [HTML5 Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/htmlDapp.html)
+    - [ReactJs Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/reactDapp.html)
+    - [ExpressJs Backend](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/expressBackend.js)
 - **[70+ full open source example dapps](examples/README.md)**
     - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://beta-wallet.gamechanger.finance/playground)
     - GCScript code
     - Full HTML5 frontend code with zero external dependencies, and zero backends!
     - QR code dapp connectors included    
+- [gc-contract-app](https://github.com/M2tec/gc-contract-app)
+    - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
+    - It builds a smart contract on-the-fly using *Helios Language*, 
+    - like many GC dapps it does not use backends
 - [Helios Timelock](https://github.com/GameChangerFinance/cardano-gc-helios-dapp)
     - First dapp on Cardano working from hosted source code stored on-chain. 
     - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
@@ -60,6 +71,7 @@ The smart design principles of the wallet allows you to import or connect these 
  
 
 ## Resources
+- [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Beta Release Notes](RELEASE.md)
 - [70+ open source example dapps](examples/README.md)
 - [Universsal Dapp Connector documentation](DAPP_CONNECTOR.md)
