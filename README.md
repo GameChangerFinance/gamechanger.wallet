@@ -38,7 +38,8 @@ The smart design principles of the wallet allows you to import or connect these 
 - **[70+ full open source example dapps](examples/README.md)**
     - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://beta-wallet.gamechanger.finance/playground)
     - GCScript code
-    - Full HTML5 frontend code with zero external dependencies, and zero backends!
+    - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero backends!
+    - HTML5 frontend code with zero external dependencies, and zero backends!
     - QR code dapp connectors included    
 - [gc-contract-app](https://github.com/M2tec/gc-contract-app)
     - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
