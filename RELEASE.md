@@ -138,6 +138,7 @@ Links:
     * [#NFT Creator (single, collections)](https://discord.com/channels/912354788795109396/921686703410913311)
     * [#Playground IDE (development, API, Dapps)](https://discord.com/channels/912354788795109396/921687306241458207)
     * [#Migration Journey (from V1 to V2 API)](https://discord.com/channels/912354788795109396/1072546593665990776)
+* [Catalyst](catalyst/CATALYST.md)
 * [Twitter](https://twitter.com/GameChangerOk)
 * [Youtube](https://youtube.com/@gamechanger.finance)
 * [Website](https://gamechanger.finance)

@@ -45,6 +45,12 @@ The smart design principles of the wallet allows you to import or connect these 
     - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
     - It builds a smart contract on-the-fly using *Helios Language*, 
     - like many GC dapps it does not use backends
+- [Inception IDE Beta](https://inception.m2tec.nl/)
+    - First stand-alone IDE for building **Cardano** dapps fully online (client side PAB)
+    - in browser, no cardano-node deployment required. 
+    - on-chain and off-chain code, **Helios Language**, **GCScript** and externaly-built **Plutus Scripts**
+    - dapp <--> wallet connections you code here can be used on your own backends and frontends
+    - By **Maarten Menheere**. [Github](https://github.com/M2tec/inception)
 - [Helios Timelock](https://github.com/GameChangerFinance/cardano-gc-helios-dapp)
     - First dapp on Cardano working from hosted source code stored on-chain. 
     - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
@@ -75,9 +81,10 @@ The smart design principles of the wallet allows you to import or connect these 
 - [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Beta Release Notes](RELEASE.md)
 - [70+ open source example dapps](examples/README.md)
-- [Universsal Dapp Connector documentation](DAPP_CONNECTOR.md)
+- [Universal Dapp Connector documentation](DAPP_CONNECTOR.md)
 - [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 - [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
+- [Catalyst](catalyst/CATALYST.md)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)
 - [Discord Support](https://discord.gg/vpbfyRaDKG)
 - [Twitter News](https://twitter.com/GameChangerOk)
