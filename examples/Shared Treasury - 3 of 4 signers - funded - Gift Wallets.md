@@ -3,13 +3,13 @@
 
 ## **Shared Treasury - 3 of 4 signers - funded - Gift Wallets**
 
-Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Customize Gift Wallet generation with proper password settings and distribute them to the signers. This example is not secure as wallet creator has total control over the generated wallets. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
+Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer Gift wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Customize Gift Wallet generation with proper password settings and distribute them to the signers. This example is not secure as wallet creator has total control over the generated wallets. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
 
 
 ## Try it online: 
 
 -  Visit [HTML5 Dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Shared%20Treasury%20-%203%20of%204%20signers%20-%20funded%20-%20Gift%20Wallets.html)
--  Run [Standalone URL dapp connection](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VX227jNhD9FVZF4V0gsZM4aAG_uQk2CbrdBo2LoGiDgJZGNhGJVEhqbcHwT_S92F_cT-gMSV18SbDetgYcSzPk4cyZCyeryFYFRKPIxFoUNjqKrLAZCe7mXEPCJhq4KXXFjtmQqZSdMyNmErRBQVrKBJccsyuRWnbPswysQYgEPJpQEoEuEMGCYZwtlH4yBY-BSZ7jxt7l-JceWwg7R2Vv68Ae40miwRi2mIMGxi3LUGM3zWALfyrDvUzDcykII1WamQJkIuSMcZkwY_kTPasCNCe7TJ-NmYFYobI-R0lm59CxUhgWE7xmOReyWccNGutO7_XZRKFS8hm4vbZmy4B9xSNEiEutQVoHQK6QjLMc8inoo7Ddn9HsEtJY4EkfGYZlobQdG6T3kisUaLClRrZXUa4SCl-GVEVrVJROGmiixxBwL7kCSYwojRg8V6W00eicIpjyMrMfMEy33Fog6OhnZxxbCYz6ch01qy7bcLeLfTa4SGCUWdj77c7mn6DaPuFxZ9G1kLZd9bsqNSu4MRiphILUW9Vv6x5uetbRyOoScLtayEzxxL8jG4FK6BKR81g7Cj1TwYYT1KxmYMd-x41M1Rt8fdOLeTyHfuCzX6_uB-Te27dkdxCfHgRyuh_k7CCQs_0gw4NAhhsgayTOL7jDLCs61BG3F0qmYoYnlUWCdX6TNDmZ8Qr7RDT6o1l_X5cWaoWF3CvlRpYlbq_rQq0QU2izr-wkGlaMxQo3WIbYKeKm5xhfg01hYu_Y30nMl3SNaP2wPmrcwdxFq5p-cZOQP86Bh5f9cycc-0LH3XhAUkupBuOYivCGCiAanTQZWwvo9C08NBJ28Uj6JXhdfz6gkx_hrr4JXnBsJ1yPqyeo1o_NDRI8XwWn8IHb90R4NBoeRSqdzMHAZqmtoqKcIp3X3MyvyTCXrHV2NlXbllvBqxzbZ9jSoyztVt2BeKev4p0djHf2Kt7wYLzhPjwqSx_m_4XhkPz_GcOv4X0Nw6_hfQ3De_Do01ZHaJ2HV7y_x3Gfq4dbZxbdrLvNwIVzc0G3uneLf2vCqM_oFnIAojp1urZOHfZLS0lXL8Um8UDJBrZt4O0lgOILP8x023uHo9DU1x3heM893N5OQCSnIkMnSS-9Wdu-It5Td3ggs0NcSYcTwebAg7cTR9yPPCvBRalQmYgrZx9PSOW2BBK85LnkEq-iCgWnJ_7jroBoWoosGQudaNW9EJ14suyM0Z8__fW3m4DqxfWs9tuv71vb59YWZjQYzHAWLqf9WOWDK7TjYs7lDPQ7IbmMYTBDUexF4cYeTDM1HdB0OoAlz4sMzMDz9N3ZSc0UPh7jd4hfleKfc_yGOy-o_CAfXmiYx58wzvdzupbskpxUpS1K61O8ZnqzrnYD3O-EpZ0q1lEboM3CdEJXfVhRvFyKTHBdXVLs0ILvfzh3M66ZUd3dQ4ZM4dStGHY89q5EXoHu9AuuEy7VN39KmoBwgBToLw3QbkgveJbTqormSKQzcct-rFiH8vDfDGoe1r7TImG78SbpZGkcQ64VdH3p5kjfLrELkV8PNMdYLjJIbkHnwhg3WIxSnhkaUU05zYXdc5STdw7bOKtjXmiFKSZNllUvD7ohBbYj6MPuQ-SHpzqPxv8-5N7CyZJa7BbONludJvwPn5Qii6UOAAA)
+-  Run [Standalone URL dapp connection](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VW604rNxB-FXerKq0ECRxQK-VfGsRFPecUFSpUtQg5u5OshddefIGkUV6i_6u-Yh-hM7Y3u0kAHU5bpCW74_HnmW8unmXmFjVkw8zmRtQu28uccJIEVyU3ULBrA9x6s2D77IjpKTtmVswUGIuCqVcFquyzMzF17IZLCc4iRAERTWiFQGNEcGAZZ0_a3Nua58AUr3Bj72T0Y489CVfiYm_rwB7jRWHAWvZUggHGHZO44jbNiEc_xaMZAjADD14Q0FQbZmtQhVAzxlXBrOP39K5rMJyMs302YhZyjYvNYVoxV0LHVGFZTvCGVVyotR63aHEwoddn1xoXFZ9B2Osayiy4V9xChNwbA8oFAPKHZJxVUE3A7KXt8Yz1LqGsA1702dhbpyvxO3TZZzNQybnIa23IW1Zza9GlgjAdcmADIYWwzoiJd8Huijkd7E8BRqtKdB7mvKpl4EFpR3R5ioZNpLOcwotUlyhy2nHJkE9ntGT6EU8mwGQUspAC1WeXFEtgHp-e5Y8w1moqZj1KqTxYj7aQHPfjwWi1ryk0Z-PTK1rij1oUTGpL8aQ0TA5xxzH_YF5r40YWk--EaxQY3G8wF5dZpQtKbomJlK1wwQdpMoteUzlEyVk0XBvE4JX2ymXDY8rvKffSfcQkvuTOAUFnH0LU2FJgTcxX2VrrpC2GVjlFi1IUa4ClvV_ubP4BFtsn3O0onQvlWq1ftO_EG8nrLZuvVQ83PZhs6IwH3K6flNS8aL5h7gyPH0hNZOCKmO_wQvoxVgjlayQcLoo1z5IvMHGy4a9r_ZumjnBVOKjiotpgrgh7Q99phUjLZifZIW-dyq7kKQ1Dl7Gx4NZViN3i-d5hP6VFZKvb1d7aHYwHWrVuDhcF-RMcuH3Zv3DCfqxq3I0HFI2U8irPKbEuKKjZ8AAFsdIbAZ2-hYdGwi4eST8Fr-vPR3TyEa6a3v-CYzvhulvew2J1t74zkufL5BS-cPeeCM-GR3uZnl6XYIHEKYUP6L32E6TznNvynAzLljNwX_dynpfQb_pEo98PwK1675sVlW9aPnwj3OHrcO_eCPfudbijN8IdPQu3QsAY4v-DXQL-D9l9De4z2H0N7jPYfQaO_tqqGMWKeXulx8sa94UIXgar6JbYbQLBiE2FblXvFv3WGNGc0S3gBET1Gdba-gzYL6nSWqOKzeGWEg1c27jb5o_icZxYum29w1Fq5quOMHEJ3csVo9OK97KpkOgkrato1raviHffvQjJ7NTVaA1vt83LO40Bj1x6CFGqtRT5ItjHC1oKWxIJUfLgucIraIGCw4P4F1p_NvFCFiNhCpykOmcE8fW8MzD__dcff4bbvFFu5o6ff3rf2l46V9vhYDDD6cxP-rmuBmdox7jkagbmVCiuchjMUJRHUUrgwUTqyYBG0EGayOwg8vTVu4OGKXzdx-cIHz3Ff8f4pLsuLcWRPX3Q4Ig_aXDvV3QduTk5qb2rvYsp3jC9VVY7Ae53wtJPv1RcbYA2AKIwVB9WFPdzIQU3ixOKHVrw7XfHYV6zM6q7G5DIFNDoh92OnXpHQyje5WNuCq70F78pPOcDDkMC_aUpOQyeNZcVaS1oJkI6i6D2_YJ1KE-TM67crmKXRcJ2403S67kNDIVW0PWlmyN9N09d5ZbmF8eFhOISTCWsDQPFcMqlpQnL-kkl3DNHBXnnsI2zOualTjjFpJFy0UGoeG7C3BvH25QCzzfGGKI4NDV5NPr3IY8WXs-py27hbLOFGk0T_gdgAxqmjw4AAA)
 
 ## Source code:
 
@@ -24,7 +24,7 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://b
 {
   "type": "script",
   "title": "Shared Treasury - 3 of 4 signers - funded - Gift Wallets",
-  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.",
+  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer Gift wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Customize Gift Wallet generation with proper password settings and distribute them to the signers. This example is not secure as wallet creator has total control over the generated wallets. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data",
   "exportAs": "Dao",
   "return": {
     "mode": "last"
@@ -38,16 +38,8 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://b
       "defaultKeyPattern": "Member_{index}",
       "defaultHintPattern": "Your password is '{password}'",
       "qr": true,
-      "download": true
-    },
-    "addresses": {
-      "type": "macro",
-      "run": {
-        "Member_0": "{getAddressInfo(get('cache.wallets.Member_0.address'))}",
-        "Member_1": "{getAddressInfo(get('cache.wallets.Member_1.address'))}",
-        "Member_2": "{getAddressInfo(get('cache.wallets.Member_2.address'))}",
-        "Member_3": "{getAddressInfo(get('cache.wallets.Member_3.address'))}"
-      }
+      "download": true,
+      "extra": true
     },
     "walletSetup": {
       "type": "loadConfig",
@@ -94,16 +86,16 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://b
               "atLeast": 3,
               "ofThese": {
                 "Member_0": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_0.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_0.spendKeyHashHex')}"
                 },
                 "Member_1": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_1.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_1.spendKeyHashHex')}"
                 },
                 "Member_2": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_2.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_2.spendKeyHashHex')}"
                 },
                 "Member_3": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_3.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_3.spendKeyHashHex')}"
                 }
               }
             },
@@ -111,16 +103,16 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://b
               "atLeast": 3,
               "ofThese": {
                 "Member_0": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_0.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_0.stakeKeyHashHex')}"
                 },
                 "Member_1": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_1.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_1.stakeKeyHashHex')}"
                 },
                 "Member_2": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_2.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_2.stakeKeyHashHex')}"
                 },
                 "Member_3": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_3.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_3.stakeKeyHashHex')}"
                 }
               }
             }

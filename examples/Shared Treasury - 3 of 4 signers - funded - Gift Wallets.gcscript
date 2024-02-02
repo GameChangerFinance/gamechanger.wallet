@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Shared Treasury - 3 of 4 signers - funded - Gift Wallets",
-  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.",
+  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer Gift wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Customize Gift Wallet generation with proper password settings and distribute them to the signers. This example is not secure as wallet creator has total control over the generated wallets. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data",
   "exportAs": "Dao",
   "return": {
     "mode": "last"
@@ -15,16 +15,8 @@
       "defaultKeyPattern": "Member_{index}",
       "defaultHintPattern": "Your password is '{password}'",
       "qr": true,
-      "download": true
-    },
-    "addresses": {
-      "type": "macro",
-      "run": {
-        "Member_0": "{getAddressInfo(get('cache.wallets.Member_0.address'))}",
-        "Member_1": "{getAddressInfo(get('cache.wallets.Member_1.address'))}",
-        "Member_2": "{getAddressInfo(get('cache.wallets.Member_2.address'))}",
-        "Member_3": "{getAddressInfo(get('cache.wallets.Member_3.address'))}"
-      }
+      "download": true,
+      "extra": true
     },
     "walletSetup": {
       "type": "loadConfig",
@@ -71,16 +63,16 @@
               "atLeast": 3,
               "ofThese": {
                 "Member_0": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_0.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_0.spendKeyHashHex')}"
                 },
                 "Member_1": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_1.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_1.spendKeyHashHex')}"
                 },
                 "Member_2": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_2.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_2.spendKeyHashHex')}"
                 },
                 "Member_3": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_3.paymentKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_3.spendKeyHashHex')}"
                 }
               }
             },
@@ -88,16 +80,16 @@
               "atLeast": 3,
               "ofThese": {
                 "Member_0": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_0.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_0.stakeKeyHashHex')}"
                 },
                 "Member_1": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_1.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_1.stakeKeyHashHex')}"
                 },
                 "Member_2": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_2.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_2.stakeKeyHashHex')}"
                 },
                 "Member_3": {
-                  "pubKeyHashHex": "{get('cache.addresses.Member_3.stakingKeyHash')}"
+                  "pubKeyHashHex": "{get('cache.wallets.Member_3.stakeKeyHashHex')}"
                 }
               }
             }
