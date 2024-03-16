@@ -78,6 +78,7 @@ The smart design principles of the wallet allows you to import or connect these 
  
 
 ## Resources
+- [General Documentation](docs/README.md)
 - [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Beta Release Notes](RELEASE.md)
 - [70+ open source example dapps](examples/README.md)
