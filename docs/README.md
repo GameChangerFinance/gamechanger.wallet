@@ -7,8 +7,8 @@
     - [Overview](universal-dapp-connector/overview.md)
 - [GCScript DSL](gcscript/README.md)
     - [Overview](gcscript/overview.md)
-    - [Syntax](gcscript/syntax.md)
     - [Quick Start](gcscript/quick-start.md)
+    - [Syntax](gcscript/syntax.md)
 <!--
 - [GCScript on Steroids: with Inline Scripting Language (ISL)](gcscript/ISL/README.md)
         - [Overview](gcscript/ISL/overview.md)

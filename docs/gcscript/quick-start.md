@@ -60,6 +60,7 @@ In the next section you will understand this code syntax better, but basically y
 
 You sent GCScript code (JSON) to the wallet core and the wallet core responded with JSON.
 
+
 ## Deploying your first Dapp
 
 You have been using a special transport called `local transport`, which is meant for launching in-wallet dapp connections or also for developing your own dapps, exactly what you are doing right now. 
@@ -86,13 +87,26 @@ Yes!
 
 - Click `Continue` and to run the dapp connection you coded and this time the `Return with data` button at the end of the wizard will deliver the JSON results back to the dapp, where you will see them. Same results as the one you obtained testing locally.
 
+
+<details>
+  <summary>"How to do this on a Cardano Testnet?"</summary>
+
+GameChanger Wallet have a Cardano Pre-Production Testnet version. It even have a built-in tAda + tokens + nfts airdrop!
+
+- Go to [GameChanger Wallet for Cardano Pre-Production Testnet](https://beta-preprod-wallet.gamechanger.finance/) 
+- Follow the same instructions you followed above, even use the same GCScript code
+
+To adapt a code in GCScript to work for a specific network you just need to use data or expect results specific for that network, for example for testnets you use addresses starting with `addr_test1`. Also when using the `url` and `qr` transports just take care of pointing to the right wallet URLs.
+
+</details>
+
 ## Coding your own frontend, backend or hardware to connect to the wallet
 
 Playground IDE automated the process of building and deploying a simple HTML + Javascript dapp for you, after you master more your GCScript skills you can start coding your own dapps using our [Official NPM Library](https://www.npmjs.com/package/@gamechanger-finance/gc) for Javascript/Typescript. 
 
 If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to stablish communications by using standard building blocks available on all platforms and programming languages. 
 
-In addition to the in-wallet IDE, you can create full projects using [Inception IDE (Beta)](https://inception.m2tec.nl/), a powerful GCScript and Helios code editor and development environment by M2Tec.
+In addition to the in-wallet IDE, you can create full projects using [Inception IDE (Beta)](https://inception.m2tec.nl/), a powerful GCScript and Helios code editor and development environment by [M2Tec](https://www.m2tec.nl/cardano).
 
 Now it's time for you to learn some GCScript syntax!
 
