@@ -15,6 +15,7 @@
     - [Payments](transactions/payments.md)
     - [Minting Tokens and NFTs](transactions/minting.md)
     - [Smart Contracts](transactions/smart-contracts.md)
+    
 <!--
 - [GCScript on Steroids: with Inline Scripting Language (ISL)](gcscript/ISL/README.md)
         - [Overview](gcscript/ISL/overview.md)
