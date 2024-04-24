@@ -34,7 +34,7 @@ Let's create a payment request on user's wallets, anyone "connecting" or running
                         "assets": [{ "policyId": "ada", "assetName": "ada", "quantity": "1500000"}]
                     },
                 ],
-                // Add these lines if you also want multisig wallets to be able to run this script 
+                // Add these lines if you also want seamless support for multisig wallets 
                 // "options": {
                 //     "autoProvision": {
                 //         "workspaceNativeScript": true

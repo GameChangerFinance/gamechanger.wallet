@@ -15,20 +15,13 @@
     - [Payments](transactions/payments.md)
     - [Minting Tokens and NFTs](transactions/minting.md)
     - [Smart Contracts](transactions/smart-contracts.md)
-    
-<!--
-- [GCScript on Steroids: with Inline Scripting Language (ISL)](gcscript/ISL/README.md)
-        - [Overview](gcscript/ISL/overview.md)
-        - [Syntax](gcscript/ISL/syntax.md)
-        - [GCScript with ISL](gcscript/ISL/integration.md)
-
 - [Cardano Workspaces](workspaces/README.md)
     - [Overview](workspaces/overview.md)
+    - [Quick Start](workspaces/quick-start.md)
+    - [Keys](workspaces/keys.md)
+    - [Addresses](workspaces/keys.md)
     - [Personal Account Wallets](workspaces/accounts.md)
-    - [Multisig Wallets](workspaces/multisigs.md) 
-    
--->
-
+    - [Multisigs Wallets](workspaces/multisigs.md)
 
 
 ## Resources
