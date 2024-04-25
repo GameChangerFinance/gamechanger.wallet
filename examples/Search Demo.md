@@ -71,7 +71,7 @@ You can use [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechan
 ## Resources
 - [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Github Docs and examples](https://github.com/GameChangerFinance/gamechanger.wallet/)
-- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2)
 - [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)
 - [Discord Support](https://discord.gg/vpbfyRaDKG)

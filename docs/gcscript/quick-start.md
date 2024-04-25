@@ -35,6 +35,12 @@ No more theory until next section, let's run some GCScript right now!
 }
 ```
 
+🔍 *See also:*
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
+[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html)
+
 - Now execute the code by clicking on the green `Run ▸` button. 
 
 - Click `Continue`.

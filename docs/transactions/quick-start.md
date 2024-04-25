@@ -62,6 +62,15 @@ Let's create a payment request on user's wallets, anyone "connecting" or running
 }
 
 ```
+
+
+🔍 *See also:*
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 Now this code can be statically or programmatically packed as a URL like this using [Playground IDE](https://beta-preprod-wallet.gamechanger.finance/playground), our [NPM Library and CLI](https://www.npmjs.com/package/@gamechanger-finance/gc) or the programming language of choice:
 
 ```

@@ -102,6 +102,12 @@ Let's learn how to build the 3 type of addresses by creating a new workspaces ca
 }
 
 ```
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 On **Workspaces** page the new *My Addresses* workspace will look exactly like this:
 
 
@@ -230,6 +236,12 @@ Please wipe your workspaces to continue with a clean testing wallet setup.
 }
 
 ```
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 On your wallet, on **Workspaces** page, the new *My Addresses* workspace will look similarly to this one on my wallet:
 
 
@@ -321,6 +333,11 @@ On gcscript:
 }
 
 ```
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 
 ## The Default Address
 

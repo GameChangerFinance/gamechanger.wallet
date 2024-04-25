@@ -129,6 +129,11 @@ We will create only the first 5 base addresses, using a the **accountIndex** 5. 
 
 ```
 
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 On your wallet, on **Workspaces** page, the new *HD Addresses* workspace will look similarly to this one on my wallet:
 
 
@@ -353,6 +358,12 @@ On the *dapp connector interface*, if you go to **advanced->code** tabs, you wil
   }
 }
 ```
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 *Can you identify the design pattern?*
 
 If you run the script, and then select **Anonymous Multi Delegation** workspace as current, on **Address Picker** you will have a group of addresses like mine:

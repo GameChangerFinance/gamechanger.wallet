@@ -86,6 +86,10 @@ The way GCScripts and their JSON results are packed and shared between agents an
 }
 ```
 
+🔍 *See also:*
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html)
+
 *and the isomorphic results:*
 ```json
 {

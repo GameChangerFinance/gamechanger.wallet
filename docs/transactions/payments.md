@@ -69,6 +69,12 @@ Here is a minimal example of just 1 output of 1 tADA to 1 address.
 
 ```
 
+🔍 *See also:*
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 When the script runs on a user's wallet, a transaction with one outgoing output will be built, require to be signed through wallet user interface and submitted to the blockchain.
 
 Users will be spending 1 tADA from the output + around 0.18 tADA for network fees. The bigger in bytes the transaction gets, bigger will be the fee.
@@ -163,6 +169,13 @@ Here is an example for making a payment to 6 addresses on a single transaction, 
 
 ```
 
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 When the script runs on a user's wallet, the transaction will be built, signed and submitted, the script will return something like this:
 
@@ -280,6 +293,14 @@ Let's send a unique message to the 6 addresses using CIP-20, a well known messag
 }
 
 ```
+
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 Run the example with addresses from wallets you own or you have access to, to check the sender's message ;)
 
@@ -425,6 +446,14 @@ Let's create now the opposite situation, we will send 1 tADA to each of the 6 pr
 
 ```
 
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 And after the script builds the 6 transactions sequentially, sign and submit all the transactions at once, you will receive some exported results like this:
 
 ```json
@@ -491,6 +520,12 @@ Well for that you will need those on your wallet. We will mint some on the next 
 }
 
 ```
+
+🔍 *See also:*
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 On Cardano there are several ledger rules, one of those is that there is a practical *minimum coin value per output* that you need to fulfill in order for a transaction to be valid. 
 

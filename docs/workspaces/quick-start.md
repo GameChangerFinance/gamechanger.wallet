@@ -162,6 +162,13 @@ Finally she found out about GameChanger Wallet Workspaces and she wanted to give
 }
 
 ```
+
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 ### Running the script
 
 Alice was working on Cardano Mainnet, so let's go step by step on replicating her setup.
