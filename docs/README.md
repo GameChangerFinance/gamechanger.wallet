@@ -15,6 +15,7 @@
     - [Payments](transactions/payments.md)
     - [Minting Tokens and NFTs](transactions/minting.md)
     - [Smart Contracts](transactions/smart-contracts.md)
+    - [Multi-signatures](transactions/multisig.md)
 - [Cardano Workspaces](workspaces/README.md)
     - [Overview](workspaces/overview.md)
     - [Quick Start](workspaces/quick-start.md)
