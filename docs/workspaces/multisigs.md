@@ -69,6 +69,12 @@ For all the examples on this chapter let's automate the creation of your own set
     }
 }
 ```
+
+🔍 *See also:*
+[walletGenerator](https://beta-wallet.gamechanger.finance/doc/api/v2/walletGenerator.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 **Note:** use `"secrets":true` and run in *system* mode to also obtain the random-generated seed phrases and private keys on function output. Remember you can also create **Gift Wallets** (onboarding) or **Express Wallets** (personal) QR wallets from seed phrases through **GameChanger Wallet** user interface.
 
 These were my results, the ones I will use along the chapter. I recommend you to create and store your own set of wallets and results to avoid testing interference across the multisig exercises. 
@@ -251,6 +257,10 @@ The shareable workspace loader code:
 
 ```
 
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 After selecting `Multisig Wallets` as current workspace, this is how your **Address Picker** will look like:
 
 <div style="text-align:center">
@@ -360,6 +370,11 @@ The shareable workspace loader code:
 
 ```
 
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 After selecting `Multisig Wallets` as current workspace, this is how your **Address Picker** will look like:
 
 <div style="text-align:center">
@@ -432,6 +447,13 @@ Here's an example of a seamless and wallet-agnostic transaction design that work
 }
 
 ```
+
+
+🔍 *See also:*
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 "But wait, what that has to do with me?"
 

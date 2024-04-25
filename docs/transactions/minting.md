@@ -170,6 +170,16 @@ On this example we will be using a self-sovereign user native script to rule ove
 
 ```
 
+🔍 *See also:*
+[script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),
+[getSpendingPublicKey](https://beta-wallet.gamechanger.finance/doc/api/v2/getSpendingPublicKey.html),
+[nativeScript](https://beta-wallet.gamechanger.finance/doc/api/v2/nativeScript.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 So in conclusion, we first mint
 - \+ 100x WillDieToken
 - \+ 1x WillNotDieToken
@@ -356,6 +366,19 @@ Let's mint 1 NFT!
 }
 
 ```
+
+🔍 *See also:*
+[script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html),
+[nativeScript](https://beta-wallet.gamechanger.finance/doc/api/v2/nativeScript.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 
 # Contracts or Validators?
 

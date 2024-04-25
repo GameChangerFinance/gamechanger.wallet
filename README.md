@@ -6,7 +6,7 @@
 
 GameChanger is a very powerful, customizable, yet friendly, non custodial web light wallet. 
 
-Since 2021 unleashes Cardano's and eUTXO potential while democratizing users, developers and students access.
+Since 2021 unleashes Cardano and eUTXO potential while democratizing users, developers and students access.
 
 The smart design principles of the wallet allows you to import or connect these wallet types to it:
  - seed phrase
@@ -22,7 +22,7 @@ The smart design principles of the wallet allows you to import or connect these 
 ## Links
 
 - [Mainnet wallet](https://beta-wallet.gamechanger.finance/)
-- [Preproduction Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
+- [Pre-Production Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
 
 ## Examples and special use cases:
 
@@ -83,7 +83,7 @@ The smart design principles of the wallet allows you to import or connect these 
 - [Beta Release Notes](RELEASE.md)
 - [70+ open source example dapps](examples/README.md)
 - [Universal Dapp Connector documentation](DAPP_CONNECTOR.md)
-- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2)
 - [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
 - [Catalyst](catalyst/CATALYST.md)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)

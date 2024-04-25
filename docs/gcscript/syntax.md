@@ -14,7 +14,7 @@ In GCScript a function call is a JSON object with a `type` property. It's value 
     "type": "getCurrentAddress",
 }
 ```
-*The `getCurrentAddress` function returns current wallet address and has no arguments.*
+*The [getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html) function returns current wallet address and has no arguments.*
 
 
 *Example of a function call with an argument named `value`:*
@@ -31,7 +31,8 @@ In GCScript a function call is a JSON object with a `type` property. It's value 
     ]
 }
 ```
-*The `data` function returns the JSON type passed as `value` argument, and allows you to define a constant.*
+*The [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html) function returns the JSON type passed as `value` argument, and allows you to define a constant.*
+
 
 ## Blocks of Code
 
@@ -49,6 +50,11 @@ The body, the nested code, is a key-value map (or list) of function calls passed
     }
 }
 ```
+
+🔍 *See also:*
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html)
+
 *But this is the result of that code:*
 ```json
 {
@@ -80,6 +86,10 @@ So in other terms, in order to return data from script execution back to a dapp 
 }
 ```
 
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 *and now these are the expected results:*
 ```json
 {
@@ -110,6 +120,11 @@ This root `script` function call has some unique superpowers, for example it can
     }
 }
 ```
+
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 *and then results will be packed and shared back to that dapp by redirecting the user to the produced URL*
 ```json
 "https://yourCustomDappSite.com/dappCallExecutionResults/1-H4sIAAAAAAAAA6tWSq0oyC8qKVayqlbKrXTLLCoucQWLgASKUotLc0oMDJWslByVdGBcIyDXCcE1BnKdlWprawHx4ftoTAAAAA/view"
@@ -155,6 +170,10 @@ We can understand isomorphism better by nesting some code blocks and check resul
 }
 ```
 
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 *and the isomorphic results:*
 ```json
 {
@@ -195,11 +214,15 @@ Usually GCScript turns lists into key-value maps to make lists and maps equally 
     ]
 }
 ```
-*The `getName` function returns current wallet name and has no arguments.*
+🔍 *See also:*
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
-*The `getCurrentAddress` function returns current wallet address and has no arguments.*
 
-*The `getCurrentSlot` function returns current blockchain slot number and has no arguments.*
+*The [getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html) function returns current wallet name and has no arguments.*
+
+*The [getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html) function returns current wallet address and has no arguments.*
+
+*The [getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html) function returns current blockchain slot number and has no arguments.*
 
 Now because underneath lists are normalized into key-value maps with item indexes as map keys, we can do this:
 
@@ -215,6 +238,13 @@ Now because underneath lists are normalized into key-value maps with item indexe
     }
 }
 ```
+
+🔍 *See also:*
+[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 
 *And in both cases, results will be exactly the same:*
 ```json
@@ -247,6 +277,13 @@ Let's self document this code better:
     }
 }
 ```
+
+🔍 *See also:*
+[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 
 *and this time results are, well, self-documented and isomorphic:*
 ```json
@@ -530,6 +567,11 @@ Lets explore all these on an example, but we will leave explanations for the `ma
 }
 ```
 
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 *and the results:*
 ```json
 {
@@ -572,6 +614,14 @@ Same like on other languages, you can pass arguments to a user-defined function 
     }
 }
 ```
+
+🔍 *See also:*
+[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 also you can pass arguments differently by passing one argument to each children function call individually
 
 *Example of passing a user-defined argument per child function call on a block of code:*
@@ -592,6 +642,13 @@ also you can pass arguments differently by passing one argument to each children
 }
 ```
 
+🔍 *See also:*
+[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 also both techniques work together if combined in such a way that if a child argument has not been provided to `argsByKey`, `args` value will be passed by default as a fallback
 
 *Example of passing a user-defined argument per child function call and a fallback on a block of code:*
@@ -611,6 +668,14 @@ also both techniques work together if combined in such a way that if a child arg
     }
 }
 ```
+
+🔍 *See also:*
+[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[getCurrentSlot](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentSlot.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 How to access and use these arguments, the cache memory, and other topics will be addressed once you get to know how to code on GCScript's Inline Scripting Language (ISL).
 
 ## Full API documentation
@@ -621,8 +686,8 @@ Ok, here you have them:
 
 | Network  | API Documentation  |
 | :------ | :----------- |
-| Cardano Mainnet | [HTML Docs](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html) |
-| Cardano Pre Production Testnet | [HTML Docs](https://beta-preprod-wallet.gamechanger.finance/doc/api/v2/api.html) |
+| Cardano Mainnet | [HTML Docs](https://beta-wallet.gamechanger.finance/doc/api/v2) |
+| Cardano Pre Production Testnet | [HTML Docs](https://beta-preprod-wallet.gamechanger.finance/doc/api/v2) |
 
 Remember that GCScript DSL is a language defined by a JSON schema, so here are the latest auto-generated docs, self-hosted on the wallet itself. Schema between networks are the same but maybe some examples will change based on each one in the future.
 

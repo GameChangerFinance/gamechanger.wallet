@@ -8,7 +8,7 @@
 - [Universal Dapp Connector documentation](/DAPP_CONNECTOR.md)
 - [70+ open source example dapps](/examples/README.md)
 - [Beta Release Notes](/RELEASE.md)
-- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2)
 - [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
 - [Catalyst](/catalyst/CATALYST.md)
 - [Youtube (Tutorials)](https://www.youtube.com/@gamechanger.finance)

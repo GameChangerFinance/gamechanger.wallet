@@ -171,6 +171,16 @@ And the rule will be to provide the right password, the number we decide to stor
 
 ```
 
+🔍 *See also:*
+[plutusData](https://beta-wallet.gamechanger.finance/doc/api/v2/plutusData.html),
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 And these were my results
 ```json
 {
@@ -352,6 +362,19 @@ With all the exported data from previous results embedded on the new gcscript, I
 }
 
 ```
+
+
+🔍 *See also:*
+[plutusData](https://beta-wallet.gamechanger.finance/doc/api/v2/plutusData.html),
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
+
 finally 5 tADA were spent or withdrawn from smart contract and these were my results:
 
 ```json
@@ -468,6 +491,17 @@ And to stop worrying about trusting opaque pre-baked or pre-built Cardano struct
 
 ```
 
+🔍 *See also:*
+[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
+[plutusScript](https://beta-wallet.gamechanger.finance/doc/api/v2/plutusScript.html),
+[buildAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/buildAddress.html),
+[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
+[script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 This is how I built the contract in first place.
 
 And now you have all the required knowledge to adapt the *Locking and Unlocking* examples to use a Plutus Script compiled on-the-fly, transparently, on users wallets, to foster auditability, interoperability and open source collaboration.
@@ -477,4 +511,4 @@ Finally keep in mind that this on-the-fly wallet-side smart-contract compilation
 Here is a [dapp](https://github.com/GameChangerFinance/cardano-gc-helios-dapp) using these techniques, going one step further: Storing part of the source code on-chain with GCFS to make it interoperable. 
  
 
-Previous: [Minting](minting.md)  | Home: [General Documentation](../README.md)
+Previous: [Minting](minting.md)  | Next: [Multi-signatures](multisig.md)

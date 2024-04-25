@@ -434,6 +434,11 @@ Now we will tag all artifacts but the 2 extra aliases under a workspace called *
 }
 
 ```
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 </br>
 
 On **Workspaces** page we can see now that 
@@ -499,6 +504,10 @@ The following script serves as a derivation path definition on it's own.
 }
 
 ```
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 ## Key queries on GCScript
 
@@ -576,6 +585,14 @@ Also you can always query for your wallet's **Main Spend** and **Main Stake** ke
 }
 
 ```
+
+🔍 *See also:*
+[getSpendingPublicKey](https://beta-wallet.gamechanger.finance/doc/api/v2/getSpendingPublicKey.html),
+[getStakingPublicKey](https://beta-wallet.gamechanger.finance/doc/api/v2/getStakingPublicKey.html),
+[setCurrentWorkspace](https://beta-wallet.gamechanger.finance/doc/api/v2/setCurrentWorkspace.html),
+[getPublicKeys](https://beta-wallet.gamechanger.finance/doc/api/v2/getPublicKeys.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 </br>
 
 And your results will be similar to these (but never the same as you have a different master private key than mine).
