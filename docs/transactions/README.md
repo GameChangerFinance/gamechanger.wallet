@@ -1,4 +1,4 @@
-# [General Documentation](../README.md)/[Transactions](README.md)
+# [General Documentation](../README.md) / [Transactions](README.md)
 
 ## Table of contents
 

@@ -1,6 +1,10 @@
 # [General Documentation](README.md)
 
-[![GameChanger Wallet v2 Beta](../gcw-logo-300x85.png)](https://beta-wallet.gamechanger.finance)
+
+<div style="text-align:center">
+    <a href="https://beta-wallet.gamechanger.finance"><img src="../gcw-logo-300x85.png"/></a>
+</div>
+
 
 ## Table of Contents 
 - [Universal Dapp Connector](universal-dapp-connector/README.md)
@@ -9,6 +13,7 @@
     - [Overview](gcscript/overview.md)
     - [Quick Start](gcscript/quick-start.md)
     - [Syntax](gcscript/syntax.md)
+    - [GCScript on Steroids: with Inline Scripting Language (ISL)](gcscript/ISL.md)
 - [Cardano Transactions](transactions/README.md)
     - [Overview](transactions/overview.md)
     - [Quick Start](transactions/quick-start.md)
@@ -24,6 +29,9 @@
     - [Personal Account Wallets](workspaces/accounts.md)
     - [Multisigs Wallets](workspaces/multisigs.md)
 
+<div style="text-align:center">
+    <a href="https://forms.gle/XJQ4MSST1CvPfN196"><img src="img/dev_docs_survey.gif"/></a>
+</div>
 
 ## Resources
 - [General Documentation](README.md)

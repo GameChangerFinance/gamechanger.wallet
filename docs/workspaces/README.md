@@ -1,4 +1,4 @@
-# [General Documentation](../README.md)/[Workspaces](README.md)
+# [General Documentation](../README.md) / [Workspaces](README.md)
 
 ## Table of contents
 
