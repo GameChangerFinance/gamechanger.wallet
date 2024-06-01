@@ -1,4 +1,4 @@
-# [General Documentation](../README.md)/[Universal Dapp Connector](README.md)
+# [General Documentation](../README.md) / [Universal Dapp Connector](README.md)
 
 ## Table of contents
 
