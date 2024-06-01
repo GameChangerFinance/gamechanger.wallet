@@ -604,4 +604,4 @@ Congratulations! You have learned all the basic knowledge on how to combine GCSc
 
 Now it's a matter of learning the specific GCScript and ISL functions that will allow you to build, sign and submit transactions, derive keys, sign and encrypt messages and even create and deploy code on *GCFS, the Cardano on-chain Filesystem Protocol*
 
-Previous: [GCScript DSL](README.md) | Home: [General Documentation](../README.md)
+Previous: [Syntax](syntax.md) | Home: [General Documentation](../README.md)

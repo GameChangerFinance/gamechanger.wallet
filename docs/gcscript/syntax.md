@@ -692,4 +692,4 @@ Ok, here you have them:
 Remember that GCScript DSL is a language defined by a JSON schema, so here are the latest auto-generated docs, self-hosted on the wallet itself. Schema between networks are the same but maybe some examples will change based on each one in the future.
 
 
-Previous: [Quick Start](quick-start.md)  | Home: [General Documentation](../README.md)
+Previous: [Quick Start](quick-start.md)  | Next: [GCScript on Steroids: with Inline Scripting Language (ISL)](ISL.md)
