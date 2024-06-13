@@ -50,6 +50,16 @@ The body, the nested code, is a key-value map (or list) of function calls passed
     }
 }
 ```
+[![Run on Cardano Mainnet](../img/btn/run-mainnet.png)](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUSoqzVOyqlYqSi0uzSkxMASxoUpSEksSgQrKEnNKQVxHpVodmDIj3MqckJQZ41bmrFRbWwsADPc3hI4AAAA) 
+[![Run on Cardano Pre-Production Testnet](../img/btn/run-preprod.png)](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUSoqzVOyqlYqSi0uzSkxMASxoUpSEksSgQrKEnNKQVxHpVodmDIj3MqckJQZ41bmrFRbWwsADPc3hI4AAAA) 
+
+
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUSoqzVOyqlYqSi0uzSkxMASxoUpSEksSgQrKEnNKQVxHpVodmDIj3MqckJQZ41bmrFRbWwsADPc3hI4AAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUSoqzVOyqlYqSi0uzSkxMASxoUpSEksSgQrKEnNKQVxHpVodmDIj3MqckJQZ41bmrFRbWwsADPc3hI4AAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
@@ -85,6 +95,8 @@ So in other terms, in order to return data from script execution back to a dapp 
     }
 }
 ```
+[![Run on Cardano Mainnet](../img/btn/run-mainnet.png)](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUUqtKMgvKnEsBorlVrplFhWXuIJFgFJFpXlKVtVKRanFpTklBoYgNlR3SmJJIlBBWWJOKYjrqFSrA1NmhFuZE5IyY9zKnJVqa2sBUKAziakAAAA) 
+[![Run on Cardano Pre-Production Testnet](../img/btn/run-preprod.png)](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUUqtKMgvKnEsBorlVrplFhWXuIJFgFJFpXlKVtVKRanFpTklBoYgNlR3SmJJIlBBWWJOKYjrqFSrA1NmhFuZE5IyY9zKnJVqa2sBUKAziakAAAA) 
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
@@ -112,7 +124,7 @@ This root `script` function call has some unique superpowers, for example it can
 {
     "type": "script",
     "exportAs":"myFirstExport",
-    "returnURLPattern":"https://yourCustomDappSite.com/dappCallExecutionResults/{result}/view",  
+    "returnURLPattern":"https://google.com/dappCallExecutionResults/{result}/view",  
     "run":{
         "result01":{"type":"data", "value":"A"},
         "result02":{"type":"data", "value":"B"},
@@ -120,6 +132,8 @@ This root `script` function call has some unique superpowers, for example it can
     }
 }
 ```
+[![Run on Cardano Mainnet](../img/btn/run-mainnet.png)](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA3WOywqDMBBF_2XW0vSxc2fFrroQoR8QdLCBaMJkYhXJvzexLXTj7s65h8uswItFyMG1pCxDBjhbQ1y4yIblpshxtZFYEbKn8dHca8mMNEblyWxdLkRvTK_x0JpBdNLaUmpdzdh6VmZs0HnNTqy0hSAmha805-PCCh96PKX8faaTLKMwSe3TWUDIftp5X7v-aZd9rYQQwhtx5c2P-AAAAA) 
+[![Run on Cardano Pre-Production Testnet](../img/btn/run-preprod.png)](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA3WOywqDMBBF_2XW0vSxc2fFrroQoR8QdLCBaMJkYhXJvzexLXTj7s65h8uswItFyMG1pCxDBjhbQ1y4yIblpshxtZFYEbKn8dHca8mMNEblyWxdLkRvTK_x0JpBdNLaUmpdzdh6VmZs0HnNTqy0hSAmha805-PCCh96PKX8faaTLKMwSe3TWUDIftp5X7v-aZd9rYQQwhtx5c2P-AAAAA) 
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
@@ -127,7 +141,7 @@ This root `script` function call has some unique superpowers, for example it can
 
 *and then results will be packed and shared back to that dapp by redirecting the user to the produced URL*
 ```json
-"https://yourCustomDappSite.com/dappCallExecutionResults/1-H4sIAAAAAAAAA6tWSq0oyC8qKVayqlbKrXTLLCoucQWLgASKUotLc0oMDJWslByVdGBcIyDXCcE1BnKdlWprawHx4ftoTAAAAA/view"
+"https://google.com/dappCallExecutionResults/1-H4sIAAAAAAAAA6tWSq0oyC8qKVayqlbKrXTLLCoucQWLgASKUotLc0oMDJWslByVdGBcIyDXCcE1BnKdlWprawHx4ftoTAAAAA/view"
 ```
 
 *Important:* this redirection only gets enabled if initial dapp->wallet communication was established from an `https` origin.
@@ -169,6 +183,8 @@ We can understand isomorphism better by nesting some code blocks and check resul
     }
 }
 ```
+[![Run on Cardano Mainnet](../img/btn/run-mainnet.png)](https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUUqtKMgvKnEsBorlVvqlFpekpriChYByRaV5SlbVSulF-aUFjiAWumaogqLU4tKcEgNDJCUpiSWJQAVliTmlIK6jUq0OTJkRbmVOSMqMcStzVqqtBSoEu8tpkLrLebC5q7YWAIJYiqH9AQAA) 
+[![Run on Cardano Pre-Production Testnet](../img/btn/run-preprod.png)](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6tWKqksSFWyUipOLsosKFHSUUqtKMgvKnEsBorlVvqlFpekpriChYByRaV5SlbVSulF-aUFjiAWumaogqLU4tKcEgNDJCUpiSWJQAVliTmlIK6jUq0OTJkRbmVOSMqMcStzVqqtBSoEu8tpkLrLebC5q7YWAIJYiqH9AQAA) 
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
