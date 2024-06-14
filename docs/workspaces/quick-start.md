@@ -162,6 +162,12 @@ Finally she found out about GameChanger Wallet Workspaces and she wanted to give
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61UwW7aQBD9FcuXtBKpYkyI4WaIKlClCCmHHCqEBu9gXMyutTtOipD_vbMYOw4BpBLggJkZv_dm5u1uXdpk6PZdE-kkI7flUkKpDYRpEqHzovTKZBAhZwSWRYmSdf4N0hTJMUiUyNg4pJw1SIjRWaJ2Os4QCNKNISfT6g9GZBgHdGzc_tYdqDnjeD72fOgEUbfrt9viobeIROCL-8BbtP1OML_vPtz5PZj7ohcEi0Uguu2gy_8YqAL_mUvh9j2vaLk6lzX0tupNcB2Xv0Kaow1nsFmjpF-4GYFZfkVDwZTlCJ6R8qzBmSoQQyUXSczMecYScMwiXbBjm5WBmce5FDaoeR6_61ebM08I12VSwhonQIRaVjDVtt7DZ5d2WPb_uyumRauWyeNj_LeKayyszr2w6WnlJkMpbpfKem2V2MWVIWuMKFK5pLEU-JfD2xjp2411y4_mpm--F7ZWCI3G7GvvrK5jPOE1WbxTLINrsrRPsTxek8U_wkKwwls2RYPHhr64maZnnoCSV3yu7pqT5jkQtgSNYrZrelZfVHuDbffD4AcrffdjUew5z-ds0ifGasyQT-y8vB3KtL0CRodd8f1hmyns5119WHZ2ietHil52x41f3imZfNZWnondyD9m67183tlEq0wZSGfhGeDwctjBGdjB5bDDj7DndnAxx2PF0TRdBXDUUWeJpvwtin98UfWoMAcAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61UwW7aQBD9FcuXtBKpYkyI4WaIKlClCCmHHCqEBu9gXMyutTtOipD_vbMYOw4BpBLggJkZv_dm5u1uXdpk6PZdE-kkI7flUkKpDYRpEqHzovTKZBAhZwSWRYmSdf4N0hTJMUiUyNg4pJw1SIjRWaJ2Os4QCNKNISfT6g9GZBgHdGzc_tYdqDnjeD72fOgEUbfrt9viobeIROCL-8BbtP1OML_vPtz5PZj7ohcEi0Uguu2gy_8YqAL_mUvh9j2vaLk6lzX0tupNcB2Xv0Kaow1nsFmjpF-4GYFZfkVDwZTlCJ6R8qzBmSoQQyUXSczMecYScMwiXbBjm5WBmce5FDaoeR6_61ebM08I12VSwhonQIRaVjDVtt7DZ5d2WPb_uyumRauWyeNj_LeKayyszr2w6WnlJkMpbpfKem2V2MWVIWuMKFK5pLEU-JfD2xjp2411y4_mpm--F7ZWCI3G7GvvrK5jPOE1WbxTLINrsrRPsTxek8U_wkKwwls2RYPHhr64maZnnoCSV3yu7pqT5jkQtgSNYrZrelZfVHuDbffD4AcrffdjUew5z-ds0ifGasyQT-y8vB3KtL0CRodd8f1hmyns5119WHZ2ietHil52x41f3imZfNZWnondyD9m67183tlEq0wZSGfhGeDwctjBGdjB5bDDj7DndnAxx2PF0TRdBXDUUWeJpvwtin98UfWoMAcAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
@@ -247,7 +253,7 @@ Important considerations
 <details>
   <summary>Notes regarding standards.</summary>
 
-Standards limit your possibilities, they exist for a reason. But sometimes reasons exists because strict, non-universal and overly-opinionated standards limit possibilities in first place. 
+Standards exist for a reason. But sometimes reasons exists because strict, non-universal and overly-opinionated standards limit possibilities in first place. 
 
 Toolmakers are nobody to tell you what to do or what not to do. Specially on web3 space.
 
@@ -255,7 +261,7 @@ Toolmakers are nobody to tell you what to do or what not to do. Specially on web
 
 But "*With great power comes great responsibility*":
 
-Learn. Innovate. Think outside the box. But test your solutions across different wallet types. Prepare yourself for ecosystem realities. Sometimes hardware wallets memory constraints, or they interpretation of standards, can limit your plans. Extension wallets offer you very few options here. Some APIs may not calculate staking rewards properly on special scenarios. Check GameChanger official workspaces for *Personal Accounts* and *Multisig Wallets* to learn derivation scheme patterns and workspace designs supporting a grand majority of wallet types.   
+Learn. Innovate. Think outside the box. But test your solutions across different wallet types. Prepare yourself for ecosystem realities. Sometimes hardware wallets memory constraints, or they interpretation of standards, can limit your plans. CIP-30 Browser Extension wallets offer you very few options here. Some APIs may not calculate staking rewards properly on special scenarios. Check GameChanger official workspaces for *Personal Accounts* and *Multisig Wallets* to learn derivation scheme patterns and workspace designs supporting a grand majority of wallet types.   
 
 </details>
 

@@ -32,7 +32,7 @@ Let's create a payment request on user's wallets, anyone "connecting" or running
                     {
                         "address":"addr_test1vrp4jqn97fg7ucmhpsncfm87hcg3h788alzfpapme9yyj9cvlh24z",
                         "assets": [{ "policyId": "ada", "assetName": "ada", "quantity": "1500000"}]
-                    },
+                    }
                 ],
                 // Add these lines if you also want seamless support for multisig wallets 
                 // "options": {
@@ -40,10 +40,10 @@ Let's create a payment request on user's wallets, anyone "connecting" or running
                 //         "workspaceNativeScript": true
                 //     },
                 //     "autoOptionalSigners": {
-                //         "nativeScript": true,
-                //     },
+                //         "nativeScript": true
+                //     }
                 // }
-            },
+            }
         },
         // signing the transaction with user's private keys
         "sign":{
@@ -63,6 +63,9 @@ Let's create a payment request on user's wallets, anyone "connecting" or running
 
 ```
 
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),

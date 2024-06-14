@@ -126,11 +126,11 @@ On this example we will be using a self-sovereign user native script to rule ove
         },
         "signBurn": {
             "type": "signTxs",
-            "detailedPermissions": false
+            "detailedPermissions": false,
             "namePattern": "signed-burn",
             "txs": [
                 "{get('cache.buildBurn.txHex')}"
-            ],
+            ]
         },
         "submitBurn": {
             "type": "submitTxs",
@@ -169,6 +169,10 @@ On this example we will be using a self-sovereign user native script to rule ove
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA81UwW7bMAz9FUGXboBjtNfdOuzQYlgRIAF2GHJQbCYRZsueRK82Av_7SFt2ZTdZm2FA65NMkY-P5BOPEpsS5CfpEqtLlJFEjRkbvmmD4ub6RizE58oaOl4LLH6CceSUQu-vC0Ou90bgQTsBtcrLDERTVOJRZ5nIB4w-UBRGKLHT1qFAq4xTCSMIZdL-ykFSdOcAY-uTU1ZbUbYjJS_BpGASDY7_5xV4N-1cBTZw2AOuOFKb_bLaZjr5Co1sI8ks2VaQqQn8jUL9G1YDrMen-7LaUuidcoc7qMnxSMgfrhKVHCAOycU9hXjif_WxlS19kdxWOku5zUHOzrauKZ1R-WDABVPk2dTsyj9U-A8i0lG-T__GYVJd3BcRUImkcg48Xnd86BN_p-Z_0bDmyZHXr0oRDlJ_JA-jjZ57PxR4JkC2m3YTyUeNBiiom1rYXTeUNRL1Xb-0rrC9Tu_NrLtsWtfOd3epEMEab4f0qcvcjUnmcVQx1j7Jhl8BKp1BugSb06hJyhS4U5kDTl9tc41zAp3xJIXuBmcsJiSGgroSvXz4ab4sH35D70Y-i04_bySIWb-eBHF-lmfEMvb0tFg4USCWURBzAq8QRJjpmSAYzwtip43KsubUSoS6LCzeOr_Xb00vnPO7MleJLYb7f1hwUSCuS0FfkNyIvRoX8n_AH7H5dl1zvlchTzYDBY2P05pLUQbJDCj8_QEqJZ4yoAcAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 
 🔍 *See also:*
 [script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),
@@ -317,7 +321,7 @@ Let's mint 1 NFT!
                                 // this is the most important part: the reference to the image file stored somewhere
                                 "image": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
                                 "version": "1.0",
-                                "mediaType": "image/png",
+                                "mediaType": "image/png"
                             }
                         }
                     }
@@ -366,6 +370,10 @@ Let's mint 1 NFT!
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61V204bMRD9FWtfAhINt6pFvHEnoqVBCUWi4sFZTxKrXu_WHsOuUP6940vEBkIKqHnZ2DN75szt7GOGTQXZfmZzIyvMNjKUqPzF5emQfZcapZ6wYyhKMgmIXrLU5HBS86JSwHDKkeUGOIJlnGmO8h5Y9GRcC-YsGST9t6wqlcwbhiUrCJqsjMJ0Wa_gE2BTchgBaFYZuJels6phrlIlFyACUCW1pr-lZr3-6YAIQV2VBg9spJvY0r0BdIY4PmZFKXwyilvMZmRw4VZABVqAziVYf35eg-TGhTBg2x4TwCNnDGg8SDYCTW49PS5brgXPTTnHyh7pzYMnvzU6rnVynk-h2ybTTVid9fVZgLYW8JIX0AIWHDnh3nPl_PGMrEdTridgqAb-pTwyHKgSL10xArM0AW_23gK4UFLDUvdnSRC7Qzkhr1f5v4jdWd_o7H35vLXViRkVsUn9MAitSHFsBvMOpFb4JijlH9JaF6lVbnQBzTm303OoU2lX1dLXu1vxpiBe6cXEBWUB38r8t0e1kfGJFqsgXxYrQIXfRjZyUolWTuE8rCkdHVoYLvBTGtXVu4Z1AMKQvCOT-gCvWG4a4F9UtlDx3sr0FprTjT1IhfZ4aR4jXms0V7Rg7hRf_-M4BUDqe7adze5mdxvZg0RNTYp72B6CcJEIpbF4L_PI2neGu1oqyU1z7JeHgL_ubPvHRyux6tWFnH3zjG_dFLGy-5ubEzLkcV27Y6m5zuFpPt5ax0Uh_qFJKLeZ06SxD6ShnjsI3y2H09IsagS7oYUCP3zSiy4ZZTX2xK6Knzdn9cFFdbgzqJvdWz2-tQJ3J3WZn55cX8PeWf8wN_zb8HZwdTH0AgTGRgLb3S06FyAkH8bJD9ibFYnxfDesnOi21NJxWNuUep8jghfscA-itSICkEsFog-mIA2ggDQYY64s-B3xo7hQtbByXaxTn-58ZDcqJLZjh4ul0YMFFwiEIAsxPMe0Xr6DSjUrviFEhcZm5XfhBfcnhVqm_68DvD4yBPW0_-9F-scu-C8O175a116m3vId-ZCMtXTgv2QwVwf6_QXDAm7qBgkAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 
 🔍 *See also:*
 [script(nested)](https://beta-wallet.gamechanger.finance/doc/api/v2/script.html),

@@ -44,8 +44,8 @@ Here is a minimal example of just 1 output of 1 tADA to 1 address.
                             "quantity": "1000000" 
                         }]
                     }
-                ],
-            },
+                ]
+            }
         },
         // we ask the user to sign the transaction hexadecimal CBOR with all the available and required private keys
         "sign":{
@@ -68,6 +68,9 @@ Here is a minimal example of just 1 output of 1 tADA to 1 address.
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1WPwU7DMAyG38WXgTRNrICY9gRwQRx2QxPKGrdLlaZt7KyJqrw7SRhoJIf8_m1_jhfgMCLsgWqrRoY1WGdgv8DJKS2zuOZLfPCpgH22B8ejY4L95wJCSouUdFFfjMTbi71UfagfO3yeXhrfGNF1bfc0mWDOctxVloI2XaX7XRAz0zy36U10QYRX7DhoVYc3WbjiN_cuevxzJicMKw7J2D6UA_GYblwDqdbc_D-HB0-pRyILpVF-oO0VkRpMGtcITZh3y6NhaZHvVrWoz7gpi2_Yv6Jf3Uc4ZrQ79Ypv4cX4wRfEP0IenVtjjN-p5FpEbwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
@@ -168,6 +171,9 @@ Here is an example for making a payment to 6 addresses on a single transaction, 
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA62UyW7bMBCGX0XQJS3gBLIsW1Juzob2UgSob0VQMBS1kpTIoRbKMNDn6KWv2EcoKSexnUOLAhYESDOc-YbLP9y6SjfEvXYBy6JR7sxVhaLW8fvXzx_O6rLgl3PnEWlGuB1NyD6wqLmJ2eQFOOZFTrOPcCQRLQHlqNoBwhNn7qj13dqaKycp0pRIG4WSRBIAAk7NTTIUPKPEURJxQHhiz1wkM3Cvt-5L7NqUs7_flcHPO9n5TONFSZYiTIeUo7LMykBwzfOkiXwJmvLSpyzSqFfQ95n5WugedvMO1gSl4HGYZmGLWd4AxymLwhxnizyMIkTHtEENI7HWZYw7mvvBeIDdnsKakTE_TfNYlLjDVR9BtuxiUqVVxZdtH7QxJRHq8k41csjiUfSUHmB3p7Ax4CBQH-ecjqNARELX02SQPiMB-J7ol6sWDV6Q8sr3sb9k5RgeYPfvYEIBdKKFzhdNpHDeeznobmzCymt54-Ve7-uY-2yRDAOs-jBG7AB7OIUJUS5Eppde4q9oF1ajoBqvIBByESxWccCTuMdVJeIuXeosNXuoI3c3c8nQ1FKtzdG6rKWqOEhLEtVKbo-c1YlVIEWgbIpsJy8yglGwqb8aXVn7RbgJUshkd4i2xvy2dZuaFlh_Tqb52qEp8Qti5M0jWsSNzrVxzL3pcXdPptJzW9Bj9mRvhn92hRpsUt2qplUwTeJl00zGNiPqw4VV89WrlC8-7l6ndYjACOfk6niRNmw3-zvr5oys2zOy7s7Iuj8j6-F_WE87owkoMn4kCWtuBpiuQoUKSpJHIlkBYG4tAzRCB2IFYWVwQp-0dKWGT2SwcCs3aJ9ZoY7hk2OPnxAnBFt6v0bTK2CaB45SGcKydt-axdRBkL8DvE3BDE0g8_wBpXLyDwEGAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
@@ -293,6 +299,9 @@ Let's send a unique message to the 6 addresses using CIP-20, a well known messag
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA62VzW7jNhDHX4XQJQ1gG7IsWZJ7KLzObpvLwsAG2EMbFFyJkiiTlMShPqjAwD5HL33FfYSSchLbObQoEMKATM7MbyjyP6MnR-maOBsHEklr5cwcRRWzCz_-_us7Ws-pmC_RHmtOhLWm5ORIK2F8HgoKyPwwqk8eSJKmJaCQqhAQkaIlUtu7rZ2uUUqzjEjrhdNUEgACqBImGKjIGUFKYgE4mdgzB8scnM2T8-y7Nens3z-VwS872XlcJ6uSBE2YDZnAZZmXfiO0KNI68iRoJkqP8UjjXkHf5-ZpoSfYhzew2i8bEYdZHrYJL2oQScajsEjyVRFGEWZjVuOak1jrMk46Vnj-eIbtrmH1yLmXZUXclEmXHPoI8qCLySE7HETQ9n4bMxLhruhULYc8HpuesTPs7ho2-gIa3MeFYOPYYCKh61k6SI8THzy36YN1iwfXz8TB8xIv4OUYnmEf38AaBdA1LXReU0cqKXq3AN2NdXhwW1G7hdt7OhYeX6XDAOs-jDE_wz5dw5qmXDW5DtzUW7MuPIwN08ka_Eau_NU69kUa98nh0MRdFug8M2eoI-c4c8hQV1JtzdU6vGWKnqUliWqlsFfOq9QqkGFQNkS20yo2glHwUH0xurLzZ-GmWGET3WHWmunvT05dMZro-3TarzVNgZ8xJ68rTYuF0bk2C0t3Gs7x0WT61lJ2yZ7mD8N_VoUabFDVqrpVMG3i-dBMxFNO1E83Vs2LFynf3B5ftnX2SHBSkMXlS1q34-zfWR_ekbV7R9bdO7I-viPr0_9hPRrHdqCMYqnvrMzMJa9Df5Io5OaenZ0kWJEU9VQV6FcjsV2BRU4k-ooZIwpt9_cLtLvfzz0XcZMe5wThguD0D9vi7kVX0YTMP1cbtPRWfrAOo9idTLsWVMWJnGxBEMytfbLsF18Wyw2iJidjCIqqRjjH1PRRhXTVSmQCJUGb-S2yKVBGTRs2BtQRqU1THvQM9QVWN3By32GZYlG99ORf0M_zW-fxaMbMAZqLi3Kw04cBps-AwpSRdE8kpwCmY5vDNEUOxBaDLYGrk53qaKGG38hgD9aWGrTfOFWX8GnhhJ8QVwSb-nS_pk-AaRxwEcpxIivntVGYPBiKN4DXLRjTBDLjH0f9yBD9BgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
@@ -445,6 +454,9 @@ Let's create now the opposite situation, we will send 1 tADA to each of the 6 pr
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA52VS27bMBCGryJo0xZIA0eWLSk7P9FuigL1rigKhqKeJCVyqGcQoOfoplfsEUrKSWylRmBHMGCR8_Ofj-SQurdVVxL71gYs01LZV7ZKFTUdf__8_mXdfEz5x7n1FXWMcAU6HJK9Mi24Fu2SFCz9Q1a5l1iSiIqAslRhAeGhdWOpxXphmnMrTKOISKNCYSgJAAGr4KOAkogDwsbeZEMyBvv23n7UL3RK8_pT6RQ3tawd1uFpRmbCi9qIoyyLM1fwjidh6TsSOsozhzK_Q42Cpon1vzHdmy1fmJVuJnjgRbFXYZaUwHHEfC_B8TTxfB_RPipRyUjQdVmAa5o4bn8wW43Nyp4xJ4qSQGS4xnnjQzyrA5JHec5nVeNWASU-qpNalbKNg140lB7M1mOz3uUgUBMknPa9QERC3dCwlQ4jLjgT0czmFWonbsRzx8HOjGW9dzDbvDATCqAWFdSOKH2Fk2aSQFf3pZdPKl5OkknjdAF32DRsW5g3XoDYwWw7NhMim4q4m01CZ05rL-8F7fAcXCGn7nQeuDwMGpznIqijWRdHeg073364sklbFlIt9NbarKIq3R12XeeSRFWSm21nRWhKkSJQZpishl6kC0fBrvim68u0Hys4RArp0TWilW5-v7fLgqa4-xwOzCY0DPyCGHnuERXiuuA73XEzGR774YfOdFelNFwcmQ8du_bl-Xg8GNbCBFqjLypVVvqkGIDHRdPi-5io9-9MNV8_lfK7Dw9PSAcFRjgh18cTNDKN9MS0PJ9peTHT8m1Mq_OZVhczrd7GtD6faX0x0_ptTJvzmTYXM23exrQ9n2l7MdP2YiZIY35EZJq7dv_ZUSilJPxKJEsBhs_Drb5QgBgogzJy35_fa9V-Iu0e4r_o8tXo6tXo-tXo5tXo9hA1Nw1UdyxVx3MeOvazHmY2sjArMiyXuSZB351wNJQhLAv7-Z7UeRAkZFAsXvgcFkhL9qTLU5LlSLI6JVmNJOtTkvVIsjkl2Ywk21OS7ZHkwTz_AIsyrWm9CAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
@@ -520,6 +532,9 @@ Well for that you will need those on your wallet. We will mint some on the next 
 }
 
 ```
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA12RXU-DMBSG_4qpF9NkWWihFHarmXqzmDivzGJaemBF6BgtG2Thv9uiJpvpxfns87bnnJEdGkBLZLJWNRbNUdtptDwj0alKeue3PsWb3jXY3qf3nW06a9Dy44y4lC0Y50_epwVj8bE9knrIwhLogeV9rnlZFmV00IPeySYhrRkqXZKqTgZ-suZ0Kpx1dG4M_GKbfaWy4cW9AqURphGJSMxIGgQyxpiGIYuYJFgkMpZ5EqRhKOM8TQLKaJwSJimJ0z_gmtf-E0_OPOy4LqBdrzY3t9jVDx3XVtnBlTEa51eyHDvFTIgoJ06cBtJ5jIUUKMOCiUjILAEeCGA4CZysYLmIRQj_ZFf8C97fHq_FKBq37oxzZFShLybtw01vXLcEy1UF8hXaWhmj9toNJueVAb8FPyR0LsDezTKe7WAxrWhh-2foZ_cj2np0J2plL-FT4gc_Ia4IXtpfHcfxG6odnTwZAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),

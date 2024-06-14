@@ -128,6 +128,13 @@ We will create only the first 5 base addresses, using a the **accountIndex** 5. 
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7WST4vCMBDFv0rJuYJ_L96WdWFlYfG2h0VKTEYdGtOSpGgp_e47abW26yIWXHoImXm_x5tMC-byFNicWWEwdSxkDp3yhfdFcORKgQu4lAasBUtdCbUQE02at1OqEoN6F0jcbsGAdgTlNnBJsMlQyQ5rMmIKllkCvhIT25QLalDpnEElXL4meos7Umep5A6WkuqNyQBOYARaGExIoXgOhvjvxqBxpS46ONRNzQ-w4s6B8Zn3MmqHqsa9dmnql7_HbWkQDDdij4KrYAFUPaBG61Dcvli5LsMm3gfk5Hm8hFxKn68baB3-ihtDHhUxallGBRciybRbagknf62p-tqZ2Ov9Th2P_VO0OTafhaxNsvnQR7wgKdD5H8ioPzLuj0z6I9POjs7b772nazcq8HYjVZZVtqFf4JO482KrajSLhqStlnVH4TPedxk9xWX8FJfJU1ymj7is6SvLH2V6qZzJBAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7WST4vCMBDFv0rJuYJ_L96WdWFlYfG2h0VKTEYdGtOSpGgp_e47abW26yIWXHoImXm_x5tMC-byFNicWWEwdSxkDp3yhfdFcORKgQu4lAasBUtdCbUQE02at1OqEoN6F0jcbsGAdgTlNnBJsMlQyQ5rMmIKllkCvhIT25QLalDpnEElXL4meos7Umep5A6WkuqNyQBOYARaGExIoXgOhvjvxqBxpS46ONRNzQ-w4s6B8Zn3MmqHqsa9dmnql7_HbWkQDDdij4KrYAFUPaBG61Dcvli5LsMm3gfk5Hm8hFxKn68baB3-ihtDHhUxallGBRciybRbagknf62p-tqZ2Ov9Th2P_VO0OTafhaxNsvnQR7wgKdD5H8ioPzLuj0z6I9POjs7b772nazcq8HYjVZZVtqFf4JO482KrajSLhqStlnVH4TPedxk9xWX8FJfJU1ymj7is6SvLH2V6qZzJBAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 
 🔍 *See also:*
 [loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
@@ -358,6 +365,13 @@ On the *dapp connector interface*, if you go to **advanced->code** tabs, you wil
   }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VV3YvaQBD_V4a8tAVPYpJC65uchTv6wUEL91CKrNlRFze7YXeiZw__984mGr0PGikpvujszszvi_UxIkUao3H0xQoJW6E1EngkUmbpo0Ek0edOlaSsOV6ilfLPb4I1TV3iRuU4hO_Hg1wYmCPXndqghHyltIQ17vwA5pXSdKgIKR16jx6EkWBphY5v8BIeix5BGa8kj1GLBTo0dASwtW7tS5GjH8J9-x2EQ9goR5XQsHS2KhnhgqukFiInz0MFhel2C5XnVUAWVmKDIMCXmCuh1W9s9cCHkuGjyRG0WiMUlSZ1JVHjUgRlBk3Fq-UArANywnheA4VlGMJYsyts5fVuyILSrgxyN6ryb55tHU0816QgwRXlrRaE1yJf8U1yFQ4iV7H8j1FuzUItKycaPx6P0zT7cl2fcX9V8iC8lVyf5LmtDPlPUpF1syROsqs4u0riH8lo_D4bpx-HWfzhKk7HccydWuxYi2j8sx3cShpwERbNoREF3gkidCEUy3wWOJbWan9zHyiGSJ3OJ0cB4GtQCaatbk_zdeqYti6zGRyHEAlPgpXPHUqusz-cDmSFjsE55awezt6xo-IsL01_ADmEE6I55oIDEELGVnF-DUePc8t5g9wWhQ1DaYsY4o0FvLVlaT0rEcbfTA8B8e-GMLXmDYWeuTIIW0WrJsVnCQ09yjAF4Y-xULQbwrUtStZjrg99K-HkNiT4MD3a_9oPWks-4-6JGaLx-NZIfIjG8SA6KHIqvLCrVnUWz4Lna2VCUuoS_2zR3sow_rm5NZB_2RjUf7YxlC7deCGl0WuUnsId9baxpjR6jdL_2lhzTLo5Jv1yTLo59rex5ph2c0z75Zh2c-xvY80x6-aY9csx6-Z4ycbzx2jSrL743-HwBNR076o5v2Xf-PbLV6lG9-LC2SNyiS5_BTLqAjLqAjLqB0jSBSTpApL0AyTtApJ2AUn7AZJ1Acm6gGSXAQmf_f4PCclKDAQLAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VV3YvaQBD_V4a8tAVPYpJC65uchTv6wUEL91CKrNlRFze7YXeiZw__984mGr0PGikpvujszszvi_UxIkUao3H0xQoJW6E1EngkUmbpo0Ek0edOlaSsOV6ilfLPb4I1TV3iRuU4hO_Hg1wYmCPXndqghHyltIQ17vwA5pXSdKgIKR16jx6EkWBphY5v8BIeix5BGa8kj1GLBTo0dASwtW7tS5GjH8J9-x2EQ9goR5XQsHS2KhnhgqukFiInz0MFhel2C5XnVUAWVmKDIMCXmCuh1W9s9cCHkuGjyRG0WiMUlSZ1JVHjUgRlBk3Fq-UArANywnheA4VlGMJYsyts5fVuyILSrgxyN6ryb55tHU0816QgwRXlrRaE1yJf8U1yFQ4iV7H8j1FuzUItKycaPx6P0zT7cl2fcX9V8iC8lVyf5LmtDPlPUpF1syROsqs4u0riH8lo_D4bpx-HWfzhKk7HccydWuxYi2j8sx3cShpwERbNoREF3gkidCEUy3wWOJbWan9zHyiGSJ3OJ0cB4GtQCaatbk_zdeqYti6zGRyHEAlPgpXPHUqusz-cDmSFjsE55awezt6xo-IsL01_ADmEE6I55oIDEELGVnF-DUePc8t5g9wWhQ1DaYsY4o0FvLVlaT0rEcbfTA8B8e-GMLXmDYWeuTIIW0WrJsVnCQ09yjAF4Y-xULQbwrUtStZjrg99K-HkNiT4MD3a_9oPWks-4-6JGaLx-NZIfIjG8SA6KHIqvLCrVnUWz4Lna2VCUuoS_2zR3sow_rm5NZB_2RjUf7YxlC7deCGl0WuUnsId9baxpjR6jdL_2lhzTLo5Jv1yTLo59rex5ph2c0z75Zh2c-xvY80x6-aY9csx6-Z4ycbzx2jSrL743-HwBNR076o5v2Xf-PbLV6lG9-LC2SNyiS5_BTLqAjLqAjLqB0jSBSTpApL0AyTtApJ2AUn7AZJ1Acm6gGSXAQmf_f4PCclKDAQLAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 
 🔍 *See also:*
 [loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),

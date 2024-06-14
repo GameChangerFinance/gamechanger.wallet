@@ -30,6 +30,12 @@ So far you can ask for and return back the user address which is a not private e
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAAy2MQQqAMAwE_5KzL-hN9A-egw0itLUkW1Ckf7eV3pYZZl_Ck4Uc2a5nBk0kd74UszUWn41DEKwMbkYFRRO5l-LlexPYQLWJ8lP2XsWsz3F6CJaiKgnzcLXWD-A50KhzAAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAAy2MQQqAMAwE_5KzL-hN9A-egw0itLUkW1Ckf7eV3pYZZl_Ck4Uc2a5nBk0kd74UszUWn41DEKwMbkYFRRO5l-LlexPYQLWJ8lP2XsWsz3F6CJaiKgnzcLXWD-A50KhzAAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
@@ -80,10 +86,16 @@ Now let's use the `macro` function with a single line of ISL for
         "hash":     {
             "type":"macro",
             "run" :"{sha512(get('cache.address'))}"
-        },
+        }
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA02MwQrCMBBE_2UvbUEEBS-9Ff0Ab56XZDGFpAm7m2Ip-XdTycHbMPPm7aBbIhhBDM9J4QT0SZF1ktqF7cnzikov9J70gYoVYNLMC4w7hGiPq0dRKHXIvxatZRI5YnO_Se-ZmRad2lZph-L-mICGIzQJ7OLwdrn29dl3Bo2jc9N2w1CglPIFlwHywbkAAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA02MwQrCMBBE_2UvbUEEBS-9Ff0Ab56XZDGFpAm7m2Ip-XdTycHbMPPm7aBbIhhBDM9J4QT0SZF1ktqF7cnzikov9J70gYoVYNLMC4w7hGiPq0dRKHXIvxatZRI5YnO_Se-ZmRad2lZph-L-mICGIzQJ7OLwdrn29dl3Bo2jc9N2w1CglPIFlwHywbkAAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
@@ -172,6 +184,12 @@ Let's explore interpreter behavior around this language feature using 2 ISL func
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA33OSwrCMBAG4KsMs4mFegFdSVei2IXFfUkHG4xJSVIflJzChRtP50lMbOtCQQgkzPzzTTp014ZwhpYb0ThM0QknY2G5XcOulKIS7goF2dirqI8JrUIiq4kfYFGdSsWpmmZaWS0JSgtnkjLefRoM2VY6GwC6NNq4he39kR900wa1w1Osxsfws2PJjR7b2PF-zYRJvWcpez5uUNTCQjjvSQgwS-ZhqWuNmrB8xRKPPkWh_ss_8P0DD6Pf9CYvIPLovX8BNhx2w0kBAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA33OSwrCMBAG4KsMs4mFegFdSVei2IXFfUkHG4xJSVIflJzChRtP50lMbOtCQQgkzPzzTTp014ZwhpYb0ThM0QknY2G5XcOulKIS7goF2dirqI8JrUIiq4kfYFGdSsWpmmZaWS0JSgtnkjLefRoM2VY6GwC6NNq4he39kR900wa1w1Osxsfws2PJjR7b2PF-zYRJvWcpez5uUNTCQjjvSQgwS-ZhqWuNmrB8xRKPPkWh_ss_8P0DD6Pf9CYvIPLovX8BNhx2w0kBAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
@@ -251,6 +269,13 @@ Also let's use the ISL `strToHex()` function to encode on-the-fly a text message
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA0WQMW7DMAxFr0JwcQIEOUC2oB06tFMLdGZtwhZqSwZFtREMH6B36Ol6klKxnQAcJP3_PkVOqHlkPGGsxY2KB1SnfXl44RipZXh1rXe-NaXhxeSCN_2ZtYqQIkMOSeCb-p4VRnFfpAyfnEEDRIOBrOTDqZBkGJZYiyNpI54mHPLaykL_fn9AOxfBSjsG58ekGwOm4nxAYU3ir2hoCtVT1CLwZQyiZ0vFFSmfJ3OXfpIWJp-bRkwul3X4lvUhibDXTbO0Id_pu7VM9EhK7067zWyzbJE4Wdauqqnu-HhrVe3nsj_DnvhSTFHlLdh5d3WXTRxva6j25p7n-R-NYZWnmwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA0WQMW7DMAxFr0JwcQIEOUC2oB06tFMLdGZtwhZqSwZFtREMH6B36Ol6klKxnQAcJP3_PkVOqHlkPGGsxY2KB1SnfXl44RipZXh1rXe-NaXhxeSCN_2ZtYqQIkMOSeCb-p4VRnFfpAyfnEEDRIOBrOTDqZBkGJZYiyNpI54mHPLaykL_fn9AOxfBSjsG58ekGwOm4nxAYU3ir2hoCtVT1CLwZQyiZ0vFFSmfJ3OXfpIWJp-bRkwul3X4lvUhibDXTbO0Id_pu7VM9EhK7067zWyzbJE4Wdauqqnu-HhrVe3nsj_DnvhSTFHlLdh5d3WXTRxva6j25p7n-R-NYZWnmwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 🔍 *See also:*
 [getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
 [signDataWithAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/signDataWithAddress.html),
@@ -320,6 +345,12 @@ What number do you think we will get as result?
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7WPwUoEMQyGX6X00h1YxNWbN_WqHr1n2jgW2s3QpGIZ5t1NdRAR9rCCt_L_zfcli5U2o72x7Eucxe6tREk9eGzmHpJnjQJ-tZGOWjygODaV0bxBiTAmZCNkAhmmjEYzec0o0RuasUCf6hB8n6nILSsht07WrKDUoszFZgpdmoDFrlrUz9QXBMH-2rbM4AvZrbcLo-xcbs_bHm7vDm5YO-BbfThjGkK4i9NTzbupV1OiEdLFjx-DCi7d8EtxdYaC6_gXxfW_XfESj5BSO80_BdHpdf0AjrD18j8CAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7WPwUoEMQyGX6X00h1YxNWbN_WqHr1n2jgW2s3QpGIZ5t1NdRAR9rCCt_L_zfcli5U2o72x7Eucxe6tREk9eGzmHpJnjQJ-tZGOWjygODaV0bxBiTAmZCNkAhmmjEYzec0o0RuasUCf6hB8n6nILSsht07WrKDUoszFZgpdmoDFrlrUz9QXBMH-2rbM4AvZrbcLo-xcbs_bHm7vDm5YO-BbfThjGkK4i9NTzbupV1OiEdLFjx-DCi7d8EtxdYaC6_gXxfW_XfESj5BSO80_BdHpdf0AjrD18j8CAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
@@ -394,6 +425,13 @@ By separating function calls with `;` and by using the `return(<value>)` ISL fun
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WQMU8DMQyF_4rlJT2pQu1KJ2ClHZm65C7miJRcTrGDGp3y30naGyoBA2Kz3vfes-UFJc-Ej8hDtLPgFsWKa8Ixw4t2A1fJ0I3aMFXwSqIYEhN86mh174hBApgAHDxB1eTDk9gBwkxRt1QrocscojxxbfC5NVctkqRYOxf0wbSlTrNgqSBd1Xc7aedyG9czvR5iwNWAy3liko3y-W09RW3VXnWH8wTfgDbm2Y6n5DdjQ6MLvXYPd46uZneq-znNqf9H-k-7b1_51Xn1FCylfAFpZyTnvQEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WQMU8DMQyF_4rlJT2pQu1KJ2ClHZm65C7miJRcTrGDGp3y30naGyoBA2Kz3vfes-UFJc-Ej8hDtLPgFsWKa8Ixw4t2A1fJ0I3aMFXwSqIYEhN86mh174hBApgAHDxB1eTDk9gBwkxRt1QrocscojxxbfC5NVctkqRYOxf0wbSlTrNgqSBd1Xc7aedyG9czvR5iwNWAy3liko3y-W09RW3VXnWH8wTfgDbm2Y6n5DdjQ6MLvXYPd46uZneq-znNqf9H-k-7b1_51Xn1FCylfAFpZyTnvQEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 🔍 *See also:*
 [macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
 [set](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html#tab-pane_run_anyOf_i0_anyOf_i1_anyOf_i0),
@@ -433,6 +471,13 @@ As `macro` allow us for passing JSON lists or arrays of strings, we can split th
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6VQPUsGMQz-KyVL34MX0dVNXdXRRRx613gW2jdHk4rl6H835W4Q5AZxC89XnmQFqQvCLfCUwyJwBgkSO_BUzYOLEyvkcWMDXZR4RLFsCqP5dDm4MSIbIePJMCU0islHQgmToQWz664egl8LZbljTUi1JyuWUUrWzBUS-b40OhZoSpQNrVsFHfeayU2ZYBe8wsooJ5vqy97Enu2NHZoKfjPO-_swP5d0mjs1RxpdvPqhGNR8bYcDO5fxP_Y_bH_TB7yHi4uxHl0O61FKg9baN0uN-uLWAQAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6VQPUsGMQz-KyVL34MX0dVNXdXRRRx613gW2jdHk4rl6H835W4Q5AZxC89XnmQFqQvCLfCUwyJwBgkSO_BUzYOLEyvkcWMDXZR4RLFsCqP5dDm4MSIbIePJMCU0islHQgmToQWz664egl8LZbljTUi1JyuWUUrWzBUS-b40OhZoSpQNrVsFHfeayU2ZYBe8wsooJ5vqy97Enu2NHZoKfjPO-_swP5d0mjs1RxpdvPqhGNR8bYcDO5fxP_Y_bH_TB7yHi4uxHl0O61FKg9baN0uN-uLWAQAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 🔍 *See also:*
 [macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
 [set](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html#tab-pane_run_anyOf_i0_anyOf_i1_anyOf_i0),
@@ -471,6 +516,13 @@ As `macro` allow us for passing JSON key-value maps of strings, we can split the
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WQMWsDMQyF_4rx4hyE0jRbt7Zr2jG7zlYvBjs-LLnEHPffK3MhpJAszSbee_r00KS5jqhfNdnsR9ZrzZ5DEz6r-oBgSSSHi-vTUYwdsiFVCNUPZA99QFKclEuKUkQlGh8isrcqjZihbTUInsaU-Y2EEGsji5aRSxbmpGNy7WgAYj2LURa1LhVkPNeMYHPSl4DNCNz0iZBXJtb9uZJZm43pZkleSmxuxsC5dz98lbgamjWE1EN4ukp0Qno23V_Wy00Wlf4frO2jvWZ52Lc_Qgj13qf0dI_S1udfutbY3AYCAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WQMWsDMQyF_4rx4hyE0jRbt7Zr2jG7zlYvBjs-LLnEHPffK3MhpJAszSbee_r00KS5jqhfNdnsR9ZrzZ5DEz6r-oBgSSSHi-vTUYwdsiFVCNUPZA99QFKclEuKUkQlGh8isrcqjZihbTUInsaU-Y2EEGsji5aRSxbmpGNy7WgAYj2LURa1LhVkPNeMYHPSl4DNCNz0iZBXJtb9uZJZm43pZkleSmxuxsC5dz98lbgamjWE1EN4ukp0Qno23V_Wy00Wlf4frO2jvWZ52Lc_Qgj13qf0dI_S1udfutbY3AYCAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 🔍 *See also:*
 [macro](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html),
 [set](https://beta-wallet.gamechanger.finance/doc/api/v2/macro.html#tab-pane_run_anyOf_i0_anyOf_i1_anyOf_i0),
@@ -543,6 +595,13 @@ In this example we can explore isomorphism with ISL nested at deep levels of a J
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA3WRwWqDQBCGX2WZSxKwhUB78RZ6KoQcmt5KDxudxAXdkZ0x1Abfpe_SF-usMU2aRhHU__93_f7ZA0hbI6TAWXC1QAL4UVOQBavmmCoKdeGyF-SmjG5AaYKH9AAV5XFdaVmgU6PpVW8rjM9h1x3KKioasHkekPmv-dSEgF4Wg6cxLklWdDO1VitGzlivqD8_RyubBYJflqpduui_wUE3mU4ymxV4Hwkns05jl-pA99848vT61paMyfwhASkcG709iXleLxPDFD-tYQnO70xGnsV6gfdEKfq5KCnmPZWtj3D9YNIRtqo9zSQd56za9TCtMWTYkroSGkxgYwOk88f48qkrTh20FCm5J3-nVYYG4426Tk8A9-jNaYOamN2m7I_9Vpkr-aLBlXPmTmFPrvz-MlOrIy4wXGPMIke8fgAI3cODwAIAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA3WRwWqDQBCGX2WZSxKwhUB78RZ6KoQcmt5KDxudxAXdkZ0x1Abfpe_SF-usMU2aRhHU__93_f7ZA0hbI6TAWXC1QAL4UVOQBavmmCoKdeGyF-SmjG5AaYKH9AAV5XFdaVmgU6PpVW8rjM9h1x3KKioasHkekPmv-dSEgF4Wg6cxLklWdDO1VitGzlivqD8_RyubBYJflqpduui_wUE3mU4ymxV4Hwkns05jl-pA99848vT61paMyfwhASkcG709iXleLxPDFD-tYQnO70xGnsV6gfdEKfq5KCnmPZWtj3D9YNIRtqo9zSQd56za9TCtMWTYkroSGkxgYwOk88f48qkrTh20FCm5J3-nVYYG4426Tk8A9-jNaYOamN2m7I_9Vpkr-aLBlXPmTmFPrvz-MlOrIy4wXGPMIke8fgAI3cODwAIAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
 🔍 *See also:*
 [getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
 [getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
