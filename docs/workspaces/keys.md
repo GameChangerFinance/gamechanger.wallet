@@ -123,6 +123,17 @@ On **Dapp Builder** (*Playground IDE*) let's derive the first 3 consecutive **sp
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA5WOsWrEMAyGX8V4zkFzY9Zyw9EH6FA6GPvPIZLaxlLamCPvXplcS8cGDUKf_g_pbqVm2MGyL5TFdlZI5gZeUE1AoU8nlKIuAvZMmwZ7WfOcCsWbCTSOKIhivlxlI2nXYCZUVq8smr_bhTX8msrE2XlwQ4_Tc3LhOcWRbppecnCCa1De_BNWFE-MU6_L2VUUVd9-Xf1SOQk-djxRbCpnaO-s8z4tUa4xYLXDk4IQCph_wNYdVfrjyvmvIm7Cwcf-p_THlfP2rrVt3yIkq6cFAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA5WOsWrEMAyGX8V4zkFzY9Zyw9EH6FA6GPvPIZLaxlLamCPvXplcS8cGDUKf_g_pbqVm2MGyL5TFdlZI5gZeUE1AoU8nlKIuAvZMmwZ7WfOcCsWbCTSOKIhivlxlI2nXYCZUVq8smr_bhTX8msrE2XlwQ4_Tc3LhOcWRbppecnCCa1De_BNWFE-MU6_L2VUUVd9-Xf1SOQk-djxRbCpnaO-s8z4tUa4xYLXDk4IQCph_wNYdVfrjyvmvIm7Cwcf-p_THlfP2rrVt3yIkq6cFAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 If we audit artifacts on **Workspaces** page on the wallet you will see a setup like this:
 
 <div style="text-align:center">
@@ -178,6 +189,16 @@ Now lets overwrite wallet setup with same child keys but derived using the maske
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA42OsQrCMBCGXyVkVmoDgriKg7i4OYhDaK72sDbhclWD9N29UHEOCYH8933899GcAuitjg1hYL3QjNzn4AhJOSB8WkY_yMDBzOTfVu_fofeEw005bFsgGFi9bIqK_ayBukOK4tEo_EePUeCzp3sMtoGYo191763b-aHFm9BjcJbh4CTP_hLeQA1GWBoZ9jYBiXr5u7Kl5MjwmONguTtZZqC85KOqN2vTyVuvu2olt1rpaVGA1WWYKcFMWakpKzW59Cpnmr75wfqUvQEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA42OsQrCMBCGXyVkVmoDgriKg7i4OYhDaK72sDbhclWD9N29UHEOCYH8933899GcAuitjg1hYL3QjNzn4AhJOSB8WkY_yMDBzOTfVu_fofeEw005bFsgGFi9bIqK_ayBukOK4tEo_EePUeCzp3sMtoGYo191763b-aHFm9BjcJbh4CTP_hLeQA1GWBoZ9jYBiXr5u7Kl5MjwmONguTtZZqC85KOqN2vTyVuvu2olt1rpaVGA1WWYKcFMWakpKzW59Cpnmr75wfqUvQEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 If we audit artifacts on **Workspaces** page we will see the same 6 keys generated and no more. This proves how each artifact is unique and while you can replace or update it's recipe, the resulting object will not change, otherwise new key artifacts would have appear on the list.
 
@@ -239,6 +260,17 @@ Let's automate the last exercise. Because we need 2 different counts, one for th
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7WOMWvDMBCF_4rQnOAmJVCylg4lS7cOJYOwnuMjjiRO59bC-L_3hEv3BoqEQO--j3uzlZJgjza3TEnsxgrJUIMTivFg-nRCMejAY2Xq72hfpjREpnAxnroOjCDmy5VsJK4azBUlq8ej8rMds8Lvka85uRa5Rj-rh-j8cwwdXZQek3eCV6959beYwC1lbB91OLgCVvXj19WWmpPgtsbJSf_mRMC15K3ZPR32vb67Q9886G1mCh7TYpfNv8Hnit_Xb_-XlffCZz3L8g1WtBps-gEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7WOMWvDMBCF_4rQnOAmJVCylg4lS7cOJYOwnuMjjiRO59bC-L_3hEv3BoqEQO--j3uzlZJgjza3TEnsxgrJUIMTivFg-nRCMejAY2Xq72hfpjREpnAxnroOjCDmy5VsJK4azBUlq8ej8rMds8Lvka85uRa5Rj-rh-j8cwwdXZQek3eCV6959beYwC1lbB91OLgCVvXj19WWmpPgtsbJSf_mRMC15K3ZPR32vb67Q9886G1mCh7TYpfNv8Hnit_Xb_-XlffCZz3L8g1WtBps-gEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
+
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+
 Once again we can verify on **Workspaces** page the same 6 keys were re-generated and no more. Templating worked as expected, artifacts collided but same *key hashes* were produced.
 
 ### Human-friendly artifact names
@@ -320,8 +352,16 @@ Let's add a third layer to create 2 extra aliases for the first **spend** and **
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA8WSTWvDMAyG_0rwuSVtWGH0OnYovey2wyhFxEojmthGVraEkP8-eek2dhob-8DGRtL7PrawRyNDQLM1sWQKYhZGSJqU2OOQWWR6BCHvtGBx1qRoa2770Hgmd8osVRUyOsmeYIiZ-NmG2RmHqD7uVD-aLqr43vM5BigxptTl6MaDvfGuopOqu2BBcGc1n_xL7JFLiri80mIDA7JaH968ekvNO2jxDkSQ3ew7juQs9tNx1CCtGuoGZek7J7tLDaxljHEOFUOC7UwPIPU7sM3X15ui1nW9qfOVzvzCN9Pi18SHJP_XNouv3Py74j9o8yOwIo7yCkl0aAjSR_30aVYvrf0MrUi0g45pegY7Xd1hhAMAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA8WSTWvDMAyG_0rwuSVtWGH0OnYovey2wyhFxEojmthGVraEkP8-eek2dhob-8DGRtL7PrawRyNDQLM1sWQKYhZGSJqU2OOQWWR6BCHvtGBx1qRoa2770Hgmd8osVRUyOsmeYIiZ-NmG2RmHqD7uVD-aLqr43vM5BigxptTl6MaDvfGuopOqu2BBcGc1n_xL7JFLiri80mIDA7JaH968ekvNO2jxDkSQ3ew7juQs9tNx1CCtGuoGZek7J7tLDaxljHEOFUOC7UwPIPU7sM3X15ui1nW9qfOVzvzCN9Pi18SHJP_XNouv3Py74j9o8yOwIo7yCkl0aAjSR_30aVYvrf0MrUi0g45pegY7Xd1hhAMAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
-
+🔍 *See also:*
+[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
 
 We can now verify on **Workspaces** page the same 6 keys were re-generated and no more, but 8 *name artifacts* were created this time. The 6 names of the 1st and 2nd layer plus the 2 extra names of the last layer.
 
@@ -434,6 +474,12 @@ Now we will tag all artifacts but the 2 extra aliases under a workspace called *
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA81Ty2rDMBD8FVVnhzwgUHItPYRS6K2HEsJirRMRWTLSuokw_veu4tS120NpSaHYyOzO7GhGthtJsUK5kiH3uiKZSdJkUuMBo1Do9SuQdpYBhR0nVSt5f6qM89ruhNJFgR4tiSPEIMh1YygOGAPP-Zr5jawDk5-dP4QKcgypddnaOFB3zhZ6x-y6UkC4VtxP8xM8oc91wMmSQQMRPY--9LO9IKOasOxACyU-ARH6ZLWM2-OAdg74gT5GMRQZpBxxCu0DibwO5EoOagySCEjEocKNbDdt1nvik2Ohfsu1SqbGLjbZJ4-cddtoq_DUbhsu0solPyDPXW1pfcFAKY8hdOUodAW0H4Sezm-Xiz2v8-V-OuN7etGXyeofkf__MSx-kuy35K_HcPWYY8Hz1_kuktTBaEg_37evbnaOdh21RVLb8NW2b_360pxYBAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA81Ty2rDMBD8FVVnhzwgUHItPYRS6K2HEsJirRMRWTLSuokw_veu4tS120NpSaHYyOzO7GhGthtJsUK5kiH3uiKZSdJkUuMBo1Do9SuQdpYBhR0nVSt5f6qM89ruhNJFgR4tiSPEIMh1YygOGAPP-Zr5jawDk5-dP4QKcgypddnaOFB3zhZ6x-y6UkC4VtxP8xM8oc91wMmSQQMRPY--9LO9IKOasOxACyU-ARH6ZLWM2-OAdg74gT5GMRQZpBxxCu0DibwO5EoOagySCEjEocKNbDdt1nvik2Ohfsu1SqbGLjbZJ4-cddtoq_DUbhsu0solPyDPXW1pfcFAKY8hdOUodAW0H4Sezm-Xiz2v8-V-OuN7etGXyeofkf__MSx-kuy35K_HcPWYY8Hz1_kuktTBaEg_37evbnaOdh21RVLb8NW2b_360pxYBAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
@@ -504,6 +550,12 @@ The following script serves as a derivation path definition on it's own.
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA41PTYvCMBD9KyFnS7XgsnhdLyKC4MHDIjI0s3Zom4ZkKpbS_-7MKuJhD0uSgbyvvIyWh4B2ZVMZKbCdWSZuFNgBebPFwawx0hWYOi-sw4dQb0_NIaB3BuQcGGpUTzLuZTIBuEpijb1YRtsn8pdjF-sUoMSk0LNC04H76vwPXUTdBweMGyd4LYEZ3jCWlDD7ELKBAaNYv19eeVRwYmwfsIcW98CMUXu20vOctOe5_hVqpzc6X3wui0rmYlnlc9n53E6zv1P0j_9LKTTlJGua7s10jmBnAQAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA41PTYvCMBD9KyFnS7XgsnhdLyKC4MHDIjI0s3Zom4ZkKpbS_-7MKuJhD0uSgbyvvIyWh4B2ZVMZKbCdWSZuFNgBebPFwawx0hWYOi-sw4dQb0_NIaB3BuQcGGpUTzLuZTIBuEpijb1YRtsn8pdjF-sUoMSk0LNC04H76vwPXUTdBweMGyd4LYEZ3jCWlDD7ELKBAaNYv19eeVRwYmwfsIcW98CMUXu20vOctOe5_hVqpzc6X3wui0rmYlnlc9n53E6zv1P0j_9LKTTlJGua7s10jmBnAQAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
@@ -585,6 +637,12 @@ Also you can always query for your wallet's **Main Spend** and **Main Stake** ke
 }
 
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61RyWrDMBD9FaFzILgQKLmF0kMolEAPPZaJNY5FZEkdjYlNyL93pCxNukAPNcZYT2_eIu01jxH1XKeabGQ90WzZZeAJR_XeI1lMgho8Emzwsvc4RBcIFbeojG0aJPSsdjAmxaFMjWqLsgJvVFgzWK_AOUWYesdJ9d4glekEHaomUAfZG4cYiBdJLAwwCEK9-O11JwovEb2RVHl9Cr1BLqj1m1W_drbO24fJkc6wxe90Qb-yE_JroG2KUOMVW-CHnnKzz92J3p3_l0Y43fh2AbJULr30P6qdz_fUSI5D7NNtukusVHKdCv9OKoYrYEbK17KPwO1B0MY6gfKYlM05i5Q-iGjwblwYIzchQQ0O1Z_Fgdg2UPOzXNmtCVzp6Xl1sanr0Hsu8OwfbHK7FWFjh3zy0-p-dtfKt5q1U3mlXX4-AGxFUhDRAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61RyWrDMBD9FaFzILgQKLmF0kMolEAPPZaJNY5FZEkdjYlNyL93pCxNukAPNcZYT2_eIu01jxH1XKeabGQ90WzZZeAJR_XeI1lMgho8Emzwsvc4RBcIFbeojG0aJPSsdjAmxaFMjWqLsgJvVFgzWK_AOUWYesdJ9d4glekEHaomUAfZG4cYiBdJLAwwCEK9-O11JwovEb2RVHl9Cr1BLqj1m1W_drbO24fJkc6wxe90Qb-yE_JroG2KUOMVW-CHnnKzz92J3p3_l0Y43fh2AbJULr30P6qdz_fUSI5D7NNtukusVHKdCv9OKoYrYEbK17KPwO1B0MY6gfKYlM05i5Q-iGjwblwYIzchQQ0O1Z_Fgdg2UPOzXNmtCVzp6Xl1sanr0Hsu8OwfbHK7FWFjh3zy0-p-dtfKt5q1U3mlXX4-AGxFUhDRAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [getSpendingPublicKey](https://beta-wallet.gamechanger.finance/doc/api/v2/getSpendingPublicKey.html),

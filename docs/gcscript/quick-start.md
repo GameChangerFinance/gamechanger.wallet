@@ -34,6 +34,12 @@ No more theory until next section, let's run some GCScript right now!
     }
 }
 ```
+<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1VPMY4CMQz8ikmNeAAd2itooEKitja-JSIbR44Dt0L793NgkaAaeWY8Yz-cTpnc1pVeQla3dho0NuIwwW-QotCheEwMHnNemcHTyxs4me10CeUpgeHAIQ2gDFiuMHEVuGOMpJBwJMDkAb0XKmUDXQz9FTpOGlKltpOFeyK_sQr6yyy6K5Y_TudnxA8qmiLVSh-u5TVcjh9Ij42Z124p-Ba7KkJJd4tmttEQh88M_yq4Yaxt3FOM_P595eZ5_gd8gqb_KwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
+</a>
+<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1VPMY4CMQz8ikmNeAAd2itooEKitja-JSIbR44Dt0L793NgkaAaeWY8Yz-cTpnc1pVeQla3dho0NuIwwW-QotCheEwMHnNemcHTyxs4me10CeUpgeHAIQ2gDFiuMHEVuGOMpJBwJMDkAb0XKmUDXQz9FTpOGlKltpOFeyK_sQr6yyy6K5Y_TudnxA8qmiLVSh-u5TVcjh9Ij42Z124p-Ba7KkJJd4tmttEQh88M_yq4Yaxt3FOM_P595eZ5_gd8gqb_KwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+ <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
+</a>
 
 🔍 *See also:*
 [script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
