@@ -9,7 +9,7 @@ Plutus is a domain specific language created with Haskell, inheriting Haskell's 
 I like to think of Plutus like low level assembly code of this giant financial distributed computer called Cardano, where you still have other more abstract language alternatives like C, Typescript and Python can be. 
 
 In Cardano you can also program smart contracts on:
-- Helios 
+- [Helios](https://www.hyperion-bt.org/helios-book/) 
 - Aiken
 - Plu.ts
 - Marlowe
@@ -402,11 +402,11 @@ We think the clever Cardano design where only nodes process a tiny portion of tr
 
 This is why on GameChanger wallet we encourage developers to deal with all the wallet-related and transaction-related code on client side, more specifically on wallet-side, allowing users and experts to always be able to review and audit the source code, not only the compiled code. (Also this has great open source collaboration benefits).
 
-That's why we added an Helios Smart Contract Language compiler into the wallet, to offer developers the possibility of stop dealing with pre-compiled and opaque Plutus Scripts and start relying directly on it's source code on user's wallets.
+That's why we added an [Helios](https://www.hyperion-bt.org/helios-book/) Smart Contract Language compiler into the wallet, to offer developers the possibility of stop dealing with pre-compiled and opaque Plutus Scripts and start relying directly on it's source code on user's wallets.
 
 Remember the plutus script we used on previous examples? How can you be sure about what's doing inside? Does it have bugs? Backdoors maybe? Don't trust, always ensure you have means to verify.
 
-This is the Helios code that once compiled produced the former plutus script used before
+This is the [Helios](https://www.hyperion-bt.org/helios-book/) code that once compiled produced the former plutus script used before
 
 ```js
 // MagicNumber.hl
@@ -521,5 +521,94 @@ Finally keep in mind that this on-the-fly wallet-side smart-contract compilation
 
 Here is a [dapp](https://github.com/GameChangerFinance/cardano-gc-helios-dapp) using these techniques, going one step further: Storing part of the source code on-chain with GCFS to make it interoperable. 
  
+## Debugging using node traces
+
+**Cardano Node** can return some user-defined logs or traces for debugging purposes same way you can do a `console.log(...)` on a Javascript environment.
+
+Going back to the previous Helios example, you can add traces by making the validator reject the UTXO consumption by returning `false` while adding some `print(...)` function calls, like this:
+
+
+```js
+// MagicNumber.hl
+
+spending MagicNumber
+
+struct Datum {
+    magicNumber: Int
+}
+
+struct Redeemer {
+    magicNumber: Int 
+}
+
+func main( datum: Datum, redeemer: Redeemer, _ ) -> Bool {   
+    print("hello world");
+    print(datum.serialize().show());
+    print(redeemer.serialize().show());
+    //redeemer.magicNumber==datum.magicNumber
+    false //by returning false we allow traces to be returned back from cardano node
+}
+
+```
+But to enable traces feature on **Helios** you must compile the code using the `"simplify":false` flag on GCScript, like this:
+
+```js
+        ...
+        "contract": {
+            //This function can import pre-compiled or compile on-the-fly Plutus Scripts
+            "type": "plutusScript",
+            "script": {
+                // here we provide the Helios source code encoded in utf8 encoding for on-the-fly compilation
+                "heliosCode": "{hexToStr(get('cache.helios.contract'))}",
+                // also it's important to specify a compiler version to avoid changes to the compiled script
+                // Remember: if a single bit changes, script hash and generated addresses, policyIds, and certificates changes 
+                "version": "0.15.2",
+                "simplify":false, //enables debugger traces, default value is "true"
+            }
+        },
+        ...  
+
+```
+
+> Keep in mind the `simplify` flag will add/remove some bytes from the final compiled script also triggering changes on it's script hash, and this will lead to address, policy ID, and other changes on items generated based on this validator script.
+
+These traces are originated when you instruct the wallet to build your transaction as GameChanger Wallet sends a draft of it to let **Cardano Node** evaluate an hypothetical outcome based on real current ledger state as UTXOs, stake rewards and certificates, time parameters and more context data is involved. 
+
+During `buildTx` function calls you can get these debugging output lines on the *dapp connector console*, for example like this:
+
+<div style="text-align:center">
+    <img src="../img/transactions-smart-contracts-traces.png"/>
+</div>
+
+As you can see your debugging output is contained under the `"traces"` array:
+
+```json
+
+    "traces":[
+        "hellow world",
+        "182a",
+        "182a",
+        "validation returned false"
+    ]
+
+```
+
+"But why does the wallet pre-send a transaction draft to the node?"
+
+Because the wallet sends a transaction draft to let the node calculate what's called as "execution budget calculation"
+
+## Automatic Execution Budget Calculation
+
+Transactions require a network fee to be validated across the network of nodes. Byte sizes are the main parameter used to calculate the fee, but when a transaction carries on-chain validator scripts the protocol must defend itself from code that may use more resources than expected, for example to prevent DDoS attacks, so also the more execution instructions and memory space your smart contract will consume to run, an extra fee amount you will have to pay.
+
+The process of calculating these execution resources is called Execution Budget calculation.
+
+The `buildTx` function automatically heals built transactions when arguments do not carry this budget information. This is to ease this process as doing it manually can be complex and process changes after every hard fork because it strongly depends on protocol parameters and Plutus Language versions. The wallet ensures the right budget calculation is applied because it relies on the node itself to measure it (thanks to *Ogmios* Transaction Evaluation feature)   
+
+Automatic features on the wallet can be disabled, you can provide these values manually, but there is no need as the wallet uses the cheapest budget possible as official **Cardano** tooling is being used (Ogmios). Usually developers hardcode these values using big numbers that are not optimized, making users pay more expensive transactions.
+
+If you still need to provide them on your own please use the `buildTx` function [`memExUnits` and `stepsExUnits` arguments for redeemers](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html#tx_anyOf_i0_witnesses_plutus_anyOf_i0_consumers_anyOf_i1_items_anyOf_i0_redeemer).
+
+> Keep in mind that if you provide all the required `memExUnits` and `stepsExUnits` values yourself, the wallet will not send a draft transaction to be evaluated and then all debugging traces won't be captured during `buildTx` function execution time. 
 
 Previous: [Minting](minting.md)  | Next: [Multi-signatures](multisig.md)

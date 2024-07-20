@@ -109,11 +109,11 @@
           "value": "Please fund the address below in order to start delegating"
         },
         "address": {
-          "type": "run",
+          "type": "macro",
           "run": "{get('cache.dependencies.Address')}"
         },
         "txHash": {
-          "type": "run",
+          "type": "macro",
           "run": "{get('cache.txs.signDelegate.txHash')}"
         }
       }

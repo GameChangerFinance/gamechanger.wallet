@@ -6,6 +6,7 @@
 
 Fair enough. Let's say you want to make someone send coins to Alice and Bob on a single transaction.
 - From any platform
+- From any device, desktop or mobile
 - From any programing language
 - From any user wallet type (Nami, Eternl, Flint, Vespr, Ledger, Trezor, multisig, seed phrases, QR wallets, burners, gifts, etc.. )
 
@@ -93,7 +94,12 @@ You can generate these URLs in 2 ways:
 | **The fastest and easiest way** | **The suggested way** |
 | Pre-generate these URLs statically and just place them where your users need it. *Integrate Cardano everywhere.* | Generate them programmatically on your favorite programming language, this way you can produce and customize your GCScript code where you need it as it is pure JSON, a data format supported everywhere. |
 
-Let's explore some integrations and generation techniques:
+</br>
+</br>
+
+# Generating the URLs 
+
+Let's explore some integrations and techniques to encode/compress GCScript into URLs for establishing a connection:
 
 ## URL Statically embedded on HTML websites
 
@@ -148,6 +154,13 @@ Let's explore some integrations and generation techniques:
 
 </details>
 
+## QR on hardware devices and reducing QR/URL sizes using GCFS
+
+If you are looking to initiate QR connections from hardware devices, or you are concerned about the size of the produced QR codes or URLs please watch [this tutorial](https://www.youtube.com/watch?v=Q-u6yb6jIz4) where with our friend **Maarten Menhere** we put most of the GCScript code on-chain to reduce the encoded URL to produce smaller images for his **M2Tec Paypad POS devices**.
+
+The code gets stored on chain permanently as files using [GCFS, the on-chain file storage protocol on Cardano](https://www.youtube.com/watch?v=tq3Sxuh_XGE). 
+
+> This, far from being a workaround, is the main reason behind **GCFS** and **GCScript DSL** design, the intended way of producing reliable and reusable code to foster open protocols, interoperability, transparency and open source collaboration. 
 
 ## Generation and redirection from a Javascript frontend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
 
@@ -253,7 +266,61 @@ window.open(url, "_blank");
 
 For insight on how to integrate on other languages, [here is a full example](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/examples/%F0%9F%9A%80%20Pay%20me%201%20ADA_nolib.html) with all vanilla js encoders and decoders (no libraries, zero-dependencies).
  
+# Decoding the response URLs
 
+Capturing response data from the wallet is not mandatory, but is a feature you can use.
 
+Let's explore some ways to capture and decode/decompress the JSON response from the wallet
+
+## Decoding wallet response URL on a Javascript frontend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
+
+```js
+import gc from '@gamechanger-finance/gc'
+
+//GameChanger Wallet support arbitrary data returning from script execution, encoded in a redirect URL
+//Head to https://beta-wallet.gamechanger.finance/doc/api/v2/api.html#returnURLPattern to learn ways how to customize this URL
+
+const currentUrl = window.location.href
+// lets get the URL variable that carries the wallet response
+
+const resultRaw = new URL(currentUrl).searchParams.get('result')
+
+//decode/decompress the URL variable
+const resultObj=await gc.encodings.msg.decoder(resultRaw);
+
+//now you can use the un-serialized JSON results from the wallet:
+console.log(resultObj);
+
+```
+
+## Decoding wallet response URL on a Javascript backend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
+
+```js
+import gc from '@gamechanger-finance/gc'
+import express from 'express';
+
+const app = express();
+
+app.get('/returnURL', async (req, res) => {
+    const resultRaw = req.query.result;
+    const resultObj = await gc.encodings.msg.decoder(resultRaw);
+    //now you can use the un-serialized JSON results from the wallet:
+    console.dir(resultObj); 
+    //lets return the decoded results to the user
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(resultObj,null,2));
+});
+
+app.listen(8000, () =>{
+    console.info(
+        `\n\n🚀 Express NodeJs Backend echoing decoded wallet responses at http://localhost:8000/returnURL\n`
+    );
+});
+
+```
+## Decoding wallet response URL on a Javascript frontend using Vanilla JS (zero-dependencies)
+
+Full example with vanilla js encoders and decoders (no libraries, zero-dependencies) [here](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/examples/%F0%9F%9A%80%20Pay%20me%201%20ADA_nolib.html).
+ 
 
 Previous: [Overview](overview.md) | Next: [Payments](payments.md)

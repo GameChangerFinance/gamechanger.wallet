@@ -68,10 +68,9 @@ You will capture back your first execution results, and they will look something
 }
 ```
 
-In the next section you will understand this code syntax better, but basically you asked your own wallet some information, such as your own Cardano address, by establishing a bidirectional communication with the wallet. 
+In the next section you will understand this code syntax better, but basically you asked your own wallet some information, such as your own Cardano address, by establishing a compressed communication towards the wallet core and decompressing the response. 
 
-You sent GCScript code (JSON) to the wallet core and the wallet core responded with JSON.
-
+You **sent compressed GCScript code (JSON)** to the wallet core, it processed the code and it responded with **compressed JSON results**.
 
 ## Deploying your first Dapp
 
@@ -79,7 +78,7 @@ You have been using a special transport called `local transport`, which is meant
 
 "Wait, what? this is not a dapp yet!"
 
-Well, you have coded just a "dapp connection", a communication towards a user wallet that will return useful data back to you.
+Well, you have coded just a **"dapp connection", a communication towards a user wallet that will return useful data back to you**.
 
 Do you want now to create a full dapp to actually launch this communication from it but using the `url transport`?, in other words, to exit this "developer mode" and jump into real action?
 
@@ -87,7 +86,7 @@ Do you want now to create a full dapp to actually launch this communication from
 
 - Ok, you are now sitting on the `GCScript` tab on Playground IDE. Now click on the `Deploy` tab.
 
-- Once there, click on the green `Deploy Dapp on IPFS` button, then `Deploy and Go` button.
+- Once there, click on the green `Deploy Dapp on IPFS` button, then `Deploy and Go` button. (you can use your own pinning service or host the exported HTML code on an HTTP server)
 
 - Now wait a bit until the green button label turns into `Preview Dapp`. Now click on it, it will open the deployed dapp on a new tab. ([example](https://ipfs.io/ipfs/bafkreiedad3jl56jf5objj4k5vxc7emqucjgdctidagvjassmcxumik6ry))
 
@@ -112,13 +111,20 @@ To adapt a code in GCScript to work for a specific network you just need to use 
 
 </details>
 
-## Coding your own frontend, backend or hardware to connect to the wallet
+
+## Coding your own frontend, backend or hardware integration to connect to the wallet
+
+> If you already know GCScript syntax, jump to [Transactions / Quick Start](../transactions/quick-start.md) for code snippets you can use to integrate GameChanger Wallet on stores, social and messaging platforms, and your frontend, backend or hardware applications.
 
 Playground IDE automated the process of building and deploying a simple HTML + Javascript dapp for you, after you master more your GCScript skills you can start coding your own dapps using our [Official NPM Library](https://www.npmjs.com/package/@gamechanger-finance/gc) for Javascript/Typescript. 
 
-If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to stablish communications by using standard building blocks available on all platforms and programming languages. 
+If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to stablish communications by using standard building blocks available on all platforms and programming languages. Same building blocks will allow you to decode or decompress returning JSON data from the wallet to capture script results and use them on your applications.
 
-In addition to the in-wallet IDE, you can create full projects using [Inception IDE (Beta)](https://inception.m2tec.nl/), a powerful GCScript and Helios code editor and development environment by [M2Tec](https://www.m2tec.nl/cardano).
+## Code editors and available tools
+
+In addition to the in-wallet [Playground IDE](https://beta-wallet.gamechanger.finance/playground), you can create full projects using [Inception IDE (Beta)](https://inception.m2tec.nl/), a powerful GCScript and Helios code editor and development environment by [M2Tec](https://www.m2tec.nl/cardano).
+
+The Official NPM Library [is also a CLI](https://www.npmjs.com/package/@gamechanger-finance/gc) you can install. In both usage modes you can encode and decode these URLS and response URLs, and it even generates ready to use QR codes, HTML, React and NodeJS applications boilerplates to get you started or automate code generation.
 
 Now it's time for you to learn some GCScript syntax!
 

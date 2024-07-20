@@ -91,7 +91,7 @@
         {
           "//info/updatedAt": {
             "kind": "file",
-            "fileHex": "467269204e6f7620323420323032332031373a32343a323120474d542d30333030"
+            "fileHex": "547565204a756c20313620323032342031383a34313a313520474d542d30333030"
           },
           "//empty/dir": {
             "kind": "directory"
@@ -110,7 +110,8 @@
     "signTxs": {
       "type": "signTxs",
       "namePattern": "GCFS_Signed_{key}",
-      "txs": "{get('cache.buildTxs.txList')}"
+      "txs": "{get('cache.buildTxs.txList')}",
+      "detailedPermissions": false
     },
     "submitTxs": {
       "type": "submitTxs",

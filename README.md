@@ -8,12 +8,13 @@ GameChanger is a very powerful, customizable, yet friendly, non custodial web li
 
 Since 2021 unleashes Cardano and eUTXO potential while democratizing users, developers and students access.
 
-The smart design principles of the wallet allows you to import or connect these wallet types to it:
+The smart design principles of the wallet allows you to import or connect these wallet types:
  - seed phrase
+ - burner wallets
  - QR encrypted (personal and gift wallets) 
  - Ledger and Trezor hardware wallets 
- - Nami, Eternl, Flint, any browser extension wallets
- - Shared Treasuries
+ - Nami, Eternl, Flint, Vespr, any CIP-30 or browser extension wallet
+ - Shared Treasuries (script addresses)
  
  And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet.
 
@@ -23,6 +24,12 @@ The smart design principles of the wallet allows you to import or connect these 
 
 - [Mainnet wallet](https://beta-wallet.gamechanger.finance/)
 - [Pre-Production Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
+
+## Documentation
+
+- [Transactions / Quick Start](docs/transactions/quick-start.md): A single page covering from making a Cardano transaction to code snippets to help integrate the wallet
+- [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more.
+- [GCScript API documentation](https://beta-wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
 
 ## Examples and special use cases:
 
@@ -101,7 +108,8 @@ The smart design principles of the wallet allows you to import or connect these 
 
 
 ## License
-MIT 
+
+MIT
 
 ## Thanks
 
