@@ -62,7 +62,7 @@
       "exportAs": "SingleWithdraw",
       "run": {
         "txHash": {
-          "type": "run",
+          "type": "macro",
           "run": "{get('cache.txs.signWithdraw.txHash')}"
         }
       }
