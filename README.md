@@ -63,7 +63,7 @@ The smart design principles of the wallet allows you to import or connect these 
     - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
     - **The big picture behind GameChanger Dapps** explained on-dapp for the Cardano Community
 - M2Tec - Hardware and Software Dapps (first hardware dapps on Cardano powered by GameChanger universal dapp connector)
-    - [M2Tec Payments](https://payments.m2tec.nl/)
+    - [M2Tec Payments](https://payments.m2tec.nl/): POS payment request generator dapp leveraging on an GCFS on-chain open protocol ( [Code on Github](https://github.com/M2tec/gcfs-payments.m2tec.nl) )
     - [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl)
     - M2Tec Paypads: Payment devices for stores, with Odoo integration for ADA and native asset payments, loyalty tokens and more.
     - M2Tec Cardano Totem: The first Cardano ATM-like public terminals with built-in stake pool
@@ -77,6 +77,7 @@ The smart design principles of the wallet allows you to import or connect these 
 
 ### Some videos and articles:
 
+- [Do you build Web2.9 or Web3?](https://www.youtube.com/watch?v=cJjI8YBzEs4) - Workshop at UTN Buenos Aires - 30/07/2024 (spanish)
 - [NFTPass RareEvo - onboarding on Cardano at scale ](https://www.youtube.com/watch?v=C96IK0qztbo)
 - [GCFS - Permapinning files on Cardano forever](https://www.youtube.com/watch?v=tq3Sxuh_XGE)
 - [GCFS - Fiat Payroll using Oracles](https://www.youtube.com/watch?v=AMKhjJQH6cI&t=773s) (not focused on solving scheduling!)
