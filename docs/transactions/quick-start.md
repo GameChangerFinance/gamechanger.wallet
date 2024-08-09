@@ -96,73 +96,79 @@ You can generate these URLs in 2 ways:
 
 </br>
 </br>
+</br>
+</br>
 
 # Generating the URLs 
 
-Let's explore some integrations and techniques to encode/compress GCScript into URLs for establishing a connection:
+Let's explore some integrations and techniques to encode/compress GCScript into URLs for establishing a connection
 
-## URL Statically embedded on HTML websites
+<details>
+  <summary>💡 Click to explore static and programmatic ways to connect... </summary>
+
+## 🔵 URL Statically embedded on HTML websites
 
 ```html
 <a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA"> Click here to send a payment to Alice and Bob </a>
 ```
+
 <details>
-  <summary>Try it online:</summary>
+  <summary>🎮 Try it online:</summary>
 
 <a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA"> Click here to send a payment to Alice and Bob </a>
 
 </details>
 
 
-## URL Statically embedded on markdown
+## 🔵 URL Statically embedded on markdown
 
 ```md
 [Click here to sent a payment to Alice and Bob](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA)
 ```
 
 <details>
-  <summary>Try it online:</summary>
+  <summary>🎮 Try it online:</summary>
 
 [Click here to sent a payment to Alice and Bob](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA)
 
 </details>
 
-## QR Statically embedded on HTML websites
+## 🔵 QR Statically embedded on HTML websites
 
 ```html
 <img src="../img/docs-transactions-overview-example.png"> Scan to send a payment to Alice and Bob </img>
 ```
 
 <details>
-  <summary>Try it online:</summary>
+  <summary>🎮 Try it online:</summary>
 
 <img src="../img/docs-transactions-overview-example.png"> Scan to send a payment to Alice and Bob </img>
 
 </details>
 
 
-## QR Statically embedded on markdown
+## 🔵 QR Statically embedded on markdown
 
 ```md
 ![Scan to send a payment to Alice and Bob](../img/docs-transactions-overview-example.png)
 ```
 
 <details>
-  <summary>Try it online:</summary>
+  <summary>🎮 Try it online:</summary>
 
 ![Scan to send a payment to Alice and Bob](../img/docs-transactions-overview-example.png)
 
 </details>
 
-## QR on hardware devices and reducing QR/URL sizes using GCFS
+## 🔵 QR on hardware devices and reducing QR/URL sizes using GCFS
 
-If you are looking to initiate QR connections from hardware devices, or you are concerned about the size of the produced QR codes or URLs please watch [this tutorial](https://www.youtube.com/watch?v=Q-u6yb6jIz4) where with our friend **Maarten Menhere** we put most of the GCScript code on-chain to reduce the encoded URL to produce smaller images for his **M2Tec Paypad POS devices**.
+If you are looking to initiate QR connections from hardware devices, or you are concerned about the size of the produced QR codes or URLs please check out [this payment dapp](https://github.com/M2tec/gcfs-payments.m2tec.nl) or watch [this tutorial](https://www.youtube.com/watch?v=Q-u6yb6jIz4) where with our friend **Maarten Menhere** we put most of the GCScript code on-chain to reduce the encoded URL to produce smaller images for his **M2Tec Paypad POS devices**.
 
 The code gets stored on chain permanently as files using [GCFS, the on-chain file storage protocol on Cardano](https://www.youtube.com/watch?v=tq3Sxuh_XGE). 
 
 > This, far from being a workaround, is the main reason behind **GCFS** and **GCScript DSL** design, the intended way of producing reliable and reusable code to foster open protocols, interoperability, transparency and open source collaboration. 
 
-## Generation and redirection from a Javascript frontend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
+## 🔵 Generation and redirection from a Javascript frontend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
 
 ```js
 import gc from '@gamechanger-finance/gc'
@@ -178,7 +184,7 @@ window.open(url, "_blank");
 
 ```
 
-## Generation and redirection from a Javascript backend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
+## 🔵 Generation and redirection from a Javascript backend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
 
 ```js
 import gc from '@gamechanger-finance/gc'
@@ -204,14 +210,14 @@ app.listen(8000, () =>{
 
 ```
 
-## Generation as URL from Bash with [CLI](https://www.npmjs.com/package/@gamechanger-finance/gc)
+## 🔵 Generation as URL from Bash with [CLI](https://www.npmjs.com/package/@gamechanger-finance/gc)
 ```bash
     # save GCScript code in code.gcscript file
     gamechanger-cli preprod encode url -v 2 -f code.gcscript
     # open URL on a browser, or send it through email, social networks, messaging apps, etc..
 ```
 
-## Generation as QR code from Bash with [CLI](https://www.npmjs.com/package/@gamechanger-finance/gc)
+## 🔵 Generation as QR code from Bash with [CLI](https://www.npmjs.com/package/@gamechanger-finance/gc)
 ```bash
     # save GCScript code in code.gcscript file
     gamechanger-cli preprod encode qr -v 2 -f code.gcscript -o scan_me.png
@@ -219,7 +225,7 @@ app.listen(8000, () =>{
 ```
 
 
-## Generation and redirection from a Javascript frontend using Vanilla JS (zero-dependencies)
+## 🔵 Generation and redirection from a Javascript frontend using Vanilla JS (zero-dependencies)
 
 ```js
 
@@ -264,15 +270,26 @@ window.open(url, "_blank");
 
 ```
 
+
 For insight on how to integrate on other languages, [here is a full example](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/examples/%F0%9F%9A%80%20Pay%20me%201%20ADA_nolib.html) with all vanilla js encoders and decoders (no libraries, zero-dependencies).
- 
+
+</details> 
+
+</br>
+</br>
+</br>
+</br>
+
 # Decoding the response URLs
 
 Capturing response data from the wallet is not mandatory, but is a feature you can use.
 
-Let's explore some ways to capture and decode/decompress the JSON response from the wallet
 
-## Decoding wallet response URL on a Javascript frontend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
+<details>
+  <summary>💡 Click to explore programmatic ways to capture and decode/decompress the JSON response from the wallet...</summary>
+
+
+## 🔵 Decoding wallet response URL on a Javascript frontend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
 
 ```js
 import gc from '@gamechanger-finance/gc'
@@ -293,7 +310,7 @@ console.log(resultObj);
 
 ```
 
-## Decoding wallet response URL on a Javascript backend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
+## 🔵 Decoding wallet response URL on a Javascript backend with [NPM Lib](https://www.npmjs.com/package/@gamechanger-finance/gc)
 
 ```js
 import gc from '@gamechanger-finance/gc'
@@ -318,9 +335,15 @@ app.listen(8000, () =>{
 });
 
 ```
-## Decoding wallet response URL on a Javascript frontend using Vanilla JS (zero-dependencies)
+## 🔵 Decoding wallet response URL on a Javascript frontend using Vanilla JS (zero-dependencies)
 
 Full example with vanilla js encoders and decoders (no libraries, zero-dependencies) [here](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/examples/%F0%9F%9A%80%20Pay%20me%201%20ADA_nolib.html).
  
+</details>
+
+</br>
+</br>
+</br>
+</br>
 
 Previous: [Overview](overview.md) | Next: [Payments](payments.md)
