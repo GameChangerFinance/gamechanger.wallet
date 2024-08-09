@@ -63,7 +63,7 @@ The smart design principles of the wallet allows you to import or connect these 
     - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
     - **The big picture behind GameChanger Dapps** explained on-dapp for the Cardano Community
 - M2Tec - Hardware and Software Dapps (first hardware dapps on Cardano powered by GameChanger universal dapp connector)
-    - [M2Tec Payments](https://payments.m2tec.nl/)
+    - [M2Tec Payments](https://payments.m2tec.nl/): POS payment request generator dapp leveraging on an GCFS on-chain open protocol ( [Code on Github](https://github.com/M2tec/gcfs-payments.m2tec.nl) )
     - [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl)
     - M2Tec Paypads: Payment devices for stores, with Odoo integration for ADA and native asset payments, loyalty tokens and more.
     - M2Tec Cardano Totem: The first Cardano ATM-like public terminals with built-in stake pool
