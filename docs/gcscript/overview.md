@@ -29,6 +29,10 @@ The wallet has a GCScript language interpreter that validates, executes, and ret
 
 The way GCScripts and their JSON results are packed and shared between agents and wallets is called transport.
 
+<div style="text-align:center">
+    <img src="../img/gcscript-overview.png"/>
+</div>
+
 ## Benefits
  
 - supported on all platforms: pure JSON, no binary executable code nor any platform-specific language
