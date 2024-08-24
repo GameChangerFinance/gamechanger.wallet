@@ -29,7 +29,8 @@ The smart design principles of the wallet allows you to import or connect these 
 
 - [Transactions / Quick Start](docs/transactions/quick-start.md): A single page covering from making a Cardano transaction to code snippets to help integrate the wallet
 - [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more.
-- [GCScript API documentation](https://beta-wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
+- [GCScript Language Reference (API docs)](https://beta-wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
+- [JSON Schema](/release/README.md)
 
 ## Examples and special use cases:
 
@@ -117,7 +118,7 @@ MIT
 *Roberto, Maarten, Quasar, Javi and Mati* for all your support
 
 
-And to the **147.414.000++ votes** who tried to support our job on **Catalyst Fund10** despite coordinated whales will, don't give up on Governance, your votes mean a lot for builders in Cardano!
+And to voters and **Project Catalyst** for supporting this development and contribute to let us produce and maintain more open source tooling and resources for **Cardano Blockchain**
 
     
 *--- Founder and Dev Adriano Fiorenza*

@@ -113,7 +113,7 @@ Let's explore some integrations and techniques to encode/compress GCScript into 
 ```
 
 <details>
-  <summary>🎮 Try it online:</summary>
+<summary>🎮 Try it online:</summary>
 
 <a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA"> Click here to send a payment to Alice and Bob </a>
 
