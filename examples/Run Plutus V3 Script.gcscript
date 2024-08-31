@@ -1,7 +1,7 @@
 {
   "type": "script",
-  "title": "Run Plutus Script",
-  "description": "Demo that locks and redeem some coin from a smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "title": "Run Plutus V3 Script",
+  "description": "Demo that locks and redeem some coin from an Always-Succeed Plutus V3 smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
   "exportAs": "RunPlutustDemo",
   "return": {
     "mode": "last"
@@ -25,8 +25,8 @@
         "contract": {
           "type": "plutusScript",
           "script": {
-            "scriptHex": "4746010000222499",
-            "lang": "plutus_v2"
+            "scriptHex": "46450101002499",
+            "lang": "plutus_v3"
           }
         },
         "address": {

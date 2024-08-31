@@ -1,0 +1,25 @@
+{
+  "type": "script",
+  "title": "Governance key derivation paths",
+  "description": "Explore Conway Era key derivation",
+  "exportAs": "data",
+  "run": {
+    "derivePublicKeys": {
+      "type": "deriveKeys",
+      "keys": {
+        "DRep": {
+          "name": "DRep_main_key",
+          "path": "m/1852h/1815h/0h/3/0"
+        },
+        "CCCold": {
+          "name": "CCCold_main_key",
+          "path": "m/1852h/1815h/0h/4/0"
+        },
+        "CCHot": {
+          "name": "CCCold_main_key",
+          "path": "m/1852h/1815h/0h/5/0"
+        }
+      }
+    }
+  }
+}

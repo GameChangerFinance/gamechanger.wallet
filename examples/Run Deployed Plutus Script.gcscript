@@ -88,18 +88,13 @@
             "idPattern": "locked-input"
           }
         ],
-        "referenceInputs": [
-          {
-            "txHash": "672e8af629fbd480be2baf14ff9046df4a9c689ad48bc84da88531da48721f03",
-            "index": 0
-          }
-        ],
         "witnesses": {
           "plutus": {
             "scripts": [
               {
                 "scriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
                 "lang": "{get('cache.dependencies.contract.lang')}",
+                "scriptSize": "{get('cache.dependencies.contract.scriptSize')}",
                 "input": {
                   "txHash": "672e8af629fbd480be2baf14ff9046df4a9c689ad48bc84da88531da48721f03",
                   "index": 0

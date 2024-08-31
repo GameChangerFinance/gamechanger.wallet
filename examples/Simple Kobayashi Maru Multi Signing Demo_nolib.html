@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Run Plutus Script</title>
-    <meta name="title" content="Run Plutus Script">
-    <meta name="description" content="Demo that locks and redeem some coin from a smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/">
+    <title>Simple Kobayashi Maru Multi Signing Demo</title>
+    <meta name="title" content="Simple Kobayashi Maru Multi Signing Demo">
+    <meta name="description" content="Builds and signs 2 transactions with unobtainable foreign keys. Triggers the default multisig strategy to obtain remote signatures through Roundtable and Unimatrix">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,162 +107,53 @@
                 //This is the GCScript code that GameChanger Wallet will execute
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
+  "title": "Simple Kobayashi Maru Multi Signing Demo",
+  "description": "Builds and signs 2 transactions with unobtainable foreign keys. Triggers the default multisig strategy to obtain remote signatures through Roundtable and Unimatrix",
   "type": "script",
-  "title": "Run Plutus Script",
-  "description": "Demo that locks and redeem some coin from a smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
-  "exportAs": "RunPlutustDemo",
+  "exportAs": "KobayashiMaruResults",
   "return": {
     "mode": "last"
   },
   "run": {
-    "dependencies": {
-      "type": "script",
-      "run": {
-        "lock": {
-          "type": "data",
-          "value": {
-            "coin": "2600000",
-            "datumHex": "1a0027ac40",
-            "datumHashHex": "bdfeadeebc2251f45aadab51bd9ff21deb8692da6a75e5559bd5daba8c0aa253"
-          }
-        },
-        "stakeCredential": {
-          "type": "data",
-          "value": "ad03a4ae45b21f50fde67956365cff94db41bc08a2c2862403d8a234"
-        },
-        "contract": {
-          "type": "plutusScript",
-          "script": {
-            "scriptHex": "4746010000222499",
-            "lang": "plutus_v2"
-          }
-        },
-        "address": {
-          "type": "buildAddress",
-          "name": "ContractAddress",
-          "addr": {
-            "spendScriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
-            "stakePubKeyHashHex": "{get('cache.dependencies.stakeCredential')}"
-          }
-        }
-      }
-    },
-    "buildLock": {
+    "tx1": {
       "type": "buildTx",
-      "name": "built-lock",
       "tx": {
-        "outputs": [
-          {
-            "address": "{get('cache.dependencies.address')}",
-            "datum": {
-              "datumHashHex": "{get('cache.dependencies.lock.datumHashHex')}"
-            },
-            "assets": [
-              {
-                "policyId": "ada",
-                "assetName": "ada",
-                "quantity": "{get('cache.dependencies.lock.coin')}"
-              }
-            ]
-          }
-        ],
-        "options": {
-          "changeOptimizer": "NO"
+        "requiredSigners": {
+          "IOHK": "3ecb73dee12d39d8787c9b87e71e857c6dd487d4fe7c5173e0bb8c74",
+          "Emurgo": "1d46f358ba291245db79a6b953703a131e688ab2054e6a85b742d621",
+          "CardanoFoundation": "ad0a0ecf8ae61aba9b75d337b7348a4ad5d1a92aad9d8aeaf04b28d2"
         }
       }
     },
-    "signLock": {
-      "type": "signTxs",
-      "namePattern": "signed-lock",
+    "tx2": {
+      "type": "buildTx",
+      "tx": {
+        "requiredSigners": {
+          "IOHK": "3ecb73dee12d39d8787c9b87e71e857c6dd487d4fe7c5173e0bb8c74",
+          "Emurgo": "1d46f358ba291245db79a6b953703a131e688ab2054e6a85b742d621",
+          "CardanoFoundation": "ad0a0ecf8ae61aba9b75d337b7348a4ad5d1a92aad9d8aeaf04b28d2"
+        }
+      }
+    },
+    "stage2_sign_transaction": {
       "detailedPermissions": false,
+      "type": "signTxs",
+      "namePattern": "Signed Demo Transaction",
       "txs": [
-        "{get('cache.buildLock.txHex')}"
+        "{get('cache.tx1.txHex')}",
+        "{get('cache.tx2.txHex')}"
       ]
     },
-    "submitLock": {
+    "stage3_submit_transaction": {
       "type": "submitTxs",
-      "namePattern": "submitted-lock",
-      "txs": "{get('cache.signLock')}"
+      "namePattern": "Submitted Demo Transaction",
+      "txs": "{get('cache.stage2_sign_transaction')}"
     },
-    "buildUnlock": {
-      "type": "buildTx",
-      "name": "built-unlock",
-      "parentTxHash": "{get('cache.buildLock.txHash')}",
-      "tx": {
-        "inputs": [
-          {
-            "txHash": "{get('cache.buildLock.txHash')}",
-            "index": 0,
-            "idPattern": "locked-input"
-          }
-        ],
-        "witnesses": {
-          "plutus": {
-            "scripts": [
-              {
-                "scriptHex": "{get('cache.dependencies.contract.scriptHex')}",
-                "lang": "{get('cache.dependencies.contract.lang')}"
-              }
-            ],
-            "consumers": [
-              {
-                "scriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
-                "datum": {
-                  "dataHex": "{get('cache.dependencies.lock.datumHex')}"
-                },
-                "redeemer": {
-                  "type": "spend",
-                  "itemIdPattern": "locked-input"
-                }
-              }
-            ]
-          }
-        },
-        "options": {
-          "collateralCoinSelection": "LASLAD"
-        }
-      }
-    },
-    "signUnlock": {
-      "type": "signTxs",
-      "namePattern": "signed-unlock",
-      "detailedPermissions": false,
-      "txs": [
-        "{get('cache.buildUnlock.txHex')}"
-      ]
-    },
-    "submitUnlock": {
-      "type": "submitTxs",
-      "namePattern": "submitted-unlock",
-      "txs": "{get('cache.signUnlock')}"
-    },
-    "finally": {
-      "type": "script",
+    "stage4_export_results": {
+      "type": "macro",
       "run": {
-        "lock": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.lock')}"
-        },
-        "smartContract": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.contract.scriptHex')}"
-        },
-        "smartContractHash": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.contract.scriptHashHex')}"
-        },
-        "smartContractAddress": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.address')}"
-        },
-        "lockTx": {
-          "type": "macro",
-          "run": "{get('cache.buildLock.txHash')}"
-        },
-        "unlockTx": {
-          "type": "macro",
-          "run": "{get('cache.buildUnlock.txHash')}"
-        }
+        "tx1": "{get('cache.tx1.txHash')}",
+        "tx2": "{get('cache.tx2.txHash')}"
       }
     }
   }
@@ -575,8 +466,8 @@
 
 <body>
     <div class="box">
-        <h1>Run Plutus Script</h1>
-        <p><i>Demo that locks and redeem some coin from a smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/</i></p>
+        <h1>Simple Kobayashi Maru Multi Signing Demo</h1>
+        <p><i>Builds and signs 2 transactions with unobtainable foreign keys. Triggers the default multisig strategy to obtain remote signatures through Roundtable and Unimatrix</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

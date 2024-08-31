@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Run Deployed Plutus Script</title>
-    <meta name="title" content="Run Deployed Plutus Script">
-    <meta name="description" content="Demo that locks and redeem some coin from a previously deployed smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/">
+    <title>Run Plutus V2 Script</title>
+    <meta name="title" content="Run Plutus V2 Script">
+    <meta name="description" content="Demo that locks and redeem some coin from an Always-Succeed Plutus V2 smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,9 +110,9 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
-  "title": "Run Deployed Plutus Script",
-  "description": "Demo that locks and redeem some coin from a previously deployed smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
-  "exportAs": "RunDeployedPlutustDemo",
+  "title": "Run Plutus V2 Script",
+  "description": "Demo that locks and redeem some coin from an Always-Succeed Plutus V2 smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "RunPlutustDemo",
   "return": {
     "mode": "last"
   },
@@ -202,13 +202,8 @@
           "plutus": {
             "scripts": [
               {
-                "scriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
-                "lang": "{get('cache.dependencies.contract.lang')}",
-                "scriptSize": "{get('cache.dependencies.contract.scriptSize')}",
-                "input": {
-                  "txHash": "672e8af629fbd480be2baf14ff9046df4a9c689ad48bc84da88531da48721f03",
-                  "index": 0
-                }
+                "scriptHex": "{get('cache.dependencies.contract.scriptHex')}",
+                "lang": "{get('cache.dependencies.contract.lang')}"
               }
             ],
             "consumers": [
@@ -432,8 +427,8 @@
 
 <body>
     <div class="box">
-        <h1>Run Deployed Plutus Script</h1>
-        <p><i>Demo that locks and redeem some coin from a previously deployed smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/</i></p>
+        <h1>Run Plutus V2 Script</h1>
+        <p><i>Demo that locks and redeem some coin from an Always-Succeed Plutus V2 smart contract. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">
