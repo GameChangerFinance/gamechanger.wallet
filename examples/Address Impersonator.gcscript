@@ -1,0 +1,44 @@
+{
+  "type": "script",
+  "title": "Address Impersonator",
+  "description": "Create a workspace to impersonate a wallet without having their private keys. Wallet operations will trigger multisig transactions. Use to remotely control a wallet or be able to build transactions in behalf of the owner",
+  "args": {
+    "name": "MyOtherWallet",
+    "address": "addr1q98f06pcrsn8x03uw0vlejw684fcu02waffvfscdsz0djgqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq2vsyn7"
+  },
+  "run": {
+    "getAddressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('args.address'))}"
+    },
+    "usingWorkspaces": {
+      "type": "loadConfig",
+      "updateId": "addresses-exercise-1",
+      "layers": [
+        {
+          "type": "Workspace",
+          "items": [
+            {
+              "namePattern": "Multisigs",
+              "titlePattern": "Multisigs",
+              "descriptionPattern": "My multisig addresses"
+            }
+          ]
+        },
+        {
+          "type": "Address",
+          "workspaceIds": [
+            "Multisigs"
+          ],
+          "items": [
+            {
+              "namePattern": "{get('args.name')}",
+              "spendPubKeyHashHex": "{get('cache.getAddressInfo.paymentKeyHash')}",
+              "stakePubKeyHashHex": "{get('cache.getAddressInfo.stakingKeyHash')}"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
