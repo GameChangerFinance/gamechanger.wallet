@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Governance Workspace</title>
-    <meta name="title" content="Governance Workspace">
-    <meta name="description" content="A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys">
+    <title>Governance - Vote Delegation - No Confidence</title>
+    <meta name="title" content="Governance - Vote Delegation - No Confidence">
+    <meta name="description" content="About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,90 +110,89 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
-  "title": "Governance Workspace",
-  "description": "A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys",
-  "exportAs": "data",
+  "title": "Governance - Vote Delegation - No Confidence",
+  "description": "About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "args": {
+    "kind": "NoConfidence"
+  },
+  "return": {
+    "mode": "last"
+  },
+  "exportAs": "myVoteDelegation",
   "run": {
-    "usingWorkspaces": {
-      "type": "loadConfig",
-      "updateId": "demo",
-      "layers": [
-        {
-          "type": "Workspace",
-          "items": [
-            {
-              "namePattern": "conway",
-              "titlePattern": "Conway Keys",
-              "descriptionPattern": "My Governance Keys"
-            }
-          ]
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "addressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('cache.address'))}"
+    },
+    "_registration": {
+      "type": "macro",
+      "run": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}"
+      }
+    },
+    "registration": {
+      "type": "certificate",
+      "cert": "{get('cache._registration')}"
+    },
+    "_vote": {
+      "type": "macro",
+      "run": {
+        "kind": "VoteDelegation",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+        "vote": "{get('args')}"
+      }
+    },
+    "vote": {
+      "type": "certificate",
+      "cert": "{get('cache._vote')}"
+    },
+    "build": {
+      "type": "buildTx",
+      "title": "✅ Voted No Confidence",
+      "tx": {
+        "certificates": {
+          "myRegistration": {
+            "certHex": "{get('cache.registration')}"
+          },
+          "myVote": {
+            "certHex": "{get('cache.vote')}"
+          }
         },
-        {
-          "type": "Key",
-          "workspaceIds": [
-            "conway"
-          ],
-          "namePattern": "DRep_{index}",
-          "items": [
-            {
-              "pathPattern": "m/1852h/1815h/0h/3/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/3/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/3/{index}"
-            }
-          ]
-        },
-        {
-          "type": "Key",
-          "workspaceIds": [
-            "conway"
-          ],
-          "namePattern": "CCCold_{index}",
-          "items": [
-            {
-              "pathPattern": "m/1852h/1815h/0h/4/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/4/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/4/{index}"
-            }
-          ]
-        },
-        {
-          "type": "Key",
-          "workspaceIds": [
-            "conway"
-          ],
-          "namePattern": "CCHot_{index}",
-          "items": [
-            {
-              "pathPattern": "m/1852h/1815h/0h/5/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/5/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/5/{index}"
-            }
-          ]
+        "options": {
+          "autoProvision": {
+            "workspaceNativeScript": true
+          },
+          "autoOptionalSigners": {
+            "nativeScript": true
+          }
         }
+      }
+    },
+    "sign": {
+      "detailedPermissions": false,
+      "type": "signTxs",
+      "txs": [
+        "{get('cache.build.txHex')}"
       ]
     },
-    "setWorkspace": {
-      "type": "setCurrentWorkspace",
-      "workspaceId": "conway"
+    "submit": {
+      "type": "submitTxs",
+      "txs": "{get('cache.sign')}"
     },
-    "keysInWorkspace": {
-      "type": "script",
+    "stage4_export_results": {
+      "type": "macro",
       "run": {
-        "allKeys": {
-          "type": "getPublicKeys"
-        }
+        "txHash": "{get('cache.build.txHash')}",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+        "registrationCert": "{get('cache.registration')}",
+        "voteCert": "{get('cache.vote')}"
       }
     }
   }
@@ -356,8 +355,8 @@
 
 <body>
     <div class="box">
-        <h1>Governance Workspace</h1>
-        <p><i>A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys</i></p>
+        <h1>Governance - Vote Delegation - No Confidence</h1>
+        <p><i>About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

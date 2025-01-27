@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Governance key derivation paths</title>
-    <meta name="title" content="Governance key derivation paths">
-    <meta name="description" content="Explore Conway Era key derivation">
+    <title>Governance -  Workspace</title>
+    <meta name="title" content="Governance -  Workspace">
+    <meta name="description" content="A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -108,24 +108,89 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
-  "title": "Governance key derivation paths",
-  "description": "Explore Conway Era key derivation",
+  "title": "Governance -  Workspace",
+  "description": "A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys",
   "exportAs": "data",
   "run": {
-    "derivePublicKeys": {
-      "type": "deriveKeys",
-      "keys": {
-        "DRep": {
-          "name": "DRep_main_key",
-          "path": "m/1852h/1815h/0h/3/0"
+    "usingWorkspaces": {
+      "type": "loadConfig",
+      "updateId": "demo",
+      "layers": [
+        {
+          "type": "Workspace",
+          "items": [
+            {
+              "namePattern": "conway",
+              "titlePattern": "Conway Keys",
+              "descriptionPattern": "My Governance Keys"
+            }
+          ]
         },
-        "CCCold": {
-          "name": "CCCold_main_key",
-          "path": "m/1852h/1815h/0h/4/0"
+        {
+          "type": "Key",
+          "workspaceIds": [
+            "conway"
+          ],
+          "namePattern": "DRep_{index}",
+          "items": [
+            {
+              "pathPattern": "m/1852h/1815h/0h/3/{index}"
+            },
+            {
+              "pathPattern": "m/1852h/1815h/0h/3/{index}"
+            },
+            {
+              "pathPattern": "m/1852h/1815h/0h/3/{index}"
+            }
+          ]
         },
-        "CCHot": {
-          "name": "CCCold_main_key",
-          "path": "m/1852h/1815h/0h/5/0"
+        {
+          "type": "Key",
+          "workspaceIds": [
+            "conway"
+          ],
+          "namePattern": "CCCold_{index}",
+          "items": [
+            {
+              "pathPattern": "m/1852h/1815h/0h/4/{index}"
+            },
+            {
+              "pathPattern": "m/1852h/1815h/0h/4/{index}"
+            },
+            {
+              "pathPattern": "m/1852h/1815h/0h/4/{index}"
+            }
+          ]
+        },
+        {
+          "type": "Key",
+          "workspaceIds": [
+            "conway"
+          ],
+          "namePattern": "CCHot_{index}",
+          "items": [
+            {
+              "pathPattern": "m/1852h/1815h/0h/5/{index}"
+            },
+            {
+              "pathPattern": "m/1852h/1815h/0h/5/{index}"
+            },
+            {
+              "pathPattern": "m/1852h/1815h/0h/5/{index}"
+            }
+          ]
+        }
+      ]
+    },
+    "setWorkspace": {
+      "type": "setCurrentWorkspace",
+      "workspaceId": "conway"
+    },
+    "keysInWorkspace": {
+      "type": "script",
+      "run": {
+        "allKeys": {
+          "type": "getPublicKeys"
         }
       }
     }
@@ -439,8 +504,8 @@
 
 <body>
     <div class="box">
-        <h1>Governance key derivation paths</h1>
-        <p><i>Explore Conway Era key derivation</i></p>
+        <h1>Governance -  Workspace</h1>
+        <p><i>A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

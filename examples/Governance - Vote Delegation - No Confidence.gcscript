@@ -1,0 +1,89 @@
+{
+  "type": "script",
+  "title": "Governance - Vote Delegation - No Confidence",
+  "description": "About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "args": {
+    "kind": "NoConfidence"
+  },
+  "return": {
+    "mode": "last"
+  },
+  "exportAs": "myVoteDelegation",
+  "run": {
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "addressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('cache.address'))}"
+    },
+    "_registration": {
+      "type": "macro",
+      "run": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}"
+      }
+    },
+    "registration": {
+      "type": "certificate",
+      "cert": "{get('cache._registration')}"
+    },
+    "_vote": {
+      "type": "macro",
+      "run": {
+        "kind": "VoteDelegation",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+        "vote": "{get('args')}"
+      }
+    },
+    "vote": {
+      "type": "certificate",
+      "cert": "{get('cache._vote')}"
+    },
+    "build": {
+      "type": "buildTx",
+      "title": "✅ Voted No Confidence",
+      "tx": {
+        "certificates": {
+          "myRegistration": {
+            "certHex": "{get('cache.registration')}"
+          },
+          "myVote": {
+            "certHex": "{get('cache.vote')}"
+          }
+        },
+        "options": {
+          "autoProvision": {
+            "workspaceNativeScript": true
+          },
+          "autoOptionalSigners": {
+            "nativeScript": true
+          }
+        }
+      }
+    },
+    "sign": {
+      "detailedPermissions": false,
+      "type": "signTxs",
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "txs": "{get('cache.sign')}"
+    },
+    "stage4_export_results": {
+      "type": "macro",
+      "run": {
+        "txHash": "{get('cache.build.txHash')}",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+        "registrationCert": "{get('cache.registration')}",
+        "voteCert": "{get('cache.vote')}"
+      }
+    }
+  }
+}
