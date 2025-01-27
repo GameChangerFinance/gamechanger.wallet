@@ -1,6 +1,6 @@
 {
   "type": "script",
-  "title": "Governance Workspace",
+  "title": "Governance -  Workspace",
   "description": "A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys",
   "exportAs": "data",
   "run": {

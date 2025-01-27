@@ -1,6 +1,6 @@
 {
   "type": "script",
-  "title": "Governance key derivation paths",
+  "title": "Governance -  Key Derivation Paths",
   "description": "Explore Conway Era key derivation",
   "exportAs": "data",
   "run": {
