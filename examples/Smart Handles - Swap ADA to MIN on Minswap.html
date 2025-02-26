@@ -35,7 +35,7 @@
 
             //GameChanger Wallet is pure Web3, zero backend procesing of user data. 
             //Dapp connector links are fully processed on end-user browsers.
-            const gcApiUrl    = "https://beta-preprod-wallet.gamechanger.finance/api/2/run/";
+            const gcApiUrl    = "https://beta-wallet.gamechanger.finance/api/2/run/";
             const currentUrl  = window.location.href;
 
             //UI components:
@@ -112,6 +112,9 @@
   "type": "script",
   "title": "Smart Handles - Swap ADA to MIN on Minswap",
   "description": "Interact with a Smart Handles instance for swapping ADA to MIN, with a routing fee of 1 ADA (preprod). Uses the Minswap V2 instance of Anastasia Labs Smart Handles. https://github.com/Anastasia-Labs/smart-handles",
+  "require": {
+    "networkTag": "preprod"
+  },
   "args": {
     "amount": "50000000"
   },
@@ -229,7 +232,7 @@
                 const url=await gc.encode.url({
                   input:JSON.stringify(gcscript),
                   apiVersion:'2',
-                  network:'preprod',
+                  network:'mainnet',
                   encoding:useCodec,
                 });
                 return url;
@@ -400,7 +403,7 @@
         <i>Generated with ❤️ 
         <br/>
         by <b>
-            <a target="_blank" rel="noopener noreferrer" href="https://beta-preprod-wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://beta-wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
         </b>
         <br/>
          2023 </i></p>

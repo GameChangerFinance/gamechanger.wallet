@@ -110,6 +110,13 @@
   "type": "script",
   "title": "Simple Wallet derivation script",
   "description": "Will derive key pairs and build custom addresses",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "run": {
     "HDSpendKeys": {
       "type": "deriveKeys",

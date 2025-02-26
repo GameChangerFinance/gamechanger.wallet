@@ -108,6 +108,14 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    }
+  },
   "run": {
     "dependencies": {
       "type": "script",

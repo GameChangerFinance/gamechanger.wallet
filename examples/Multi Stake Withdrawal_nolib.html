@@ -110,6 +110,13 @@
   "type": "script",
   "title": "Multi Stake Withdrawal",
   "description": "Script that requests 3 child wallet's reward addresses from an specific workspace, to later withdraw some staking rewards from each of them on a single transaction. You need to have staking rewards on each child wallet and run 'Multi Stake Delegation' demo first or load it's wallet configuration on this device",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "exportAs": "MultiWithdrawlDemo",
   "run": {
     "setWorkspace": {

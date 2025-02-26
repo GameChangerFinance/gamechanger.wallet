@@ -112,6 +112,14 @@
   "title": "Kobayashi Maru Multi Signing Demo",
   "description": "Demo that tries to sign 3 transactions with unobtainable foreign keys and internal spending and staking private keys",
   "type": "script",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    }
+  },
   "exportAs": "MultiSig",
   "run": {
     "dependencies": {

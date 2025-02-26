@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Governance Workspace</title>
-    <meta name="title" content="Governance Workspace">
-    <meta name="description" content="A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys">
+    <title>Script Requirements</title>
+    <meta name="title" content="Script Requirements">
+    <meta name="description" content="Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,92 +107,23 @@
                 //This is the GCScript code that GameChanger Wallet will execute
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
+  "title": "Script Requirements",
+  "description": "Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts",
   "type": "script",
-  "title": "Governance Workspace",
-  "description": "A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys",
   "exportAs": "data",
-  "run": {
-    "usingWorkspaces": {
-      "type": "loadConfig",
-      "updateId": "demo",
-      "layers": [
-        {
-          "type": "Workspace",
-          "items": [
-            {
-              "namePattern": "conway",
-              "titlePattern": "Conway Keys",
-              "descriptionPattern": "My Governance Keys"
-            }
-          ]
-        },
-        {
-          "type": "Key",
-          "workspaceIds": [
-            "conway"
-          ],
-          "namePattern": "DRep_{index}",
-          "items": [
-            {
-              "pathPattern": "m/1852h/1815h/0h/3/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/3/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/3/{index}"
-            }
-          ]
-        },
-        {
-          "type": "Key",
-          "workspaceIds": [
-            "conway"
-          ],
-          "namePattern": "CCCold_{index}",
-          "items": [
-            {
-              "pathPattern": "m/1852h/1815h/0h/4/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/4/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/4/{index}"
-            }
-          ]
-        },
-        {
-          "type": "Key",
-          "workspaceIds": [
-            "conway"
-          ],
-          "namePattern": "CCHot_{index}",
-          "items": [
-            {
-              "pathPattern": "m/1852h/1815h/0h/5/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/5/{index}"
-            },
-            {
-              "pathPattern": "m/1852h/1815h/0h/5/{index}"
-            }
-          ]
-        }
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
       ]
     },
-    "setWorkspace": {
-      "type": "setCurrentWorkspace",
-      "workspaceId": "conway"
-    },
-    "keysInWorkspace": {
-      "type": "script",
-      "run": {
-        "allKeys": {
-          "type": "getPublicKeys"
-        }
-      }
+    "networkTag": "preprod"
+  },
+  "run": {
+    "message": {
+      "type": "data",
+      "value": "✅ Congrats! your wallet was allowed to run this script."
     }
   }
 };
@@ -504,8 +435,8 @@
 
 <body>
     <div class="box">
-        <h1>Governance Workspace</h1>
-        <p><i>A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys</i></p>
+        <h1>Script Requirements</h1>
+        <p><i>Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

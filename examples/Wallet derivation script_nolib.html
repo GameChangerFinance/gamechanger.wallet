@@ -108,6 +108,13 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "run": {
     "HDSpendKeys": {
       "type": "deriveKeys",

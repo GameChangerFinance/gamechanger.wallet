@@ -2,6 +2,13 @@
   "type": "script",
   "title": "DAO Demo",
   "description": "This script will create a workspace to import addresses, scripts, manage funds and signatures from a DAO where you are a powerful member, you have full control when you use 2 of your keys.",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "exportAs": "DAODemo",
   "return": {
     "mode": "none"

@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Governance key derivation paths</title>
-    <meta name="title" content="Governance key derivation paths">
-    <meta name="description" content="Explore Conway Era key derivation">
+    <title>Governance - Vote Delegation - Abstain</title>
+    <meta name="title" content="Governance - Vote Delegation - Abstain">
+    <meta name="description" content="About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,25 +110,97 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
-  "title": "Governance key derivation paths",
-  "description": "Explore Conway Era key derivation",
-  "exportAs": "data",
+  "title": "Governance - Vote Delegation - Abstain",
+  "description": "About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    }
+  },
+  "args": {
+    "kind": "Abstain"
+  },
+  "return": {
+    "mode": "last"
+  },
+  "exportAs": "myVoteDelegation",
   "run": {
-    "derivePublicKeys": {
-      "type": "deriveKeys",
-      "keys": {
-        "DRep": {
-          "name": "DRep_main_key",
-          "path": "m/1852h/1815h/0h/3/0"
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "addressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('cache.address'))}"
+    },
+    "_registration": {
+      "type": "macro",
+      "run": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}"
+      }
+    },
+    "registration": {
+      "type": "certificate",
+      "cert": "{get('cache._registration')}"
+    },
+    "_vote": {
+      "type": "macro",
+      "run": {
+        "kind": "VoteDelegation",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+        "vote": "{get('args')}"
+      }
+    },
+    "vote": {
+      "type": "certificate",
+      "cert": "{get('cache._vote')}"
+    },
+    "build": {
+      "type": "buildTx",
+      "title": "✅ Voted Abstain",
+      "tx": {
+        "certificates": {
+          "myRegistration": {
+            "certHex": "{get('cache.registration')}"
+          },
+          "myVote": {
+            "certHex": "{get('cache.vote')}"
+          }
         },
-        "CCCold": {
-          "name": "CCCold_main_key",
-          "path": "m/1852h/1815h/0h/4/0"
-        },
-        "CCHot": {
-          "name": "CCCold_main_key",
-          "path": "m/1852h/1815h/0h/5/0"
+        "options": {
+          "autoProvision": {
+            "workspaceNativeScript": true
+          },
+          "autoOptionalSigners": {
+            "nativeScript": true
+          }
         }
+      }
+    },
+    "sign": {
+      "detailedPermissions": false,
+      "type": "signTxs",
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "txs": "{get('cache.sign')}"
+    },
+    "stage4_export_results": {
+      "type": "macro",
+      "run": {
+        "txHash": "{get('cache.build.txHash')}",
+        "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+        "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+        "registrationCert": "{get('cache.registration')}",
+        "voteCert": "{get('cache.vote')}"
       }
     }
   }
@@ -291,8 +363,8 @@
 
 <body>
     <div class="box">
-        <h1>Governance key derivation paths</h1>
-        <p><i>Explore Conway Era key derivation</i></p>
+        <h1>Governance - Vote Delegation - Abstain</h1>
+        <p><i>About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

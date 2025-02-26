@@ -713,5 +713,12 @@
         }
       ]
     }
+  },
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
   }
 }
