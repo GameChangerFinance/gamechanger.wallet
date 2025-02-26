@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-    <title>Smart Handles - Swap ADA to MIN on Minswap</title>
-    <meta name="title" content="Smart Handles - Swap ADA to MIN on Minswap">
-    <meta name="description" content="Interact with a Smart Handles instance for swapping ADA to MIN, with a routing fee of 1 ADA (preprod). Uses the Minswap V2 instance of Anastasia Labs Smart Handles. https://github.com/Anastasia-Labs/smart-handles">
+    <title>Script Requirements</title>
+    <meta name="title" content="Script Requirements">
+    <meta name="description" content="Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -109,120 +109,23 @@
                 //This is the GCScript code that GameChanger Wallet will execute
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
+  "title": "Script Requirements",
+  "description": "Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts",
   "type": "script",
-  "title": "Smart Handles - Swap ADA to MIN on Minswap",
-  "description": "Interact with a Smart Handles instance for swapping ADA to MIN, with a routing fee of 1 ADA (preprod). Uses the Minswap V2 instance of Anastasia Labs Smart Handles. https://github.com/Anastasia-Labs/smart-handles",
+  "exportAs": "data",
   "require": {
-    "networkTag": "preprod"
-  },
-  "args": {
-    "amount": "50000000"
-  },
-  "return": {
-    "mode": "last"
-  },
-  "exportAs": "SmartHandlesDemo",
-  "run": {
-    "dependencies": {
-      "type": "script",
-      "run": {
-        "userAddress": {
-          "type": "getCurrentAddress"
-        },
-        "addressInfo": {
-          "type": "macro",
-          "run": "{getAddressInfo(get('cache.dependencies.userAddress'))}"
-        },
-        "datum": {
-          "type": "plutusData",
-          "data": {
-            "fromJSON": {
-              "schema": 1,
-              "obj": {
-                "constructor": 0,
-                "fields": [
-                  {
-                    "constructor": 0,
-                    "fields": [
-                      {
-                        "constructor": 0,
-                        "fields": [
-                          {
-                            "bytes": "{get('cache.dependencies.addressInfo.paymentKeyHash')}"
-                          }
-                        ]
-                      },
-                      {
-                        "constructor": 0,
-                        "fields": [
-                          {
-                            "constructor": 0,
-                            "fields": [
-                              {
-                                "constructor": 0,
-                                "fields": [
-                                  {
-                                    "bytes": "{get('cache.dependencies.addressInfo.stakingKeyHash')}"
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "build_swap_request_tx": {
-      "type": "buildTx",
-      "title": "Send 50 ADA",
-      "description": "Swap request to MIN",
-      "name": "Unsigned Swap Request Transaction",
-      "tx": {
-        "outputs": [
-          {
-            "address": "addr_test1wqx2p02tnmnpk7dt88kaemx3qz62r4xqy2p47756879k3xgpval35",
-            "assets": [
-              {
-                "policyId": "ada",
-                "assetName": "ada",
-                "quantity": "{get('args.amount')}"
-              }
-            ],
-            "datum": {
-              "datumHex": "{get('cache.dependencies.datum.dataHex')}"
-            }
-          }
-        ]
-      }
-    },
-    "sign_swap_request_tx": {
-      "type": "signTxs",
-      "namePattern": "Signed Swap Request Transaction",
-      "detailedPermissions": false,
-      "txs": [
-        "{get('cache.build_swap_request_tx.txHex')}"
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
       ]
     },
-    "submit_swap_request_tx": {
-      "type": "submitTxs",
-      "namePattern": "Submitted Demo Transaction",
-      "txs": "{get('cache.sign_swap_request_tx')}"
-    },
-    "export_results": {
-      "type": "macro",
-      "run": {
-        "txHash": "{get('cache.build_swap_request_tx.txHash')}",
-        "address": "{get('cache.dependencies.userAddress')}",
-        "datumHex": "{get('cache.dependencies.datum.dataHex')}",
-        "amount": "{get('args.amount')}"
-      }
+    "networkTag": "preprod"
+  },
+  "run": {
+    "message": {
+      "type": "data",
+      "value": "✅ Congrats! your wallet was allowed to run this script."
     }
   }
 };
@@ -384,8 +287,8 @@
 
 <body>
     <div class="box">
-        <h1>Smart Handles - Swap ADA to MIN on Minswap</h1>
-        <p><i>Interact with a Smart Handles instance for swapping ADA to MIN, with a routing fee of 1 ADA (preprod). Uses the Minswap V2 instance of Anastasia Labs Smart Handles. https://github.com/Anastasia-Labs/smart-handles</i></p>
+        <h1>Script Requirements</h1>
+        <p><i>Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">

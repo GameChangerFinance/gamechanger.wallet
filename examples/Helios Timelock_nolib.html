@@ -110,6 +110,14 @@
   "title": "Helios Timelock",
   "description": "Builds an Helios Smart Contract on the fly. First transaction will lock coins setting main staking key as owner, second one will be able to unlock it only after some time and using main spending key. Burner/Gift wallets not recommended. Timelock not exactly tested.",
   "type": "script",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    }
+  },
   "run": {
     "dependencies": {
       "type": "script",

@@ -111,6 +111,13 @@
                 var gcscript = {
   "title": "Complex Native Scripts",
   "description": "Nested, tagged, complex native script building",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "type": "script",
   "run": {
     "derivations": {

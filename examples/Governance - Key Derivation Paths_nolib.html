@@ -3,8 +3,8 @@
 <html lang="en">
 
 <head>
-    <title>Governance -  Key Derivation Paths</title>
-    <meta name="title" content="Governance -  Key Derivation Paths">
+    <title>Governance - Key Derivation Paths</title>
+    <meta name="title" content="Governance - Key Derivation Paths">
     <meta name="description" content="Explore Conway Era key derivation">
 
     <meta charset="utf-8" />
@@ -108,8 +108,15 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
-  "title": "Governance -  Key Derivation Paths",
+  "title": "Governance - Key Derivation Paths",
   "description": "Explore Conway Era key derivation",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "exportAs": "data",
   "run": {
     "derivePublicKeys": {
@@ -439,7 +446,7 @@
 
 <body>
     <div class="box">
-        <h1>Governance -  Key Derivation Paths</h1>
+        <h1>Governance - Key Derivation Paths</h1>
         <p><i>Explore Conway Era key derivation</i></p>
          
             <div id="dappConnectorBox">

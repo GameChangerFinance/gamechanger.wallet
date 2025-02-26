@@ -2,6 +2,9 @@
   "type": "script",
   "title": "Smart Handles - Swap ADA to MIN on Minswap",
   "description": "Interact with a Smart Handles instance for swapping ADA to MIN, with a routing fee of 1 ADA (preprod). Uses the Minswap V2 instance of Anastasia Labs Smart Handles. https://github.com/Anastasia-Labs/smart-handles",
+  "require": {
+    "networkTag": "preprod"
+  },
   "args": {
     "amount": "50000000"
   },

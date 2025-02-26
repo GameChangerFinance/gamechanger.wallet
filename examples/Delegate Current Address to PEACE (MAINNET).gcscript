@@ -1,6 +1,15 @@
 {
   "title": "Delegate to [PEACE]",
   "description": "About to delegate your ADA to 'PEACEpool Cardano ecosystem developers' stake pool",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    },
+    "networkTag": "mainnet"
+  },
   "type": "script",
   "run": {
     "dependencies": {

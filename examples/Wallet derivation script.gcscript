@@ -1,5 +1,12 @@
 {
   "type": "script",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "run": {
     "HDSpendKeys": {
       "type": "deriveKeys",

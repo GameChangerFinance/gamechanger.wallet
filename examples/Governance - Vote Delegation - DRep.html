@@ -112,6 +112,14 @@
   "type": "script",
   "title": "Governance - Vote Delegation - DRep",
   "description": "About to sign a transaction with a vote delegation to a DRep. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    }
+  },
   "args": {
     "kind": "DRep",
     "scriptHashHex": "199ad2959c8c4e4d50a04a0f3d873b692ff86fbc6a195dd44d17b746"

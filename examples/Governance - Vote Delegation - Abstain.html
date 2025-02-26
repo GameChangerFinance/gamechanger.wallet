@@ -112,6 +112,14 @@
   "type": "script",
   "title": "Governance - Vote Delegation - Abstain",
   "description": "About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "burner",
+        "gift"
+      ]
+    }
+  },
   "args": {
     "kind": "Abstain"
   },

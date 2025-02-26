@@ -1,6 +1,13 @@
 {
   "type": "script",
-  "title": "Governance -  Workspace",
+  "title": "Governance - Workspace",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "description": "A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys",
   "exportAs": "data",
   "run": {

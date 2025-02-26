@@ -3,8 +3,8 @@
 <html lang="en">
 
 <head>
-    <title>Governance -  Workspace</title>
-    <meta name="title" content="Governance -  Workspace">
+    <title>Governance - Workspace</title>
+    <meta name="title" content="Governance - Workspace">
     <meta name="description" content="A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys">
 
     <meta charset="utf-8" />
@@ -108,7 +108,14 @@
                 //JSON code that will be encoded/compressed inside 'actionUrl'
                 var gcscript = {
   "type": "script",
-  "title": "Governance -  Workspace",
+  "title": "Governance - Workspace",
+  "require": {
+    "not": {
+      "walletTypeIn": [
+        "extension"
+      ]
+    }
+  },
   "description": "A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys",
   "exportAs": "data",
   "run": {
@@ -504,7 +511,7 @@
 
 <body>
     <div class="box">
-        <h1>Governance -  Workspace</h1>
+        <h1>Governance - Workspace</h1>
         <p><i>A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys</i></p>
          
             <div id="dappConnectorBox">
