@@ -1,10 +1,10 @@
-# Welcome to Catalyst Fund 14 #GameChangerVerse
+# Welcome to Catalyst Fund 14 [#GameChangerVerse](https://gamechangerfinance.github.io/catalyst-viewer/?url=https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/f14/gamechangerverse.json)
 
 
 Search for **"GameChanger"** and **"Dandelion"** keywords on the Catalyst Voting App and consider voting these open source projects:
 
 
-## [GameChanger: On-Chain File Storage on Cardano (GCFS)](https://app.projectcatalyst.io/proposal/0198a8f0-f106-75eb-b46c-376efea6dbd0)
+## [GameChanger: On-Chain File Storage on Cardano (GCFS)](https://gamechangerfinance.github.io/catalyst-viewer/?url=https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/f14/gcfs.json) | [Mirror](https://app.projectcatalyst.io/proposal/0198a8f0-f106-75eb-b46c-376efea6dbd0)
 
 **Problem:** Current Cardano governance and dApps rely on centralized and external infrastructure for off-chain file, data and code storage, introducing single points of failure and limiting decentralization
 
@@ -13,7 +13,7 @@ Search for **"GameChanger"** and **"Dandelion"** keywords on the Catalyst Voting
 ---
 
 
-## [GameChanger: Instant dApp, build for any device fast](https://app.projectcatalyst.io/proposal/019889e0-2645-77ba-87c2-b03d855d048f)
+## [GameChanger: Instant dApp, build for any device fast](https://gamechangerfinance.github.io/catalyst-viewer/?url=https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/f14/gc-instant-dapp.json) | [Mirror](https://app.projectcatalyst.io/proposal/019889e0-2645-77ba-87c2-b03d855d048f)
 
 **Problem:** Building on Cardano often requires deep knowledge and the skill. With GameChanger Wallet we want to take a different approach. We want to make writing dApps the domain of every web developer out there.
 
@@ -21,7 +21,7 @@ Search for **"GameChanger"** and **"Dandelion"** keywords on the Catalyst Voting
 
 ---
 
-## [Dandelion: new CardanoGraphQL+Blockfrost+Yaci over GraphQL](https://app.projectcatalyst.io/proposal/0198a39e-2f9d-796a-8750-2d267d626484)
+## [Dandelion: new CardanoGraphQL+Blockfrost+Yaci over GraphQL](https://gamechangerfinance.github.io/catalyst-viewer/?url=https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/f14/cardano-graph.json) | [Mirror](https://app.projectcatalyst.io/proposal/0198a39e-2f9d-796a-8750-2d267d626484)
 
 **Problem:** Cardano GraphQL allows for custom queries and less API calls. With network growth it's performance and maintainance became a problem. We want to offer a modern redesign as devs and students needs it.
 
