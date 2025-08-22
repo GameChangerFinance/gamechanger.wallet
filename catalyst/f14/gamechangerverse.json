@@ -1,0 +1,432 @@
+[{
+    "metadata": {},
+    "content": {
+        "$schema": "./0ce8ab38-9258-4fbc-a62e-7faa6e58318f.schema.json",
+        "setup": {
+            "title": {
+                "title": "GameChanger: On-Chain File Storage on Cardano (GCFS)"
+            },
+            "proposer": {
+                "applicant": "Adriano Fiorenza | GameChanger Finance",
+                "type": "Entity (Not Incorporated)"
+            }
+        },
+        "summary": {
+            "budget": {
+                "requestedFunds": 100000
+            },
+            "time": {
+                "duration": 7
+            },
+            "translation": {
+                "isTranslated": false,
+                "originalLanguage": "en"
+            },
+            "problem": {
+                "statement": "Current Cardano governance and dApps rely on centralized and external infrastructure for off-chain file, data and code storage, introducing single points of failure and limiting decentralization"
+            },
+            "solution": {
+                "summary": "Rewrite and open-source GCFS as a TypeScript library for reading and searching files stored on-chain, and a web server that can even serve HTML for frontends, supporting fully on-chain resilient DApps"
+            },
+            "supportingLinks": {
+                "links": [
+                    "https://youtu.be/042b4gQ3SZ0?si=RSkCw-hwAs-cvYQj",
+                    "https://x.com/GameChangerOk/status/1834062592060322161",
+                    "https://preprod-gcfs.onrender.com/gcfs/1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57/test/latest/www/KeepCalmMinterDapp.html",
+                    "https://preprod-gcfs.onrender.com/gcfs/1170d12887c70593e40938a5ff1832f9eb2b8e4a328a982621b36a57/test/latest/"
+                ]
+            },
+            "dependencies": {
+                "hasDependency": true,
+                "dependencyDetail": "Dandelion-Lite: 1 or 2 official and community Cardano APIs to query the on-chain data GameChanger Wallet: source of the code, for testing and as the current reference implementation. Because Catalyst process takes time to launch it may depend on commercial decisions from the owner."
+            },
+            "open_source": {
+                "isOpenSource": true,
+                "licenseInformation": "Former source code is private, closed sourced, owned by Adriano Fiorenza (GameChanger Wallet). All of the outputs of this project will be released as open source under the MIT license for the community"
+            }
+        },
+        "theme": {
+            "theme": {
+                "grouped_tag": {
+                    "group": "Development & Tools",
+                    "tag": "Infrastructure"
+                }
+            }
+        },
+        "campaign_category": {
+            "category_questions": {
+                "license_information": "As everything we usually release to the community, we will release under MIT license as is permisive and gives more freedom to builders to reuse. Collaboration will not be enforced by license but will be highly apreciated so we can all grow together.",
+                "source_code_accessibility": "This is the 3rd and last time we try to release this working product to an ecosystem we know is needing it. We have done our best to share word about it on social media, and even advertize it through online and in-person workshops,all without funding. Peoples from governance and the main entities behind Cardano are aware of it already.\n\nMost of our infrastructure projects find home first at Dandelion Lite, this open community and these node operators are always aware of these projects.\n\nProject will be published on Github under MIT license on every milestone output reached upon start.",
+                "documentation_quality": "We have experience in documenting source code libraries and projects and we benefit on doing so to maximize open source collaboration oportunities. You can take as an example this released project: [https://github\\.com/GameChangerFinance/unimatrix](https://github.com/GameChangerFinance/unimatrix) ."
+            }
+        },
+        "details": {
+            "solution": {
+                "solution": "# **The problem:**\nAre Cardano DApps Truly Decentralized?\n\nCardano takes a unique approach to DApps by offloading certain parts of their execution and storage off-chain. This strategy enhances performance and reliability compared to solutions like EVM chains. However, this design introduces a critical flaw—one that has become more pronounced with the adoption of the CIP-30 standard.\n\nThe off-chain components of Cardano DApps currently rely on centralized cloud infrastructures. Their source code and application data are not stored in a decentralized, long-term, fail-proof, and censorship-resistant solution.\n\nWhile great projects like Iagon aim to address some of these challenges and more, they still fall short of offering mission-critical solutions for Cardano. Like IPFS and other decentralized storage solutions, they store data outside the Cardano network itself, which can create single points of failure and data loss due to potential global outages, team challenges, or platform security breaches.\n\nFor mission-critical Cardano applications—and even minimal, essential versions of any Cardano app—the only reliable solution is to rely on Cardano itself. This is the only path to a truly decentralized, fault-tolerant, and censorship-resistant infrastructure.\n\nCurrently, terabytes of on-chain transaction metadata are being generated by apps and users. Yet, there’s no coherent strategy for indexing and searching this data. A system that can organize this &quot;chaos&quot; and treat it like searchable files would be invaluable for developers and users alike. Such a solution could also optimize the use of precious on-chain storage, reducing redundancy and potentially introducing compression features.\n\nSince April 1st, 2023, Cardano has had GCFS—a fully on-chain file storage solution that has proven itself capable of hosting not only DApp off-chain code but also on-chain source code. It can even support minimal, cost-effective frontends, helping create a censorship-resistant, fault-tolerant Cardano ecosystem. This would position Cardano to remain competitive against other chains, like EVM, that have already embraced fully self-contained DApps with long-term viability, even in worst-case scenarios.\n\nThe CIP-30 wallet standard, inspired by MetaMask’s design, encourages the offloading of even more DApp code outside of decentralized storage and execution. This approach does little to foster open-source collaboration or DApp/protocol interoperability, limiting Cardano's potential.\n\nJust two weeks after Nami Wallet introduced the CIP-30 standard, GameChanger Wallet proposed an alternative approach. This Universal DApp Connector specification is designed specifically for UTXO-based blockchains like Cardano and moves away from the &quot;MetaMask model&quot; that works better for Ethereum. This alternative allows critical parts of DApp execution to happen on the client side, running directly on user devices. This increases decentralization by putting control into users’ hands, ensuring transparency, and creating an environment ripe for open-source collaboration.\n\nThe key to this system is GCScript, a simple language built on universal building blocks like JSON, common across platforms and languages. GCScript is to Cardano somewhat Solidity is to Ethereum, but it preserves underlying Cardano’s deterministic nature.\n\nGCScript integrates seamlessly with GCFS, empowering developers to store reusable source code on-chain. This not only ensures that DApps are auditable, decentralized, fault-tolerant, and censorship-resistant but also encourages developers to collaborate, fostering an unprecedented explosion of open-source, decentralized DApps on Cardano.\n\nGCFS development began in 2022 out of proposer’s funds and development efforts and remains unfunded and unsupported by Cardano, this is our 3rd and last attempt to release it to the community .\n\nGCFS is currently implemented on GameChanger Wallet and some tooling demos:\n\n- on GCScript language, 4 functions available for developers to build dapps with it\n- through the GCFS File Uploader UI at Playground IDE\n- on a GCFS web server demo for Catalyst\n\n# **The Solution:**\nWe will rewrite, improve and open source GCFS as a typescript library for allowing applications to read and search for files stored on-chain, and we will include a GCFS web server rewritten from grown up as a proper implementation example to serve files including HTML for fully on-chain hosted frontends as you can try out through our MVP demo GCFS web server published here:\n\n**Announcement of the Demo:** [https://x\\.com/GameChangerOk/status/1834062592060322161](https://x.com/GameChangerOk/status/1834062592060322161)\n\n![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/dapp.png)\n\n**Image**: A dapp 100% stored on-chain, yes, even the html file\n\n![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/index.png)\n\n**Image**: Directory index of a user's on-chain file system\n\n![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/proof.png)\n\n**Image**: One of the first files ever written on chain.\n\nGCFS allows for running filtered searches across all file systems stored on-chain allowing developers not only to store files but also to use them as a global database for dapps, fostering a grand variety of applications, from voting to social media, to oracles and fully on-chain open and universal protocols. As you can try yourself on the demo, the web server will allow to run queries to build this kind of applications.\n\nA directory index rendered on backend-side will help users, and developers, to understand the structure of on-chain file systems and to seamlessly explore them as if one were navigating the web.\n\n# Please check our other Fund14 proposals [here]([https://github\\.com/GameChangerFinance/gamechanger\\.wallet/blob/main/catalyst/FUND14\\.md\\)](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/catalyst/FUND14.md))"
+            },
+            "impact": {
+                "impact": "A Cardano ecosystem that embraces GCFS would mean:\n\n- no more broken links, perma-pin your files forever on Cardano: _\\#governance \\#nfts \\#dapps_\n- dapps will be able to live as long as the chain itself, even if their creators leave the space\n- dapps will be fault tolerant, anyone would be able to launch a mirror of your favorite dapp to keep it alive and to colaborate with decentralization\n- source code will be cryptographically signed by creators and maintainers\n- source code will be inmutable, yet updatable, as every modification will generate a new version of it\n- dapps will be censorship resistant, moderate content through selective mirroring\n- dapps will be even more transparent and auditable than open source ones, as here the concept of open deployment is introduced.\n- developers also embracing GCScript will be able to collaborate with each other for the first time without programming language barriers. A typescript developer will be able to reuse the same code a low level C developer for IOT will be using. Create an on-chain version of your dapp code and let others to use it and build on top of it.\n- users will have fault tolerant governance actions, NFTs and other kind of data and files stored on-chain forever\n- user data, dapps, voting, oracles, social networks, source code maintainance, nfts, smart contracts, everything we do can benefit from this protocol"
+            },
+            "feasibility": {
+                "feasibility": "We have a good track record on Catalyst with 10+ finished projects and on the Cardano community, delivering innovative solutions and tooling since 2021.\n\n\n\nAs far as possible we will always deliver first and then look for funding for open sourcing, maintaining and growing our libraries, products and solutions.\n\n\n\nGCFS is a working protocol since Q1 2023, implemented on GameChanger Wallet UI (File Uploader, DiskNFT Viewer and Workspace Loader), GCScript DSL functions and on a demo web server for developers."
+            }
+        },
+        "milestones": {
+            "milestones": {
+                "milestone_list": [
+                    {
+                        "title": "Base + API Provider",
+                        "outputs": "On a branch or tag referencing current milestone:\n\n- MIT license\n- Base of the typescript library repository\n- Create a first API provider, potencially using a GraphQL API or PostgreSQL\n- Types and helper functions\n- Testing\n- Project documentation",
+                        "acceptance_criteria": "- open public access to the repository and to the milestone's branch or tag\n- MIT license\n- First types and helper functions, an early API provider and the library repository structure are present\n- Tests are passing\n- initial documentation is present",
+                        "evidence": "- Source code and MIT license on github repository , on milestone branch or tag.\n- Tests are passing\n- initial documentation is present",
+                        "delivery_month": 2,
+                        "cost": 20000,
+                        "progress": "20 %"
+                    },
+                    {
+                        "title": "GCFS Headers and Data Streams",
+                        "outputs": "On a branch or tag referencing current milestone:\n\n- Adapt and use API provider for fetching a GCFS header\n- Adapt and use API provider for fetching a GCFS data stream\n- Types and/or helper functions\n- TSDoc documentation\n- Testing",
+                        "acceptance_criteria": "- open public access to the repository and to the milestone's branch or tag\n- New types and helper functions, GCFS header and data streams fetching functions, and unit tests are present\n- Tests are passing",
+                        "evidence": "- Source code and MIT license on github repository , on milestone branch or tag.\n- Tests are passing.",
+                        "delivery_month": 3,
+                        "cost": 20000,
+                        "progress": "40 %"
+                    },
+                    {
+                        "title": "GCFS Record",
+                        "outputs": "On a branch or tag referencing current milestone:\n\n- Consume and process GCFS header and data stream to produce a GCFS file system record or instance\n- Types and/or helper functions\n- TSDoc documentation\n- Testing\n- Updated project documentation if required",
+                        "acceptance_criteria": "- Open public access to the repository and to the milestone's branch or tag.\n- New types and helper functions, GCFS record or instance helper functions, and unit tests are presents\n- Tests are passing\n- Documentation is updated if required",
+                        "evidence": "- Source code and MIT license on github repository , on milestone branch or tag.\n- Tests are passing.\n- New documentation is present if required",
+                        "delivery_month": 4,
+                        "cost": 25000,
+                        "progress": "70 %"
+                    },
+                    {
+                        "title": "GCFS Server",
+                        "outputs": "On a branch or tag referencing current milestone:\n\n- Create an example implementation of a NodeJs Express web server with a search API to search files using basic filters\n- Update GCFS library if needed\n- TSDoc documentation\n- Project documentation",
+                        "acceptance_criteria": "- Open public access to the repository and to the milestone's branch or tag.\n- The example server implementation with documented code is present\n- You can run some queries over testnet filesystems\n- Updates to the library are present if needed",
+                        "evidence": "- Example server source code and MIT license and documentation on github repository , on milestone branch or tag.",
+                        "delivery_month": 6,
+                        "cost": 20000,
+                        "progress": "80 %"
+                    },
+                    {
+                        "title": "Final Milestone",
+                        "outputs": "- Milestone 5  branch or tag containing this milestone's outputs plus all the previous outputs from other milestones\n- Added missing documentation if any\n- Closeout documentation and video demonstrating the project outcome",
+                        "acceptance_criteria": "- Closeout report and video are published/submitted on App and links may be offered on repository if required.\n- Added documentation if was necesary to be included\n- All other previous outputs from previous milestones in their own accepted criteria state",
+                        "evidence": "- The existance and public access of the repository with the branch or tag referencing final milestone\n- The existance of more documentation if necesary\n- The existances and public access to the final report and video",
+                        "delivery_month": 7,
+                        "cost": 15000,
+                        "progress": "100 %"
+                    }
+                ]
+            }
+        },
+        "pitch": {
+            "team": {
+                "who": "**Project Architect, Lead Developer:**\n\n\n\nAdriano Fiorenza is an Entrepreneur & Senior Full Stack Developer with 15+ years of experience software and IOT development. Founder and Developer of GameChanger Wallet, Unimatrix Sync, GCFS protocol, Universal Dapp Connector specification, GCScript DSL, delivered 10+ funded Catalyst projects, participated in 1st gen Plutus Pioneer Program.\n\n\n\nHis Linkedin profile can be found at [https://ar\\.linkedin\\.com/in/adriano\\-fiorenza](https://ar.linkedin.com/in/adriano-fiorenza)"
+            },
+            "budget": {
+                "costs": "- Milestone 1: 20000 ADA\n- Milestone 2: 20000 ADA\n- Milestone 3: 25000 ADA\n- Milestone 4: 20000 ADA\n- Milestone 5: 15000 ADA\n\n\n\nTotal: ~960hs x USD 85/hr = USD 81.600,00 ~ 120000,00 ADA at an average rate taken from 2025 price volatility ~  100000 ADA"
+            },
+            "value": {
+                "note": "GCFS has been delivered already without funding at our own risk. It took around 6 months from design, testing, full implementation on wallet side and dapp connector side for being used with dapps. It has been improved and maintained all this time since 2023 from it's builder's time and effort. A demo web server has been provided for early testing ground and for gathering real use case feedback prior to do a proper final implementation from ground up for this proposal. Taking into account that we are not charging for those research plus full working hours and that at the end even a web server for ready-to-use and easy integration will be provided we think It makes a good investment on community funds to allocate them on infrastructure everybody will be able to use from now on.\n\n\n\nPlease also consider that there is no token launch involved here, that we will be open sourcing and redesigning code to let everyone be able to use and deploy on their own.\n\n\n\nAs this is the third attempt at Catalyst, most likely this will be the last attempt to open source it, we can't afford spending more time advertising this any longer."
+            }
+        },
+        "agreements": {
+            "ongoing_projects": {
+                "has_ongoing_projects": true,
+                "projects": [
+                    {
+                        "project_id": "1300078"
+                    }
+                ]
+            },
+            "consent_confirmation": {
+                "terms_and_conditions": true
+            }
+        }
+    }
+},
+{
+    "metadata": {},
+    "content": {
+        "$schema": "./0ce8ab38-9258-4fbc-a62e-7faa6e58318f.schema.json",
+        "setup": {
+            "title": {
+                "title": "Gamechanger: Instant dApp, build for any device fast"
+            },
+            "proposer": {
+                "applicant": "Maarten Menheere",
+                "type": "Individual"
+            }
+        },
+        "summary": {
+            "budget": {
+                "requestedFunds": 100000
+            },
+            "time": {
+                "duration": 8
+            },
+            "translation": {
+                "isTranslated": false,
+                "originalLanguage": "en"
+            },
+            "problem": {
+                "statement": "Building on Cardano often requires deep knowledge and the skill. With Gamechanger we want to take a different approach. We want to make writing dApps the domain of every web developer out there. "
+            },
+            "solution": {
+                "summary": "Gamachanger is made for rapid application developement. We are going to make it even better. Packing all our experience into a JS library that will make writing dApps easy for everyone"
+            },
+            "supportingLinks": {
+                "links": [
+                    "https://gamechanger.finance/",
+                    "https://inception.m2tec.nl/",
+                    "https://github.com/arpradio/gc-connect",
+                    "https://www.adamoments.io/",
+                    "https://arpradio.media/"
+                ]
+            },
+            "dependencies": {
+                "hasDependency": false
+            },
+            "open_source": {
+                "isOpenSource": true,
+                "licenseInformation": "MIT License"
+            }
+        },
+        "theme": {
+            "theme": {
+                "grouped_tag": {
+                    "group": "Development & Tools",
+                    "tag": "Developer Tools"
+                }
+            }
+        },
+        "campaign_category": {
+            "category_questions": {
+                "license_information": "We would like to allow for maximum freedom to allow for adapting and extending the code base. Also the MIT license is straight forward and used in many projects on Cardano. This reduces license confilcts. We don't want to enforce people to contribute back, but we sure do appreciate it",
+                "source_code_accessibility": "We have a proof of concept on github ready to release upon project start and Dandelion community and operators are aware already of it, it has been discussed publicly on our weekly open calls. It wil be easy to publish and accept additional contributors to enhance and build. Github is a cloud-based hosting service for Git repositories. Git is a version control system that tracks changes to files, lets you roll back to earlier versions, and supports branching for parallel development.",
+                "documentation_quality": "We have published courses on Andamio and Wisdom.courses, we have experience with creating educational content. We have experience in documenting source code libraries and projects and we benefit on doing so to maximize open source collaboration oportunities."
+            }
+        },
+        "details": {
+            "solution": {
+                "solution": "Gamechanger has a beta version of a library ([https://www\\.npmjs\\.com/package/@gamechanger\\-finance/gc\\)\\.](https://www.npmjs.com/package/@gamechanger-finance/gc).) But it has a lot of limitations. We have been building dApps for a while now. Great examples are [https://www\\.adamoments\\.io/](https://www.adamoments.io/) and [https://arpradio\\.media/\\.](https://arpradio.media/.) The libary could really do with a major overhaul. Where we integrate all that knowledge into usefull functions any web developer can use.\n\n# **Make the GC library work well with the latest nodeJS releases\\.**\nThe Javascript ecosystem moves fast. The library could do with an update. Making it much easier to integrate into the latest and greatest.\n\n# **Integrate gc\\-connect**\nA must have feature for any dApp is the abbility to verify and remember the users wallet. This component takes signing in a step further. Combining it with webtokens to make interfering with a users session that extra step harder. It is already working in dApps. Adding it here will make it easy to use for everyone. [https://github\\.com/arpradio/gc\\-connect](https://github.com/arpradio/gc-connect)\n\n# Integrate smart contract in-browser user-side compilation\nWith inception we built a smart contract dApp. This allows the user to compile contracts from source. Verify its validty and the execute it using the Gamechanger wallet. All you need is a browser. So we will add transpilation features of [https://inception\\.m2tec\\.nl/](https://inception.m2tec.nl/) to this libary.\n\n# Unimatrix helper functions\nThis technology alreay leveraged by [https://www\\.adamoments\\.io/](https://www.adamoments.io/) with great effect. An essential feature for any DAO that needs to work with multisig wallets and async transaction signing. Even for a single transaction this has benefits for the dApp. Because it can monitor transaction progress and make the user experience more interactive.\n\n# Template\nMake a dApp template that is easy to setup and deploy"
+            },
+            "impact": {
+                "impact": "Gamechanger already has good documentation. Including many tutorial videos on Andamio and Wisdom.courses. Through the first dApps like Adamoments([https://www\\.adamoments\\.io/\\)](https://www.adamoments.io/)) and Arpradio ([https://arpradio\\.media/\\)](https://arpradio.media/)) Gamechanger is already showing that it can make building rich interactive dApps a reality. With this proposal we take the next step, reducing developer workload, end greatly improving time to market. Combining all the knowledge and technology into a single place. It will propel the ecosystem to new hights."
+            },
+            "feasibility": {
+                "feasibility": "# Capabilities\nWe are a team of Cardano experts that have been building since the beginning. We have built the GameChanger Wallet ([https://gamechanger\\.finance/\\)](https://gamechanger.finance/)) a unique innovative wallet. We have built a number of dApps and hardware payment solutions with M2tec ([https://www\\.m2tec\\.nl/\\)\\.](https://www.m2tec.nl/).) We also built Dandelion-lite ([https://github\\.com/GameChangerFinance/dandelion\\-lite\\)\\)](https://github.com/GameChangerFinance/dandelion-lite))) to make truly decentralized financial infrastructure a reality. We have gained a lot of experience in all aspects of Cardano developement.\n\nWe have also participated in a number of Catalyst Funds where we have won and executed on our promises. This indicates our proven track record of delivering. We are here to build the future of finance and are commited for the long term.\n\n# Feasability\nAs descibed in our solution in detail we are aggregating and polishing components that have already been built. Because of this the project is low risk. With our experience and resources we have not set the bar too high here."
+            }
+        },
+        "milestones": {
+            "milestones": {
+                "milestone_list": [
+                    {
+                        "title": "Update library",
+                        "outputs": "- A public repository with a branch or tag referencing Milestone 1, under MIT license.\n- A library that can be impored into a JS project using NodeJS without creating warning.\n- The library is in a working state. And provides the dApp connector.",
+                        "acceptance_criteria": "- I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n- I can clone the repository and install it locally to start developing with it\n- I can create a basic NextJS app and import the library and run a gamechanger script",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 1. The MIT license file is present.\n2. Run: npx create-next-app@latest\n3. Run: npm i @gamechanger-finance/gc\n4. Add the library as an import statement. \n5. Run dApp without errors or warnings.",
+                        "delivery_month": 2,
+                        "cost": 30000,
+                        "progress": "30 %"
+                    },
+                    {
+                        "title": "GC-connect, Unimatrix and dApp template",
+                        "outputs": "- A public repository with a branch or tag referencing Milestone 2, under MIT license.\n- Functions for message signing\n- Functions for browser session authentication\n- Functions for using Unimatrix\n- A template to add browser UI elements for user login.",
+                        "acceptance_criteria": "- I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n- I can clone the repository and install it locally to start developing with it\n- I can create a basic NextJS app from a project template generator \n- Login to a GC wallet using the functions provided in the libary",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 1. The MIT license file is present.\n2. Run: npx create-gc-app@latest ( or similar installer )\n3. Run dApp without errors or warnings.\n4. Be able to login from the browser using gc-connect\n5. Sign a multisig using Unimatrix.",
+                        "delivery_month": 3,
+                        "cost": 30000,
+                        "progress": "60 %"
+                    },
+                    {
+                        "title": "Smart contracts",
+                        "outputs": "- A public repository with a branch or tag referencing Milestone 3, under MIT license.\n- Functions for transpiling validator script files, into GC scripts.\n- Scripts are Helios language currently. Provide compliation functions for Helios lang to CBOR.",
+                        "acceptance_criteria": "- I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n- I can clone the repository and install it locally to start developing with it\n- I can create a basic NextJS app and import the library and compile and run a basic validator script using the functions provided in the libary",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 3. The MIT license file is present.\n2. Run: npx create-next-app@latest\n3. Run: npm i @gamechanger-finance/gc\n4. Add the library as an import statement.\n5. Add validator compilation functions as described in the documentation\n6. Run dApp without errors or warnings.",
+                        "delivery_month": 2,
+                        "cost": 25000,
+                        "progress": "90 %"
+                    },
+                    {
+                        "title": "Final Docs + Closeout documentation and video",
+                        "outputs": "- Milestone 4  branch or tag containing this milestone's outputs\n- Added missing documentation if any, specially regarding Milestone 3\n- Closeout documentation and video demonstrating the project outcome",
+                        "acceptance_criteria": "- I can verify existance and public access of Milestone 4 branch or tag\n- I can read a reasonable amount of documentation around Milestone 3\n- I can read the final report and watch the video demonstration and verify the working state of the project and the achieved goals",
+                        "evidence": "The existance and public access of the repository with the branch or tag referencing Milestone 4\n\nThe existance of more documentation files related to Milestone 3\n\nThe existances and public access to the final report and video",
+                        "delivery_month": 8,
+                        "cost": 15000,
+                        "progress": "100 %"
+                    }
+                ]
+            }
+        },
+        "pitch": {
+            "team": {
+                "who": "- Maarten Menheere - Project manager - Developer, testing support ( [https://www\\.linkedin\\.com/in/maartenmenheere/](https://www.linkedin.com/in/maartenmenheere/) )\n- Gabriel Talamantes - FullStack developer, testing support ( [https://www\\.linkedin\\.com/in/gabrielstalamantes/](https://www.linkedin.com/in/gabrielstalamantes/) )\n- Adriano Fiorenza - Lead developer - Project architect. ( [https://ar\\.linkedin\\.com/in/adriano\\-fiorenza](https://ar.linkedin.com/in/adriano-fiorenza) )"
+            },
+            "budget": {
+                "costs": "# Personnel cost\nMilestone 1- 30,000 ADA\n\nMilestone 2 - 30,000 ADA\n\nMilestone 3 - 25,000 ADA\n\nMilestone 4 - 15,000 ADA\n\nTotal: ~800hs x USD 85/hr = USD 68000,00 ~ ADA 100000,00 at an average rate taken from 2025 price volatilit"
+            },
+            "value": {
+                "note": "It is still early for the blockchain ecosystem. The Gamechanger dApp connecor is an important and considerably different approach. With significant advantages. For example you can login with any browser. And you can verify the transaction you are signing and the contracts you are executing. Carano should keep it's options open to make the chance of success as big as possible. This is important work. When completed together with other infrastructure improvements, provided by Dandelion-lite, it will open Cardano up to a extremely large set of developers. All the developers that are now building Web2.0. We have done this consistenty with minimal budgets."
+            }
+        },
+        "agreements": {
+            "ongoing_projects": {
+                "has_ongoing_projects": true,
+                "projects": [
+                    {
+                        "project_id": "1300078"
+                    }
+                ]
+            },
+            "consent_confirmation": {
+                "terms_and_conditions": true
+            }
+        }
+    }
+},
+{
+    "metadata": {},
+    "content": {
+        "$schema": "./0ce8ab38-9258-4fbc-a62e-7faa6e58318f.schema.json",
+        "setup": {
+            "title": {
+                "title": "Dandelion: new CardanoGraphQL+Blockfrost+Yaci over GraphQL"
+            },
+            "proposer": {
+                "applicant": "Adriano Fiorenza | Dandelion ",
+                "type": "Entity (Not Incorporated)"
+            }
+        },
+        "summary": {
+            "budget": {
+                "requestedFunds": 100000
+            },
+            "time": {
+                "duration": 6
+            },
+            "translation": {
+                "isTranslated": false,
+                "originalLanguage": "en"
+            },
+            "problem": {
+                "statement": "Cardano GraphQL allows for custom queries and less API calls. With network growth it's performance and maintainance became a problem. We want to offer a modern redesign as devs and students needs it."
+            },
+            "solution": {
+                "summary": "A single GraphQL API for all things Cardano: Blockfrost, YaCi and a modern, simpler and maintainance-friendly redesign of Cardano GraphQL API"
+            },
+            "supportingLinks": {
+                "links": [
+                    "https://github.com/cardano-foundation/cardano-graphql",
+                    "https://blockfrost.io/",
+                    "https://koios.rest/"
+                ]
+            },
+            "dependencies": {
+                "hasDependency": true,
+                "dependencyDetail": "Depends on Cardano GraphQL and would benefit from a joint maintainance effort for the times to come, considering that the new design would simplify this drastically. Depends on Blockfrost API and it's maintenance. Depends on YaCi Dev Kit and it's maintenance. Depends on GraphQL server solutions and their maintenance."
+            },
+            "open_source": {
+                "isOpenSource": true,
+                "licenseInformation": "MIT License"
+            }
+        },
+        "theme": {
+            "theme": {
+                "grouped_tag": {
+                    "group": "Development & Tools",
+                    "tag": "Infrastructure"
+                }
+            }
+        },
+        "campaign_category": {
+            "category_questions": {
+                "license_information": "We would like to allow for maximum freedom to allow for adapting and extending the code base. Also the MIT license is straight forward and used in many projects on Cardano. This reduces license confilcts. We don't want to enforce people to contribute back, but we sure do appreciate it.",
+                "source_code_accessibility": "We have a proof of concept on github ready to release upon project start and Dandelion community and operators are already aware of it, it has been discussed publicly on our weekly open calls. It wil be easy to publish and accept additional contributors to enhance and build. Github is a cloud-based hosting service for Git repositories. Git is a version control system that tracks changes to files, lets you roll back to earlier versions, and supports branching for parallel development.",
+                "documentation_quality": "We have published courses on Andamio and Wisdom.courses, we have experience with creating educational content. We have experience in documenting source code libraries and projects and we benefit on doing so to maximize open source collaboration oportunities."
+            }
+        },
+        "details": {
+            "solution": {
+                "solution": "# Cardano Graph:\nEvery mature blockchain ecosystem counts with an active flagship GraphQL API to ease development and allow for faster development iteration and prototyping, to minimize centralization by avoid forcing developers to build their own custom backend solutions and to empower more client side development by keeping backends open sourced and general purposed.\n\nThe GraphQL API specification allows for nesting API schemas and even cross relate them to allow developers to design their desired data queries by filtering and nesting responses, all on a single client-server communication (HTTP request).\n\nCardano is missing the API of APIs, a well-known, battle-tested, unified query language to make developer's life easier without forcing everybody to reinvent the wheel with novel or narrow-scoped API specifications.\n\nBy leveraging on GraphQL composabiity and extensibility is that we will provide a base server structure allowing for API extensions, all under the same query language: GraphQL.\n\nAlso this service will be designed to be deployed on Dandelion Lite in first place, a Cardano Node and APIs self sovereign deployment solution for decentralizing Cardano services and for empowering students and developers. ARP Radio, AdaMoments and GameChanger Wallet already use it.\n\n# Cardano-GraphQL:\nWas the most powerfull API back in the day making possible many of the legacy projects and exchange integrations around us.\n\nIn principle will be based on the legacy open source project created by IOHK and maintained by Cardano Foundation, specially regarding schema design to leverage on the 4+ year project with their mature experience, and also to be able to absorve their updates and mutually collaborate on improvements.\n\nOur approach for this will be to offer almost the same API endpoints but with some implementation differences and a totally different, modern and optimized GraphQL introspection engine underneath.\n\nThis will allow us to offer the same solution but in a single instance with chances of reusing some recurrent tasks and database tables from other open source API projects also operating over a Cardano DBSync database. Our goal will be to make it easy to maintain to maximize open source collaboration.\n\nEngine optimizations will allow to solve problems like the N+1 fetch issues, a common GraphQL performance failure where the same database information is fetched more than once on same query. Other improvements will be around schema design, optimizing when possible queries involving off-chain token registry, on-chain assets and address balances.\n\nIs important to keep in mind that we cannot promise this to be a drop-in replacement of the former API implementation, but if this is something technically possible to be achieved we will try to do so, otherwise we will try to narrow down differences at a reasonable level.\n\n# BlockFrost-GQL:\nA basic extension will allow for OpenAPI's compliant REST APIs to be included as a sub-schema, making for example BlockFrost available by using the GraphQL query language.\n\nThis will reduce the roundtrips and optimize the timings and reliability for calling several endpoints from client side as this powerfull solution will allow you to pack them under a single http request. Potencially in the future server responses could be nested by relating schemas, empowering BlockFrost users to design flexible queries with ease. Also other great projects like 'Koios-GQL' could be added as well, specially considering Dandelion Lite is already based on Koios solutions.\n\n# YaCi-GQL:\nA basic smart and adaptive extension will allow for the YaCi Dev Kit Postgres database to be exposed via GraphQL. This will serve as first steps to offer an entire new alternative to Cardano GraphQL by leveraging on Cardano Foundation's YaCI Dev Kit instead of IOG's Cardano DBSync.\n\n**Scope:**\n\nRegarding the scope of this solution, Cardano-GraphQL extension API in working state will be delivered, with Cardano Graph, BlockFrost-GQL and Yaci-GQL and any other extra priorization being conditioned by budget constraints as ADA fluctuations are expected to take place in the near term. We will prioritize goals based on project demand and budget constraints, we have a solid 10+ Catalyst projects delivery record with good value for money ratio, as always we will deliver our best.\n\n**Examples**:\n\nHere there are some example queries from our proof of concept aimed for a new Cardano-GraphQL implementation. As you can see, similar queries can be provided but not exactly a drop in replacement, still adding performance and design improvements.\n\n![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/query1.jpg)![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/query2.jpg)\n\n\n\n# Please check our other Fund14 proposals [here]([https://github\\.com/GameChangerFinance/gamechanger\\.wallet/blob/main/catalyst/FUND14\\.md\\)](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/catalyst/FUND14.md))"
+            },
+            "impact": {
+                "impact": "- A modern redesign of a powerfull API: the renewed Cardano GraphQL will help to keep the project up to date, will simplify maintenance, and will improve its performance, helping early projects and exchanges to keep their software up to date and giving fresh air to an API that helped bootstrap the ecosystem once, totally capable of boosting it's growth on modern days.\n- Easier to learn and integrate: A single battle tested, well known, common query language for all things Cardano versus narrow-scoped, individual, novel, eclectic API solutions that are a nightmare to combine and reuse and in isolation fail to provide the entirety of data you need.\n- Smarter queries: Ask exactly the data you need, remove what you dont need, and pack all communications into single client-server interactions vs hammering servers with similar queries and mix totally different API services only to get what you need\n- Faster queries:  By avoiding several roundtrips from client side to servers and calling them all server-side is that some queries can end up being faster, besides bringing the exact amount of data required leaving unwanted data behind.\n- Cheaper solutions: Spend less resources as you launch less client-server communications to obtain the same information\n- Better development cycles: Iterate faster and spend less development resources as updating backends on each step of the way becomes a thing of the past. Update your client side only as what your backend already provides is more than enough already.\n- Online IDE + Self-Documented: GraphQL schemas can be explored, queries can be designed on code editors that are provided out of the box.\n- Less backend-side centralization: universal, general purpose, fully-featured open source APIs does not incentivize for custom centralized backend solutions on every project we build on Cardano\n- Decentralization-friendly backends: general purpose, flexible common backend solutions for every client side project to consume vs siloed, specialized, closed source solutions nobody is interested in re-deploy for better redundancy and dec.ntralization."
+            },
+            "feasibility": {
+                "feasibility": "We are a team of Cardano experts that have been building since the beginning. We have built the GameChanger Wallet ([https://gamechanger\\.finance/\\)\\)](https://gamechanger.finance/))) a unique innovative wallet. We have built a number of dApps and hardware payment solutions with M2tec ([https://www\\.m2tec\\.nl/\\)\\.\\.\\)](https://www.m2tec.nl/)..)) We also built Dandelion-lite ([https://github\\.com/GameChangerFinance/dandelion\\-lite\\)\\)\\)\\)](https://github.com/GameChangerFinance/dandelion-lite))))) to make truly decentralized financial infrastructure a reality. We have gained a lot of experience in all aspects of Cardano developement. A number of dApps and teams are building on our foundations and we are launching this project driven by the need to improve and grow for as all.\n\n\n\nA proof of concept has already been shown to our community and gave us the required level of confidence of what's technically possible to achieve in this project."
+            }
+        },
+        "milestones": {
+            "milestones": {
+                "milestone_list": [
+                    {
+                        "title": "Project base + Cardano GraphQL (core)",
+                        "outputs": "1. A public repository with a branch or tag referencing Milestone 1, under MIT license\n2. A typescript project referencing this proposal, most likely called Cardano-Graph\n3. A subdirectory of the project containing the core components of the new Cardano-GraphQL implementation in typescript in a reasonable working state\n4. Auxiliar schema and metadata files, produced, adapted or extracted from project dependencies like Cardano-GraphQL or Cardano-DBSync. Produced schema and auxiliary data files are expected to be large files and will take care of our first approach of narrowing down differences with the former implementation, and may not contain:\n    1. SQL migration operations\n    2. collection names,\n    3. attribute names,\n    4. relations information,\n    5. permissions\n    6. and other parameters.",
+                        "acceptance_criteria": "1. I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n2. I can clone the repository and install it locally to start developing with it\n3. I can run this early stage of the project and execute queries with it on the online code editor on my browser\n4. I can see the auxiliar schema and metadata files on my local clone of the repository or on github\n\nImportant: This kind of backend project relies on several dependecies running in background such as Cardano-Node, Cardano-DBSync, PostgresDB, cron, etc... We strongly suggest you use Dandelion-Lite  ([https://github\\.com/GameChangerFinance/dandelion\\-lite](https://github.com/GameChangerFinance/dandelion-lite) ) and dedicated hardware to do so but how to set up these services properly and how to troubleshoot them goes far beyond the scope of the acceptance criteria. We will try to assist as possible and if convenient we may offer an online instance of the project to help the reviewer and minimize the complexity of the reviewing process. This notice applies to all milestones of this project.",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 1. The MIT license file is present.\n2. The existance and installable state of the base project\n3. The existance and basic executable state of the new Cardano-GraphQL implementation\n4. The existance of auxiliar schema and metadata files",
+                        "delivery_month": 2,
+                        "cost": 30000,
+                        "progress": "30 %"
+                    },
+                    {
+                        "title": "Cardano GraphQL (refinements) + Testing + Docs",
+                        "outputs": "1. Milestone 2 branch or tag containing this milestone's outputs\n2. Cardano GraphQL refinements narrowing differences between this and the former implementation, and improving aspects of it such as\n    1. Type casting/conversions (optional)\n    2. Filters (optional)\n    3. Aggregations (optional)\n    4. Missing/Added/Improved collections (optional)\n    5. Missing/Added/Improved relations (optional)\n    6. Reduced amount of extra constructs on schema (optional)\n    7. Improved database schema (optional)\n    8. Improved database recurrent cron tasks  (optional)\n    9. Improved code design (optional)\n    10. Performance (optional)\n    11. More... (optional)\n3. Testing suite with a basic code coverage considering the size of the API\n4. Typedoc: reasonable amount of code being documented\n5. General documentation: How to install, run and execute some queries",
+                        "acceptance_criteria": "1. I can verify existance and public access of Milestone 2 branch or tag\n2. I can execute queries with this new version and verify that these refinements are applied to the code because I can compare query responses using the Milestone 1 branch and I can clearly see improvements/modifications about the listed topics\n3. I can run the testing suite and verify that all tests are passing, or I can check the existance of the tests source code and I can see the verifiable test results published online\n4. I can navigate through the code and verify the existance of a reasonable amount of Typedoc comments accross the code\n5. I can read the general documentation containing information about how to install, run and execute some common queries",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 2\n2. Code base has been expanded with more features, schema and auxiliar files has been improved\n3. Now a testing suite has been included for testing this first API\n4. General documentation has been added or expanded to cover the basics",
+                        "delivery_month": 3,
+                        "cost": 30000,
+                        "progress": "60 %"
+                    },
+                    {
+                        "title": "Extras: Cardano Graph + BlockFrost-GQL + YaCi-GQL",
+                        "outputs": "1. Milestone 3 branch or tag containing this milestone's outputs\n2. Cardano Graph is a well defined basic unifying code base of the project now, capable of containing other sub projects/APIs inside\n    1. acting as a GraphQL API composed schema, gateway or other sort of API aggregator to be determined as convenient\n    2. probably majority of output has been resolved already on previous milestones\n3. OpenAPI REST over GraphQL service, most likely BlockFrost-GQL. Source code is in a subdirectory of the project\n    1. It is a service that has been produced by wrapping an external OpenAPI service or it has been resolved by reusing source code from the former project\n4. Generic PostgresDB introspection and semi-automatic pattern-based relation generator, most likely YaCi-GQL. Source code is in a subdirectory of the project.\n    1. It is a service that will have a minimal runtime source code specialization but a different scripting setup as a smart pattern-based relation generator most likely pre-configured to work with YaCI postgresDb.  \n    2. It will have its own schema and auxiliary data files.",
+                        "acceptance_criteria": "1. I can verify existance and public access of Milestone 3 branch or tag\n2. I can run the server and identify the existance of multiple APIs under the same instance or I can at least identify that the source code of the project is arranged in such a way that is somewhat prepared to contain API extensions.\n3. I can run REST queries using GraphQL, most likely BlockFrost queries\n4. I can access a PostgresDB through GraphQL queries, most likely the YaCi PostgresDb",
+                        "evidence": "- The existance and public access of the repository with the branch or tag referencing Milestone 3\n- Now a new or modifyed codebase is clearly called Cardano Graph and contains or is able to contain API extensions in a well defined project structure\n- Now an OpenAPI service has been wrapped or incorporated as an API extension, most likely BlockFrost API\n- Now an arbitrary PostgresDB has been incorporated as an API extension, most likely YaCi PostgresDB",
+                        "delivery_month": 5,
+                        "cost": 25000,
+                        "progress": "80 %"
+                    },
+                    {
+                        "title": "Final Docs + Closeout documentation and video",
+                        "outputs": "1. Milestone 4  branch or tag containing this milestone's outputs\n2. Added missing documentation if any, specially regarding Milestone 3\n3. Closeout documentation and video demonstrating the project outcome",
+                        "acceptance_criteria": "1. I can verify existance and public access of Milestone 4 branch or tag\n2. I can read a reasonable amount of documentation around Milestone 3\n3. I can read the final report and watch the video demonstration and verify the working state of the project and the achieved goals",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 4\n2. The existance of more documentation files related to Milestone 3\n3. The existances and public access to the final report and video",
+                        "delivery_month": 6,
+                        "cost": 15000,
+                        "progress": "100 %"
+                    }
+                ]
+            }
+        },
+        "pitch": {
+            "team": {
+                "who": "- Maarten Menheere - Project manager - Developer, testing support ( [https://www\\.linkedin\\.com/in/maartenmenheere/](https://www.linkedin.com/in/maartenmenheere/) )\n- Gabriel Talamantes - FullStack developer, testing support ( [https://www\\.linkedin\\.com/in/gabrielstalamantes/](https://www.linkedin.com/in/gabrielstalamantes/) )\n- Adriano Fiorenza - Lead developer - Project architect. ( [https://ar\\.linkedin\\.com/in/adriano\\-fiorenza](https://ar.linkedin.com/in/adriano-fiorenza) )"
+            },
+            "budget": {
+                "costs": "**Personnel cost**\n\n- Milestone 1- 30,000 ADA\n- Milestone 2 - 30,000 ADA\n- Milestone 3 - 25,000 ADA\n- Milestone 4 - 15,000 ADA\n\n\n\nTotal: ~800hs x USD 85/hr = USD 68000,00 ~ ADA 100000,00 at an average rate taken from 2025 price volatility"
+            },
+            "value": {
+                "note": "Competing blockchains have GraphQL API's of high quality. If Cardano as a blockchain wants to be at the forefront of this new way of storing and working with digital value. We all need this API, and we need it to be performant, modern, easier to maintain and extensible. What we are building is essential to secure the future of Cardano at the top. As always cost of project is more than reasonable considering what's being offered and considering we always begin our work in advance and later we seek for funding to improve and pollish."
+            }
+        },
+        "agreements": {
+            "ongoing_projects": {
+                "has_ongoing_projects": true,
+                "projects": [
+                    {
+                        "project_id": "1300078"
+                    }
+                ]
+            },
+            "consent_confirmation": {
+                "terms_and_conditions": true
+            }
+        }
+    }
+}
+]

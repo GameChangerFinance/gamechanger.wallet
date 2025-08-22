@@ -1,0 +1,140 @@
+{
+    "metadata": {},
+    "content": {
+        "$schema": "./0ce8ab38-9258-4fbc-a62e-7faa6e58318f.schema.json",
+        "setup": {
+            "title": {
+                "title": "Dandelion: new CardanoGraphQL+Blockfrost+Yaci over GraphQL"
+            },
+            "proposer": {
+                "applicant": "Adriano Fiorenza | Dandelion ",
+                "type": "Entity (Not Incorporated)"
+            }
+        },
+        "summary": {
+            "budget": {
+                "requestedFunds": 100000
+            },
+            "time": {
+                "duration": 6
+            },
+            "translation": {
+                "isTranslated": false,
+                "originalLanguage": "en"
+            },
+            "problem": {
+                "statement": "Cardano GraphQL allows for custom queries and less API calls. With network growth it's performance and maintainance became a problem. We want to offer a modern redesign as devs and students needs it."
+            },
+            "solution": {
+                "summary": "A single GraphQL API for all things Cardano: Blockfrost, YaCi and a modern, simpler and maintainance-friendly redesign of Cardano GraphQL API"
+            },
+            "supportingLinks": {
+                "links": [
+                    "https://github.com/cardano-foundation/cardano-graphql",
+                    "https://blockfrost.io/",
+                    "https://koios.rest/"
+                ]
+            },
+            "dependencies": {
+                "hasDependency": true,
+                "dependencyDetail": "Depends on Cardano GraphQL and would benefit from a joint maintainance effort for the times to come, considering that the new design would simplify this drastically. Depends on Blockfrost API and it's maintenance. Depends on YaCi Dev Kit and it's maintenance. Depends on GraphQL server solutions and their maintenance."
+            },
+            "open_source": {
+                "isOpenSource": true,
+                "licenseInformation": "MIT License"
+            }
+        },
+        "theme": {
+            "theme": {
+                "grouped_tag": {
+                    "group": "Development & Tools",
+                    "tag": "Infrastructure"
+                }
+            }
+        },
+        "campaign_category": {
+            "category_questions": {
+                "license_information": "We would like to allow for maximum freedom to allow for adapting and extending the code base. Also the MIT license is straight forward and used in many projects on Cardano. This reduces license confilcts. We don't want to enforce people to contribute back, but we sure do appreciate it.",
+                "source_code_accessibility": "We have a proof of concept on github ready to release upon project start and Dandelion community and operators are already aware of it, it has been discussed publicly on our weekly open calls. It wil be easy to publish and accept additional contributors to enhance and build. Github is a cloud-based hosting service for Git repositories. Git is a version control system that tracks changes to files, lets you roll back to earlier versions, and supports branching for parallel development.",
+                "documentation_quality": "We have published courses on Andamio and Wisdom.courses, we have experience with creating educational content. We have experience in documenting source code libraries and projects and we benefit on doing so to maximize open source collaboration oportunities."
+            }
+        },
+        "details": {
+            "solution": {
+                "solution": "# Cardano Graph:\nEvery mature blockchain ecosystem counts with an active flagship GraphQL API to ease development and allow for faster development iteration and prototyping, to minimize centralization by avoid forcing developers to build their own custom backend solutions and to empower more client side development by keeping backends open sourced and general purposed.\n\nThe GraphQL API specification allows for nesting API schemas and even cross relate them to allow developers to design their desired data queries by filtering and nesting responses, all on a single client-server communication (HTTP request).\n\nCardano is missing the API of APIs, a well-known, battle-tested, unified query language to make developer's life easier without forcing everybody to reinvent the wheel with novel or narrow-scoped API specifications.\n\nBy leveraging on GraphQL composabiity and extensibility is that we will provide a base server structure allowing for API extensions, all under the same query language: GraphQL.\n\nAlso this service will be designed to be deployed on Dandelion Lite in first place, a Cardano Node and APIs self sovereign deployment solution for decentralizing Cardano services and for empowering students and developers. ARP Radio, AdaMoments and GameChanger Wallet already use it.\n\n# Cardano-GraphQL:\nWas the most powerfull API back in the day making possible many of the legacy projects and exchange integrations around us.\n\nIn principle will be based on the legacy open source project created by IOHK and maintained by Cardano Foundation, specially regarding schema design to leverage on the 4+ year project with their mature experience, and also to be able to absorve their updates and mutually collaborate on improvements.\n\nOur approach for this will be to offer almost the same API endpoints but with some implementation differences and a totally different, modern and optimized GraphQL introspection engine underneath.\n\nThis will allow us to offer the same solution but in a single instance with chances of reusing some recurrent tasks and database tables from other open source API projects also operating over a Cardano DBSync database. Our goal will be to make it easy to maintain to maximize open source collaboration.\n\nEngine optimizations will allow to solve problems like the N+1 fetch issues, a common GraphQL performance failure where the same database information is fetched more than once on same query. Other improvements will be around schema design, optimizing when possible queries involving off-chain token registry, on-chain assets and address balances.\n\nIs important to keep in mind that we cannot promise this to be a drop-in replacement of the former API implementation, but if this is something technically possible to be achieved we will try to do so, otherwise we will try to narrow down differences at a reasonable level.\n\n# BlockFrost-GQL:\nA basic extension will allow for OpenAPI's compliant REST APIs to be included as a sub-schema, making for example BlockFrost available by using the GraphQL query language.\n\nThis will reduce the roundtrips and optimize the timings and reliability for calling several endpoints from client side as this powerfull solution will allow you to pack them under a single http request. Potencially in the future server responses could be nested by relating schemas, empowering BlockFrost users to design flexible queries with ease. Also other great projects like 'Koios-GQL' could be added as well, specially considering Dandelion Lite is already based on Koios solutions.\n\n# YaCi-GQL:\nA basic smart and adaptive extension will allow for the YaCi Dev Kit Postgres database to be exposed via GraphQL. This will serve as first steps to offer an entire new alternative to Cardano GraphQL by leveraging on Cardano Foundation's YaCI Dev Kit instead of IOG's Cardano DBSync.\n\n**Scope:**\n\nRegarding the scope of this solution, Cardano-GraphQL extension API in working state will be delivered, with Cardano Graph, BlockFrost-GQL and Yaci-GQL and any other extra priorization being conditioned by budget constraints as ADA fluctuations are expected to take place in the near term. We will prioritize goals based on project demand and budget constraints, we have a solid 10+ Catalyst projects delivery record with good value for money ratio, as always we will deliver our best.\n\n**Examples**:\n\nHere there are some example queries from our proof of concept aimed for a new Cardano-GraphQL implementation. As you can see, similar queries can be provided but not exactly a drop in replacement, still adding performance and design improvements.\n\n![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/query1.jpg)![](https://raw.githubusercontent.com/GameChangerFinance/gamechanger.wallet/refs/heads/main/catalyst/img/fund14/query2.jpg)\n\n\n\n# Please check our other Fund14 proposals [here]([https://github\\.com/GameChangerFinance/gamechanger\\.wallet/blob/main/catalyst/FUND14\\.md\\)](https://github.com/GameChangerFinance/gamechanger.wallet/blob/main/catalyst/FUND14.md))"
+            },
+            "impact": {
+                "impact": "- A modern redesign of a powerfull API: the renewed Cardano GraphQL will help to keep the project up to date, will simplify maintenance, and will improve its performance, helping early projects and exchanges to keep their software up to date and giving fresh air to an API that helped bootstrap the ecosystem once, totally capable of boosting it's growth on modern days.\n- Easier to learn and integrate: A single battle tested, well known, common query language for all things Cardano versus narrow-scoped, individual, novel, eclectic API solutions that are a nightmare to combine and reuse and in isolation fail to provide the entirety of data you need.\n- Smarter queries: Ask exactly the data you need, remove what you dont need, and pack all communications into single client-server interactions vs hammering servers with similar queries and mix totally different API services only to get what you need\n- Faster queries:  By avoiding several roundtrips from client side to servers and calling them all server-side is that some queries can end up being faster, besides bringing the exact amount of data required leaving unwanted data behind.\n- Cheaper solutions: Spend less resources as you launch less client-server communications to obtain the same information\n- Better development cycles: Iterate faster and spend less development resources as updating backends on each step of the way becomes a thing of the past. Update your client side only as what your backend already provides is more than enough already.\n- Online IDE + Self-Documented: GraphQL schemas can be explored, queries can be designed on code editors that are provided out of the box.\n- Less backend-side centralization: universal, general purpose, fully-featured open source APIs does not incentivize for custom centralized backend solutions on every project we build on Cardano\n- Decentralization-friendly backends: general purpose, flexible common backend solutions for every client side project to consume vs siloed, specialized, closed source solutions nobody is interested in re-deploy for better redundancy and dec.ntralization."
+            },
+            "feasibility": {
+                "feasibility": "We are a team of Cardano experts that have been building since the beginning. We have built the GameChanger Wallet ([https://gamechanger\\.finance/\\)\\)](https://gamechanger.finance/))) a unique innovative wallet. We have built a number of dApps and hardware payment solutions with M2tec ([https://www\\.m2tec\\.nl/\\)\\.\\.\\)](https://www.m2tec.nl/)..)) We also built Dandelion-lite ([https://github\\.com/GameChangerFinance/dandelion\\-lite\\)\\)\\)\\)](https://github.com/GameChangerFinance/dandelion-lite))))) to make truly decentralized financial infrastructure a reality. We have gained a lot of experience in all aspects of Cardano developement. A number of dApps and teams are building on our foundations and we are launching this project driven by the need to improve and grow for as all.\n\n\n\nA proof of concept has already been shown to our community and gave us the required level of confidence of what's technically possible to achieve in this project."
+            }
+        },
+        "milestones": {
+            "milestones": {
+                "milestone_list": [
+                    {
+                        "title": "Project base + Cardano GraphQL (core)",
+                        "outputs": "1. A public repository with a branch or tag referencing Milestone 1, under MIT license\n2. A typescript project referencing this proposal, most likely called Cardano-Graph\n3. A subdirectory of the project containing the core components of the new Cardano-GraphQL implementation in typescript in a reasonable working state\n4. Auxiliar schema and metadata files, produced, adapted or extracted from project dependencies like Cardano-GraphQL or Cardano-DBSync. Produced schema and auxiliary data files are expected to be large files and will take care of our first approach of narrowing down differences with the former implementation, and may not contain:\n    1. SQL migration operations\n    2. collection names,\n    3. attribute names,\n    4. relations information,\n    5. permissions\n    6. and other parameters.",
+                        "acceptance_criteria": "1. I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n2. I can clone the repository and install it locally to start developing with it\n3. I can run this early stage of the project and execute queries with it on the online code editor on my browser\n4. I can see the auxiliar schema and metadata files on my local clone of the repository or on github\n\nImportant: This kind of backend project relies on several dependecies running in background such as Cardano-Node, Cardano-DBSync, PostgresDB, cron, etc... We strongly suggest you use Dandelion-Lite  ([https://github\\.com/GameChangerFinance/dandelion\\-lite](https://github.com/GameChangerFinance/dandelion-lite) ) and dedicated hardware to do so but how to set up these services properly and how to troubleshoot them goes far beyond the scope of the acceptance criteria. We will try to assist as possible and if convenient we may offer an online instance of the project to help the reviewer and minimize the complexity of the reviewing process. This notice applies to all milestones of this project.",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 1. The MIT license file is present.\n2. The existance and installable state of the base project\n3. The existance and basic executable state of the new Cardano-GraphQL implementation\n4. The existance of auxiliar schema and metadata files",
+                        "delivery_month": 2,
+                        "cost": 30000,
+                        "progress": "30 %"
+                    },
+                    {
+                        "title": "Cardano GraphQL (refinements) + Testing + Docs",
+                        "outputs": "1. Milestone 2 branch or tag containing this milestone's outputs\n2. Cardano GraphQL refinements narrowing differences between this and the former implementation, and improving aspects of it such as\n    1. Type casting/conversions (optional)\n    2. Filters (optional)\n    3. Aggregations (optional)\n    4. Missing/Added/Improved collections (optional)\n    5. Missing/Added/Improved relations (optional)\n    6. Reduced amount of extra constructs on schema (optional)\n    7. Improved database schema (optional)\n    8. Improved database recurrent cron tasks  (optional)\n    9. Improved code design (optional)\n    10. Performance (optional)\n    11. More... (optional)\n3. Testing suite with a basic code coverage considering the size of the API\n4. Typedoc: reasonable amount of code being documented\n5. General documentation: How to install, run and execute some queries",
+                        "acceptance_criteria": "1. I can verify existance and public access of Milestone 2 branch or tag\n2. I can execute queries with this new version and verify that these refinements are applied to the code because I can compare query responses using the Milestone 1 branch and I can clearly see improvements/modifications about the listed topics\n3. I can run the testing suite and verify that all tests are passing, or I can check the existance of the tests source code and I can see the verifiable test results published online\n4. I can navigate through the code and verify the existance of a reasonable amount of Typedoc comments accross the code\n5. I can read the general documentation containing information about how to install, run and execute some common queries",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 2\n2. Code base has been expanded with more features, schema and auxiliar files has been improved\n3. Now a testing suite has been included for testing this first API\n4. General documentation has been added or expanded to cover the basics",
+                        "delivery_month": 3,
+                        "cost": 30000,
+                        "progress": "60 %"
+                    },
+                    {
+                        "title": "Extras: Cardano Graph + BlockFrost-GQL + YaCi-GQL",
+                        "outputs": "1. Milestone 3 branch or tag containing this milestone's outputs\n2. Cardano Graph is a well defined basic unifying code base of the project now, capable of containing other sub projects/APIs inside\n    1. acting as a GraphQL API composed schema, gateway or other sort of API aggregator to be determined as convenient\n    2. probably majority of output has been resolved already on previous milestones\n3. OpenAPI REST over GraphQL service, most likely BlockFrost-GQL. Source code is in a subdirectory of the project\n    1. It is a service that has been produced by wrapping an external OpenAPI service or it has been resolved by reusing source code from the former project\n4. Generic PostgresDB introspection and semi-automatic pattern-based relation generator, most likely YaCi-GQL. Source code is in a subdirectory of the project.\n    1. It is a service that will have a minimal runtime source code specialization but a different scripting setup as a smart pattern-based relation generator most likely pre-configured to work with YaCI postgresDb.  \n    2. It will have its own schema and auxiliary data files.",
+                        "acceptance_criteria": "1. I can verify existance and public access of Milestone 3 branch or tag\n2. I can run the server and identify the existance of multiple APIs under the same instance or I can at least identify that the source code of the project is arranged in such a way that is somewhat prepared to contain API extensions.\n3. I can run REST queries using GraphQL, most likely BlockFrost queries\n4. I can access a PostgresDB through GraphQL queries, most likely the YaCi PostgresDb",
+                        "evidence": "- The existance and public access of the repository with the branch or tag referencing Milestone 3\n- Now a new or modifyed codebase is clearly called Cardano Graph and contains or is able to contain API extensions in a well defined project structure\n- Now an OpenAPI service has been wrapped or incorporated as an API extension, most likely BlockFrost API\n- Now an arbitrary PostgresDB has been incorporated as an API extension, most likely YaCi PostgresDB",
+                        "delivery_month": 5,
+                        "cost": 25000,
+                        "progress": "80 %"
+                    },
+                    {
+                        "title": "Final Docs + Closeout documentation and video",
+                        "outputs": "1. Milestone 4  branch or tag containing this milestone's outputs\n2. Added missing documentation if any, specially regarding Milestone 3\n3. Closeout documentation and video demonstrating the project outcome",
+                        "acceptance_criteria": "1. I can verify existance and public access of Milestone 4 branch or tag\n2. I can read a reasonable amount of documentation around Milestone 3\n3. I can read the final report and watch the video demonstration and verify the working state of the project and the achieved goals",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 4\n2. The existance of more documentation files related to Milestone 3\n3. The existances and public access to the final report and video",
+                        "delivery_month": 6,
+                        "cost": 15000,
+                        "progress": "100 %"
+                    }
+                ]
+            }
+        },
+        "pitch": {
+            "team": {
+                "who": "- Maarten Menheere - Project manager - Developer, testing support ( [https://www\\.linkedin\\.com/in/maartenmenheere/](https://www.linkedin.com/in/maartenmenheere/) )\n- Gabriel Talamantes - FullStack developer, testing support ( [https://www\\.linkedin\\.com/in/gabrielstalamantes/](https://www.linkedin.com/in/gabrielstalamantes/) )\n- Adriano Fiorenza - Lead developer - Project architect. ( [https://ar\\.linkedin\\.com/in/adriano\\-fiorenza](https://ar.linkedin.com/in/adriano-fiorenza) )"
+            },
+            "budget": {
+                "costs": "**Personnel cost**\n\n- Milestone 1- 30,000 ADA\n- Milestone 2 - 30,000 ADA\n- Milestone 3 - 25,000 ADA\n- Milestone 4 - 15,000 ADA\n\n\n\nTotal: ~800hs x USD 85/hr = USD 68000,00 ~ ADA 100000,00 at an average rate taken from 2025 price volatility"
+            },
+            "value": {
+                "note": "Competing blockchains have GraphQL API's of high quality. If Cardano as a blockchain wants to be at the forefront of this new way of storing and working with digital value. We all need this API, and we need it to be performant, modern, easier to maintain and extensible. What we are building is essential to secure the future of Cardano at the top. As always cost of project is more than reasonable considering what's being offered and considering we always begin our work in advance and later we seek for funding to improve and pollish."
+            }
+        },
+        "agreements": {
+            "ongoing_projects": {
+                "has_ongoing_projects": true,
+                "projects": [
+                    {
+                        "project_id": "1300078"
+                    }
+                ]
+            },
+            "consent_confirmation": {
+                "terms_and_conditions": true
+            }
+        }
+    }
+}

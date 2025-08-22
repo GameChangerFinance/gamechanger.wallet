@@ -1,0 +1,141 @@
+{
+    "metadata": {},
+    "content": {
+        "$schema": "./0ce8ab38-9258-4fbc-a62e-7faa6e58318f.schema.json",
+        "setup": {
+            "title": {
+                "title": "Gamechanger: Instant dApp, build for any device fast"
+            },
+            "proposer": {
+                "applicant": "Maarten Menheere",
+                "type": "Individual"
+            }
+        },
+        "summary": {
+            "budget": {
+                "requestedFunds": 100000
+            },
+            "time": {
+                "duration": 8
+            },
+            "translation": {
+                "isTranslated": false,
+                "originalLanguage": "en"
+            },
+            "problem": {
+                "statement": "Building on Cardano often requires deep knowledge and the skill. With Gamechanger we want to take a different approach. We want to make writing dApps the domain of every web developer out there. "
+            },
+            "solution": {
+                "summary": "Gamachanger is made for rapid application developement. We are going to make it even better. Packing all our experience into a JS library that will make writing dApps easy for everyone"
+            },
+            "supportingLinks": {
+                "links": [
+                    "https://gamechanger.finance/",
+                    "https://inception.m2tec.nl/",
+                    "https://github.com/arpradio/gc-connect",
+                    "https://www.adamoments.io/",
+                    "https://arpradio.media/"
+                ]
+            },
+            "dependencies": {
+                "hasDependency": false
+            },
+            "open_source": {
+                "isOpenSource": true,
+                "licenseInformation": "MIT License"
+            }
+        },
+        "theme": {
+            "theme": {
+                "grouped_tag": {
+                    "group": "Development & Tools",
+                    "tag": "Developer Tools"
+                }
+            }
+        },
+        "campaign_category": {
+            "category_questions": {
+                "license_information": "We would like to allow for maximum freedom to allow for adapting and extending the code base. Also the MIT license is straight forward and used in many projects on Cardano. This reduces license confilcts. We don't want to enforce people to contribute back, but we sure do appreciate it",
+                "source_code_accessibility": "We have a proof of concept on github ready to release upon project start and Dandelion community and operators are aware already of it, it has been discussed publicly on our weekly open calls. It wil be easy to publish and accept additional contributors to enhance and build. Github is a cloud-based hosting service for Git repositories. Git is a version control system that tracks changes to files, lets you roll back to earlier versions, and supports branching for parallel development.",
+                "documentation_quality": "We have published courses on Andamio and Wisdom.courses, we have experience with creating educational content. We have experience in documenting source code libraries and projects and we benefit on doing so to maximize open source collaboration oportunities."
+            }
+        },
+        "details": {
+            "solution": {
+                "solution": "Gamechanger has a beta version of a library ([https://www\\.npmjs\\.com/package/@gamechanger\\-finance/gc\\)\\.](https://www.npmjs.com/package/@gamechanger-finance/gc).) But it has a lot of limitations. We have been building dApps for a while now. Great examples are [https://www\\.adamoments\\.io/](https://www.adamoments.io/) and [https://arpradio\\.media/\\.](https://arpradio.media/.) The libary could really do with a major overhaul. Where we integrate all that knowledge into usefull functions any web developer can use.\n\n# **Make the GC library work well with the latest nodeJS releases\\.**\nThe Javascript ecosystem moves fast. The library could do with an update. Making it much easier to integrate into the latest and greatest.\n\n# **Integrate gc\\-connect**\nA must have feature for any dApp is the abbility to verify and remember the users wallet. This component takes signing in a step further. Combining it with webtokens to make interfering with a users session that extra step harder. It is already working in dApps. Adding it here will make it easy to use for everyone. [https://github\\.com/arpradio/gc\\-connect](https://github.com/arpradio/gc-connect)\n\n# Integrate smart contract in-browser user-side compilation\nWith inception we built a smart contract dApp. This allows the user to compile contracts from source. Verify its validty and the execute it using the Gamechanger wallet. All you need is a browser. So we will add transpilation features of [https://inception\\.m2tec\\.nl/](https://inception.m2tec.nl/) to this libary.\n\n# Unimatrix helper functions\nThis technology alreay leveraged by [https://www\\.adamoments\\.io/](https://www.adamoments.io/) with great effect. An essential feature for any DAO that needs to work with multisig wallets and async transaction signing. Even for a single transaction this has benefits for the dApp. Because it can monitor transaction progress and make the user experience more interactive.\n\n# Template\nMake a dApp template that is easy to setup and deploy"
+            },
+            "impact": {
+                "impact": "Gamechanger already has good documentation. Including many tutorial videos on Andamio and Wisdom.courses. Through the first dApps like Adamoments([https://www\\.adamoments\\.io/\\)](https://www.adamoments.io/)) and Arpradio ([https://arpradio\\.media/\\)](https://arpradio.media/)) Gamechanger is already showing that it can make building rich interactive dApps a reality. With this proposal we take the next step, reducing developer workload, end greatly improving time to market. Combining all the knowledge and technology into a single place. It will propel the ecosystem to new hights."
+            },
+            "feasibility": {
+                "feasibility": "# Capabilities\nWe are a team of Cardano experts that have been building since the beginning. We have built the GameChanger Wallet ([https://gamechanger\\.finance/\\)](https://gamechanger.finance/)) a unique innovative wallet. We have built a number of dApps and hardware payment solutions with M2tec ([https://www\\.m2tec\\.nl/\\)\\.](https://www.m2tec.nl/).) We also built Dandelion-lite ([https://github\\.com/GameChangerFinance/dandelion\\-lite\\)\\)](https://github.com/GameChangerFinance/dandelion-lite))) to make truly decentralized financial infrastructure a reality. We have gained a lot of experience in all aspects of Cardano developement.\n\nWe have also participated in a number of Catalyst Funds where we have won and executed on our promises. This indicates our proven track record of delivering. We are here to build the future of finance and are commited for the long term.\n\n# Feasability\nAs descibed in our solution in detail we are aggregating and polishing components that have already been built. Because of this the project is low risk. With our experience and resources we have not set the bar too high here."
+            }
+        },
+        "milestones": {
+            "milestones": {
+                "milestone_list": [
+                    {
+                        "title": "Update library",
+                        "outputs": "- A public repository with a branch or tag referencing Milestone 1, under MIT license.\n- A library that can be impored into a JS project using NodeJS without creating warning.\n- The library is in a working state. And provides the dApp connector.",
+                        "acceptance_criteria": "- I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n- I can clone the repository and install it locally to start developing with it\n- I can create a basic NextJS app and import the library and run a gamechanger script",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 1. The MIT license file is present.\n2. Run: npx create-next-app@latest\n3. Run: npm i @gamechanger-finance/gc\n4. Add the library as an import statement. \n5. Run dApp without errors or warnings.",
+                        "delivery_month": 2,
+                        "cost": 30000,
+                        "progress": "30 %"
+                    },
+                    {
+                        "title": "GC-connect, Unimatrix and dApp template",
+                        "outputs": "- A public repository with a branch or tag referencing Milestone 2, under MIT license.\n- Functions for message signing\n- Functions for browser session authentication\n- Functions for using Unimatrix\n- A template to add browser UI elements for user login.",
+                        "acceptance_criteria": "- I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n- I can clone the repository and install it locally to start developing with it\n- I can create a basic NextJS app from a project template generator \n- Login to a GC wallet using the functions provided in the libary",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 1. The MIT license file is present.\n2. Run: npx create-gc-app@latest ( or similar installer )\n3. Run dApp without errors or warnings.\n4. Be able to login from the browser using gc-connect\n5. Sign a multisig using Unimatrix.",
+                        "delivery_month": 3,
+                        "cost": 30000,
+                        "progress": "60 %"
+                    },
+                    {
+                        "title": "Smart contracts",
+                        "outputs": "- A public repository with a branch or tag referencing Milestone 3, under MIT license.\n- Functions for transpiling validator script files, into GC scripts.\n- Scripts are Helios language currently. Provide compliation functions for Helios lang to CBOR.",
+                        "acceptance_criteria": "- I can verify public access to the repository and the listed and accesible branch, with the MIT license file on it\n- I can clone the repository and install it locally to start developing with it\n- I can create a basic NextJS app and import the library and compile and run a basic validator script using the functions provided in the libary",
+                        "evidence": "1. The existance and public access of the repository with the branch or tag referencing Milestone 3. The MIT license file is present.\n2. Run: npx create-next-app@latest\n3. Run: npm i @gamechanger-finance/gc\n4. Add the library as an import statement.\n5. Add validator compilation functions as described in the documentation\n6. Run dApp without errors or warnings.",
+                        "delivery_month": 2,
+                        "cost": 25000,
+                        "progress": "90 %"
+                    },
+                    {
+                        "title": "Final Docs + Closeout documentation and video",
+                        "outputs": "- Milestone 4  branch or tag containing this milestone's outputs\n- Added missing documentation if any, specially regarding Milestone 3\n- Closeout documentation and video demonstrating the project outcome",
+                        "acceptance_criteria": "- I can verify existance and public access of Milestone 4 branch or tag\n- I can read a reasonable amount of documentation around Milestone 3\n- I can read the final report and watch the video demonstration and verify the working state of the project and the achieved goals",
+                        "evidence": "The existance and public access of the repository with the branch or tag referencing Milestone 4\n\nThe existance of more documentation files related to Milestone 3\n\nThe existances and public access to the final report and video",
+                        "delivery_month": 8,
+                        "cost": 15000,
+                        "progress": "100 %"
+                    }
+                ]
+            }
+        },
+        "pitch": {
+            "team": {
+                "who": "- Maarten Menheere - Project manager - Developer, testing support ( [https://www\\.linkedin\\.com/in/maartenmenheere/](https://www.linkedin.com/in/maartenmenheere/) )\n- Gabriel Talamantes - FullStack developer, testing support ( [https://www\\.linkedin\\.com/in/gabrielstalamantes/](https://www.linkedin.com/in/gabrielstalamantes/) )\n- Adriano Fiorenza - Lead developer - Project architect. ( [https://ar\\.linkedin\\.com/in/adriano\\-fiorenza](https://ar.linkedin.com/in/adriano-fiorenza) )"
+            },
+            "budget": {
+                "costs": "# Personnel cost\nMilestone 1- 30,000 ADA\n\nMilestone 2 - 30,000 ADA\n\nMilestone 3 - 25,000 ADA\n\nMilestone 4 - 15,000 ADA\n\nTotal: ~800hs x USD 85/hr = USD 68000,00 ~ ADA 100000,00 at an average rate taken from 2025 price volatilit"
+            },
+            "value": {
+                "note": "It is still early for the blockchain ecosystem. The Gamechanger dApp connecor is an important and considerably different approach. With significant advantages. For example you can login with any browser. And you can verify the transaction you are signing and the contracts you are executing. Carano should keep it's options open to make the chance of success as big as possible. This is important work. When completed together with other infrastructure improvements, provided by Dandelion-lite, it will open Cardano up to a extremely large set of developers. All the developers that are now building Web2.0. We have done this consistenty with minimal budgets."
+            }
+        },
+        "agreements": {
+            "ongoing_projects": {
+                "has_ongoing_projects": true,
+                "projects": [
+                    {
+                        "project_id": "1300078"
+                    }
+                ]
+            },
+            "consent_confirmation": {
+                "terms_and_conditions": true
+            }
+        }
+    }
+}
