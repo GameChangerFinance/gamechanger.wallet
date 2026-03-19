@@ -107,7 +107,7 @@ If the requested values are invalid, an error screen is expected.
 
 ### Why this matters now
 
-During the v2 beta stage there were separate wallet subdomains per environment. On the official v2 release there is one single production wallet domain, so routing is now expressed through query parameters instead of subdomain selection.
+Older documentation and examples may still show subdomain-based wallet links. The official v2 release uses one single production wallet domain, so routing is now expressed through query parameters instead of subdomain selection.
 
 This makes links more portable:
 

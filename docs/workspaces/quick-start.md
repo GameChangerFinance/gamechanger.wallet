@@ -162,24 +162,24 @@ Finally she found out about GameChanger Wallet Workspaces and she wanted to give
 }
 
 ```
-<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61UwW7aQBD9FcuXtBKpYkyI4WaIKlClCCmHHCqEBu9gXMyutTtOipD_vbMYOw4BpBLggJkZv_dm5u1uXdpk6PZdE-kkI7flUkKpDYRpEqHzovTKZBAhZwSWRYmSdf4N0hTJMUiUyNg4pJw1SIjRWaJ2Os4QCNKNISfT6g9GZBgHdGzc_tYdqDnjeD72fOgEUbfrt9viobeIROCL-8BbtP1OML_vPtz5PZj7ohcEi0Uguu2gy_8YqAL_mUvh9j2vaLk6lzX0tupNcB2Xv0Kaow1nsFmjpF-4GYFZfkVDwZTlCJ6R8qzBmSoQQyUXSczMecYScMwiXbBjm5WBmce5FDaoeR6_61ebM08I12VSwhonQIRaVjDVtt7DZ5d2WPb_uyumRauWyeNj_LeKayyszr2w6WnlJkMpbpfKem2V2MWVIWuMKFK5pLEU-JfD2xjp2411y4_mpm--F7ZWCI3G7GvvrK5jPOE1WbxTLINrsrRPsTxek8U_wkKwwls2RYPHhr64maZnnoCSV3yu7pqT5jkQtgSNYrZrelZfVHuDbffD4AcrffdjUew5z-ds0ifGasyQT-y8vB3KtL0CRodd8f1hmyns5119WHZ2ietHil52x41f3imZfNZWnondyD9m67183tlEq0wZSGfhGeDwctjBGdjB5bDDj7DndnAxx2PF0TRdBXDUUWeJpvwtin98UfWoMAcAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61UwW7aQBD9FcuXtBKpYkyI4WaIKlClCCmHHCqEBu9gXMyutTtOipD_vbMYOw4BpBLggJkZv_dm5u1uXdpk6PZdE-kkI7flUkKpDYRpEqHzovTKZBAhZwSWRYmSdf4N0hTJMUiUyNg4pJw1SIjRWaJ2Os4QCNKNISfT6g9GZBgHdGzc_tYdqDnjeD72fOgEUbfrt9viobeIROCL-8BbtP1OML_vPtz5PZj7ohcEi0Uguu2gy_8YqAL_mUvh9j2vaLk6lzX0tupNcB2Xv0Kaow1nsFmjpF-4GYFZfkVDwZTlCJ6R8qzBmSoQQyUXSczMecYScMwiXbBjm5WBmce5FDaoeR6_61ebM08I12VSwhonQIRaVjDVtt7DZ5d2WPb_uyumRauWyeNj_LeKayyszr2w6WnlJkMpbpfKem2V2MWVIWuMKFK5pLEU-JfD2xjp2411y4_mpm--F7ZWCI3G7GvvrK5jPOE1WbxTLINrsrRPsTxek8U_wkKwwls2RYPHhr64maZnnoCSV3yu7pqT5jkQtgSNYrZrelZfVHuDbffD4AcrffdjUew5z-ds0ifGasyQT-y8vB3KtL0CRodd8f1hmyns5119WHZ2ietHil52x41f3imZfNZWnondyD9m67183tlEq0wZSGfhGeDwctjBGdjB5bDDj7DndnAxx2PF0TRdBXDUUWeJpvwtin98UfWoMAcAAA?networkTag=mainnet" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
 </a>
-<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61UwW7aQBD9FcuXtBKpYkyI4WaIKlClCCmHHCqEBu9gXMyutTtOipD_vbMYOw4BpBLggJkZv_dm5u1uXdpk6PZdE-kkI7flUkKpDYRpEqHzovTKZBAhZwSWRYmSdf4N0hTJMUiUyNg4pJw1SIjRWaJ2Os4QCNKNISfT6g9GZBgHdGzc_tYdqDnjeD72fOgEUbfrt9viobeIROCL-8BbtP1OML_vPtz5PZj7ohcEi0Uguu2gy_8YqAL_mUvh9j2vaLk6lzX0tupNcB2Xv0Kaow1nsFmjpF-4GYFZfkVDwZTlCJ6R8qzBmSoQQyUXSczMecYScMwiXbBjm5WBmce5FDaoeR6_61ebM08I12VSwhonQIRaVjDVtt7DZ5d2WPb_uyumRauWyeNj_LeKayyszr2w6WnlJkMpbpfKem2V2MWVIWuMKFK5pLEU-JfD2xjp2411y4_mpm--F7ZWCI3G7GvvrK5jPOE1WbxTLINrsrRPsTxek8U_wkKwwls2RYPHhr64maZnnoCSV3yu7pqT5jkQtgSNYrZrelZfVHuDbffD4AcrffdjUew5z-ds0ifGasyQT-y8vB3KtL0CRodd8f1hmyns5119WHZ2ietHil52x41f3imZfNZWnondyD9m67183tlEq0wZSGfhGeDwctjBGdjB5bDDj7DndnAxx2PF0TRdBXDUUWeJpvwtin98UfWoMAcAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61UwW7aQBD9FcuXtBKpYkyI4WaIKlClCCmHHCqEBu9gXMyutTtOipD_vbMYOw4BpBLggJkZv_dm5u1uXdpk6PZdE-kkI7flUkKpDYRpEqHzovTKZBAhZwSWRYmSdf4N0hTJMUiUyNg4pJw1SIjRWaJ2Os4QCNKNISfT6g9GZBgHdGzc_tYdqDnjeD72fOgEUbfrt9viobeIROCL-8BbtP1OML_vPtz5PZj7ohcEi0Uguu2gy_8YqAL_mUvh9j2vaLk6lzX0tupNcB2Xv0Kaow1nsFmjpF-4GYFZfkVDwZTlCJ6R8qzBmSoQQyUXSczMecYScMwiXbBjm5WBmce5FDaoeR6_61ebM08I12VSwhonQIRaVjDVtt7DZ5d2WPb_uyumRauWyeNj_LeKayyszr2w6WnlJkMpbpfKem2V2MWVIWuMKFK5pLEU-JfD2xjp2411y4_mpm--F7ZWCI3G7GvvrK5jPOE1WbxTLINrsrRPsTxek8U_wkKwwls2RYPHhr64maZnnoCSV3yu7pqT5jkQtgSNYrZrelZfVHuDbffD4AcrffdjUew5z-ds0ifGasyQT-y8vB3KtL0CRodd8f1hmyns5119WHZ2ietHil52x41f3imZfNZWnondyD9m67183tlEq0wZSGfhGeDwctjBGdjB5bDDj7DndnAxx2PF0TRdBXDUUWeJpvwtin98UfWoMAcAAA?networkTag=preprod" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
 </a>
 
 🔍 *See also:*
-[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html),
-[loadConfig](https://beta-wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
-[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+[data](https://wallet.gamechanger.finance/doc/api/v2/data.html),
+[loadConfig](https://wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
+[script](https://wallet.gamechanger.finance/doc/api/v2/api.html)
 
 
 ### Running the script
 
 Alice was working on Cardano Mainnet, so let's go step by step on replicating her setup.
 
-Go to [GameChanger Wallet for Cardano Mainnet](https://beta-wallet.gamechanger.finance/). You can try it on Pre-Production Testnet but addresses will change. 
+Go to [GameChanger Wallet for Cardano Mainnet](https://wallet.gamechanger.finance/?networkTag=mainnet). You can try it on Pre-Production Testnet but addresses will change. 
 
 This is Alice seed phrase:
 
@@ -193,7 +193,7 @@ Create a *mnemonic wallet* with the seed phrase, it will look like this:
     <img src="../img/workspaces-quickstart-alicewallet.jpg"/>
 </div>
 
-Now go to *Dapp Builder*, ( [Playground IDE for Cardano Mainnet](https://beta-wallet.gamechanger.finance/playground) ), paste the gcscript on the code editor and click on run.
+Now go to *Dapp Builder*, ( [Playground IDE for Cardano Mainnet](https://wallet.gamechanger.finance/playground?networkTag=mainnet) ), paste the gcscript on the code editor and click on run.
 
 After running it, the *workspace* will be added to your wallet. On the *dapp connector* interface you can find the generated *artifacts*. Play with the select tool to explore the relationships between them. 
 

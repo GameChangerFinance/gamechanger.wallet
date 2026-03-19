@@ -89,16 +89,16 @@ The way GCScripts and their JSON results are packed and shared between agents an
     }
 }
 ```
-<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA02OwQrCMAyGXyXmssuewJsHwbOInmMbsJC1pU3dxti7myKCt_xfwpd_Q10z4xGrKyErjqhBpYPzQlO2aUTP32VI0fjtFSp4yhlcipFdx5CiY-CFXVP2loBgJhFWmIMIFNZWIgwXFknwSEX8YQBT85JT0VM177ReuTbRarg0-7QZulMJ9Ox9tl9RT0p28iZpPf4rcd_3D8h2n7_RAAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA02OwQrCMAyGXyXmssuewJsHwbOInmMbsJC1pU3dxti7myKCt_xfwpd_Q10z4xGrKyErjqhBpYPzQlO2aUTP32VI0fjtFSp4yhlcipFdx5CiY-CFXVP2loBgJhFWmIMIFNZWIgwXFknwSEX8YQBT85JT0VM177ReuTbRarg0-7QZulMJ9Ox9tl9RT0p28iZpPf4rcd_3D8h2n7_RAAAA?networkTag=mainnet" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
 </a>
-<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA02OwQrCMAyGXyXmssuewJsHwbOInmMbsJC1pU3dxti7myKCt_xfwpd_Q10z4xGrKyErjqhBpYPzQlO2aUTP32VI0fjtFSp4yhlcipFdx5CiY-CFXVP2loBgJhFWmIMIFNZWIgwXFknwSEX8YQBT85JT0VM177ReuTbRarg0-7QZulMJ9Ox9tl9RT0p28iZpPf4rcd_3D8h2n7_RAAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA02OwQrCMAyGXyXmssuewJsHwbOInmMbsJC1pU3dxti7myKCt_xfwpd_Q10z4xGrKyErjqhBpYPzQlO2aUTP32VI0fjtFSp4yhlcipFdx5CiY-CFXVP2loBgJhFWmIMIFNZWIgwXFknwSEX8YQBT85JT0VM177ReuTbRarg0-7QZulMJ9Ox9tl9RT0p28iZpPf4rcd_3D8h2n7_RAAAA?networkTag=preprod" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
 </a>
 
 🔍 *See also:*
-[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
-[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html)
+[script](https://wallet.gamechanger.finance/doc/api/v2/api.html),
+[data](https://wallet.gamechanger.finance/doc/api/v2/data.html)
 
 *and the isomorphic results:*
 ```json

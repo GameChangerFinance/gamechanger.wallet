@@ -1,6 +1,6 @@
-# GameChanger Wallet v2 Beta Documentation
+# GameChanger Wallet v2 Documentation
 
-[![GameChanger Wallet v2 Beta](gcw-logo-300x85.png)](https://wallet.gamechanger.finance)
+[![GameChanger Wallet v2](gcw-logo-300x85.png)](https://wallet.gamechanger.finance)
 
 ## The Cardano Meta Wallet
 
@@ -39,10 +39,19 @@ These networks are supported:
 - [GCScript Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
 - [JSON Schema](/release/README.md)
 
-## Examples and special use cases:
+## Ecosystem:
 
 ### Dapps:
+
+- [ARP Radio](https://arpradio.media/): Discover the plethora of music in the Cardano ecosystem, then purchase, play, trade, and more! Created by SudoScientist
+- [Moments](https://www.adamoments.io/): Moments is a decentralized social media platform where creators capture their ideas, share freely, and lock in ownership by minting posts on Cardano. Created by our friend and cherished community member Max Van Rossem.
+- [M2Tec Payments](https://payments.m2tec.nl/): POS payment request generator dapp leveraging on an GCFS on-chain open protocol ( [Code on Github](https://github.com/M2tec/gcfs-payments.m2tec.nl) )
+- [Dandelion Contributor Portal](https://contrib.dandelion.link) (GameChanger V1)
+
+### Examples and Boilerplates:
+- [🔥 gc-connect](https://github.com/arpradio/gc-connect): great open-dapp boilerplate to integrate UDC/GameChanger Wallet, is the software that powers ARP Radio and Moments integrations. Developed by SudoScientist
 - Examples using **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:
+    - [✨ Kitchen Sink ✨](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/index.html): URL, QR, HTML, React, ExpressJs, all output format in one example
     - [URL](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/URL.txt)
     - [QR (png)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.png)
     - [QR (svg)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.svg)
@@ -56,32 +65,36 @@ These networks are supported:
     - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero backends!
     - HTML5 frontend code with zero external dependencies, and zero backends!
     - QR code dapp connectors included    
+- [Builder Fest 2026 Challenge](https://github.com/GameChangerFinance/builderfest-2026-ticket): How to solve the Builder Fest on-chain registration challenge in GCScript DSL. (A validator deployment script and other auxiliary scripts are available - Docs is WIP)
 - [gc-contract-app](https://github.com/M2tec/gc-contract-app)
     - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
     - It builds a smart contract on-the-fly using *Helios Language*, 
     - like many GC dapps it does not use backends
+- [Helios Timelock](https://github.com/GameChangerFinance/cardano-gc-helios-dapp)
+    - First dapp on Cardano working from hosted source code stored on-chain. 
+    - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
+    - **The big picture behind GameChanger Dapps** explained on-dapp for the Cardano Community
+### Tools:
 - [Inception IDE Beta](https://inception.m2tec.nl/)
     - First stand-alone IDE for building **Cardano** dapps fully online (client side PAB)
     - in browser, no cardano-node deployment required. 
     - on-chain and off-chain code, **Helios Language**, **GCScript** and externaly-built **Plutus Scripts**
     - dapp <--> wallet connections you code here can be used on your own backends and frontends
     - By **Maarten Menheere**. [Github](https://github.com/M2tec/inception)
-- [Helios Timelock](https://github.com/GameChangerFinance/cardano-gc-helios-dapp)
-    - First dapp on Cardano working from hosted source code stored on-chain. 
-    - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
-    - **The big picture behind GameChanger Dapps** explained on-dapp for the Cardano Community
+- [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl)
+- [Kitchen Sink](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/index.html): URL, QR, HTML, React, ExpressJs, all output format in one example
+- **Official CLI Tool [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:URL, QR, HTML, React, ExpressJs, all output format in one CLI tool 
+### Use Cases
 - M2Tec - Hardware and Software Dapps (first hardware dapps on Cardano powered by GameChanger universal dapp connector)
-    - [M2Tec Payments](https://payments.m2tec.nl/): POS payment request generator dapp leveraging on an GCFS on-chain open protocol ( [Code on Github](https://github.com/M2tec/gcfs-payments.m2tec.nl) )
-    - [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl)
     - M2Tec Paypads: Payment devices for stores, with Odoo integration for ADA and native asset payments, loyalty tokens and more.
     - M2Tec Cardano Totem: The first Cardano ATM-like public terminals with built-in stake pool
 - GCFS examples (GameChanger On-Chain File System): 
     - [Voting Dapp for Catalyst Proposals](https://gcvoting.netlify.app/catalyst/fund10/102594)
-- DJack - Decentralized Email Inbox on Cardano
+- DJack - Decentralized Email Inbox on Cardano: By our friend Javi Ribo 
     - powered by SSI
     - no minting required
 - [DCorps - Digital Companies Registry on Cardano](https://www.lidonation.com/zh/proposals/dcorps-digital-companies-registry-registering-your-catalyst-project-on-chain-f10) (GameChanger V1)
-- [Dandelion Contributor Portal](https://contrib.dandelion.link) (GameChanger V1)
+
 
 ### Some videos and articles:
 

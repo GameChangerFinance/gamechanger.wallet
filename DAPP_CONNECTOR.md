@@ -1,4 +1,4 @@
-# GameChanger Wallet v2 Beta Documentation
+# GameChanger Wallet v2 Documentation
 
 [Moved to General Documentation](docs/universal-dapp-connector/overview.md)
 
