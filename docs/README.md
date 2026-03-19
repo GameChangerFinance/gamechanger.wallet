@@ -2,13 +2,14 @@
 
 
 <div style="text-align:center">
-    <a href="https://beta-wallet.gamechanger.finance"><img src="../gcw-logo-300x85.png"/></a>
+    <a href="https://wallet.gamechanger.finance"><img src="../gcw-logo-300x85.png"/></a>
 </div>
 
 
 ## Table of Contents 
 - [Universal Dapp Connector](universal-dapp-connector/README.md)
     - [Overview](universal-dapp-connector/overview.md)
+    - [URL Patterns](universal-dapp-connector/url-patterns.md)
 - [GCScript DSL](gcscript/README.md)
     - [Overview](gcscript/overview.md)
     - [Quick Start](gcscript/quick-start.md)
@@ -29,17 +30,13 @@
     - [Personal Account Wallets](workspaces/accounts.md)
     - [Multisigs Wallets](workspaces/multisigs.md)
 
-<div style="text-align:center">
-    <a href="https://forms.gle/XJQ4MSST1CvPfN196"><img src="img/dev_docs_survey.gif"/></a>
-</div>
-
 ## Resources
 - [General Documentation](README.md)
 - [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Beta Release Notes](../RELEASE.md)
 - [70+ open source example dapps](../examples/README.md)
-- [GCScript API documentation](https://beta-wallet.gamechanger.finance/doc/api/v2)
-- [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
+- [GCScript API documentation](https://wallet.gamechanger.finance/doc/api/v2)
+- [Playground IDE in GameChanger Wallet ](https://wallet.gamechanger.finance/playground)
 - [Catalyst](catalyst/CATALYST.md)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)
 - [Discord Support](https://discord.gg/vpbfyRaDKG)

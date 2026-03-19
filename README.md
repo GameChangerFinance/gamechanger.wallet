@@ -1,6 +1,6 @@
 # GameChanger Wallet v2 Beta Documentation
 
-[![GameChanger Wallet v2 Beta](gcw-logo-300x85.png)](https://beta-wallet.gamechanger.finance)
+[![GameChanger Wallet v2 Beta](gcw-logo-300x85.png)](https://wallet.gamechanger.finance)
 
 ## The Cardano Meta Wallet
 
@@ -20,16 +20,23 @@ The smart design principles of the wallet allows you to import or connect these 
 
  **One wallet to have them all, on Desktop and Mobile, with the same dapp connector.**
 
-## Links
+## Link
 
-- [Mainnet wallet](https://beta-wallet.gamechanger.finance/)
-- [Pre-Production Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
+This is the official link to access **GameChanger Wallet v2 (Production)**:
+
+[**🚀 GameChanger Wallet v2**](https://wallet.gamechanger.finance/)
+
+These networks are supported: 
+- Cardano Mainnet
+- Cardano Pre-Production Testnet 
+
+*See bottom of the page for information about the now concluded Beta phase*
 
 ## Documentation
 
 - [Transactions / Quick Start](docs/transactions/quick-start.md): A single page covering from making a Cardano transaction to code snippets to help integrate the wallet
 - [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more.
-- [GCScript Language Reference (API docs)](https://beta-wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
+- [GCScript Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
 - [JSON Schema](/release/README.md)
 
 ## Examples and special use cases:
@@ -44,7 +51,7 @@ The smart design principles of the wallet allows you to import or connect these 
     - [ReactJs Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/reactDapp.html)
     - [ExpressJs Backend](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/expressBackend.js)
 - **[70+ full open source example dapps](examples/README.md)**
-    - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://beta-wallet.gamechanger.finance/playground)
+    - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://wallet.gamechanger.finance/playground)
     - GCScript code
     - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero backends!
     - HTML5 frontend code with zero external dependencies, and zero backends!
@@ -92,8 +99,8 @@ The smart design principles of the wallet allows you to import or connect these 
 - [Beta Release Notes](RELEASE.md)
 - [70+ open source example dapps](examples/README.md)
 - [Universal Dapp Connector documentation](DAPP_CONNECTOR.md)
-- [GCScript documentation](https://beta-wallet.gamechanger.finance/doc/api/v2)
-- [Playground IDE in GameChanger Wallet ](https://beta-wallet.gamechanger.finance/playground)
+- [GCScript documentation](https://wallet.gamechanger.finance/doc/api/v2)
+- [Playground IDE in GameChanger Wallet ](https://wallet.gamechanger.finance/playground)
 - [Catalyst](catalyst/CATALYST.md)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)
 - [Discord Support](https://discord.gg/vpbfyRaDKG)
@@ -108,6 +115,20 @@ The smart design principles of the wallet allows you to import or connect these 
 [![GameChanger Wallet v2 Beta](img/desktop1.jpg)](img/desktop1.jpg)
 [![GameChanger Wallet v2 Beta](img/desktop2.jpg)](img/desktop2.jpg)
 
+## GameChanger Wallet V2 Beta status
+
+GameChanger Wallet V2 Beta phase has officially ended. 
+
+*Thank you for participating all these years of heavy development and testing!*
+
+Migrate to the Production V2 now as this release is now deprecated and may not receive updates anymore!  
+
+In order to migrate [read this](docs/universal-dapp-connector/url-patterns.md)
+
+These are the old URLs to access:  
+
+- [Mainnet wallet](https://beta-wallet.gamechanger.finance/)
+- [Pre-Production Testnet wallet](https://beta-preprod-wallet.gamechanger.finance/)
 
 ## License
 
