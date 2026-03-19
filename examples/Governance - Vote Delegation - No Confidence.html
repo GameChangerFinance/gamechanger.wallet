@@ -5,7 +5,7 @@
 <head>
     <title>Governance - Vote Delegation - No Confidence</title>
     <meta name="title" content="Governance - Vote Delegation - No Confidence">
-    <meta name="description" content="About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same">
+    <meta name="description" content="About to sign a transaction with a vote of Always No Confidence. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +14,7 @@
     <!-- 
         Official GameChanger Wallet library and CLI: https://www.npmjs.com/package/@gamechanger-finance/gc
     -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@gamechanger-finance/gc@0.1/dist/browser.min.js"></script>  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@gamechanger-finance/gc@1.0/dist/browser.min.js"></script>  
 
     <script>
         let handleSetEncoder;
@@ -35,7 +35,7 @@
 
             //GameChanger Wallet is pure Web3, zero backend procesing of user data. 
             //Dapp connector links are fully processed on end-user browsers.
-            const gcApiUrl    = "https://beta-wallet.gamechanger.finance/api/2/run/";
+            const gcApiUrl    = "https://wallet.gamechanger.finance/api/2/run/";
             const currentUrl  = window.location.href;
 
             //UI components:
@@ -111,7 +111,7 @@
                 var gcscript = {
   "type": "script",
   "title": "Governance - Vote Delegation - No Confidence",
-  "description": "About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "description": "About to sign a transaction with a vote of Always No Confidence. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -178,6 +178,9 @@
           },
           "autoOptionalSigners": {
             "nativeScript": true
+          },
+          "autoClean": {
+            "certReRegistrations": true
           }
         }
       }
@@ -364,7 +367,7 @@
 <body>
     <div class="box">
         <h1>Governance - Vote Delegation - No Confidence</h1>
-        <p><i>About to sign a transaction with a vote of Always No Confidence. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same</i></p>
+        <p><i>About to sign a transaction with a vote of Always No Confidence. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">
@@ -382,7 +385,7 @@
         <i>Generated with ❤️ 
         <br/>
         by <b>
-            <a target="_blank" rel="noopener noreferrer" href="https://beta-wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
         </b>
         <br/>
          2023 </i></p>

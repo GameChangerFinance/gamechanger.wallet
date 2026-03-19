@@ -5,7 +5,7 @@
 <details>
   <summary>First time using GameChanger Wallet?</summary>
 
-- Go to [GameChanger Wallet for Cardano Mainnet](https://beta-wallet.gamechanger.finance/) 
+- Go to [GameChanger Wallet for Cardano Mainnet](https://wallet.gamechanger.finance/?networkTag=mainnet) 
 - Follow the automatic welcome wizard for creating your `Default` Burner Wallet
 - You now have a non-custodial but password-less Cardano wallet for quick developing and testing, no funds needed for now!
 - Instead, if you prefer to import or connect to a Browser Extension, Hardware, Mnemonic (seed phrase), or Express (QR code) wallet it's time to do so.
@@ -13,7 +13,7 @@
 
 No more theory until next section, let's run some GCScript right now!
 
-- Go to [Playground IDE for Cardano Mainnet](https://beta-wallet.gamechanger.finance/playground), the in-wallet development environment for building and deploying dapps on Cardano. Also available on `Dapp builder` on wallet side panel.
+- Go to [Playground IDE for Cardano Mainnet](https://wallet.gamechanger.finance/playground?networkTag=mainnet), the in-wallet development environment for building and deploying dapps on Cardano. Also available on `Dapp builder` on wallet side panel.
 
 - Copy and paste the next script into the code editor, replacing the default welcome code sitting there already.
 
@@ -34,18 +34,18 @@ No more theory until next section, let's run some GCScript right now!
     }
 }
 ```
-<a href="https://beta-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1VPMY4CMQz8ikmNeAAd2itooEKitja-JSIbR44Dt0L793NgkaAaeWY8Yz-cTpnc1pVeQla3dho0NuIwwW-QotCheEwMHnNemcHTyxs4me10CeUpgeHAIQ2gDFiuMHEVuGOMpJBwJMDkAb0XKmUDXQz9FTpOGlKltpOFeyK_sQr6yyy6K5Y_TudnxA8qmiLVSh-u5TVcjh9Ij42Z124p-Ba7KkJJd4tmttEQh88M_yq4Yaxt3FOM_P595eZ5_gd8gqb_KwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1VPMY4CMQz8ikmNeAAd2itooEKitja-JSIbR44Dt0L793NgkaAaeWY8Yz-cTpnc1pVeQla3dho0NuIwwW-QotCheEwMHnNemcHTyxs4me10CeUpgeHAIQ2gDFiuMHEVuGOMpJBwJMDkAb0XKmUDXQz9FTpOGlKltpOFeyK_sQr6yyy6K5Y_TudnxA8qmiLVSh-u5TVcjh9Ij42Z124p-Ba7KkJJd4tmttEQh88M_yq4Yaxt3FOM_P595eZ5_gd8gqb_KwEAAA?networkTag=mainnet" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-mainnet.png" alt="Run on Cardano Mainnet" style="border:none;">
 </a>
-<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1VPMY4CMQz8ikmNeAAd2itooEKitja-JSIbR44Dt0L793NgkaAaeWY8Yz-cTpnc1pVeQla3dho0NuIwwW-QotCheEwMHnNemcHTyxs4me10CeUpgeHAIQ2gDFiuMHEVuGOMpJBwJMDkAb0XKmUDXQz9FTpOGlKltpOFeyK_sQr6yyy6K5Y_TudnxA8qmiLVSh-u5TVcjh9Ij42Z124p-Ba7KkJJd4tmttEQh88M_yq4Yaxt3FOM_P595eZ5_gd8gqb_KwEAAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA1VPMY4CMQz8ikmNeAAd2itooEKitja-JSIbR44Dt0L793NgkaAaeWY8Yz-cTpnc1pVeQla3dho0NuIwwW-QotCheEwMHnNemcHTyxs4me10CeUpgeHAIQ2gDFiuMHEVuGOMpJBwJMDkAb0XKmUDXQz9FTpOGlKltpOFeyK_sQr6yyy6K5Y_TudnxA8qmiLVSh-u5TVcjh9Ij42Z124p-Ba7KkJJd4tmttEQh88M_yq4Yaxt3FOM_P595eZ5_gd8gqb_KwEAAA?networkTag=preprod" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
 </a>
 
 🔍 *See also:*
-[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html),
-[getName](https://beta-wallet.gamechanger.finance/doc/api/v2/getName.html),
-[getCurrentAddress](https://beta-wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
-[data](https://beta-wallet.gamechanger.finance/doc/api/v2/data.html)
+[script](https://wallet.gamechanger.finance/doc/api/v2/api.html),
+[getName](https://wallet.gamechanger.finance/doc/api/v2/getName.html),
+[getCurrentAddress](https://wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html),
+[data](https://wallet.gamechanger.finance/doc/api/v2/data.html)
 
 - Now execute the code by clicking on the green `Run ▸` button. 
 
@@ -102,12 +102,12 @@ Yes!
 <details>
   <summary>"How to do this on a Cardano Testnet?"</summary>
 
-GameChanger Wallet have a Cardano Pre-Production Testnet version. It even have a built-in tAda + tokens + nfts airdrop!
+GameChanger Wallet uses the same official v2 domain for all supported networks. To open the wallet on Cardano Pre-Production Testnet, use the Network Router on the main wallet URL.
 
-- Go to [GameChanger Wallet for Cardano Pre-Production Testnet](https://beta-preprod-wallet.gamechanger.finance/) 
+- Go to [GameChanger Wallet on Cardano Pre-Production Testnet](https://wallet.gamechanger.finance/?networkTag=preprod) 
 - Follow the same instructions you followed above, even use the same GCScript code
 
-To adapt a code in GCScript to work for a specific network you just need to use data or expect results specific for that network, for example for testnets you use addresses starting with `addr_test1`. Also when using the `url` and `qr` transports just take care of pointing to the right wallet URLs.
+To adapt a code in GCScript to work for a specific network you just need to use data or expect results specific for that network, for example for testnets you use addresses starting with `addr_test1`. Also when using the `url` and `qr` transports, follow the current single-domain format described on [URL Patterns](../universal-dapp-connector/url-patterns.md).
 
 </details>
 
@@ -118,11 +118,11 @@ To adapt a code in GCScript to work for a specific network you just need to use 
 
 Playground IDE automated the process of building and deploying a simple HTML + Javascript dapp for you, after you master more your GCScript skills you can start coding your own dapps using our [Official NPM Library](https://www.npmjs.com/package/@gamechanger-finance/gc) for Javascript/Typescript. 
 
-If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to stablish communications by using standard building blocks available on all platforms and programming languages. Same building blocks will allow you to decode or decompress returning JSON data from the wallet to capture script results and use them on your applications.
+If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to stablish communications by using standard building blocks available on all platforms and programming languages. Same building blocks will allow you to decode or decompress returning JSON data from the wallet to capture script results and use them on your applications. For the current wallet URL shape, router parameters and return URL behavior, see [URL Patterns](../universal-dapp-connector/url-patterns.md).
 
 ## Code editors and available tools
 
-In addition to the in-wallet [Playground IDE](https://beta-wallet.gamechanger.finance/playground), you can create full projects using [Inception IDE (Beta)](https://inception.m2tec.nl/), a powerful GCScript and Helios code editor and development environment by [M2Tec](https://www.m2tec.nl/cardano).
+In addition to the in-wallet [Playground IDE](https://wallet.gamechanger.finance/playground), you can create full projects using [Inception IDE (Beta)](https://inception.m2tec.nl/), a powerful GCScript and Helios code editor and development environment by [M2Tec](https://www.m2tec.nl/cardano).
 
 The Official NPM Library [is also a CLI](https://www.npmjs.com/package/@gamechanger-finance/gc) you can install. In both usage modes you can encode and decode these URLS and response URLs, and it even generates ready to use QR codes, HTML, React and NodeJS applications boilerplates to get you started or automate code generation.
 

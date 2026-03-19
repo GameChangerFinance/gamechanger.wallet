@@ -5,7 +5,7 @@
 <head>
     <title>Governance - Vote Delegation - Abstain</title>
     <meta name="title" content="Governance - Vote Delegation - Abstain">
-    <meta name="description" content="About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same">
+    <meta name="description" content="About to sign a transaction with a vote to Always Abstain. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +33,7 @@
 
             //GameChanger Wallet is pure Web3, zero backend procesing of user data. 
             //Dapp connector links are fully processed on end-user browsers.
-            const gcApiUrl    = "https://beta-wallet.gamechanger.finance/api/2/run/";
+            const gcApiUrl    = "https://wallet.gamechanger.finance/api/2/run/";
             const currentUrl  = window.location.href;
 
             //UI components:
@@ -109,7 +109,7 @@
                 var gcscript = {
   "type": "script",
   "title": "Governance - Vote Delegation - Abstain",
-  "description": "About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same",
+  "description": "About to sign a transaction with a vote to Always Abstain. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -176,6 +176,9 @@
           },
           "autoOptionalSigners": {
             "nativeScript": true
+          },
+          "autoClean": {
+            "certReRegistrations": true
           }
         }
       }
@@ -512,7 +515,7 @@
 <body>
     <div class="box">
         <h1>Governance - Vote Delegation - Abstain</h1>
-        <p><i>About to sign a transaction with a vote to Always Abstain. Signing with current stake key, if it is already registered, please remove the 'myRegistration' certificate on transaction. Works with personal and multisig wallets the same</i></p>
+        <p><i>About to sign a transaction with a vote to Always Abstain. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same</i></p>
          
             <div id="dappConnectorBox">
                 <a href="#" id="connectBtn" class="button a-unstyled">
@@ -530,7 +533,7 @@
         <i>Generated with ❤️ 
         <br/>
         by <b>
-            <a target="_blank" rel="noopener noreferrer" href="https://beta-wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
         </b>
         <br/>
          2023 </i></p>

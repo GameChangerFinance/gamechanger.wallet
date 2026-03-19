@@ -6,7 +6,7 @@
 
 This documents describes a webpage-based communication bridge allowing URLs to interface with any other Cardano wallet through GameChanger Wallet. This is done packing JSON based DSL scripts, called **GCScript**, into URLs and allowing GameChanger Wallet to unpack them and execute them only under user approval. These scope-limited non-turing complete scripts and their JSON results can be privacy-preserving depending on developer's good practices. 
 
-This communication is done without any injected javascript code into webpages, and even without external libraries or dependencies as basic functionality needed for encoding and decoding the messages towards/from the wallet is nowadays natively present in browsers and many other platforms APIs/libraries. 
+This communication is done without any injected javascript code into webpages, and even without external libraries or dependencies as basic functionality needed for encoding and decoding the messages towards/from the wallet is nowadays natively present in browsers and many other platforms APIs/libraries. The current official v2 release uses a single wallet domain and routes DLT and network selection with query parameters. See [URL Patterns](url-patterns.md) for the current wallet URL structure.
 
 This specification concerns any past and future Cardano era as **GCScript** is a very extensible and flexible DSL, prepared to evolve for the future. 
 
@@ -49,19 +49,19 @@ Suggested article:
 Differently from CIP-30, we do not inject any executable code inside dapps to stablish connections, and we don't need external dependencies or libraries to encode and decode the messages we use to connect with the wallet.
 
 - Dapp   -> Wallet communication carries the encoded/packed GCScript code 
-- Wallet -> Dapp   communication carries the encoded/packed JSON data response from the execution of the code. (developers design these returning payloads - [see Return URL Patterns](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html#returnURLPattern) )
+- Wallet -> Dapp   communication carries the encoded/packed JSON data response from the execution of the code. (developers design these returning payloads - [see URL Patterns](url-patterns.md#returning-data-from-the-wallet) )
 
 Its important to clarify that GCScript is fully processed and executed on user's browsers, not on our backend. Also when encrypted, it's only decrypted on client side.
 
-Both type of communications can be encapsulated on different transports ( [see Transports](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html#transport) ):
+Both type of communications can be encapsulated on different transports (see [URL Patterns](url-patterns.md)):
 - URL: the basic transport, starting with wallet path.
 - QR URL: the basic transport, starting with wallet path, encoded as a QR code.
 - Local: Internal in-wallet execution of GCScript, only used for development and on native wallet features
 
-All transports can use these encodings/compression algorithms ([see Encodings](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html#encoding)):
+All transports can use these encodings/compression algorithms ([see Encodings](https://wallet.gamechanger.finance/doc/api/v2/api.html#encoding)):
 - base64url - for lightweight hardware clients, no compression
 - gzip - recommended - base64url encoded gzip compression. Natively supported on modern browsers, and languages like Python, C, Rust, etc without external libraries
-- json-url-lzma- external nodejs library that packs JSON into urls
+- json-url-lzma - deprecated
 
 [![GameChanger Universal Dapp Connector Infographic](../../img/dappConnector.png)](../../img/dappConnector.png)
 
@@ -88,4 +88,4 @@ Suggested articles:
 - "All connections goes through GameChanger Wallet", and it's not fully open source: This project has 2.5 years old now, and we care for our users until the point that we are the only wallet on Cardano that allows you to even connect any other wallet to it, so you are still free of using your hardware wallets and even your browser extension wallets in GameChanger, even for creating multisig wallets. This is why it's called a "meta" or "universal" wallet. Also the wallet has been created by a solo-developer who wants to gradually open source it all, you will discover that is a really huge project if you do your own research. The good news is that this process already started. Thanks to Catalyst Fund11 voters the full dapp connector JSON Schema and Unimatrix Sync, two important parts of the project are currently being released to the community. We want to make it open source as we love this project and we truly believe it's vision has as a lot to offer to Cardano.
 
 
-Previous: [Universal Dapp Connector](README.md) | Home: [General Documentation](../README.md)
+Previous: [Universal Dapp Connector](README.md) | Next: [URL Patterns](url-patterns.md) 

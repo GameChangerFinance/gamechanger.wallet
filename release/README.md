@@ -13,16 +13,14 @@ The schema contains more or less human readable content such as longer descripti
 
 ### 🔵 JSON Schema
 
-| Mainnet                   | Pre-Production Testnet  |
-| :-----------------------: | :---------------------: |
-| [JSON (Full)](https://beta-wallet.gamechanger.finance/schema/api/v2/index.json.full)| [JSON (Full)](https://beta-preprod-wallet.gamechanger.finance/schema/api/v2/index.json.full) |
-|[JSON (Minified)](https://beta-wallet.gamechanger.finance/schema/api/v2/index.json.min)| [JSON (Minified)](https://beta-preprod-wallet.gamechanger.finance/schema/api/v2/index.json.min) |
+
+- [JSON (Full)](https://wallet.gamechanger.finance/schema/api/v2/index.json.full)
+- [JSON (Minified)](https://wallet.gamechanger.finance/schema/api/v2/index.json.min) 
+
 
 ### 🔵 API Documentation ( GCScript DSL Language Reference ) 
 
-| Mainnet            | Pre-Production Testnet  |
-| :---------------:  | :---------------------: |
-| [HTML](https://beta-wallet.gamechanger.finance/doc/api/v2/index.html)  | [HTML](https://beta-preprod-wallet.gamechanger.finance/doc/api/v2/index.html)               |
+- [HTML Docs](https://wallet.gamechanger.finance/doc/api/v2/index.html)
 
 
 ## License 

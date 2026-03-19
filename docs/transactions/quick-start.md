@@ -64,21 +64,21 @@ Let's create a payment request on user's wallets, anyone "connecting" or running
 
 ```
 
-<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA?networkTag=preprod" target="_blank" onclick="window.open(this.href, 'dapp connection', 'width=400,height=600'); return false;" style="text-decoration:none; outline:none;">
  <img src="../img/btn/run-preprod.png" alt="Run on Cardano Pre-Production Testnet" style="border:none;">
 </a>
 
 🔍 *See also:*
-[buildTx](https://beta-wallet.gamechanger.finance/doc/api/v2/buildTx.html),
-[signTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/signTxs.html),
-[submitTxs](https://beta-wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
-[script](https://beta-wallet.gamechanger.finance/doc/api/v2/api.html)
+[buildTx](https://wallet.gamechanger.finance/doc/api/v2/buildTx.html),
+[signTxs](https://wallet.gamechanger.finance/doc/api/v2/signTxs.html),
+[submitTxs](https://wallet.gamechanger.finance/doc/api/v2/submitTxs.html),
+[script](https://wallet.gamechanger.finance/doc/api/v2/api.html)
 
 
-Now this code can be statically or programmatically packed as a URL like this using [Playground IDE](https://beta-preprod-wallet.gamechanger.finance/playground), our [NPM Library and CLI](https://www.npmjs.com/package/@gamechanger-finance/gc) or the programming language of choice:
+Now this code can be statically or programmatically packed as a URL like this using [Playground IDE](https://wallet.gamechanger.finance/playground?networkTag=preprod), our [NPM Library and CLI](https://www.npmjs.com/package/@gamechanger-finance/gc) or the programming language of choice. For the current single-domain wallet format and Network Router conventions, see [URL Patterns](../universal-dapp-connector/url-patterns.md):
 
 ```
-https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA
+https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA?networkTag=preprod
 ```
 
 Then you can 
@@ -109,13 +109,13 @@ Let's explore some integrations and techniques to encode/compress GCScript into 
 ## 🔵 URL Statically embedded on HTML websites
 
 ```html
-<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA"> Click here to send a payment to Alice and Bob </a>
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA?networkTag=preprod"> Click here to send a payment to Alice and Bob </a>
 ```
 
 <details>
 <summary>🎮 Try it online:</summary>
 
-<a href="https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA"> Click here to send a payment to Alice and Bob </a>
+<a href="https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA?networkTag=preprod"> Click here to send a payment to Alice and Bob </a>
 
 </details>
 
@@ -123,13 +123,13 @@ Let's explore some integrations and techniques to encode/compress GCScript into 
 ## 🔵 URL Statically embedded on markdown
 
 ```md
-[Click here to sent a payment to Alice and Bob](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA)
+[Click here to sent a payment to Alice and Bob](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA?networkTag=preprod)
 ```
 
 <details>
   <summary>🎮 Try it online:</summary>
 
-[Click here to sent a payment to Alice and Bob](https://beta-preprod-wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA)
+[Click here to sent a payment to Alice and Bob](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WRwW7DIAyG34VLN6mq1rRV0j7Bdpl26G2qJkqcBASUxNCGRrz7gHXVdthpXLB_4--3zESsN0B2BNnAjSVzMjhNdhM5Oi7rFNzqOd-P8YEdk3xy1jiLZPc-EVrXA2CMc_RhAe3yPJwL5dlKwKYvm7HRVIhWrHvtdVebqhjQSy0KqSpPLxYvlzbekU4R4YY1J8mZf6kzl37XXqmCu9I7qi23PgrLp3xIOIT5XyOZtej1tmza0jHVGdSsUVXZsXbVlVVF5bUx1CjYei-27Cy7Yn3910ib-0iHEOYEeat_rDSl-xFjTw2Wcgn1GwyKI_KTjnYNlQhp3cmaTC3YhxmjrINF_ouFHZ9hnD0Gckhod1Tc_oRn4QufEb8IyTq1hhA-ARyKZuYCAgAA?networkTag=preprod)
 
 </details>
 
@@ -239,8 +239,8 @@ const gcScript={...GCScript code here...};
 */
 async function fallbackUrlEncoder({input,network}){
     const gcApiUrls    = {
-        "mainnet":"https://beta-wallet.gamechanger.finance/api/2/run/"
-        "preprod":"https://beta-preprod-wallet.gamechanger.finance/api/2/run/"
+        "mainnet":"https://wallet.gamechanger.finance/api/2/run/",
+        "preprod":"https://wallet.gamechanger.finance/api/2/run/"
     };
 
     function base64Encode(str){
@@ -257,7 +257,7 @@ async function fallbackUrlEncoder({input,network}){
     var json         = JSON.stringify(input);
     var base64String = base64urlEncode(json);
     var msg          =`${header}${base64String}`;
-    var url          =`${gcApiUrls[network]}${msg}`;
+    var url          =`${gcApiUrls[network]}${msg}?networkTag=${network}`;
     return Promise.resolve(url);
 }
 
@@ -295,7 +295,10 @@ Capturing response data from the wallet is not mandatory, but is a feature you c
 import gc from '@gamechanger-finance/gc'
 
 //GameChanger Wallet support arbitrary data returning from script execution, encoded in a redirect URL
-//Head to https://beta-wallet.gamechanger.finance/doc/api/v2/api.html#returnURLPattern to learn ways how to customize this URL
+
+//Head to
+//  https://wallet.gamechanger.finance/doc/api/v2/api.html#returnURLPattern to learn ways how to customize this URL 
+// and ../universal-dapp-connector/url-patterns.md to learn more about return URL patterns and URL shapes
 
 const currentUrl = window.location.href
 // lets get the URL variable that carries the wallet response
