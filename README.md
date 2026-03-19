@@ -51,7 +51,7 @@ These networks are supported:
 ### Examples and Boilerplates:
 - [🔥 gc-connect](https://github.com/arpradio/gc-connect): great open-dapp boilerplate to integrate UDC/GameChanger Wallet, is the software that powers ARP Radio and Moments integrations. Developed by SudoScientist
 - Examples using **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:
-    - [✨ Kitchen Sink ✨](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/index.html): URL, QR, HTML, React, ExpressJs, all output format in one example
+    - [✨ Kitchen Sink ✨](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
     - [URL](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/URL.txt)
     - [QR (png)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.png)
     - [QR (svg)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.svg)
@@ -82,7 +82,7 @@ These networks are supported:
     - dapp <--> wallet connections you code here can be used on your own backends and frontends
     - By **Maarten Menheere**. [Github](https://github.com/M2tec/inception)
 - [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl)
-- [Kitchen Sink](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/index.html): URL, QR, HTML, React, ExpressJs, all output format in one example
+- [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
 - **Official CLI Tool [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:URL, QR, HTML, React, ExpressJs, all output format in one CLI tool 
 ### Use Cases
 - M2Tec - Hardware and Software Dapps (first hardware dapps on Cardano powered by GameChanger universal dapp connector)
