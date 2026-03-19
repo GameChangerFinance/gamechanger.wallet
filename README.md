@@ -149,10 +149,11 @@ MIT
 
 ## Thanks
 
-*Roberto, Maarten, Quasar, Javi and Mati* for all your support
+*Special thanks to Roberto, Maarten, Quasar, Javi, Juan, Max, Sudo and Ratio* for all your support. *You are Cardano!*.
 
+And to voters and **Project Catalyst** for supporting part of this development across the years. 
 
-And to voters and **Project Catalyst** for supporting this development and contribute to let us produce and maintain more open source tooling and resources for **Cardano Blockchain**
+Let's keep building alternative tooling and standards to decentralize deeper our great **Cardano Ecosystem**
 
     
 *--- Founder and Dev Adriano Fiorenza*
