@@ -35,7 +35,7 @@ These networks are supported:
 ## Documentation
 
 - [Transactions / Quick Start](docs/transactions/quick-start.md): A single page covering from making a Cardano transaction to code snippets to help integrate the wallet
-- [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more.
+- [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more. **HTML version[ here](https://gamechangerfinance.github.io/gamechanger.wallet/)**
 - [GCScript Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
 - [JSON Schema](/release/README.md)
 
@@ -65,7 +65,17 @@ These networks are supported:
     - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero backends!
     - HTML5 frontend code with zero external dependencies, and zero backends!
     - QR code dapp connectors included    
-- [Builder Fest 2026 Challenge](https://github.com/GameChangerFinance/builderfest-2026-ticket): How to solve the Builder Fest on-chain registration challenge in GCScript DSL. (A validator deployment script and other auxiliary scripts are available - Docs is WIP)
+- [Unimatrix Live Demo](https://unimatrix-live-demo.netlify.app/): Signing Bot and Pasive listener for multisig transactions on private obfuscated channels using [Unimatrix Sync](https://github.com/GameChangerFinance/unimatrix/). With **Universal Dapp Connector** it builds and signs multi-signature transactions fully on users wallets, on client-side. With 4 built-in use cases :
+    - 3 transactions in 1 dapp connection call: Be sure to have more than 3 UTXOs available as you will be using GameChanger Wallet's well known multi-transaction multisig features, otherwise you will face a missing balance screen.
+    - Token sale: a decentralized, backend-less, token sale with instant, in-user-wallet multisig minting
+    - NFT sale: a decentralized, backend-less, NTF sale with instant, in-user-wallet multisig minting
+    - Passive mode: monitor announced transactions live, letting users manually sign and share their transactions by connecting their wallets. Handy for DAOs and user groups, or single users with semi-cold wallet setups.
+     
+- [Builder Fest 2026 Challenge](https://github.com/GameChangerFinance/builderfest-2026-ticket): How to solve the Builder Fest on-chain registration challenge in GCScript DSL. (auxiliary scripts are available, and Docs pending. WIP). Full project uses
+    - Plutus script parametrization on user's wallets
+    - Query beacon tokens
+    - Plutus transactions
+    - more.. 
 - [gc-contract-app](https://github.com/M2tec/gc-contract-app)
     - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
     - It builds a smart contract on-the-fly using *Helios Language*, 
