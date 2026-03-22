@@ -1,0 +1,13 @@
+{
+  "type": "script",
+  "title": "List keys in workspace",
+  "description": "List and sort all keys in current workspace",
+  "exportAs": "data",
+  "run": {
+    "keys": {
+      "type": "getPublicKeys",
+      "keyPattern": "{artifactName}:{pubKeyHashHex}",
+      "sort": "ascending"
+    }
+  }
+}

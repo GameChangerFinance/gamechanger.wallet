@@ -1,0 +1,38 @@
+{
+  "title": "Search Demo",
+  "description": "Script that will search for files across all onchain GCFS file systems",
+  "type": "script",
+  "exportAs": "searchDemo",
+  "run": {
+    "search1": {
+      "type": "searchFs",
+      "useFingerprintURIs": false,
+      "params": [
+        {
+          "fileHash": "dc4536f4fdde94bfe0cdae32774f5e5dd25164a144d291b4b0a0eb40720dfdbb1426245ede6925feedacef897d306853acc8b4b55cae888908a9988fd70550bc"
+        },
+        {
+          "assetName": "gc.disk"
+        }
+      ]
+    },
+    "search2": {
+      "type": "searchFs",
+      "useFingerprintURIs": false,
+      "params": [
+        {
+          "keyWord": ".crypt"
+        }
+      ]
+    },
+    "search3": {
+      "type": "searchFs",
+      "useFingerprintURIs": false,
+      "params": [
+        {
+          "fileName": "encryptedData.crypt"
+        }
+      ]
+    }
+  }
+}

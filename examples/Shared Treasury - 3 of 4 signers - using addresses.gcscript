@@ -1,0 +1,117 @@
+{
+  "type": "script",
+  "title": "Shared Treasury - 3 of 4 signers - using addresses",
+  "description": "Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead.",
+  "exportAs": "Dao",
+  "return": {
+    "mode": "none"
+  },
+  "run": {
+    "addresses": {
+      "type": "macro",
+      "run": {
+        "Member_0": "{getAddressInfo('addr1q98f06pcrsn8x03uw0vlejw684fcu02waffvfscdsz0djgqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq2vsyn7')}",
+        "Member_1": "{getAddressInfo('addr1q9cyzfctymllue5gx93mxnrymlzzxejkzgsrkgwq7upje4gd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqpnzcra')}",
+        "Member_2": "{getAddressInfo('addr1qyygq384vhtcys27wedeh7r6jd0arwefvfxt6ggwjld0mjqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqa24x5g')}",
+        "Member_3": "{getAddressInfo('addr1q9zlzmrvdrlt8f90va74qa4req68shy5kc54s8np4p6a2eqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqhq5g2r')}"
+      }
+    },
+    "walletSetup": {
+      "type": "loadConfig",
+      "updateId": "Dao",
+      "layers": [
+        {
+          "type": "Workspace",
+          "items": [
+            {
+              "namePattern": "dao",
+              "titlePattern": "DAO",
+              "descriptionPattern": "Wallet settings that creates a shared treasury of at least 3 of 4 signers for spending and staking operations"
+            }
+          ]
+        },
+        {
+          "type": "Key",
+          "workspaceIds": [
+            "dao"
+          ],
+          "items": [
+            {
+              "namePattern": "spend-member",
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            },
+            {
+              "namePattern": "stake-member",
+              "kind": "stake",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          ]
+        },
+        {
+          "type": "NativeScript",
+          "workspaceIds": [
+            "dao"
+          ],
+          "namePattern": "dao_{key}_script",
+          "items": {
+            "spend": {
+              "atLeast": 3,
+              "ofThese": {
+                "Member_0": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_0.paymentKeyHash')}"
+                },
+                "Member_1": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_1.paymentKeyHash')}"
+                },
+                "Member_2": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_2.paymentKeyHash')}"
+                },
+                "Member_3": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_3.paymentKeyHash')}"
+                }
+              }
+            },
+            "stake": {
+              "atLeast": 3,
+              "ofThese": {
+                "Member_0": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_0.stakingKeyHash')}"
+                },
+                "Member_1": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_1.stakingKeyHash')}"
+                },
+                "Member_2": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_2.stakingKeyHash')}"
+                },
+                "Member_3": {
+                  "pubKeyHashHex": "{get('cache.addresses.Member_3.stakingKeyHash')}"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "Address",
+          "workspaceIds": [
+            "dao"
+          ],
+          "items": [
+            {
+              "namePattern": "Signer",
+              "spendPubKeyName": "spend-member",
+              "stakePubKeyName": "stake-member"
+            },
+            {
+              "namePattern": "Shared Treasury",
+              "spendNativeScriptName": "dao_spend_script",
+              "stakeNativeScriptName": "dao_stake_script"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

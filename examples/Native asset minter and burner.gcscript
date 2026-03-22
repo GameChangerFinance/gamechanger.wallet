@@ -1,0 +1,127 @@
+{
+  "type": "script",
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "issuer": {
+          "type": "deriveKeys",
+          "keys": [
+            {
+              "name": "issuer",
+              "kind": "spend",
+              "accountIndex": 0,
+              "addressIndex": 0
+            }
+          ]
+        },
+        "mintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "pubKeyHashHex": "{get('cache.dependencies.issuer.0.pubKeyHashHex')}"
+          }
+        }
+      }
+    },
+    "buildMint": {
+      "type": "buildTx",
+      "name": "built-mint",
+      "tx": {
+        "mints": [
+          {
+            "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetName": "WillDieToken",
+                "quantity": "100"
+              },
+              {
+                "assetName": "WillNotDieToken",
+                "quantity": "1"
+              }
+            ]
+          }
+        ],
+        "witnesses": {
+          "nativeScripts": {
+            "mintingPolicyScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+          }
+        }
+      }
+    },
+    "signMint": {
+      "type": "signTxs",
+      "namePattern": "signed-mint",
+      "txs": [
+        "{get('cache.buildMint.txHex')}"
+      ],
+      "detailedPermissions": false
+    },
+    "submitMint": {
+      "type": "submitTxs",
+      "namePattern": "submitted-mint",
+      "txs": "{get('cache.signMint')}"
+    },
+    "buildBurn": {
+      "type": "buildTx",
+      "name": "built-burn",
+      "tx": {
+        "mints": [
+          {
+            "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetName": "WillDieToken",
+                "quantity": "-100"
+              }
+            ]
+          }
+        ],
+        "witnesses": {
+          "nativeScripts": {
+            "mintingPolicyScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+          }
+        }
+      }
+    },
+    "signBurn": {
+      "type": "signTxs",
+      "namePattern": "signed-burn",
+      "txs": [
+        "{get('cache.buildBurn.txHex')}"
+      ],
+      "detailedPermissions": false
+    },
+    "submitBurn": {
+      "type": "submitTxs",
+      "namePattern": "submitted-burn",
+      "txs": "{get('cache.signBurn')}"
+    },
+    "finally": {
+      "type": "script",
+      "exportAs": "MintAndBurn",
+      "run": {
+        "issuer": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.issuer.0.pubKeyHashHex')}"
+        },
+        "policyId": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}"
+        },
+        "policyScript": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+        },
+        "mintTx": {
+          "type": "macro",
+          "run": "{get('cache.submitMint.0')}"
+        },
+        "burnTx": {
+          "type": "macro",
+          "run": "{get('cache.submitBurn.0')}"
+        }
+      }
+    }
+  }
+}

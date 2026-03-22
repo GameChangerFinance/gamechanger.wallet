@@ -1,0 +1,44 @@
+{
+  "title": "Query Beacon Tokens",
+  "description": "Fetch network queries to retrieve some Beacon Tokens UTXO information",
+  "type": "script",
+  "require": {
+    "networkTag": "preprod"
+  },
+  "exportAs": "data",
+  "run": {
+    "datumBeacon": {
+      "type": "query",
+      "get": {
+        "kind": "BeaconToken",
+        "asset": {
+          "policyId": "8453db57f15bd9e657253daeac76c020c17533aff1dcba29a78f7348",
+          "assetNameHex": "41444d494e5f544f4b454e"
+        },
+        "address": "addr_test1zqjpzgmyr4s9320aq3c3t0uuumfedlwl46pttpdw0uwwz5r94yyu35k68r5jxe7gam5hf3kehj0rptje8v3m4wkxjumsvwnpuj"
+      }
+    },
+    "assetsBeacon": {
+      "type": "query",
+      "get": {
+        "kind": "BeaconToken",
+        "asset": {
+          "policyId": "1d0e38731055ec1f036f5cda2038e6e7d4506eec7729967e03149cf1",
+          "assetNameHex": "46616b65555344"
+        },
+        "address": "addr_test1qzdz94m74nzy708tqu9etg7k5kjq9vpsvhxkm72tcmahtqhnawvrn7emu0nxkvcte8fjz02f3s7krg07fvekn8cymnjs35pq3d"
+      }
+    },
+    "scriptBeacon": {
+      "type": "query",
+      "get": {
+        "kind": "BeaconToken",
+        "asset": {
+          "policyId": "bd1c0f8e741516dff9501cb4404e6c0db75640d0185e9796963b99b5",
+          "assetNameHex": "424541434f4e4153534554"
+        },
+        "address": "addr_test1zr78zmzps84uj4gphxk7d2np8q9f7mglh6ahewqkkqhzaj47r52x7v5zmzlrge8kcgh40apwn7a99pt3n7ketewyj90s89zdd5"
+      }
+    }
+  }
+}

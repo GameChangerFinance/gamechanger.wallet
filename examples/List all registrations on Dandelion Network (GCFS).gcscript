@@ -1,0 +1,33 @@
+{
+  "title": "List all registrations on Dandelion Network (GCFS)",
+  "description": "Search for all matching json files with Node Group definitions on all GCFS resources on-chain. These files are used for backend peer discovery on Dandelion, the decentralized API service for Cardano",
+  "type": "script",
+  "args": {
+    "asset-name": "dandelion",
+    "file-path": "//config/NodeGroup.json",
+    "file-name": "NodeGroup.json",
+    "your-node-group-ID": "2abaf6d73e5838cff911cdf8f6629cff1e1955df3afb89738e248f8e"
+  },
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "nodeGroups": {
+      "type": "searchFs",
+      "useFingerprintURIs": false,
+      "params": [
+        {
+          "absPath": "{get('args.file-path')}"
+        },
+        {
+          "assetName": "{get('args.asset-name')}"
+        }
+      ]
+    },
+    "finally": {
+      "type": "macro",
+      "run": "{get('cache.nodeGroups')}"
+    }
+  }
+}

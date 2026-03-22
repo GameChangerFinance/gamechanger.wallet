@@ -1,0 +1,48 @@
+{
+  "type": "script",
+  "title": "🚀 Pay me 1 ADA",
+  "description": "This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "CoinSendingDemo",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "stage1_build_transaction": {
+      "type": "buildTx",
+      "title": "🚀 Pay me 1 ADA",
+      "description": "This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+      "name": "Unsigned Demo Transaction",
+      "tx": {
+        "outputs": [
+          {
+            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "stage2_sign_transaction": {
+      "type": "signTxs",
+      "namePattern": "Signed Demo Transaction",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.stage1_build_transaction.txHex')}"
+      ]
+    },
+    "stage3_submit_transaction": {
+      "type": "submitTxs",
+      "namePattern": "Submitted Demo Transaction",
+      "txs": "{get('cache.stage2_sign_transaction')}"
+    },
+    "stage4_export_results": {
+      "type": "macro",
+      "run": "{get('cache.stage1_build_transaction.txHash')}"
+    }
+  }
+}

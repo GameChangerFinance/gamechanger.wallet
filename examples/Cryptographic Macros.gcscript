@@ -1,0 +1,32 @@
+{
+  "title": "Cryptographic Macros",
+  "description": "This demo will test and explore basic cryptographic macros",
+  "type": "script",
+  "exportAs": "CryptoMacrosDemo",
+  "run": {
+    "payload": {
+      "type": "data",
+      "value": "GC Wallet"
+    },
+    "sha512": {
+      "type": "macro",
+      "run": "{sha512(get('cache.payload'))}"
+    },
+    "sha256": {
+      "type": "macro",
+      "run": "{sha256(get('cache.payload'))}"
+    },
+    "sha1": {
+      "type": "macro",
+      "run": "{sha1(get('cache.payload'))}"
+    },
+    "md5": {
+      "type": "macro",
+      "run": "{md5(get('cache.payload'))}"
+    },
+    "uuid": {
+      "type": "macro",
+      "run": "{uuid()}"
+    }
+  }
+}

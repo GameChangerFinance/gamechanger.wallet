@@ -1,0 +1,184 @@
+{
+  "type": "script",
+  "title": "Forty Two (untyped)",
+  "description": "This contract will lock up some tokens that can only be unlocked providing 42 as untyped redeemer and datum.. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "FortyTwoUntypedDemo",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "datum": {
+          "type": "plutusData",
+          "data": {
+            "fromJSON": {
+              "schema": 1,
+              "obj": {
+                "int": 42
+              }
+            }
+          }
+        },
+        "redeemer": {
+          "type": "plutusData",
+          "data": {
+            "fromJSON": {
+              "schema": 1,
+              "obj": {
+                "int": 42
+              }
+            }
+          }
+        },
+        "lock": {
+          "type": "data",
+          "value": [
+            {
+              "policyId": "ada",
+              "assetName": "ada",
+              "quantity": "5000000"
+            }
+          ]
+        },
+        "stakeCredential": {
+          "type": "data",
+          "value": "ad03a4ae45b21f50fde67956365cff94db41bc08a2c2862403d8a234"
+        },
+        "contract": {
+          "type": "plutusScript",
+          "script": {
+            "scriptHex": "58775875010000323232322225335323253350021001100933320015007003332001500648150ccc8005401800ccc8005401520541004132632498cd5ce2491d496e636f727265637420646174756d2e2045787065637465642034322e0000412001123750002244666ae68cdd780100089100100189100081",
+            "lang": "plutus_v2"
+          }
+        },
+        "address": {
+          "type": "buildAddress",
+          "name": "ContractAddress",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.dependencies.stakeCredential')}"
+          }
+        }
+      }
+    },
+    "buildLock": {
+      "type": "buildTx",
+      "name": "built-lock",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.dependencies.address')}",
+            "datum": {
+              "datumHashHex": "{get('cache.dependencies.datum.dataHashHex')}"
+            },
+            "assets": "{get('cache.dependencies.lock')}"
+          }
+        ],
+        "options": {
+          "changeOptimizer": "NO"
+        }
+      }
+    },
+    "signLock": {
+      "type": "signTxs",
+      "namePattern": "signed-lock",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.buildLock.txHex')}"
+      ]
+    },
+    "submitLock": {
+      "type": "submitTxs",
+      "namePattern": "submitted-lock",
+      "txs": "{get('cache.signLock')}"
+    },
+    "buildUnlock": {
+      "type": "buildTx",
+      "name": "built-unlock",
+      "parentTxHash": "{get('cache.buildLock.txHash')}",
+      "tx": {
+        "inputs": [
+          {
+            "txHash": "{get('cache.buildLock.txHash')}",
+            "index": 0,
+            "idPattern": "locked-input"
+          }
+        ],
+        "witnesses": {
+          "plutus": {
+            "scripts": [
+              {
+                "scriptHex": "{get('cache.dependencies.contract.scriptHex')}",
+                "lang": "{get('cache.dependencies.contract.lang')}"
+              }
+            ],
+            "consumers": [
+              {
+                "scriptHashHex": "{get('cache.dependencies.contract.scriptHashHex')}",
+                "datum": {
+                  "dataHex": "{get('cache.dependencies.datum.dataHex')}"
+                },
+                "redeemer": {
+                  "dataHex": "{get('cache.dependencies.redeemer.dataHex')}",
+                  "type": "spend",
+                  "itemIdPattern": "locked-input"
+                }
+              }
+            ]
+          }
+        },
+        "options": {
+          "collateralCoinSelection": "LASLAD"
+        }
+      }
+    },
+    "signUnlock": {
+      "type": "signTxs",
+      "namePattern": "signed-unlock",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.buildUnlock.txHex')}"
+      ]
+    },
+    "submitUnlock": {
+      "type": "submitTxs",
+      "namePattern": "submitted-unlock",
+      "txs": "{get('cache.signUnlock')}"
+    },
+    "finally": {
+      "type": "script",
+      "run": {
+        "lock": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.lock')}"
+        },
+        "redeemer": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.redeemer')}"
+        },
+        "smartContract": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.contract.scriptHex')}"
+        },
+        "smartContractHash": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.contract.scriptHashHex')}"
+        },
+        "smartContractAddress": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.address')}"
+        },
+        "lockTx": {
+          "type": "macro",
+          "run": "{get('cache.buildLock.txHash')}"
+        },
+        "unlockTx": {
+          "type": "macro",
+          "run": "{get('cache.buildUnlock.txHash')}"
+        }
+      }
+    }
+  }
+}
