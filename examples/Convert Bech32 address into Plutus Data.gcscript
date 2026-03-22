@@ -1,0 +1,32 @@
+{
+  "title": "Convert Bech32 address into Plutus Data",
+  "description": "Convert your current address from Bech32 representation into Plutus Data object (back and forth). Also exports address information, hexadecimal representation and hash",
+  "type": "script",
+  "exportAs": "data",
+  "run": {
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "addressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('cache.address'))}"
+    },
+    "addressAsPlutusData": {
+      "type": "macro",
+      "run": "{addressBech32ToPlutusDataObj(get('cache.address'))}"
+    },
+    "addressAsBech32": {
+      "type": "macro",
+      "run": "{addressPlutusDataObjToBech32(get('cache.addressAsPlutusData'))}"
+    },
+    "addressAsPlutusDataPlusInfo": {
+      "type": "plutusData",
+      "data": {
+        "fromJSON": {
+          "schema": 1,
+          "obj": "{get('cache.addressAsPlutusData')}"
+        }
+      }
+    }
+  }
+}

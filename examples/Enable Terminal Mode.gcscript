@@ -1,0 +1,10 @@
+{
+  "title": "Enable Terminal Mode",
+  "description": "Script that will adapt the application to work on public terminal devices",
+  "type": "script",
+  "run": [
+    {
+      "type": "enableTerminalMode"
+    }
+  ]
+}

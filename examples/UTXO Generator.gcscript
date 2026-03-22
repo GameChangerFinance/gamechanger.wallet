@@ -1,0 +1,56 @@
+{
+  "title": "UTXO Generator",
+  "description": "Generates required amount of UTXOs in your wallet to improve multi-transaction concurrency capabilities, for dapps and GCFS filesystem write events. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "type": "script",
+  "exportAs": "data",
+  "isolateCache": true,
+  "run": {
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "build": {
+      "type": "buildTx",
+      "title": "UTXO Generator",
+      "name": "UTXO Generator",
+      "description": "Generates required amount of UTXOs in your wallet to fulfill future tasks",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.address')}",
+            "assets": [
+              {
+                "assetName": "ada",
+                "policyId": "ada",
+                "quantity": "1000000"
+              }
+            ]
+          }
+        ],
+        "options": {
+          "coinSelection": "FMR",
+          "changeOptimizer": "BAL",
+          "autoProvision": {
+            "workspaceNativeScript": true
+          },
+          "autoOptionalSigners": {
+            "nativeScript": true
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "UTXO Generator Signed",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "mode": "parallel",
+      "namePattern": "UTXO Generator Submittted",
+      "txs": "{get('cache.sign')}"
+    }
+  }
+}

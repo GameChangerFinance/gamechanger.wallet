@@ -1,0 +1,179 @@
+{
+  "type": "script",
+  "title": "Spirois-Montiel-SudoScientist Token Minting Test",
+  "description": "Testing the fix for the 'Spirois bug' using Montiel's and SudoScientist's test case assetNames, added some others as well. Use an address of yours for exampleDrop01. Thanks for testing guys!",
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+        },
+        "mintingPolicy": {
+          "type": "nativeScript",
+          "script": {
+            "all": {
+              "issuer": {
+                "pubKeyHashHex": "{get('cache.dependencies.addressInfo.paymentKeyHash')}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "title": "Spirois-Montiel Token Minting Test",
+      "tx": {
+        "mints": [
+          {
+            "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetNameHex": "000de14063616c65626d773130",
+                "quantity": "11"
+              },
+              {
+                "assetNameHex": "000de140626574746572666c6f6f64",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "000de14063616c65626d6f6e7469656c",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "000de140746865666c6f6f646e65726473",
+                "quantity": "10"
+              },
+              {
+                "assetName": "TestToken",
+                "quantity": "11"
+              },
+              {
+                "assetNameHex": "46616b65555344",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "47616d654368616e6765724e4654202331",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "47616d654368616e6765724e4654202332",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "47616d654368616e6765724e4654202333",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "47616d654368616e676572546f6b656ef09f9a80",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "6c71208902",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "035edf07fc543038895fe5c8b6d415fbdefb13571d1d4fab07ec30ee29694126",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "8f5827ab4156fad2452d0b11096766fd3c513c25767d1c48dea926cff7236127",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "dbc1b4c900ffe48d575b5da5c638040125f65db0fe3e24494b76ea986457d986",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "3c68313e464f4f42415242415a3c2f68313e",
+                "quantity": "10"
+              },
+              {
+                "assetNameHex": "",
+                "quantity": "6"
+              },
+              {
+                "assetName": "",
+                "quantity": "6"
+              }
+            ]
+          }
+        ],
+        "outputs": {
+          "exampleDrop01": {
+            "address": "addr_test1qz4paneh7r70qdvqqusyh4fh4ttywuzkzhnrwlhp43qkmk5k3qfnedscpnusm3l6ft2q3hqqxk0tnv6pqeada2y0cc8str9r9g",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "2000000"
+              },
+              {
+                "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+                "assetNameHex": "000de14063616c65626d773130",
+                "quantity": "1"
+              },
+              {
+                "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+                "assetName": "TestToken",
+                "quantity": "1"
+              },
+              {
+                "assetNameHex": "",
+                "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+                "quantity": "1"
+              },
+              {
+                "assetName": "",
+                "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+                "quantity": "1"
+              }
+            ]
+          }
+        },
+        "witnesses": {
+          "nativeScripts": {
+            "mintingScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+          }
+        }
+      }
+    },
+    "sign": {
+      "detailedPermissions": false,
+      "type": "signTxs",
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "script",
+      "run": {
+        "txHash": {
+          "type": "macro",
+          "run": "{get('cache.build.txHash')}"
+        },
+        "policyId": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}"
+        },
+        "mintingScript": {
+          "type": "macro",
+          "run": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
+        }
+      }
+    }
+  }
+}

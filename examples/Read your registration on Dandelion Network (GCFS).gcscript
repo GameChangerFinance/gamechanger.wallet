@@ -1,0 +1,26 @@
+{
+  "title": "Read your registration on Dandelion Network (GCFS)",
+  "description": "Reads a json file with your Node Group definition from an on-chain GCFS resource, used for backend peer discovery on Dandelion, the decentralized API service for Cardano",
+  "type": "script",
+  "args": {
+    "asset-name": "dandelion",
+    "file-path": "//config/NodeGroup.json",
+    "node-group-ID": "2abaf6d73e5838cff911cdf8f6629cff1e1955df3afb89738e248f8e"
+  },
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "nodeGroup": {
+      "type": "importAsData",
+      "from": {
+        "file": "gcfs://2abaf6d73e5838cff911cdf8f6629cff1e1955df3afb89738e248f8e.dandelion@latest://config/NodeGroup.json"
+      }
+    },
+    "finally": {
+      "type": "macro",
+      "run": "{get('cache.nodeGroup.file')}"
+    }
+  }
+}

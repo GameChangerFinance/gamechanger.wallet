@@ -1,0 +1,64 @@
+{
+  "title": "Address Identity Tester",
+  "description": "This demo will test addresses default native scripts or 'Identities', and explore differencies between ways to obtain them",
+  "type": "script",
+  "exportAs": "AddressIdentityDemo",
+  "run": {
+    "withMainAddress": {
+      "type": "script",
+      "isolateCache": true,
+      "return": {
+        "mode": "some",
+        "keys": [
+          "address",
+          "infoIdentity",
+          "identity"
+        ]
+      },
+      "run": {
+        "address": {
+          "type": "getMainAddress"
+        },
+        "info": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.address'))}"
+        },
+        "infoIdentity": {
+          "type": "macro",
+          "run": "{get('cache.info.identity')}"
+        },
+        "identity": {
+          "type": "getMainIdentity"
+        }
+      }
+    },
+    "withCurrentAddress": {
+      "type": "script",
+      "isolateCache": true,
+      "return": {
+        "mode": "some",
+        "keys": [
+          "address",
+          "infoIdentity",
+          "identity"
+        ]
+      },
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        },
+        "info": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.address'))}"
+        },
+        "infoIdentity": {
+          "type": "macro",
+          "run": "{get('cache.info.identity')}"
+        },
+        "identity": {
+          "type": "getCurrentIdentity"
+        }
+      }
+    }
+  }
+}

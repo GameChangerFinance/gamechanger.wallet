@@ -1,0 +1,12 @@
+{
+  "title": "Get Wallet Type",
+  "description": "Getting extra information about your current wallet type, such as brand, default staking, and more.",
+  "type": "script",
+  "exportAs": "data",
+  "run": {
+    "myType": {
+      "type": "getType",
+      "extras": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "script",
+  "exportAs": "wallet",
+  "run": {
+    "name": {
+      "type": "getName"
+    },
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "spendPubKey": {
+      "type": "getSpendingPublicKey"
+    },
+    "stakePubKey": {
+      "type": "getStakingPublicKey"
+    },
+    "extra1": {
+      "type": "data",
+      "value": "data of 0"
+    },
+    "extra2": {
+      "type": "data",
+      "value": "data of 1"
+    },
+    "extra3": {
+      "type": "data",
+      "value": "data of 2"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "type": "script",
+  "title": "DRep parsing and certificate building",
+  "description": "Parses different DRep IDs following legacy and CIP129 formats and builds the corresponding vote delegation certificates in bulk",
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
+  "args": [
+    "drep1yvve4554njxyun2s5p9q70v88d5jl7r0h34pjhw5f5tmw3sjtrutp",
+    "drep_script1rxdd99vu338y659qfg8nmpemdyhlsmaudgv4m4zdz7m5vz8uzt6",
+    "drep1rxdd99vu338y659qfg8nmpemdyhlsmaudgv4m4zdz7m5vd9p2hm",
+    "drep17vl9h2csmxzhfa380c5khhy9wu9x36w53pcfc8y0lrnljjwqt3n",
+    "drep1ytenukatzrvc2a8kyalzj67us4ms568f6jy8p8qu3luw07gjdmlar",
+    "drep1y2j2q9pcl855969ea9csrhdta6slnamctgzuvuqnnkl6fusqyjy36"
+  ],
+  "run": {
+    "parsed": {
+      "type": "script",
+      "args": "{get('args')}",
+      "run": [
+        {
+          "type": "macro",
+          "run": "{getDrepInfo(get('args.0'))}"
+        },
+        {
+          "type": "macro",
+          "run": "{getDrepInfo(get('args.1'))}"
+        },
+        {
+          "type": "macro",
+          "run": "{getDrepInfo(get('args.2'))}"
+        },
+        {
+          "type": "macro",
+          "run": "{getDrepInfo(get('args.3'))}"
+        },
+        {
+          "type": "macro",
+          "run": "{getDrepInfo(get('args.4'))}"
+        },
+        {
+          "type": "macro",
+          "run": "{getDrepInfo(get('args.5'))}"
+        }
+      ]
+    },
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "addressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('cache.address'))}"
+    },
+    "_certificates": {
+      "type": "script",
+      "run": [
+        {
+          "type": "macro",
+          "run": {
+            "kind": "VoteDelegation",
+            "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+            "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+            "vote": {
+              "kind": "{get('cache.parsed.0.kind')}",
+              "pubKeyHashHex": "{get('cache.parsed.0.pubKeyHashHex')}",
+              "scriptHashHex": "{get('cache.parsed.0.scriptHashHex')}"
+            }
+          }
+        },
+        {
+          "type": "macro",
+          "run": {
+            "kind": "VoteDelegation",
+            "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+            "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+            "vote": {
+              "kind": "{get('cache.parsed.1.kind')}",
+              "pubKeyHashHex": "{get('cache.parsed.1.pubKeyHashHex')}",
+              "scriptHashHex": "{get('cache.parsed.1.scriptHashHex')}"
+            }
+          }
+        },
+        {
+          "type": "macro",
+          "run": {
+            "kind": "VoteDelegation",
+            "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+            "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+            "vote": {
+              "kind": "{get('cache.parsed.2.kind')}",
+              "pubKeyHashHex": "{get('cache.parsed.2.pubKeyHashHex')}",
+              "scriptHashHex": "{get('cache.parsed.2.scriptHashHex')}"
+            }
+          }
+        },
+        {
+          "type": "macro",
+          "run": {
+            "kind": "VoteDelegation",
+            "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+            "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+            "vote": {
+              "kind": "{get('cache.parsed.3.kind')}",
+              "pubKeyHashHex": "{get('cache.parsed.3.pubKeyHashHex')}",
+              "scriptHashHex": "{get('cache.parsed.3.scriptHashHex')}"
+            }
+          }
+        },
+        {
+          "type": "macro",
+          "run": {
+            "kind": "VoteDelegation",
+            "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+            "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+            "vote": {
+              "kind": "{get('cache.parsed.4.kind')}",
+              "pubKeyHashHex": "{get('cache.parsed.4.pubKeyHashHex')}",
+              "scriptHashHex": "{get('cache.parsed.4.scriptHashHex')}"
+            }
+          }
+        },
+        {
+          "type": "macro",
+          "run": {
+            "kind": "VoteDelegation",
+            "pubKeyHashHex": "{get('cache.addressInfo.stakingKeyHash')}",
+            "scriptHashHex": "{get('cache.addressInfo.stakingScriptHash')}",
+            "vote": {
+              "kind": "{get('cache.parsed.5.kind')}",
+              "pubKeyHashHex": "{get('cache.parsed.5.pubKeyHashHex')}",
+              "scriptHashHex": "{get('cache.parsed.5.scriptHashHex')}"
+            }
+          }
+        }
+      ]
+    },
+    "certificates": {
+      "type": "script",
+      "run": [
+        {
+          "type": "certificate",
+          "cert": "{get('cache._certificates.0')}"
+        },
+        {
+          "type": "certificate",
+          "cert": "{get('cache._certificates.1')}"
+        },
+        {
+          "type": "certificate",
+          "cert": "{get('cache._certificates.2')}"
+        },
+        {
+          "type": "certificate",
+          "cert": "{get('cache._certificates.3')}"
+        },
+        {
+          "type": "certificate",
+          "cert": "{get('cache._certificates.4')}"
+        },
+        {
+          "type": "certificate",
+          "cert": "{get('cache._certificates.5')}"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "script",
+  "title": "List addresses in workspace",
+  "description": "List and sort all addresses in current workspace",
+  "exportAs": "data",
+  "run": {
+    "addresses": {
+      "type": "getAddresses",
+      "keyPattern": "{artifactName}:{address}",
+      "sort": "ascending"
+    }
+  }
+}

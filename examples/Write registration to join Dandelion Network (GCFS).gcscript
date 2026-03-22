@@ -1,0 +1,80 @@
+{
+  "title": "Write registration to join Dandelion Network (GCFS)",
+  "description": "Register your Dandelion Node Group on-chain with GCFS. Writes a json file with your Node Group definition on-chain for backend peer discovery on Dandelion, the decentralized API service for Cardano. Set the URL of your node in 'node-url'.",
+  "type": "script",
+  "args": {
+    "name": "Test Group",
+    "description": "On-chain testing registration of my own Dandelion Lite node",
+    "ticker": "test",
+    "node-url": "https://ar03a.gamechanger.finance:2096/",
+    "asset-name": "dandelion",
+    "file-path": "//config/NodeGroup.json"
+  },
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "identity": {
+      "type": "getMainIdentity"
+    },
+    "file": {
+      "type": "macro",
+      "run": [
+        {
+          "dltTag": "cardano",
+          "networkTag": "mainnet",
+          "name": "{get('args.name')}",
+          "description": "{get('args.description')}",
+          "ticker": "{get('args.ticker')}",
+          "group": "{get('cache.identity.scriptHashHex')}",
+          "disabled": false,
+          "nodes": [
+            {
+              "url": "{get('args.node-url')}",
+              "disabled": false
+            }
+          ]
+        }
+      ]
+    },
+    "buildTxs": {
+      "type": "buildFsTxs",
+      "name": "On-Chain Node Registration to join Dandelion Network",
+      "description": "Dandelion APIs Decentralized Community Service for Cardano",
+      "assetName": "{get('args.asset-name')}",
+      "mintScriptHex": "{get('cache.identity.scriptHex')}",
+      "replicas": "1",
+      "layers": [
+        {
+          "{get('args.file-path')}": {
+            "kind": "file",
+            "fileHex": "{strToHex(objToJson(get('cache.file')))}"
+          }
+        }
+      ]
+    },
+    "signTxs": {
+      "detailedPermissions": false,
+      "type": "signTxs",
+      "namePattern": "GCFS_Signed_{key}",
+      "txs": "{get('cache.buildTxs.txList')}"
+    },
+    "submitTxs": {
+      "type": "submitTxs",
+      "mode": "parallel",
+      "namePattern": "GCFS_Submitted_{key}",
+      "txs": "{get('cache.signTxs')}"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "name": "{get('args.name')}",
+        "ticker": "{get('args.ticker')}",
+        "asset-name": "{get('args.asset-name')}",
+        "node-group-ID": "{get('cache.identity.scriptHashHex')}",
+        "file-path": "{get('args.file-path')}"
+      }
+    }
+  }
+}

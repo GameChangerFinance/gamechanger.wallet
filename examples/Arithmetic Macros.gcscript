@@ -1,0 +1,71 @@
+{
+  "title": "Arithmetic Macros",
+  "description": "This demo will test and explore basic arithmetic macros",
+  "type": "script",
+  "exportAs": "ArithmeticMacrosDemo",
+  "run": {
+    "addBigNum": {
+      "type": "script",
+      "run": {
+        "1_arg": {
+          "type": "macro",
+          "run": "{addBigNum('1')}"
+        },
+        "2_arg": {
+          "type": "macro",
+          "run": "{addBigNum('1','10')}"
+        },
+        "n_arg": {
+          "type": "macro",
+          "run": "{addBigNum('1','10','100','1000','10000','100000','1000000')}"
+        },
+        "n_arg_types": {
+          "type": "macro",
+          "run": "{addBigNum('1',10,'100',1000,'10000',100000,'1000000')}"
+        }
+      }
+    },
+    "mulBigNum": {
+      "type": "script",
+      "run": {
+        "1_arg": {
+          "type": "macro",
+          "run": "{mulBigNum('2')}"
+        },
+        "2_arg": {
+          "type": "macro",
+          "run": "{mulBigNum('2','2')}"
+        },
+        "n_arg": {
+          "type": "macro",
+          "run": "{mulBigNum('2','2','2','2','2','2','2')}"
+        },
+        "n_arg_types": {
+          "type": "macro",
+          "run": "{mulBigNum('2',2,'2',2,'2',2,'2')}"
+        }
+      }
+    },
+    "subBigNum": {
+      "type": "script",
+      "run": {
+        "1_arg": {
+          "type": "macro",
+          "run": "{subBigNum('1111111')}"
+        },
+        "2_arg": {
+          "type": "macro",
+          "run": "{subBigNum('1111111','1111111')}"
+        },
+        "n_arg": {
+          "type": "macro",
+          "run": "{subBigNum('1111111','1000000','100000','10000','1000','100','10','1')}"
+        },
+        "n_arg_types": {
+          "type": "macro",
+          "run": "{subBigNum('1111111',1000000,'100000',10000,'1000',100,'10',1)}"
+        }
+      }
+    }
+  }
+}
