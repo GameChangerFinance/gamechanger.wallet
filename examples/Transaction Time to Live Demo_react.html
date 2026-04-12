@@ -1,0 +1,1394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b17">
+<title>Cardano Dapp: "Transaction Time to Live Demo"</title>
+<meta name="title" content="Cardano Dapp: "Transaction Time to Live Demo"">
+<meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+
+<!-- Use for local deployments or for testing the library: -->
+<!-- <script src="res/browser.min.js"></script> -->
+<!-- Use library from CDN: -->
+<script src="https://cdn.jsdelivr.net/npm/@gamechanger-finance/gc@latest/dist/browser.min.js"></script>
+
+<style>
+:root{--bg:#070b16;--bg2:#0d1330;--fg:#eef7ff;--muted:#93a6d8;--line:#2ad4ff33;--cyan:#29d7ff;--blue:#4a7cff;--violet:#8a5cff;--magenta:#ff4fd8;--panel:#0c1226cc;--panel2:#0a1022f2;--glass:#09112480;--glass2:#ffffffa8;--info:#63d5ff;--success:#7dffb0;--warn:#ffbd59;--danger:#ff7198;--mute:#93a6d8;--infoLine:#63d5ff55;--successLine:#7dffb055;--warnLine:#ffbd5955;--dangerLine:#ff719855;--muteLine:#93a6d855;--infoBg:#63d5ff14;--successBg:#7dffb014;--warnBg:#ffbd5914;--dangerBg:#ff719814;--muteBg:#93a6d814;--r:18px;--grad:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet),var(--magenta));--glow:0 0 0 1px #2ad4ff2e,0 0 18px #4a7cff1f,0 0 34px #8a5cff14}
+[data-theme="light"]{--bg:#eef6ff;--bg2:#dae7ff;--fg:#091126;--muted:#55648c;--line:#4a7cff2b;--panel:#ffffffcf;--panel2:#ffffffef;--info:#0a7db8;--success:#137a43;--warn:#9a6100;--danger:#b4234e;--mute:#55648c;--infoLine:#0a7db833;--successLine:#137a4333;--warnLine:#9a610033;--dangerLine:#b4234e33;--muteLine:#55648c33;--infoBg:#0a7db812;--successBg:#137a4312;--warnBg:#9a610012;--dangerBg:#b4234e12;--muteBg:#55648c12;--glow:0 0 0 1px #4a7cff26,0 14px 34px #4a7cff18}
+*{box-sizing:border-box}html,body,#root{margin:0;min-height:100%}body{font:14px/1.45 Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--fg);background:radial-gradient(circle at 14% 12%,#29d7ff20,transparent 24%),radial-gradient(circle at 84% 18%,#8a5cff22,transparent 24%),radial-gradient(circle at 70% 82%,#ff4fd81a,transparent 22%),linear-gradient(180deg,var(--bg),var(--bg2))}a,button,input,textarea,select{font:inherit}button,input,textarea,select{outline:none}pre{margin:0;white-space:pre-wrap;word-break:break-word}
+.app{margin:0 auto;padding:5%}.hero,.card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel2));border-radius:var(--r);box-shadow:var(--glow);backdrop-filter:blur(10px);align-self:start}.hero{padding:20px;margin-bottom:16px}
+.hero__top,.row,.actions,.connect-widget,.connected-wallet,.checkbox{display:flex;gap:10px;align-items:center}.hero__top,.row{align-items:flex-start;justify-content:space-between}.hero__tools{display:flex;gap:10px;align-items:center;justify-content:flex-end;min-width:170px;flex-wrap:wrap}
+.hero h1,.intent-meta__title{margin:0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.hero h1{font-size:30px;line-height:1.08}.hero p,.muted,.section-copy,.hint,.connected-wallet__sub,.connected-wallet__address{color:var(--muted)}.hero p{margin:8px 0 0;max-width:70ch}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}.layout--single{grid-template-columns:minmax(0,1fr)}.card{padding:18px}.stack{display:grid;gap:14px;align-content:start}.form-grid,.mini-grid{display:grid;gap:12px;align-items:start}.form-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.control,.field input,.field textarea,.field select,.theme-select,.connected-wallet{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:var(--glass);color:var(--fg)}.theme-select{width:auto}.connected-wallet{gap:12px;box-shadow:var(--glow);min-width:0;max-width:100%;padding:10px 12px}.connected-wallet__meta{display:grid;gap:2px;min-width:0}.connected-wallet__name,.connected-wallet__sub,.connected-wallet__address{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}.connected-wallet__name{font-weight:700}
+[data-theme="light"] .control,[data-theme="light"] .field input,[data-theme="light"] .field textarea,[data-theme="light"] .field select,[data-theme="light"] .theme-select,[data-theme="light"] .connected-wallet{background:var(--glass2)}
+.field{display:grid;gap:6px;align-content:start;align-self:start;min-width:0}.field--full{grid-column:1/-1}.field label,.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.field textarea{min-height:108px;resize:vertical}.checkbox{min-height:46px;padding:0 2px}.checkbox input{width:16px;height:16px}
+.section-title{margin:0;font-size:15px;color:var(--cyan)}.intent-meta{padding:18px;border-radius:16px;border:1px solid #4a7cff40;background:linear-gradient(135deg,var(--bg),var(--bg2));box-shadow:inset 0 0 0 1px #ffffff05,0 0 24px #8a5cff14}.intent-meta__title{font-size:24px;line-height:1.12}.intent-meta__lead{margin:0;font-size:15px}.intent-meta__sub{margin-top:8px;font-size:13px;color:var(--muted)}
+.card--info,.tone--info{border-color:var(--infoLine);background:linear-gradient(180deg,var(--infoBg),var(--panel2))}.card--success,.tone--success{border-color:var(--successLine);background:linear-gradient(180deg,var(--successBg),var(--panel2))}.card--warn,.tone--warn{border-color:var(--warnLine);background:linear-gradient(180deg,var(--warnBg),var(--panel2))}.card--danger,.tone--danger{border-color:var(--dangerLine);background:linear-gradient(180deg,var(--dangerBg),var(--panel2))}.card--mute,.tone--mute{border-color:var(--muteLine);background:linear-gradient(180deg,var(--muteBg),var(--panel2))}
+.btn{display:inline-flex;align-items:center;justify-content:center;appearance:none;border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--fg);background:#ffffff06;cursor:pointer;transition:.15s transform,.15s opacity;min-width:0}.btn:hover{transform:translateY(-1px)}.btn--ghost{background:#ffffff03}.btn--primary{width:100%;justify-content:center;text-align:center;border-color:transparent;background:var(--grad);color:#fff;font-weight:700}.btn[disabled],.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.actions{flex-wrap:wrap;align-items:stretch}#connect-link{display:flex;flex:0 0 100%;width:100%;max-width:100%;order:99}#connect-wallet-btn{width:auto}
+.console{min-height:120px;max-height:420px;overflow:auto;padding:14px;border-radius:14px;border:1px solid var(--line);background:#060c1fcb;color:#cbf7ff}.empty{color:var(--muted)}.status{font-size:12px;min-height:18px}.status--info{color:var(--info)}.status--ok,.status--success{color:var(--success)}.status--warn{color:var(--warn)}.status--err,.status--danger{color:var(--danger)}.status--mute{color:var(--mute)}.hidden{display:none!important}.stat{padding:12px;border-radius:14px;border:1px solid var(--line);background:#ffffff04}.stat strong{display:block;margin-top:4px;font-size:15px;color:var(--cyan)}
+.app-footer{padding:16px 0 0;text-align:center}.app-footer__links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0}.app-footer__links{font-size:12px}.app-footer__library{margin-top:10px;font-size:13px;font-weight:600}.app-footer a{color:var(--blue)}.app-footer a:hover{text-decoration:underline}.app-footer__text{color:var(--muted)}
+@media (max-width:940px){.layout,.layout--single,.mini-grid{grid-template-columns:1fr}.hero__top{flex-direction:column}.hero__tools{width:100%;justify-content:flex-end}.connected-wallet{width:100%}.connected-wallet__name,.connected-wallet__sub,.connected-wallet__address{max-width:none}.btn--primary,#connect-link{width:100%;max-width:100%}}
+</style>
+</head>
+<body data-theme="dark">
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+'use strict';
+
+const { useEffect, useMemo, useRef, useState } = React;
+
+/********************************************************************
+ * DEVELOPER CUSTOMIZATION SECTION
+ *
+ * Most integrations should only need edits in this section.
+ ********************************************************************/
+
+function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
+  if (!enabled) return null;
+  if (!wallet) {
+    if (!onConnect) return null;
+    return <button id="connect-wallet-btn" className="btn btn--primary" type="button" onClick={onConnect}>Connect wallet</button>;
+  }
+
+  return (
+    <div id="connected-wallet" className="connected-wallet">
+      <div className="connected-wallet__meta">
+        <div id="connected-wallet-name" className="connected-wallet__name">{wallet.name || 'Connected wallet'}</div>
+        <div id="connected-wallet-sub" className="connected-wallet__sub">{[wallet.type, wallet.brand].filter(Boolean).join(' · ')}</div>
+        <div id="connected-wallet-address" className="connected-wallet__address">{truncateText(wallet.address, 12, 10)}</div>
+      </div>
+      <button id="disconnect-wallet-btn" className="btn btn--ghost" type="button" onClick={onDisconnect}>Disconnect</button>
+    </div>
+  );
+}
+
+const config = {
+  id: 'gc-dapp-transaction-time-to-live-demo',
+  version: '0.0.1',
+  title: 'Cardano Dapp: "Transaction Time to Live Demo"',
+  description: 'Review the action details below and continue in GameChanger Wallet.',
+
+  defaults: {
+    options: {
+      network: "mainnet",
+      encoding: "gzip",
+      walletBaseUrl: "",
+      refAddress: undefined,
+      disableNetworkRouter: false,
+      usePopup: true,
+      useDebug: false,
+      useConnect: true,
+      useIntentSelect: true,
+      useThemeSelect: true,
+      useAction: true,
+      useQR: true,
+      useActionSection: true,
+      useOptions: true,
+      theme: 'dark',
+      popupFeatures: 'noopener,width=480,height=720',
+      manualResponse: ''
+    },
+    custom: {}
+  },
+
+  ui: {
+    currentFields: {
+      options: {
+        network: { kind: 'select', options: [{ value: 'mainnet', label: 'Mainnet' }, { value: 'preprod', label: 'Preprod' }] },
+        encoding: { kind: 'select', options: [{ value: 'gzip', label: 'gzip' }, { value: 'base64url', label: 'base64url' }] },
+        theme: { kind: 'select', options: [{ value: 'dark', label: 'Dark' }, { value: 'light', label: 'Light' }] },
+        usePopup: { kind: 'checkbox' },
+        useDebug: { kind: 'checkbox' },
+        useConnect: { kind: 'checkbox' },
+        useIntentSelect: { kind: 'checkbox' },
+        useThemeSelect: { kind: 'checkbox' },
+        useAction: { kind: 'checkbox' },
+        useQR: { kind: 'checkbox' },
+        useActionSection: { kind: 'checkbox' },
+        useOptions: { kind: 'checkbox' },
+        disableNetworkRouter: { kind: 'checkbox' },
+        popupFeatures: { kind: 'text' },
+        walletBaseUrl: { kind: 'text' },
+        refAddress: { kind: 'text' },
+        manualResponse: { kind: 'textarea', full: true, label: 'Manual wallet response' },
+        manualResponseSubmit: { kind: 'button', label: 'Decode wallet response', action: 'decodeWalletResponse' }
+      },
+      intents: {
+        // Intent UI customization examples:
+        // payment: {
+        //   title: { kind: 'text' },
+        //   message: { kind: 'textarea', full: true },
+        //   'return-URL': { kind: 'text' },
+        //   'to-address': { kind: 'text', full: true },
+        //   'policy-id': { kind: 'text' },
+        //   'asset-name': { kind: 'text' },
+        //   decimals: { kind: 'number' },
+        //   quantity: { kind: 'number' }
+        // },
+        // stakeDelegation: {
+        //   ticker: { kind: 'text' },
+        //   'stake-pool': { kind: 'text', full: true }
+        // }
+      }
+    }
+  },
+
+  defaultIntents: {
+        // Uncomment the connect intent below to enable the most common wallet connection UX out of the box.
+        // Intent-based Cardano dapps do not require a mandatory wallet connection to work.
+        // connect: {
+        //   "label": "Connect wallet",
+        //   "description": "Share public wallet information with this dapp.",
+        //   "code": {
+        //     "type": "script",
+        //     "title": "Connect with this dapp?",
+        //     "description": "About to share public wallet information with the dapp.",
+        //     "exportAs": "connect",
+        //     "run": {
+        //       "name": {
+        //         "type": "getName"
+        //       },
+        //       "address": {
+        //         "type": "getCurrentAddress"
+        //       },
+        //       "addressInfo": {
+        //         "type": "macro",
+        //         "run": "{getAddressInfo(get('cache.address'))}"
+        //       }
+        //     }
+        //   }
+        // },
+        userIntent: {
+          "label": "Transaction Time to Live Demo",
+          "description": "Script that will try the different time validity interval parameters of transaction builder",
+          "code": {
+            "title": "Transaction Time to Live Demo",
+            "description": "Script that will try the different time validity interval parameters of transaction builder",
+            "type": "script",
+            "run": {
+              "currentSlotNumber": {
+                "type": "getCurrentSlot"
+              },
+              "build": {
+                "type": "script",
+                "run": [
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: no setup",
+                    "tx": {}
+                  },
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: from",
+                    "tx": {
+                      "ttl": {
+                        "from": "{get('cache.currentSlotNumber')}"
+                      }
+                    }
+                  },
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: until",
+                    "tx": {
+                      "ttl": {
+                        "until": "23432401234"
+                      }
+                    }
+                  },
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: from until",
+                    "tx": {
+                      "ttl": {
+                        "from": "{get('cache.currentSlotNumber')}",
+                        "until": "23432401234"
+                      }
+                    }
+                  },
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: from duration",
+                    "tx": {
+                      "ttl": {
+                        "from": "{get('cache.currentSlotNumber')}",
+                        "duration": "2592000000"
+                      }
+                    }
+                  },
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: validFromNow duration",
+                    "tx": {
+                      "ttl": {
+                        "duration": "2592000000"
+                      },
+                      "options": {
+                        "validFromNow": true
+                      }
+                    }
+                  },
+                  {
+                    "type": "buildTx",
+                    "title": "TTL: ttl calc error",
+                    "tx": {
+                      "ttl": {
+                        "from": "23432401234",
+                        "until": "{get('cache.currentSlotNumber')}"
+                      }
+                    }
+                  }
+                ]
+              },
+              "sign": {
+                "type": "signTxs",
+                "namePattern": "signed-{key}",
+                "detailedPermissions": false,
+                "txs": [
+                  "{get('cache.build.0.txHex')}",
+                  "{get('cache.build.1.txHex')}",
+                  "{get('cache.build.2.txHex')}",
+                  "{get('cache.build.3.txHex')}",
+                  "{get('cache.build.4.txHex')}",
+                  "{get('cache.build.5.txHex')}",
+                  "{get('cache.build.6.txHex')}"
+                ]
+              },
+              "submit": {
+                "type": "submitTxs",
+                "namePattern": "submitted-{key}",
+                "txs": "{get('cache.sign')}"
+              },
+              "finally": {
+                "type": "script",
+                "exportAs": "LoremIpsumTest",
+                "run": [
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.0.txHash')}"
+                  },
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.1.txHash')}"
+                  },
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.2.txHash')}"
+                  },
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.3.txHash')}"
+                  },
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.4.txHash')}"
+                  },
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.5.txHash')}"
+                  },
+                  {
+                    "type": "macro",
+                    "run": "{get('cache.build.6.txHash')}"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+
+  components: {
+    ConnectedWalletWidget
+  },
+
+  actions: {
+    async decodeWalletResponse({ state, api }) {
+      const responseUrl = asText(state.options.manualResponse).trim();
+      if (!responseUrl) {
+        api.setStatus('Paste a wallet URL response before decoding.', 'warn');
+        return;
+      }
+
+      try {
+        const url = new URL(responseUrl);
+        const resultValue = url.searchParams.get('result');
+        if (!resultValue || !window.gc?.encodings?.msg?.decoder) {
+          api.setStatus('Wallet response is missing a result payload.', 'warn');
+          return;
+        }
+        await api.applyWalletResult(resultValue);
+        api.patchOptions({ manualResponse: '' });
+        api.setStatus('Wallet response decoded successfully.', 'success');
+        api.markDirty();
+      } catch (error) {
+        api.setStatus(error.message || 'Failed to decode wallet response', 'err');
+      }
+    }
+  },
+
+  /**
+   * Any intent may return a `connect` export to hydrate the connected wallet
+   * widget. The dedicated `connect` intent still works, but it is no longer
+   * the only supported source of wallet identity data.
+   */
+  normalizeConnectedWallet({ decoded, value }) {
+    const wallet = value || {};
+    const resultWallet = decoded?.wallet || decoded?.result?.wallet || decoded?.data?.wallet || {};
+    const connect = wallet?.connect || wallet || {};
+    const next = {
+      name: asText(connect.name || resultWallet.name || decoded?.walletName),
+      type: asText(connect.type || connect.walletType || resultWallet.type || decoded?.walletType || decoded?.type),
+      brand: asText(connect.brand || connect.walletBrand || connect.subType || resultWallet.brand || resultWallet.subType || decoded?.walletBrand || decoded?.subType || decoded?.brand),
+      address: asText(connect.address || resultWallet.address || decoded?.address)
+    };
+    return next.name || next.type || next.brand || next.address ? next : undefined;
+  },
+
+  /**
+   * Connected wallet widget policy.
+   *
+   * This keeps widget-specific state and connect-intent routing inside the
+   * developer customization section instead of scattering it across the
+   * runtime.
+   */
+  getConnectedWalletWidgetState({ state }) {
+    const wallet = state.custom.connectedWallet;
+    const connectIntentKey = config.defaultIntents && config.defaultIntents.connect ? 'connect' : '';
+    return {
+      wallet,
+      connectIntentKey,
+      enabled: !!state.options.useConnect && (!!wallet || !!connectIntentKey)
+    };
+  },
+
+  applyResult({ decoded, exportsValue, intentKey }) {
+    const connectValue = exportsValue?.connect || (intentKey === 'connect' ? exportsValue : null);
+    if (!connectValue) return null;
+    const nextWallet = config.normalizeConnectedWallet({ decoded, value: connectValue });
+    return nextWallet ? { custom: { connectedWallet: nextWallet } } : null;
+  },
+
+  resolveIntentCode({ state, intentKey, code, helpers }) {
+    const next = cloneJson(code);
+    const args = next.args || {};
+
+    if (next.exportAs || next.return) next.returnURLPattern = helpers.buildReturnUrl();
+
+    if (intentKey === 'connect' && state.custom.connectedWallet?.name) {
+      next.title = `Reconnect ${state.custom.connectedWallet.name}?`;
+    }
+
+    // Examples:
+    // if (intentKey === 'payment') {
+    //   const connectedName = state.exportsMap?.connect?.name || state.custom.connectedWallet?.name || '';
+    //   if (state.options.network === 'preprod' && args['return-URL'] === 'https://cardanoscan.io/transaction/{txHash}') {
+    //     args['return-URL'] = 'https://preprod.cardanoscan.io/transaction/{txHash}';
+    //   }
+    //   if (connectedName && !asText(args.message).includes(connectedName)) {
+    //     args.message = `${asText(args.message)}\nRequested by ${connectedName}`.trim();
+    //   }
+    //   next.title = `Payment request: ${args.title || 'Untitled'}`;
+    //   if (next.run?.build) next.run.build.title = `✅ ${args.title || 'Payment request'}`;
+    // }
+
+    // if (intentKey === 'stakeDelegation') {
+    //   next.title = `Delegating to ${args.ticker || 'a stake pool'}`;
+    //   if (next.run?.build) next.run.build.title = `✅ Delegate to ${args.ticker || 'a stake pool'}`;
+    // }
+
+    return next;
+  },
+
+  logic({ state, helpers }) {
+    const intentKeys = Object.keys(config.defaultIntents || {});
+    const key = state.currentIntentKey;
+    const intent = key ? state.intents[key] || {} : {};
+    const code = intent.code || {};
+    const validations = [];
+    const noIntentConfigured = !intentKeys.length || !key || !state.intents[key];
+
+    // Examples:
+    // if (key === 'payment') {
+    //   const quantity = Number(code.args?.quantity || 0);
+    //   const address = asText(code.args?.['to-address']);
+    //   const returnUrl = asText(code.args?.['return-URL']);
+    //   if (!(quantity > 0)) validations.push({ level: 'err', blocking: true, message: 'Quantity must be greater than 0.' });
+    //   if (address) {
+    //     const expectedPrefix = state.options.network === 'mainnet' ? 'addr1' : 'addr_test1';
+    //     if (!address.startsWith(expectedPrefix)) {
+    //       validations.push({ level: 'err', blocking: true, message: `Destination address must start with "${expectedPrefix}" for ${state.options.network}.` });
+    //     }
+    //   }
+    //   if (returnUrl && !/^https:\/\//.test(returnUrl)) {
+    //     validations.push({ level: 'warn', blocking: false, message: 'Return URL should usually use HTTPS.' });
+    //   }
+    // }
+
+    // if (key === 'stakeDelegation') {
+    //   const ticker = asText(code.args?.ticker);
+    //   if (ticker && ticker.length < 3) {
+    //     validations.push({ level: 'warn', blocking: false, message: 'Ticker is usually at least 3 characters.' });
+    //   }
+    // }
+
+    return {
+      showDebug: !!state.options.useDebug,
+      showIntentSelect: !!state.options.useIntentSelect && intentKeys.length > 1,
+      showThemeSelect: !!state.options.useThemeSelect,
+      showAction: !!state.options.useAction,
+      showQR: !!state.options.useQR,
+      showOptionsToggle: !!state.options.useOptions,
+      actionSectionDisabled: !state.options.useActionSection || noIntentConfigured,
+      hasArgs: Object.keys(code.args || {}).length > 0,
+      noIntentConfigured,
+      currentFields: noIntentConfigured ? [] : helpers.buildFields({
+        json: code.args || {},
+        fieldConfig: config.ui.currentFields?.intents?.[key] || {},
+        pathPrefix: ['intents', key, 'code', 'args']
+      }),
+      optionFields: helpers.buildFields({
+        json: state.options,
+        fieldConfig: config.ui.currentFields?.options || {},
+        pathPrefix: ['options']
+      }),
+      fieldStatus: noIntentConfigured ? '' : validations[0]?.message || '',
+      fieldStatusLevel: noIntentConfigured ? '' : validations[0]?.level || '',
+      actionDisabled: noIntentConfigured || validations.some((item) => item.blocking) || !!state.migrationNeeded,
+      intentSummary: {
+        title: noIntentConfigured ? 'No action available' : code.title || config.defaultIntents[key]?.label || 'Continue',
+        lead: noIntentConfigured ? 'Add at least one intent to enable the dapp action flow.' : code.description || config.defaultIntents[key]?.description || '',
+        sub: ''
+      }
+    };
+  }
+};
+
+/********************************************************************
+ * ADVANCED AUTOGENERATED RUNTIME
+ *
+ * This section handles persistence, encoding, decoding, reusable React
+ * components, and runtime glue.
+ ********************************************************************/
+
+const asText = (value) => String(value ?? '');
+const toKebab = (value) => asText(value).replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+const toLabel = (value) => asText(value).replace(/[-_]+/g, ' ').replace(/\b\w/g, (match) => match.toUpperCase());
+
+function isPlainObject(value) {
+  return !!value && typeof value === 'object' && !Array.isArray(value);
+}
+
+function cloneJson(value) {
+  if (value === undefined) return undefined;
+  return JSON.parse(JSON.stringify(value));
+}
+
+function mergeJson(base, extra) {
+  if (!isPlainObject(base)) return cloneJson(extra);
+  const output = cloneJson(base);
+  Object.entries(extra || {}).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      output[key] = cloneJson(value);
+      return;
+    }
+    output[key] = isPlainObject(value) && isPlainObject(output[key]) ? mergeJson(output[key], value) : cloneJson(value);
+  });
+  return output;
+}
+
+function pruneUndefined(value) {
+  if (Array.isArray(value)) return value.map(pruneUndefined);
+  if (!isPlainObject(value)) return value;
+  return Object.fromEntries(Object.entries(value).filter(([, current]) => current !== undefined).map(([key, current]) => [key, pruneUndefined(current)]));
+}
+
+function writePathCopy(root, path, value) {
+  const next = Array.isArray(root) ? [...root] : { ...root };
+  let cursor = next;
+
+  path.slice(0, -1).forEach((key) => {
+    const branch = cursor[key];
+    cursor[key] = Array.isArray(branch) ? [...branch] : isPlainObject(branch) ? { ...branch } : {};
+    cursor = cursor[key];
+  });
+
+  cursor[path[path.length - 1]] = value;
+  return next;
+}
+
+function truncateText(value, start = 12, end = 10) {
+  const next = asText(value);
+  return next.length > start + end ? `${next.slice(0, start)}…${next.slice(-end)}` : next;
+}
+
+function replaceUrlBase(url, urlBase) {
+  const base = new URL(urlBase);
+  const current = new URL(url, base);
+  const next = new URL(base.href);
+  next.pathname = current.pathname;
+  next.search = current.search;
+  next.hash = current.hash;
+  return next.toString();
+}
+
+function buildReturnUrl() {
+  const url = new URL(window.location.href);
+  return `${url.origin}${url.pathname}${url.hash}`;
+}
+
+function removeSearchParams(names) {
+  const url = new URL(window.location.href);
+  let changed = false;
+  names.forEach((name) => {
+    if (url.searchParams.has(name)) {
+      url.searchParams.delete(name);
+      changed = true;
+    }
+  });
+  if (changed) window.history.replaceState({}, document.title, `${url.pathname}${url.search}${url.hash}`);
+}
+
+function loadStoredJson(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || 'null');
+  } catch (_error) {
+    return null;
+  }
+}
+
+function saveStoredJson(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function buildIntents(defaultIntents, sourceIntents = {}) {
+  return Object.fromEntries(Object.entries(defaultIntents || {}).map(([key, intent]) => {
+    const current = sourceIntents[key] || {};
+    const code = mergeJson(intent.code || {}, current.code || {});
+    code.args = mergeJson(intent.code?.args || {}, current.code?.args || {});
+    return [key, {
+      label: intent.label,
+      description: intent.description,
+      code,
+      exports: current.exports || {}
+    }];
+  }));
+}
+
+function normalizeStoredState(configValue, stored) {
+  const next = stored || {};
+  const defaultIntents = buildIntents(configValue.defaultIntents, next.intents || {});
+  const intentKeys = Object.keys(configValue.defaultIntents || {});
+  const currentIntentKey = configValue.defaultIntents?.[next.ui?.currentIntentKey]
+    ? next.ui.currentIntentKey
+    : intentKeys[0] || '';
+
+  return {
+    options: mergeJson(configValue.defaults.options || {}, next.options || {}),
+    custom: mergeJson(configValue.defaults.custom || {}, next.custom || {}),
+    exportsMap: next.exports || {},
+    lastResult: next.lastResult || null,
+    intents: defaultIntents,
+    currentIntentKey,
+    migrationNeeded: !!(next.version && next.version !== configValue.version),
+    migrationSourceVersion: next.version || '',
+    result: null
+  };
+}
+
+function createPersistedPayload(configValue, state) {
+  return {
+    version: configValue.version,
+    options: pruneUndefined(state.options),
+    custom: pruneUndefined(state.custom),
+    exports: pruneUndefined(state.exportsMap),
+    lastResult: state.lastResult,
+    ui: { currentIntentKey: state.currentIntentKey },
+    intents: Object.fromEntries(Object.keys(state.intents).map((key) => [key, {
+      code: pruneUndefined(state.intents[key].code),
+      exports: pruneUndefined(state.intents[key].exports || {})
+    }]))
+  };
+}
+
+function inferFieldKind(value) {
+  if (Array.isArray(value) || isPlainObject(value)) return 'json';
+  if (typeof value === 'boolean') return 'checkbox';
+  if (typeof value === 'number') return 'number';
+  return 'text';
+}
+
+function parseFieldRaw(raw, kind) {
+  if (kind === 'checkbox') return !!raw;
+  if (kind === 'number') {
+    const next = Number(raw);
+    return Number.isFinite(next) ? next : 0;
+  }
+  if (kind === 'json') {
+    const value = asText(raw).trim();
+    return value ? JSON.parse(value) : {};
+  }
+  return asText(raw);
+}
+
+function buildFields({ json = {}, fieldConfig = {}, pathPrefix = [] }) {
+  const fields = [];
+
+  Object.entries(json || {}).forEach(([name, value]) => {
+    const options = fieldConfig[name] || {};
+    fields.push({
+      name,
+      label: options.label || toLabel(name),
+      kind: options.kind || inferFieldKind(value),
+      options: options.options || [],
+      placeholder: options.placeholder || '',
+      full: options.full === true || options.kind === 'json' || options.kind === 'textarea' || options.kind === 'html',
+      value,
+      path: [...pathPrefix, name],
+      onInput: options.onInput,
+      onChange: options.onChange,
+      action: options.action,
+      html: options.html || ''
+    });
+  });
+
+  Object.entries(fieldConfig || {}).forEach(([name, options]) => {
+    if (json[name] !== undefined || options.hidden) return;
+    fields.push({
+      name,
+      label: options.label || toLabel(name),
+      kind: options.kind || 'button',
+      options: options.options || [],
+      placeholder: options.placeholder || '',
+      full: options.full === true,
+      value: options.value,
+      path: options.path || null,
+      onInput: options.onInput,
+      onChange: options.onChange,
+      action: options.action,
+      html: options.html || ''
+    });
+  });
+
+  return fields;
+}
+
+function StatusLine({ id, message, level }) {
+  return <div id={id} className={`status${message ? ` status--${level || 'mute'}` : ''}`}>{message || ''}</div>;
+}
+
+function FieldControl({ field, formId, onWrite, onAction }) {
+  const controlId = `${formId}-${toKebab(field.name)}-input`;
+
+  if (field.kind === 'button') {
+    return (
+      <button type="button" className="btn btn--ghost" onClick={() => onAction(field)}>
+        {field.label}
+      </button>
+    );
+  }
+
+  if (field.kind === 'html') {
+    return <div className="control" dangerouslySetInnerHTML={{ __html: field.html }} />;
+  }
+
+  if (field.kind === 'checkbox') {
+    return (
+      <label className="checkbox">
+        <input id={controlId} type="checkbox" checked={!!field.value} onChange={(event) => onWrite(field, event.target.checked, 'onChange')} />
+        <span>Enabled</span>
+      </label>
+    );
+  }
+
+  if (field.kind === 'select') {
+    return (
+      <select id={controlId} className="control" value={asText(field.value)} onChange={(event) => onWrite(field, event.target.value, 'onChange')}>
+        {field.options.map((item) => (
+          <option key={`${field.name}-${item.value}`} value={item.value}>{item.label}</option>
+        ))}
+      </select>
+    );
+  }
+
+  if (field.kind === 'textarea' || field.kind === 'json') {
+    return (
+      <textarea
+        id={controlId}
+        className="control"
+        placeholder={field.placeholder}
+        value={field.kind === 'json' ? JSON.stringify(field.value || {}, null, 2) : asText(field.value)}
+        onInput={(event) => onWrite(field, event.target.value, 'onInput')}
+        onChange={(event) => onWrite(field, event.target.value, 'onChange')}
+      />
+    );
+  }
+
+  return (
+    <input
+      id={controlId}
+      className="control"
+      type={field.kind === 'number' ? 'number' : 'text'}
+      placeholder={field.placeholder}
+      value={field.kind === 'number' ? String(field.value ?? 0) : asText(field.value)}
+      onInput={(event) => onWrite(field, event.target.value, 'onInput')}
+      onChange={(event) => onWrite(field, event.target.value, 'onChange')}
+    />
+  );
+}
+
+function FieldList({ fields, formId, onWrite, onAction }) {
+  return (
+    <>
+      {fields.map((field) => {
+        const controlId = `${formId}-${toKebab(field.name)}-input`;
+        return (
+          <div key={`${formId}-${field.name}`} className={`field${field.full ? ' field--full' : ''}`} id={`${formId}-${toKebab(field.name)}-field`}>
+            {!['button', 'html'].includes(field.kind) && <label htmlFor={controlId}>{field.label}</label>}
+            <FieldControl field={field} formId={formId} onWrite={onWrite} onAction={onAction} />
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="app-footer" aria-label="Relevant links">
+      <h6 className="app-footer__links">
+        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/GameChangerOk">X</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/vpbfyRaDKG">Discord</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@gamechanger.finance">Youtube</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/GameChangerFinance/gamechanger.wallet/">Github</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://gamechanger.finance">Website</a>
+      </h6>
+      <div className="app-footer__library">
+        <span className="app-footer__text"> React - Auto-generated using </span>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/@gamechanger-finance/gc">Playground IDE</a>
+        <span className="app-footer__text"> - </span>
+        <span className="app-footer__text">2026</span>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  const helpers = useMemo(() => ({ buildFields, buildReturnUrl }), []);
+  const [state, setState] = useState(() => ({
+    ...normalizeStoredState(config, loadStoredJson(config.id) || {}),
+    showOptions: false,
+    statusMessage: '',
+    actionStatusLevel: '',
+    dirty: false
+  }));
+  const [actionData, setActionData] = useState({ url: '', qr: '', qrError: '' });
+  const stateRef = useRef(state);
+  stateRef.current = state;
+
+  const viewModel = useMemo(() => config.logic({ state, helpers }), [state, helpers]);
+  const ConnectedWallet = config.components?.ConnectedWalletWidget;
+
+  function persistState(next) {
+    if (!next.migrationNeeded) saveStoredJson(config.id, createPersistedPayload(config, next));
+  }
+
+  function setStatus(message, level = '') {
+    setState((current) => ({ ...current, statusMessage: message, actionStatusLevel: level }));
+  }
+
+  function markDirty() {
+    setState((current) => current.dirty ? current : { ...current, dirty: true });
+  }
+
+  function patchOptions(patch) {
+    setState((current) => ({
+      ...current,
+      options: mergeJson(current.options, typeof patch === 'function' ? patch(current.options) : patch),
+      dirty: true
+    }));
+  }
+
+  function patchCustom(patch) {
+    setState((current) => ({
+      ...current,
+      custom: pruneUndefined(mergeJson(current.custom || {}, typeof patch === 'function' ? patch(current.custom || {}) : patch)),
+      dirty: true
+    }));
+  }
+
+  function disconnectWallet() {
+    setState((current) => {
+      const nextCustom = { ...(current.custom || {}) };
+      delete nextCustom.connectedWallet;
+      const next = { ...current, custom: nextCustom, dirty: true };
+      persistState(next);
+      return next;
+    });
+  }
+
+  function setPathValue(path, value) {
+    setState((current) => ({ ...writePathCopy(current, path, value), dirty: true }));
+  }
+
+  function resetIntent(intentKey = stateRef.current.currentIntentKey) {
+    setState((current) => {
+      if (!config.defaultIntents?.[intentKey]) return current;
+      const freshIntent = buildIntents({ [intentKey]: config.defaultIntents[intentKey] })[intentKey];
+      return {
+        ...current,
+        intents: {
+          ...current.intents,
+          [intentKey]: { ...freshIntent, exports: current.intents[intentKey]?.exports || {} }
+        },
+        dirty: true
+      };
+    });
+  }
+
+  function resetStorage() {
+    localStorage.removeItem(config.id);
+    setState({
+      ...normalizeStoredState(config, {}),
+      showOptions: false,
+      statusMessage: '',
+      actionStatusLevel: '',
+      dirty: true
+    });
+  }
+
+  function upgradeStoredState() {
+    localStorage.removeItem(config.id);
+    setState((current) => ({
+      ...normalizeStoredState(config, {}),
+      showOptions: current.showOptions,
+      statusMessage: 'Stored data updated to the latest version. Previous local data was replaced.',
+      actionStatusLevel: 'success',
+      dirty: true
+    }));
+  }
+
+  async function buildIntentUrl(intentKey = stateRef.current.currentIntentKey) {
+    if (!window.gc?.encode?.url) throw new Error('GameChanger library not loaded');
+    const snapshot = stateRef.current;
+    if (!intentKey || !snapshot.intents[intentKey]) throw new Error('No intent configured');
+    const source = cloneJson(snapshot.intents[intentKey]?.code || {});
+    const code = typeof config.resolveIntentCode === 'function'
+      ? config.resolveIntentCode({ state: snapshot, intentKey, code: source, helpers })
+      : source;
+
+    let url = await window.gc.encode.url({
+      input: JSON.stringify(code),
+      apiVersion: "2",
+      network: snapshot.options.network,
+      encoding: snapshot.options.encoding,
+      refAddress: snapshot.options.refAddress || undefined,
+      disableNetworkRouter: !!snapshot.options.disableNetworkRouter,
+      urlPattern: "https://wallet.gamechanger.finance/api/2/run/{gcscript}"
+    })
+      //.catch(err=>{console.error(err)});
+
+    if (snapshot.options.walletBaseUrl) url = replaceUrlBase(url, snapshot.options.walletBaseUrl);
+    return url;
+  }
+
+  async function buildIntentQr(intentKey = stateRef.current.currentIntentKey, qrResultType = 'png') {
+    const snapshot = stateRef.current;
+    if (!intentKey || !snapshot.intents[intentKey]) throw new Error('No intent configured');
+    const source = cloneJson(snapshot.intents[intentKey]?.code || {});
+    const code = typeof config.resolveIntentCode === 'function'
+      ? config.resolveIntentCode({ state: snapshot, intentKey, code: source, helpers })
+      : source;
+
+    return await window.gc.encode.qr({
+      input: JSON.stringify(code),
+      apiVersion: "2",
+      network: snapshot.options.network,
+      encoding: snapshot.options.encoding,
+      refAddress: snapshot.options.refAddress || undefined,
+      disableNetworkRouter: !!snapshot.options.disableNetworkRouter,
+      urlPattern: "https://wallet.gamechanger.finance/api/2/run/{gcscript}",
+      qrResultType
+    }).catch(err=>{console.error(err)});
+  }
+
+  async function applyWalletResult(resultValue) {
+    if (!resultValue || !window.gc?.encodings?.msg?.decoder) throw new Error('GameChanger decoder not loaded');
+
+    const decoded = await window.gc.encodings.msg.decoder(resultValue);
+    const exportsValue = decoded?.exports || {};
+    const intentKeys = Object.keys(config.defaultIntents || {});
+    const intentKey = Object.keys(exportsValue).find((name) => config.defaultIntents?.[name]) || stateRef.current.currentIntentKey || intentKeys[0] || '';
+    const resultOutput = typeof config.applyResult === 'function'
+      ? config.applyResult({ state: stateRef.current, decoded, exportsValue, intentKey, helpers })
+      : null;
+
+    setState((current) => {
+      const nextIntents = { ...current.intents };
+      if (intentKey && nextIntents[intentKey]) {
+        nextIntents[intentKey] = {
+          ...nextIntents[intentKey],
+          exports: mergeJson(nextIntents[intentKey].exports || {}, exportsValue)
+        };
+      }
+
+      const next = {
+        ...current,
+        intents: nextIntents,
+        exportsMap: mergeJson(current.exportsMap || {}, exportsValue),
+        lastResult: { intentKey, at: new Date().toISOString(), exports: exportsValue },
+        result: { decoded, exports: exportsValue, intentKey },
+        dirty: true
+      };
+      if (resultOutput?.custom) next.custom = pruneUndefined(mergeJson(current.custom || {}, resultOutput.custom));
+      if (resultOutput?.options) next.options = mergeJson(current.options || {}, resultOutput.options);
+      if (resultOutput?.exportsMap) next.exportsMap = mergeJson(next.exportsMap || {}, resultOutput.exportsMap);
+      if (resultOutput?.statusMessage !== undefined) next.statusMessage = resultOutput.statusMessage;
+      if (resultOutput?.actionStatusLevel !== undefined) next.actionStatusLevel = resultOutput.actionStatusLevel;
+      persistState(next);
+      return next;
+    });
+
+    return { decoded, exportsValue, intentKey };
+  }
+
+  async function openIntent(intentKey = stateRef.current.currentIntentKey) {
+    const url = await buildIntentUrl(intentKey);
+    const snapshot = stateRef.current;
+
+    if (!snapshot.options.usePopup) {
+      window.location.href = url;
+      return url;
+    }
+
+    window.open(url, 'gc_udc_popup', snapshot.options.popupFeatures || 'noopener,width=480,height=720');
+    return url;
+  }
+
+  async function runFieldAction(field) {
+    const action = typeof field.action === 'string' ? config.actions?.[field.action] : field.action;
+    if (typeof action !== 'function') return;
+    await action({
+      state: stateRef.current,
+      field,
+      api: {
+        setStatus,
+        markDirty,
+        patchOptions,
+        patchCustom,
+        resetIntent,
+        resetStorage,
+        upgradeStoredState,
+        applyWalletResult,
+        openIntent,
+        buildIntentUrl,
+        buildIntentQr
+      }
+    });
+  }
+
+  function writeField(field, raw, phase) {
+    try {
+      const value = parseFieldRaw(raw, field.kind);
+      if (field.path) setPathValue(field.path, value);
+      else markDirty();
+      if (typeof field[phase] === 'function') field[phase]({ state: stateRef.current, field, value });
+    } catch (error) {
+      setStatus(error.message || 'Invalid field value', 'err');
+    }
+  }
+
+  useEffect(() => {
+    document.body.dataset.theme = state.options.theme || 'dark';
+    document.title = config.title;
+  }, [state.options.theme]);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    let nextIntentKey = null;
+    let nextUseOptions = null;
+
+    if (url.searchParams.has('options')) {
+      nextUseOptions = url.searchParams.get('options') === 'true';
+      removeSearchParams(['options']);
+    }
+
+    if (url.searchParams.has('intent')) {
+      const key = url.searchParams.get('intent');
+      if (config.defaultIntents?.[key]) nextIntentKey = key;
+    }
+
+    if (nextUseOptions === null && !nextIntentKey) return;
+
+    setState((current) => ({
+      ...current,
+      options: nextUseOptions === null ? current.options : { ...current.options, useOptions: nextUseOptions },
+      currentIntentKey: nextIntentKey || current.currentIntentKey
+    }));
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      const url = new URL(window.location.href);
+      const resultValue = url.searchParams.get('result');
+      if (!resultValue) return;
+
+      try {
+        await applyWalletResult(resultValue);
+        if (cancelled) return;
+        window.history.replaceState({}, document.title, `${url.pathname}${url.hash}`);
+
+        try {
+          window.close();
+          setTimeout(() => {
+            try {
+              window.open('', '_self');
+              window.close();
+            } catch (_error) {}
+          }, 30);
+        } catch (_error) {}
+      } catch (error) {
+        if (!cancelled) setStatus(error.message || 'Failed to decode wallet response', 'err');
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!state.result) return;
+    setState((current) => current.result ? { ...current, result: null } : current);
+  }, [state.result]);
+
+  useEffect(() => {
+    if (state.migrationNeeded) return;
+    persistState(state);
+  }, [state.options, state.custom, state.exportsMap, state.lastResult, state.currentIntentKey, state.intents, state.migrationNeeded]);
+
+  useEffect(() => {
+    function handleStorage(event) {
+      if (event.key !== config.id) return;
+      setState((current) => ({
+        ...normalizeStoredState(config, loadStoredJson(config.id) || {}),
+        showOptions: current.showOptions,
+        statusMessage: current.statusMessage,
+        actionStatusLevel: current.actionStatusLevel,
+        dirty: current.dirty
+      }));
+    }
+
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
+  const actionSignature = useMemo(() => JSON.stringify({
+    key: state.currentIntentKey,
+    options: {
+      network: state.options.network,
+      encoding: state.options.encoding,
+      walletBaseUrl: state.options.walletBaseUrl,
+      refAddress: state.options.refAddress,
+      disableNetworkRouter: state.options.disableNetworkRouter
+    },
+    code: state.intents[state.currentIntentKey]?.code || {},
+    custom: state.custom
+  }), [
+    state.currentIntentKey,
+    state.options.network,
+    state.options.encoding,
+    state.options.walletBaseUrl,
+    state.options.refAddress,
+    state.options.disableNetworkRouter,
+    state.intents,
+    state.custom
+  ]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (viewModel.noIntentConfigured) {
+      setActionData({ url: '', qr: '', qrError: '' });
+      return undefined;
+    }
+
+    (async () => {
+      try {
+        const url = await buildIntentUrl();
+        if (cancelled) return;
+
+        let qr = '';
+        let qrError = '';
+        try {
+          qr = asText(await buildIntentQr(undefined, 'png') || '');
+          if (!qr) qrError = 'QR code returned an empty payload.';
+        } catch (error) {
+          qr = '';
+          qrError = error.message || 'Failed to render QR code';
+        }
+
+        setActionData({ url, qr, qrError });
+        if (!stateRef.current.dirty) {
+          setState((current) => current.statusMessage || current.actionStatusLevel ? { ...current, statusMessage: '', actionStatusLevel: '' } : current);
+        }
+      } catch (error) {
+        if (cancelled) return;
+        setActionData({ url: '', qr: '', qrError: '' });
+        setStatus(error.message || 'Failed to build URL', 'err');
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [actionSignature, viewModel.noIntentConfigured]);
+
+  useEffect(() => {
+    window.app = {
+      id: config.id,
+      version: config.version,
+      title: config.title,
+      description: config.description,
+      config,
+      defaultIntents: config.defaultIntents,
+      intents: state.intents,
+      options: state.options,
+      custom: state.custom,
+      exports: state.exportsMap,
+      lastResult: state.lastResult,
+      status: state.statusMessage,
+      ui: {
+        currentIntentKey: state.currentIntentKey,
+        showOptions: state.showOptions,
+        ...viewModel,
+        actionUrl: actionData.url,
+        actionQr: actionData.qr,
+        actionQrError: actionData.qrError
+      },
+      openIntent: ({ intentKey } = {}) => openIntent(intentKey || stateRef.current.currentIntentKey),
+      buildIntentUrl: ({ intentKey } = {}) => buildIntentUrl(intentKey || stateRef.current.currentIntentKey),
+      buildIntentQr: ({ intentKey, qrResultType } = {}) => buildIntentQr(intentKey || stateRef.current.currentIntentKey, qrResultType || 'png'),
+      resetIntent: ({ intentKey } = {}) => resetIntent(intentKey || stateRef.current.currentIntentKey),
+      resetStorage
+    };
+  }, [state, viewModel, actionData]);
+
+  const connectedWalletView = typeof config.getConnectedWalletWidgetState === 'function'
+    ? (config.getConnectedWalletWidgetState({ state, viewModel }) || {})
+    : {
+        wallet: state.custom.connectedWallet,
+        connectIntentKey: config.defaultIntents && config.defaultIntents.connect ? 'connect' : '',
+        enabled: !!state.options.useConnect
+      };
+  const connectWidgetEnabled = !!connectedWalletView.enabled && typeof ConnectedWallet === 'function';
+  const connectedWallet = connectedWalletView.wallet;
+  const connectIntentKey = connectedWalletView.connectIntentKey;
+  const debugState = useMemo(() => JSON.stringify({
+    version: config.version,
+    options: state.options,
+    ui: { currentIntentKey: state.currentIntentKey, showOptions: state.showOptions, showDebug: viewModel.showDebug },
+    custom: state.custom,
+    exports: state.exportsMap,
+    lastResult: state.lastResult,
+    intents: state.intents
+  }, null, 2), [state, viewModel.showDebug]);
+
+  return (
+    <div className="app">
+      <section className="hero">
+        <div className="hero__top">
+          <div>
+            <h1 id="app-title">{config.title}</h1>
+            <p id="app-copy">{config.description}</p>
+          </div>
+          <div className="hero__tools">
+            <div id="connect-widget" className={`connect-widget${connectWidgetEnabled ? '' : ' hidden'}`}>
+              {ConnectedWallet && (
+                <ConnectedWallet
+                  enabled={connectWidgetEnabled}
+                  wallet={connectedWallet}
+                  onConnect={connectIntentKey ? () => openIntent(connectIntentKey) : undefined}
+                  onDisconnect={disconnectWallet}
+                />
+              )}
+            </div>
+            <select
+              id="theme-select"
+              className={`theme-select${viewModel.showThemeSelect ? '' : ' hidden'}`}
+              aria-label="Theme"
+              value={state.options.theme}
+              onChange={(event) => patchOptions({ theme: event.target.value })}
+            >
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <main id="layout" className={`layout${viewModel.showDebug ? '' : ' layout--single'}`}>
+        <section id="migration-banner" className={`card stack card--warn${state.migrationNeeded ? '' : ' hidden'}`}>
+          <div>
+            <h2 className="section-title">Stored data update available</h2>
+            <p className="section-copy status--warn">This dapp version differs from previously saved local data.</p>
+            <div className="hint status--warn">Updating will replace saved local state with the latest app version. Previously entered information may be lost.</div>
+          </div>
+          <div className="actions">
+            <button id="migration-update-btn" className="btn btn--ghost" type="button" onClick={upgradeStoredState}>Update</button>
+          </div>
+        </section>
+
+        <section className="card stack">
+          <div className="form-grid">
+            <div id="intent-select-field" className={`field${viewModel.showIntentSelect ? '' : ' hidden'}`}>
+              <label htmlFor="intent-select">Action</label>
+              <select
+                id="intent-select"
+                className="control"
+                value={state.currentIntentKey}
+                onChange={(event) => setState((current) => ({ ...current, currentIntentKey: event.target.value, dirty: true }))}
+              >
+                {Object.entries(config.defaultIntents || {}).map(([key, intent]) => (
+                  <option key={key} value={key}>{intent.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div id="intent-meta" className="intent-meta">
+            <h2 className="intent-meta__title">{viewModel.intentSummary.title}</h2>
+            <p className="intent-meta__lead">{viewModel.intentSummary.lead}</p>
+            {viewModel.intentSummary.sub && <div className="intent-meta__sub">{viewModel.intentSummary.sub}</div>}
+            {viewModel.showDebug && !viewModel.noIntentConfigured && <div className="intent-meta__sub">Intent key: <code>{state.currentIntentKey}</code></div>}
+          </div>
+
+          <section id="args-section" className={`stack${viewModel.hasArgs ? '' : ' hidden'}`}>
+            <div><h2 className="section-title">Details</h2></div>
+            <div id="args-form" className="form-grid">
+              <FieldList fields={viewModel.currentFields} formId="intent-args" onWrite={writeField} onAction={runFieldAction} />
+            </div>
+          </section>
+
+          <div id="actions-section" className={`actions${viewModel.actionSectionDisabled ? ' hidden' : ''}`}>
+            <button id="reset-args-btn" className={`btn btn--ghost${viewModel.hasArgs ? '' : ' hidden'}`} type="button" onClick={() => resetIntent()}>Reset</button>
+            <button id="toggle-options-btn" className={`btn btn--ghost${viewModel.showOptionsToggle ? '' : ' hidden'}`} type="button" onClick={() => setState((current) => ({ ...current, showOptions: !current.showOptions }))}>Options</button>
+            <button
+              id="copy-url-btn"
+              className={`btn btn--ghost${viewModel.showAction && !viewModel.actionSectionDisabled ? '' : ' hidden'}`}
+              type="button"
+              disabled={viewModel.actionDisabled || !actionData.url}
+              onClick={async () => {
+                if (viewModel.actionDisabled || !actionData.url) return;
+                try {
+                  await navigator.clipboard.writeText(actionData.url || '');
+                  setStatus('Intent URL copied.', 'success');
+                } catch (error) {
+                  setStatus(error.message || 'Failed to copy URL', 'err');
+                }
+              }}
+            >
+              Copy link
+            </button>
+            <a
+              id="qr-link"
+              className={`btn btn--ghost${viewModel.showAction && viewModel.showQR && !viewModel.actionSectionDisabled && !viewModel.actionDisabled && actionData.url ? '' : ' hidden'}`}
+              href={actionData.qr || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-disabled={viewModel.actionDisabled || !actionData.url || !actionData.qr ? 'true' : 'false'}
+              onClick={(event) => {
+                if (viewModel.actionDisabled || !actionData.url) {
+                  event.preventDefault();
+                  return;
+                }
+                if (!actionData.qr) {
+                  event.preventDefault();
+                  setStatus(actionData.qrError || 'QR code could not be rendered.', actionData.qrError ? 'err' : 'warn');
+                  return;
+                }
+                setStatus('QR code opened.', 'success');
+                if (state.options.usePopup) {
+                  const popup = window.open(actionData.qr, 'gc_udc_qr', state.options.popupFeatures || 'noopener,width=480,height=720');
+                  if (popup) event.preventDefault();
+                }
+              }}
+            >
+              Open QR
+            </a>
+            <a
+              id="connect-link"
+              className={`btn btn--primary${viewModel.showAction && !viewModel.actionSectionDisabled ? '' : ' hidden'}`}
+              href={actionData.url || '#'}
+              target={state.options.usePopup ? 'gc_udc_popup' : '_self'}
+              rel="noopener noreferrer"
+              aria-disabled={viewModel.actionDisabled || !actionData.url ? 'true' : 'false'}
+              onClick={(event) => {
+                if (viewModel.actionDisabled || !actionData.url) {
+                  event.preventDefault();
+                  return;
+                }
+                if (state.options.usePopup) {
+                  event.preventDefault();
+                  openIntent();
+                }
+              }}
+            >
+              {actionData.url ? 'Continue' : 'Loading...'}
+            </a>
+          </div>
+
+          <StatusLine id="action-status" message={viewModel.actionSectionDisabled ? '' : state.statusMessage} level={state.actionStatusLevel || (actionData.url ? 'ok' : 'err')} />
+          <StatusLine id="field-status" message={viewModel.actionSectionDisabled ? '' : viewModel.fieldStatus} level={viewModel.fieldStatusLevel === 'warn' ? 'warn' : viewModel.fieldStatusLevel || ''} />
+
+          <div id="options-panel" className={`stack${state.showOptions && state.options.useOptions ? '' : ' hidden'}`}>
+            <div>
+              <h2 className="section-title">Options</h2>
+              <p className="section-copy">Advanced settings.</p>
+            </div>
+            <div id="options-form" className="form-grid">
+              <FieldList fields={viewModel.optionFields} formId="app-options" onWrite={writeField} onAction={runFieldAction} />
+            </div>
+            <div className="actions">
+              <button id="reset-storage-btn" className="btn btn--ghost" type="button" onClick={resetStorage}>Reset storage</button>
+            </div>
+          </div>
+        </section>
+
+        <aside id="debug-panel" className={`card stack${viewModel.showDebug ? '' : ' hidden'}`}>
+          <div><h2 className="section-title">Persistent app state</h2></div>
+          <div className="mini-grid">
+            <div className="stat"><span>Selected intent</span><strong id="state-intent-key">{state.currentIntentKey || '-'}</strong></div>
+            <div className="stat"><span>Network</span><strong id="state-network">{state.options.network || '-'}</strong></div>
+            <div className="stat"><span>Stored intents</span><strong id="state-intent-count">{String(Object.keys(state.intents).length)}</strong></div>
+            <div className="stat"><span>Last result</span><strong id="state-last-result">{state.lastResult?.at ? new Date(state.lastResult.at).toLocaleString() : 'None'}</strong></div>
+          </div>
+          <div>
+            <h3 className="section-title">Merged exports</h3>
+            <pre id="exports-box" className={`console${Object.keys(state.exportsMap || {}).length ? '' : ' empty'}`}>
+              {Object.keys(state.exportsMap || {}).length ? JSON.stringify(state.exportsMap, null, 2) : 'No wallet exports captured yet.'}
+            </pre>
+          </div>
+          <div>
+            <h3 className="section-title">Debug state</h3>
+            <pre id="state-box" className="console">{debugState}</pre>
+          </div>
+        </aside>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,335 +1,1412 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <title>A GameChanger Dapp</title>
-    <meta name="title" content="A GameChanger Dapp">
-    <meta name="description" content="Click Connect to stablish wallet connection">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b17">
+<title>Cardano Dapp: undefined</title>
+<meta name="title" content="Cardano Dapp: undefined">
+<meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#6d41a1" />
+<!-- Use for local deployments or for testing the library: -->
+<!-- <script src="res/browser.min.js"></script> -->
+<!-- Use library from CDN: -->
+<script src="https://cdn.jsdelivr.net/npm/@gamechanger-finance/gc@latest/dist/browser.min.js"></script>
 
-    <!-- 
-        Official GameChanger Wallet library and CLI: https://www.npmjs.com/package/@gamechanger-finance/gc
-    -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@gamechanger-finance/gc@1.0/dist/browser.min.js"></script>  
+<style>
+:root{--bg:#070b16;--bg2:#0d1330;--fg:#eef7ff;--muted:#93a6d8;--line:#2ad4ff33;--cyan:#29d7ff;--blue:#4a7cff;--violet:#8a5cff;--magenta:#ff4fd8;--panel:#0c1226cc;--panel2:#0a1022f2;--glass:#09112480;--glass2:#ffffffa8;--info:#63d5ff;--success:#7dffb0;--warn:#ffbd59;--danger:#ff7198;--mute:#93a6d8;--infoLine:#63d5ff55;--successLine:#7dffb055;--warnLine:#ffbd5955;--dangerLine:#ff719855;--muteLine:#93a6d855;--infoBg:#63d5ff14;--successBg:#7dffb014;--warnBg:#ffbd5914;--dangerBg:#ff719814;--muteBg:#93a6d814;--r:18px;--grad:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet),var(--magenta));--glow:0 0 0 1px #2ad4ff2e,0 0 18px #4a7cff1f,0 0 34px #8a5cff14}
+[data-theme="light"]{--bg:#eef6ff;--bg2:#dae7ff;--fg:#091126;--muted:#55648c;--line:#4a7cff2b;--panel:#ffffffcf;--panel2:#ffffffef;--info:#0a7db8;--success:#137a43;--warn:#9a6100;--danger:#b4234e;--mute:#55648c;--infoLine:#0a7db833;--successLine:#137a4333;--warnLine:#9a610033;--dangerLine:#b4234e33;--muteLine:#55648c33;--infoBg:#0a7db812;--successBg:#137a4312;--warnBg:#9a610012;--dangerBg:#b4234e12;--muteBg:#55648c12;--glow:0 0 0 1px #4a7cff26,0 14px 34px #4a7cff18}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}body{font:14px/1.45 Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--fg);background:radial-gradient(circle at 14% 12%,#29d7ff20,transparent 24%),radial-gradient(circle at 84% 18%,#8a5cff22,transparent 24%),radial-gradient(circle at 70% 82%,#ff4fd81a,transparent 22%),linear-gradient(180deg,var(--bg),var(--bg2))}a,button,input,textarea,select{font:inherit}button,input,textarea,select{outline:none}pre{margin:0;white-space:pre-wrap;word-break:break-word}
+.app{margin:0 auto;padding:5%}.hero,.card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel2));border-radius:var(--r);box-shadow:var(--glow);backdrop-filter:blur(10px)}.hero{padding:20px;margin-bottom:16px}
+.hero__top,.row,.actions,.connect-widget,.connected-wallet,.checkbox{display:flex;gap:10px;align-items:center}.hero__top,.row{align-items:flex-start;justify-content:space-between}.hero__tools{display:flex;gap:10px;align-items:center;justify-content:flex-end;min-width:170px;flex-wrap:wrap}
+.hero h1,.intent-meta__title{margin:0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.hero h1{font-size:30px;line-height:1.08}.hero p,.muted,.section-copy,.hint,.connected-wallet__sub,.connected-wallet__address{color:var(--muted)}.hero p{margin:8px 0 0;max-width:70ch}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}.layout--single{grid-template-columns:minmax(0,1fr)}.card{padding:18px}.stack{display:grid;gap:14px}.form-grid,.mini-grid{display:grid;gap:12px;align-items:start}.form-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.control,.field input,.field textarea,.field select,.theme-select,.connected-wallet{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:var(--glass);color:var(--fg)}.theme-select{width:auto}.connected-wallet{gap:12px;box-shadow:var(--glow);min-width:0;max-width:100%;padding:10px 12px}.connected-wallet__meta{display:grid;gap:2px;min-width:0}.connected-wallet__name,.connected-wallet__sub,.connected-wallet__address{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:240px}.connected-wallet__name{font-weight:700}
+[data-theme="light"] .control,[data-theme="light"] .field input,[data-theme="light"] .field textarea,[data-theme="light"] .field select,[data-theme="light"] .theme-select,[data-theme="light"] .connected-wallet{background:var(--glass2)}
+.field{display:grid;gap:6px;align-content:start;align-self:start;min-width:0}.field--full{grid-column:1/-1}.field label,.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.field textarea{min-height:108px;resize:vertical}.checkbox{min-height:46px;padding:0 2px}.checkbox input{width:16px;height:16px}
+.section-title{margin:0;font-size:15px;color:var(--cyan)}.intent-meta{padding:18px;border-radius:16px;border:1px solid #4a7cff40;background:linear-gradient(135deg,var(--bg),var(--bg2));box-shadow:inset 0 0 0 1px #ffffff05,0 0 24px #8a5cff14}.intent-meta__title{font-size:24px;line-height:1.12}.intent-meta__lead{margin:0;font-size:15px}.intent-meta__sub{margin-top:8px;font-size:13px;color:var(--muted)}
+.card--info,.tone--info{border-color:var(--infoLine);background:linear-gradient(180deg,var(--infoBg),var(--panel2))}.card--success,.tone--success{border-color:var(--successLine);background:linear-gradient(180deg,var(--successBg),var(--panel2))}.card--warn,.tone--warn{border-color:var(--warnLine);background:linear-gradient(180deg,var(--warnBg),var(--panel2))}.card--danger,.tone--danger{border-color:var(--dangerLine);background:linear-gradient(180deg,var(--dangerBg),var(--panel2))}.card--mute,.tone--mute{border-color:var(--muteLine);background:linear-gradient(180deg,var(--muteBg),var(--panel2))}
+.btn{display:inline-flex;align-items:center;justify-content:center;appearance:none;border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--fg);background:#ffffff06;cursor:pointer;transition:.15s transform,.15s opacity;min-width:0}.btn:hover{transform:translateY(-1px)}.btn--ghost{background:#ffffff03}.btn--primary{width:100%;justify-content:center;text-align:center;border-color:transparent;background:var(--grad);color:#fff;font-weight:700}.btn[disabled],.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.actions{flex-wrap:wrap;align-items:stretch}#connect-link{display:flex;flex:0 0 100%;width:100%;max-width:100%;order:99}#connect-wallet-btn{width:auto}
+.console{min-height:120px;max-height:420px;overflow:auto;padding:14px;border-radius:14px;border:1px solid var(--line);background:#060c1fcb;color:#cbf7ff}.empty{color:var(--muted)}.status{font-size:12px;min-height:18px}.status--info{color:var(--info)}.status--ok,.status--success{color:var(--success)}.status--warn{color:var(--warn)}.status--err,.status--danger{color:var(--danger)}.status--mute{color:var(--mute)}.hidden{display:none!important}.stat{padding:12px;border-radius:14px;border:1px solid var(--line);background:#ffffff04}.stat strong{display:block;margin-top:4px;font-size:15px;color:var(--cyan)}
+.app-footer{padding:16px 0 0;text-align:center}.app-footer__links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0}.app-footer__links{font-size:12px}.app-footer__library{margin-top:10px;font-size:13px;font-weight:600}.app-footer a{color:var(--blue)}.app-footer a:hover{text-decoration:underline}.app-footer__text{color:var(--muted)}
+@media (max-width:940px){.layout,.layout--single,.mini-grid{grid-template-columns:1fr}.hero__top{flex-direction:column}.hero__tools{width:100%;justify-content:flex-end}.connected-wallet{width:100%}.connected-wallet__name,.connected-wallet__sub,.connected-wallet__address{max-width:none}.btn--primary,#connect-link{width:100%;max-width:100%}}
+</style>
+</head>
+<body data-theme="dark">
+<div class="app">
+<section class="hero">
+<div class="hero__top">
+<div>
+<h1 id="app-title">Cardano Dapp: undefined</h1>
+<p id="app-copy">Review the action details below and continue in GameChanger Wallet.</p>
+</div>
+<div class="hero__tools">
+<div id="connect-widget" class="connect-widget hidden">
+<button id="connect-wallet-btn" class="btn btn--primary hidden" type="button">Connect wallet</button>
+<div id="connected-wallet" class="connected-wallet hidden">
+<div class="connected-wallet__meta">
+<div id="connected-wallet-name" class="connected-wallet__name"></div>
+<div id="connected-wallet-sub" class="connected-wallet__sub"></div>
+<div id="connected-wallet-address" class="connected-wallet__address"></div>
+</div>
+<button id="disconnect-wallet-btn" class="btn btn--ghost" type="button">Disconnect</button>
+</div>
+</div>
+<select id="theme-select" class="theme-select" aria-label="Theme"><option value="dark">Dark</option><option value="light">Light</option></select>
+</div>
+</div>
+</section>
 
-    <script>
-        let handleSetEncoder;
+<main id="layout" class="layout layout--single">
+<section id="migration-banner" class="card stack card--warn hidden">
+<div><h2 class="section-title">Stored data update available</h2><p class="section-copy status--warn">This dapp version differs from previously saved local data.</p><div class="hint status--warn">Updating will replace saved local state with the latest app version. Previously entered information may be lost.</div></div>
+<div class="actions"><button id="migration-update-btn" class="btn btn--ghost" type="button">Update</button></div>
+</section>
 
-        ///////////////////////////
-        ////    Dapp Logic    /////
-        ///////////////////////////
-        async function main() {
-            // import gc from '@gamechanger-finance/gc'
-            const {gc} = window;
+<section class="card stack">
+<div class="form-grid">
+<div id="intent-select-field" class="field">
+<label for="intent-select">Action</label>
+<select id="intent-select" class="control"></select>
+</div>
+</div>
 
-            //Dapp <--> GameChanger Wallet connections can use URL redirections
-            let   actionUrl   = "";
-            let   resultObj   = undefined;
-            let   error       = ""; 
-            let   useCodec    = 'gzip';
-            let   codecs      = ['gzip','base64url','json-url-lzma']
+<div id="intent-meta" class="intent-meta"></div>
 
-            //GameChanger Wallet is pure Web3, zero backend procesing of user data. 
-            //Dapp connector links are fully processed on end-user browsers.
-            const gcApiUrl    = "https://wallet.gamechanger.finance/api/2/run/";
-            const currentUrl  = window.location.href;
+<section id="args-section" class="stack hidden">
+<div><h2 class="section-title">Details</h2></div>
+<div id="args-form" class="form-grid"></div>
+</section>
 
-            //UI components:
-            const connectForm = document.getElementById("dappConnectorBox");
-            const actionBtn   = document.getElementById("connectBtn");
-            const errorsBox   = document.getElementById("errorBox");
-            const resultsBox  = document.getElementById("resultBox");
-            const encodersBox = document.getElementById("encodersBox");
+<div id="actions-section" class="actions">
+<button id="reset-args-btn" class="btn btn--ghost" type="button">Reset</button>
+<button id="toggle-options-btn" class="btn btn--ghost" type="button">Options</button>
+<button id="copy-url-btn" class="btn btn--ghost" type="button">Copy link</button>
+<a id="qr-link" class="btn btn--ghost" href="#" target="_blank" rel="noopener noreferrer">Open QR</a>
+<a id="connect-link" class="btn btn--primary" href="#" target="gc_udc_popup" rel="noopener noreferrer">Continue</a>
+</div>
+<div id="action-status" class="status"></div>
+<div id="field-status" class="status"></div>
 
-            //here we register a function to change connection encoding/compression
-            handleSetEncoder=(codec)=>{
-                useCodec=codec;
-                updateUI();
-                return false;
+<div id="options-panel" class="stack hidden">
+<div><h2 class="section-title">Options</h2><p class="section-copy">Advanced settings.</p></div>
+<div id="options-form" class="form-grid"></div>
+<div class="actions"><button id="reset-storage-btn" class="btn btn--ghost" type="button">Reset storage</button></div>
+</div>
+</section>
+
+<aside id="debug-panel" class="card stack hidden">
+<div><h2 class="section-title">Persistent app state</h2></div>
+<div class="mini-grid">
+<div class="stat"><span>Selected intent</span><strong id="state-intent-key">-</strong></div>
+<div class="stat"><span>Network</span><strong id="state-network">-</strong></div>
+<div class="stat"><span>Stored intents</span><strong id="state-intent-count">-</strong></div>
+<div class="stat"><span>Last result</span><strong id="state-last-result">-</strong></div>
+</div>
+<div><h3 class="section-title">Merged exports</h3><pre id="exports-box" class="console empty">No wallet exports captured yet.</pre></div>
+<div><h3 class="section-title">Debug state</h3><pre id="state-box" class="console"></pre></div>
+</aside>
+</main>
+
+<footer class="app-footer" aria-label="Relevant links">
+<h6 class="app-footer__links">
+<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/GameChangerOk">X</a>
+<a target="_blank" rel="noopener noreferrer" href="https://discord.gg/vpbfyRaDKG">Discord</a>
+<a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@gamechanger.finance">Youtube</a>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/GameChangerFinance/gamechanger.wallet/">Github</a>
+<a target="_blank" rel="noopener noreferrer" href="https://gamechanger.finance">Website</a>
+</h6>
+<div class="app-footer__library">
+<span class="app-footer__text"> HTML - Auto-generated using  </span>
+<a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/@gamechanger-finance/gc">Playground IDE</a>
+<span class="app-footer__text"> - 2026</span>
+</div>
+</footer>
+</div>
+
+<script>
+
+  'use strict';
+
+  /********************************************************************
+   * DEVELOPER CUSTOMIZATION SECTION
+   *
+   * Update this section to change defaults, UI fields, intent code,
+   * custom UI components, or business rules.
+   *
+   * Most integrations should only need edits here.
+   ********************************************************************/
+
+  /**
+   * Global reactive app state.
+   *
+   * This is the single source of truth for the dapp runtime.
+   *
+   * Common customization examples:
+   * - replace or add intents in app.defaultIntents
+   * - override generated fields in app.config.ui.currentFields
+   * - extend business rules inside app.config.logic(app)
+   * - add custom UI behavior inside app.config.render(app)
+   * - add custom event bindings inside app.config.bind(app)
+   */
+  const app = createApp({
+    config: {
+      id: 'gc-dapp-cardano-dapp',
+      version: '0.0.1',
+      title: 'Cardano Dapp: undefined',
+      description: 'Review the action details below and continue in GameChanger Wallet.',
+
+      /**
+       * Default runtime values before persisted overrides are applied.
+       *
+       * These values also act as the reset source later on.
+       *
+       * When app version changes, the runtime can request a manual local
+       * state migration before replacing previously persisted data.
+       */
+      defaults: {
+        options: {
+          network: "mainnet",
+          encoding: "gzip",
+          walletBaseUrl: "",
+          refAddress: undefined,
+          disableNetworkRouter: false,
+          usePopup: true,
+          useDebug: false,
+          useConnect: true,
+          useIntentSelect: true,
+          useThemeSelect: true,
+          useAction: true,
+          useQR: true,
+          useActionSection: true,
+          useOptions: true,
+          theme: 'dark',
+          popupFeatures: 'noopener,width=480,height=720',
+          manualResponse: ''
+        },
+        custom: {}
+      },
+
+      /**
+       * Field schema used to customize automatically generated controls.
+       *
+       * Useful examples:
+       * - change an inferred text field into a select field
+       * - add a custom button that reads or updates app state
+       * - add custom HTML blocks that consume app state
+       * - add a manual wallet response decoder for air-gapped QR flows
+       * - enable or disable URL, QR, and action-section controls by option flag
+       */
+      ui: {
+        currentFields: {
+          options: {
+            network: { kind: 'select', options: [{ value: 'mainnet', label: 'Mainnet' }, { value: 'preprod', label: 'Preprod' }] },
+            encoding: { kind: 'select', options: [{ value: 'gzip', label: 'gzip' }, { value: 'base64url', label: 'base64url' }] },
+            theme: { kind: 'select', options: [{ value: 'dark', label: 'Dark' }, { value: 'light', label: 'Light' }] },
+            usePopup: { kind: 'checkbox' },
+            useDebug: { kind: 'checkbox' },
+            useConnect: { kind: 'checkbox' },
+            useIntentSelect: { kind: 'checkbox' },
+            useThemeSelect: { kind: 'checkbox' },
+            useAction: { kind: 'checkbox' },
+            useQR: { kind: 'checkbox' },
+            useActionSection: { kind: 'checkbox' },
+            useOptions: { kind: 'checkbox' },
+            disableNetworkRouter: { kind: 'checkbox' },
+            popupFeatures: { kind: 'text' },
+            walletBaseUrl: { kind: 'text' },
+            refAddress: { kind: 'text' },
+            manualResponse: { kind: 'textarea', full: true, label: 'Manual wallet response' },
+            manualResponseSubmit: {
+              kind: 'button',
+              label: 'Decode wallet response',
+              action: async ({ app }) => {
+                const responseUrl = text(app.options.manualResponse).trim();
+                if (!responseUrl) {
+                  app.status = 'Paste a wallet URL response before decoding.';
+                  app.ui.actionStatusLevel = 'warn';
+                  return;
+                }
+                try {
+                  const url = new URL(responseUrl);
+                  const resultValue = url.searchParams.get('result');
+                  if (!resultValue || !window.gc?.encodings?.msg?.decoder) return false;
+                  await decodeWalletResultValue({ app, resultValue });
+                  app.options.manualResponse = '';
+                  app.status = 'Wallet response decoded successfully.';
+                  app.ui.actionStatusLevel = 'success';
+                  app.dirty = true;
+                } catch (error) {
+                  app.status = error.message || 'Failed to decode wallet response';
+                  app.ui.actionStatusLevel = 'err';
+                }
+              }
             }
-            async function updateUI() {
-                error="";
-                actionUrl="";
+          },
+          intents: {
+            // Intent UI customization examples:
+            // payment: {
+            //   title: { kind: 'text' },
+            //   message: { kind: 'textarea', full: true },
+            //   'return-URL': { kind: 'text' },
+            //   'to-address': { kind: 'text', full: true },
+            //   'policy-id': { kind: 'text' },
+            //   'asset-name': { kind: 'text' },
+            //   decimals: { kind: 'number' },
+            //   quantity: { kind: 'number' }
+            // },
+            // stakeDelegation: {
+            //   ticker: { kind: 'text' },
+            //   'stake-pool': { kind: 'text', full: true }
+            // }
+          }
+        }
+      },
 
-                //GameChanger Wallet support arbitrary data returning from script execution, encoded in a redirect URL
-                //Head to http://localhost:3000/doc/api/v2/api.html#returnURLPattern to learn ways how to customize this URL
-
-                //lets try to capture the execution results by decoding/decompressing the return URL
-                try{                
-                    const resultRaw   = (new URL(currentUrl)).searchParams.get("result");
-                    if(resultRaw){
-                        resultObj     = await gc.encodings.msg.decoder(resultRaw);
-                        //avoids current url carrying latest results all the time 
-                        history.pushState({}, '', window.location.pathname);
-                    }
-                }catch(err){
-                    error+=`Failed to decode results.${err?.message||"unknown error"}`;
-                    console.error(err);
-                }
-
-
-                //This is the GCScript code, packed into a URL, that GameChanger Wallet will execute
-                //lets try to generate this connection URL by encoding/compressing the gcscript code
-                try{                
-                    //GCScript (dapp connector code) will be packed inside this URL    
-                    actionUrl   = await buildActionUrl(); 
-                }catch(err){
-                    error+=`Failed to build URL.${err?.message||"unknown error"}`
-                    console.error(err);
-                }
-                
-                //Now lets render the current application state
-                if(error){
-                    errorBox.innerHTML="Error: " + error;
-                }
-                if(actionUrl){
-                    errorBox.innerHTML="";
-                    actionBtn.href=actionUrl;
-                    actionBtn.innerHTML = `Connect`;
-                }else{
-                    actionBtn.href      = '#';
-                    actionBtn.innerHTML = "Loading...";
-                }
-
-                if(resultObj){
-                    resultsBox.innerHTML=JSON.stringify(resultObj,null,2);
-                }
-                encodersBox.innerHTML="Encoding: "
-                encodersBox.innerHTML+=codecs
-                    .map(codec=>`<a href="#" class="a-unstyled" ${codec===useCodec?'style="font-weight:bold;""':''} onclick="return handleSetEncoder('${codec}')">${codec}</a>`)
-                    .join(" | ");               
-
+      /**
+       * Read-only intent templates.
+       *
+       * Change only app.defaultIntents and the runtime will rebuild the live
+       * editable intents automatically.
+       */
+      defaultIntents: {
+        // Uncomment the connect intent below to enable the most common wallet connection UX out of the box.
+        // Intent-based Cardano dapps do not require a mandatory wallet connection to work.
+        // connect: {
+        //   "label": "Connect wallet",
+        //   "description": "Share public wallet information with this dapp.",
+        //   "code": {
+        //     "type": "script",
+        //     "title": "Connect with this dapp?",
+        //     "description": "About to share public wallet information with the dapp.",
+        //     "exportAs": "connect",
+        //     "run": {
+        //       "name": {
+        //         "type": "getName"
+        //       },
+        //       "address": {
+        //         "type": "getCurrentAddress"
+        //       },
+        //       "addressInfo": {
+        //         "type": "macro",
+        //         "run": "{getAddressInfo(get('cache.address'))}"
+        //       }
+        //     }
+        //   }
+        // },
+        userIntent: {
+          "label": "Cardano Dapp",
+          "description": "Review the action details below and continue in GameChanger Wallet.",
+          "code": {
+            "type": "script",
+            "exportAs": "wallet",
+            "run": {
+              "name": {
+                "type": "getName"
+              },
+              "address": {
+                "type": "getCurrentAddress"
+              },
+              "spendPubKey": {
+                "type": "getSpendingPublicKey"
+              },
+              "stakePubKey": {
+                "type": "getStakingPublicKey"
+              },
+              "extra1": {
+                "type": "data",
+                "value": "data of 0"
+              },
+              "extra2": {
+                "type": "data",
+                "value": "data of 1"
+              },
+              "extra3": {
+                "type": "data",
+                "value": "data of 2"
+              }
             }
+          }
+        }
+      },
 
-            async function buildActionUrl(args){
-                //This is the GCScript code that GameChanger Wallet will execute
-                //JSON code that will be encoded/compressed inside 'actionUrl'
-                var gcscript = {
-  "type": "script",
-  "exportAs": "wallet",
-  "run": {
-    "name": {
-      "type": "getName"
-    },
-    "address": {
-      "type": "getCurrentAddress"
-    },
-    "spendPubKey": {
-      "type": "getSpendingPublicKey"
-    },
-    "stakePubKey": {
-      "type": "getStakingPublicKey"
-    },
-    "extra1": {
-      "type": "data",
-      "value": "data of 0"
-    },
-    "extra2": {
-      "type": "data",
-      "value": "data of 1"
-    },
-    "extra3": {
-      "type": "data",
-      "value": "data of 2"
+      /**
+       * Example connected wallet normalizer.
+       *
+       * This helper is intentionally placed in the customization section
+       * because wallet identity shape can vary between flows.
+       *
+       * Return undefined when no connected wallet should be shown.
+       */
+      normalizeConnectedWallet({ decoded, value }) {
+        const wallet = value || {};
+        const resultWallet = decoded?.wallet || decoded?.result?.wallet || decoded?.data?.wallet || {};
+        const connect = wallet?.connect || wallet || {};
+        const next = {
+          name: text(connect.name || resultWallet.name || decoded?.walletName),
+          type: text(connect.type || connect.walletType || resultWallet.type || decoded?.walletType || decoded?.type),
+          brand: text(connect.brand || connect.walletBrand || connect.subType || resultWallet.brand || resultWallet.subType || decoded?.walletBrand || decoded?.subType || decoded?.brand),
+          address: text(connect.address || resultWallet.address || decoded?.address)
+        };
+        return next.name || next.type || next.brand || next.address ? next : undefined;
+      },
+
+      /**
+       * Example transient wallet result handler.
+       *
+       * This hook runs exactly when a wallet result is captured from the URL
+       * or manually decoded from the options panel.
+       *
+       * Any intent result carrying a `connect` export can hydrate the
+       * connected wallet widget, regardless of which intent produced it.
+       * This keeps widget hydration based on transient results instead of
+       * using merged exports as a permanent source of truth.
+       */
+      onResultCaptured({ app, result }) {
+        const connectExport = result?.exports?.connect;
+        if (!connectExport) return;
+
+        app.custom.connectedWallet = app.config.normalizeConnectedWallet({
+          decoded: result?.decoded,
+          value: connectExport
+        });
+      },
+
+      /**
+       * Example intent resolver.
+       *
+       * This is where example intent-specific transformations live.
+       * Replace, remove, or extend this function to fit the current set of
+       * intents. The runtime will stay generic.
+       */
+      getIntentCode({ app, intentKey, code }) {
+        const next = clone(code);
+        const args = next.args || {};
+
+        if (next.exportAs || next.return) next.returnURLPattern = buildReturnUrl();
+
+        if (intentKey === 'connect' && app.custom.connectedWallet?.name) {
+          next.title = `Reconnect ${app.custom.connectedWallet.name}?`;
+        }
+          
+        // Examples:
+        // if (intentKey === 'payment') {
+        //   const connectedName = app.exports?.connect?.name || app.custom.connectedWallet?.name || '';
+        //   if (app.options.network === 'preprod' && args['return-URL'] === 'https://cardanoscan.io/transaction/{txHash}') {
+        //     args['return-URL'] = 'https://preprod.cardanoscan.io/transaction/{txHash}';
+        //   }
+        //   if (connectedName && !text(args.message).includes(connectedName)) {
+        //     args.message = `${text(args.message)}\nRequested by ${connectedName}`.trim();
+        //   }
+        //   next.title = `Payment request: ${args.title || 'Untitled'}`;
+        //   if (next.run?.build) next.run.build.title = `✅ ${args.title || 'Payment request'}`;
+        // }
+
+        // if (intentKey === 'stakeDelegation') {
+        //   next.title = `Delegating to ${args.ticker || 'a stake pool'}`;
+        //   if (next.run?.build) next.run.build.title = `✅ Delegate to ${args.ticker || 'a stake pool'}`;
+        // }
+
+        return next;
+      },
+
+      /**
+       * Custom business rules.
+       *
+       * This is the main place to derive UI state, summaries, custom state,
+       * and use-case-specific behavior from the current runtime values.
+       */
+      logic(app) {
+        const key = app.ui.currentIntentKey;
+        const intent = app.intents[key] || {};
+        const code = intent.code || {};
+        const currentResult = app.result;
+
+        /* Consume transient wallet return data only once. */
+        if (currentResult) {
+          app.result = undefined;
+        }
+
+        app.ui.showDebug = !!app.options.useDebug;
+        app.ui.showIntentSelect = !!app.options.useIntentSelect && Object.keys(app.defaultIntents).length > 1;
+        app.ui.showThemeSelect = !!app.options.useThemeSelect;
+        app.ui.showAction = !!app.options.useAction;
+        app.ui.showQR = !!app.options.useQR;
+        app.ui.showOptionsToggle = !!app.options.useOptions;
+        app.ui.actionSectionDisabled = !app.options.useActionSection;
+        app.ui.hasArgs = !!Object.keys(code.args || {}).length;
+
+        app.ui.currentFields = inferFieldsFromJSON({
+          json: code.args || {},
+          fieldConfig: app.config.ui.currentFields?.intents?.[key] || {},
+          pathPrefix: ['intents', key, 'code', 'args']
+        });
+
+        app.ui.optionFields = inferFieldsFromJSON({
+          json: app.options,
+          fieldConfig: app.config.ui.currentFields?.options || {},
+          pathPrefix: ['options']
+        });
+
+        /**
+         * Example field validation rules.
+         *
+         * Use this area to validate current intent arguments and expose
+         * warnings or errors to the user. Blocking validations disable the
+         * main action button and the copy-link button.
+         */
+        const validations = [];
+        // if (key === 'payment') {
+        //   const quantity = Number(code.args?.quantity || 0);
+        //   const address = text(code.args?.['to-address']);
+        //   const returnUrl = text(code.args?.['return-URL']);
+        //   if (!(quantity > 0)) validations.push({ level: 'err', blocking: true, message: 'Quantity must be greater than 0.' });
+        //   if (address) {
+        //     const expectedPrefix = app.options.network === 'mainnet' ? 'addr1' : 'addr_test1';
+        //     if (!address.startsWith(expectedPrefix)) validations.push({ level: 'err', blocking: true, message: `Destination address must start with "${expectedPrefix}" for ${app.options.network}.` });
+        //   }
+        //   if (returnUrl && !/^https:\/\//.test(returnUrl)) validations.push({ level: 'warn', blocking: false, message: 'Return URL should usually use HTTPS.' });
+        // }
+        // if (key === 'stakeDelegation') {
+        //   const ticker = text(code.args?.ticker);
+        //   if (ticker && ticker.length < 3) validations.push({ level: 'warn', blocking: false, message: 'Ticker is usually at least 3 characters.' });
+        // }
+        app.ui.fieldStatus = validations[0]?.message || '';
+        app.ui.fieldStatusLevel = validations[0]?.level || '';
+        app.ui.actionDisabled = !!validations.find((item) => item.blocking) || !!app.ui.migrationNeeded;
+
+        app.ui.intentSummary = {
+          title: code.title || app.defaultIntents[key]?.label || 'Continue',
+          lead: code.description || app.defaultIntents[key]?.description || '',
+          sub: ''
+        };
+      },
+
+      /**
+       * Example custom UI renderer.
+       *
+       * The connected wallet widget is intentionally implemented here as a
+       * customization example.
+       *
+       * When enabled, the widget renders whenever a connected wallet exists
+       * or a default `connect` intent is available:
+       * - connected wallet present: show wallet chip even without a default
+       *   `connect` intent
+       * - no connected wallet: only show the connect button when a default
+       *   `connect` intent is available
+       */
+      render(app) {
+        const widget = $('connect-widget');
+        const connectButton = $('connect-wallet-btn');
+        const connectedBox = $('connected-wallet');
+        if (!widget || !connectButton || !connectedBox) return;
+
+        const wallet = app.custom.connectedWallet;
+        const hasConnectIntent = !!app.defaultIntents.connect;
+        const enabled = !!app.options.useConnect && (!!wallet || hasConnectIntent);
+
+        widget.classList.toggle('hidden', !enabled);
+        connectButton.classList.toggle('hidden', !enabled || !!wallet || !hasConnectIntent);
+        connectedBox.classList.toggle('hidden', !enabled || !wallet);
+
+        if (!wallet) return;
+
+        $('connected-wallet-name').textContent = wallet.name || 'Connected wallet';
+        $('connected-wallet-sub').textContent = [wallet.type, wallet.brand].filter(Boolean).join(' · ');
+        $('connected-wallet-address').textContent = truncate({ value: wallet.address, start: 12, end: 10 });
+      },
+
+      /**
+       * Example custom event bindings.
+       *
+       * Add custom buttons or interactive widgets here when they are not part
+       * of the generic autogenerated runtime.
+       */
+      bind(app) {
+        const connectButton = $('connect-wallet-btn');
+        const disconnectButton = $('disconnect-wallet-btn');
+        if (connectButton) {
+          connectButton.onclick = app.defaultIntents.connect
+            ? () => app.openIntent({ intentKey: 'connect' })
+            : null;
+        }
+        if (disconnectButton) {
+          disconnectButton.onclick = () => {
+            app.custom.connectedWallet = undefined;
+            app.dirty = true;
+          };
+        }
+      }
+    }
+  });
+
+  /**
+   * Exposes the global reactive app proxy for direct customization.
+   */
+  window.app = app;
+
+  /********************************************************************
+   * ADVANCED AUTOGENERATED RUNTIME
+   *
+   * The helpers below power persistence, rendering, encode/decode,
+   * and lifecycle behavior. They are shared runtime infrastructure and
+   * usually should not be altered in generated apps.
+   ********************************************************************/
+
+  /** Returns a DOM element by its id. */
+  const $ = (id) => document.getElementById(id);
+  /** Converts any value into a safe string. */
+  const text = (value) => String(value ?? '');
+  /** Converts a label into a stable kebab-case fragment for DOM ids. */
+  const kebab = (value) => text(value).replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+  /** Converts a state key into a human-friendly label. */
+  const labelize = (value) => text(value).replace(/[-_]+/g, ' ').replace(/\b\w/g, (match) => match.toUpperCase());
+  /** Checks whether a value is a plain object-like structure. */
+  function isObject(value) {
+    return !!value && typeof value === 'object' && !Array.isArray(value);
+  }
+
+  /** Deep-clones JSON-safe values used by the runtime state. */
+  function clone(value) {
+    return JSON.parse(JSON.stringify(value));
+  }
+
+  /** Deep-merges plain objects while replacing arrays and primitives. */
+  function merge({ base, extra }) {
+    if (!isObject(base)) return clone(extra);
+    const output = clone(base);
+    for (const [key, value] of Object.entries(extra || {})) {
+      output[key] = Array.isArray(value)
+        ? clone(value)
+        : isObject(value) && isObject(output[key])
+          ? merge({ base: output[key], extra: value })
+          : clone(value);
+    }
+    return output;
+  }
+
+  /** Writes a value into a nested path inside an object graph. */
+  function setPath({ root, path, value }) {
+    let ref = root;
+    path.slice(0, -1).forEach((key) => { ref = ref[key]; });
+    ref[path[path.length - 1]] = value;
+  }
+
+  /** Rewrites only the origin/base of a generated wallet URL. */
+  function replaceBaseUrl({ url, urlBase }) {
+    const base = new URL(urlBase);
+    const current = new URL(url, base);
+    const next = new URL(base.href);
+    next.pathname = current.pathname;
+    next.search = current.search;
+    next.hash = current.hash;
+    return next.toString();
+  }
+
+  /** Truncates any text value for compact UI display. */
+  function truncate({ value, start = 12, end = 10 }) {
+    const next = text(value);
+    return next.length > start + end ? `${next.slice(0, start)}…${next.slice(-end)}` : next;
+  }
+
+  /** Loads persisted app state from localStorage. */
+  function loadPersisted({ appId }) {
+    try {
+      return JSON.parse(localStorage.getItem(appId) || 'null');
+    } catch (_error) {
+      return null;
     }
   }
-};
-                //This is a patch to adapt the return URL of the script to the origin that is hosting this html file.
-                //so this way executed scripts data exports can be captured back on dapp side
-                gcscript.returnURLPattern  = window.location.origin +  window.location.pathname ;
-                const url=await gc.encode.url({
-                  input:JSON.stringify(gcscript),
-                  apiVersion:'2',
-                  network:'mainnet',
-                  encoding:useCodec,
-                });
-                return url;
-            }
 
-            updateUI();
+  /** Persists the current runtime state. */
+  function savePersisted({ app }) {
+    if (app.ui?.migrationNeeded) return;
+    localStorage.setItem(app.id, JSON.stringify({
+      version: app.version,
+      options: app.options,
+      custom: app.custom,
+      exports: app.exports,
+      lastResult: app.lastResult,
+      ui: { currentIntentKey: app.ui.currentIntentKey },
+      intents: Object.fromEntries(Object.keys(app.intents).map((key) => [key, {
+        code: app.intents[key].code,
+        exports: app.intents[key].exports || {}
+      }]))
+    }));
+  }
+
+  /** Removes persisted runtime state for the current dapp. */
+  function clearPersisted({ app }) {
+    localStorage.removeItem(app.id);
+  }
+
+  /** Reconciles live runtime intents from the current default intents and overrides. */
+  function reconcileIntents({ app, sourceIntents = {} }) {
+    const nextIntents = {};
+    Object.entries(app.defaultIntents || {}).forEach(([key, intent]) => {
+      const current = sourceIntents[key] || {};
+      const code = merge({ base: intent.code || {}, extra: current.code || {} });
+      code.args = merge({ base: intent.code?.args || {}, extra: current.code?.args || {} });
+      nextIntents[key] = {
+        label: intent.label,
+        description: intent.description,
+        code,
+        exports: current.exports || app.intents?.[key]?.exports || {}
+      };
+    });
+    app.intents = nextIntents;
+    if (!app.defaultIntents[app.ui.currentIntentKey]) {
+      app.ui.currentIntentKey = Object.keys(app.defaultIntents)[0] || '';
+    }
+  }
+
+  /** Wraps an object graph in a reactive proxy that schedules updates on writes. */
+  function proxify({ value, onChange, cache }) {
+    if (!isObject(value) && !Array.isArray(value)) return value;
+    if (cache.has(value)) return cache.get(value);
+
+    const internalKeys = { muting: 1, queued: 1, rendering: 1, needsUpdate: 1 };
+    const proxy = new Proxy(value, {
+      get(target, key) {
+        const next = Reflect.get(target, key);
+        return (isObject(next) || Array.isArray(next)) ? proxify({ value: next, onChange, cache }) : next;
+      },
+      set(target, key, next) {
+        Reflect.set(target, key, next);
+        if (!internalKeys[key]) onChange();
+        return true;
+      },
+      deleteProperty(target, key) {
+        delete target[key];
+        if (!internalKeys[key]) onChange();
+        return true;
+      }
+    });
+
+    cache.set(value, proxy);
+    return proxy;
+  }
+
+  /** Schedules one update cycle for the app state proxy. */
+  function queueUpdate({ app }) {
+    if (!app || app.muting) return;
+    if (app.queued || app.rendering) {
+      app.needsUpdate = true;
+      return;
+    }
+    app.queued = true;
+    Promise.resolve().then(() => app.update());
+  }
+
+  /** Removes selected query parameters from the current browser history entry. */
+  function cleanLocationParams({ names }) {
+    const url = new URL(window.location.href);
+    let changed = false;
+    names.forEach((name) => {
+      if (url.searchParams.has(name)) {
+        url.searchParams.delete(name);
+        changed = true;
+      }
+    });
+    if (changed) window.history.replaceState({}, document.title, `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  /** Detects the default control kind for a value when no field override exists. */
+  function inferFieldKind({ value }) {
+    return Array.isArray(value) || isObject(value)
+      ? 'json'
+      : typeof value === 'boolean'
+        ? 'checkbox'
+        : typeof value === 'number'
+          ? 'number'
+          : 'text';
+  }
+
+  /** Parses raw DOM control data back into the right runtime value type. */
+  function parseFieldValue({ raw, kind }) {
+    if (kind === 'checkbox') return !!raw;
+    if (kind === 'number') {
+      const next = Number(raw);
+      return Number.isFinite(next) ? next : 0;
+    }
+    if (kind === 'json') {
+      const value = text(raw).trim();
+      return value ? JSON.parse(value) : {};
+    }
+    return text(raw);
+  }
+
+  /**
+   * Builds a raw field list from any JSON object and an optional field schema.
+   *
+   * This helper is implementation-agnostic and can be reused in other
+   * renderers such as React or server-side HTML builders.
+   */
+  function inferFieldsFromJSON({ json = {}, fieldConfig = {}, pathPrefix = [] }) {
+    const fields = [];
+
+    Object.entries(json || {}).forEach(([name, value]) => {
+      const config = fieldConfig[name] || {};
+      fields.push({
+        name,
+        label: config.label || labelize(name),
+        kind: config.kind || inferFieldKind({ value }),
+        options: config.options || [],
+        placeholder: config.placeholder || '',
+        full: config.full === true || config.kind === 'json' || config.kind === 'textarea' || config.kind === 'html',
+        value,
+        path: [...pathPrefix, name],
+        onInput: config.onInput,
+        onChange: config.onChange,
+        action: config.action,
+        html: config.html || ''
+      });
+    });
+
+    Object.entries(fieldConfig || {}).forEach(([name, config]) => {
+      if (json[name] !== undefined || config.hidden) return;
+      fields.push({
+        name,
+        label: config.label || labelize(name),
+        kind: config.kind || 'button',
+        options: config.options || [],
+        placeholder: config.placeholder || '',
+        full: config.full === true,
+        value: config.value,
+        path: config.path || null,
+        onInput: config.onInput,
+        onChange: config.onChange,
+        action: config.action,
+        html: config.html || ''
+      });
+    });
+
+    return fields;
+  }
+
+  /** Creates one DOM control from a resolved field definition. */
+  function createControl({ app, field, formId }) {
+    const write = ({ raw, eventName }) => {
+      try {
+        const next = parseFieldValue({ raw, kind: field.kind });
+        if (field.path) setPath({ root: app, path: field.path, value: next });
+        if (field[eventName]) field[eventName]({ app, field, value: next });
+        app.dirty = true;
+      } catch (error) {
+        app.status = error.message || 'Invalid field value';
+      }
+    };
+
+    if (field.kind === 'button') {
+      const node = document.createElement('button');
+      node.type = 'button';
+      node.className = 'btn btn--ghost';
+      node.textContent = field.label;
+      node.onclick = () => field.action && field.action({ app, field });
+      return node;
+    }
+
+    if (field.kind === 'html') {
+      const node = document.createElement('div');
+      node.className = 'control';
+      node.innerHTML = field.html;
+      return node;
+    }
+
+    if (field.kind === 'checkbox') {
+      const row = document.createElement('label');
+      row.className = 'checkbox';
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.id = `${formId}-${kebab(field.name)}-input`;
+      input.checked = !!field.value;
+      input.onchange = (event) => write({ raw: event.target.checked, eventName: 'onChange' });
+      row.appendChild(input);
+      const span = document.createElement('span');
+      span.textContent = 'Enabled';
+      row.appendChild(span);
+      return row;
+    }
+
+    const input = document.createElement(
+      field.kind === 'textarea' || field.kind === 'json'
+        ? 'textarea'
+        : field.kind === 'select'
+          ? 'select'
+          : 'input'
+    );
+
+    input.id = `${formId}-${kebab(field.name)}-input`;
+    input.className = 'control';
+    if (field.placeholder) input.placeholder = field.placeholder;
+
+    if (field.kind === 'select') {
+      field.options.forEach((item) => {
+        const option = document.createElement('option');
+        option.value = item.value;
+        option.textContent = item.label;
+        option.selected = item.value === field.value;
+        input.appendChild(option);
+      });
+      input.onchange = (event) => write({ raw: event.target.value, eventName: 'onChange' });
+      return input;
+    }
+
+    if (field.kind !== 'textarea' && field.kind !== 'json') input.type = field.kind === 'number' ? 'number' : 'text';
+    input.value = field.kind === 'json'
+      ? JSON.stringify(field.value || {}, null, 2)
+      : field.kind === 'number'
+        ? String(field.value ?? 0)
+        : text(field.value);
+
+    input.oninput = (event) => {
+      write({ raw: event.target.value, eventName: 'onInput' });
+    };
+    input.onchange = (event) => {
+      write({ raw: event.target.value, eventName: 'onChange' });
+    };
+
+    return input;
+  }
+
+  /** Renders a list of resolved fields into a target container. */
+  function renderFields({ app, root, fields, formId }) {
+    const active = document.activeElement;
+    const focus = active && root.contains(active) && active.id
+      ? { id: active.id, start: active.selectionStart, end: active.selectionEnd }
+      : null;
+
+    root.innerHTML = '';
+    fields.forEach((field) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'field' + (field.full ? ' field--full' : '');
+      wrapper.id = `${formId}-${kebab(field.name)}-field`;
+
+      if (!['button', 'html'].includes(field.kind)) {
+        const title = document.createElement('label');
+        title.setAttribute('for', `${formId}-${kebab(field.name)}-input`);
+        title.textContent = field.label;
+        wrapper.appendChild(title);
+      }
+
+      wrapper.appendChild(createControl({ app, field, formId }));
+      root.appendChild(wrapper);
+    });
+
+    if (focus) {
+      const node = document.getElementById(focus.id);
+      if (node) {
+        try {
+          node.focus();
+          if (typeof node.setSelectionRange === 'function') {
+            node.setSelectionRange(focus.start, focus.end ?? focus.start);
+          }
+        } catch (_error) {}
+      }
+    }
+  }
+
+  /** Builds the clean return URL pattern used by wallet intents. */
+  function buildReturnUrl() {
+    const url = new URL(window.location.href);
+    return `${url.origin}${url.pathname}${url.hash}`;
+  }
+
+  /** Encodes one intent into a GameChanger wallet URL. */
+  async function buildIntentUrl({ app, intentKey }) {
+    if (!window.gc?.encode?.url) throw new Error('GameChanger library not loaded');
+    const source = clone(app.intents[intentKey]?.code || {});
+    const code = typeof app.config.getIntentCode === 'function'
+      ? app.config.getIntentCode({ app, intentKey, code: source })
+      : source;
+
+    let url = await window.gc.encode.url({
+      input: JSON.stringify(code),
+      apiVersion: "2",
+      network: app.options.network,
+      encoding: app.options.encoding,
+      refAddress: app.options.refAddress || undefined,
+      disableNetworkRouter: !!app.options.disableNetworkRouter,
+      urlPattern: "https://wallet.gamechanger.finance/api/2/run/{gcscript}"
+    })
+      //.catch(err=>{console.error(err)});
+
+    if (app.options.walletBaseUrl) {
+      url = replaceBaseUrl({ url, urlBase: app.options.walletBaseUrl });
+    }
+
+    return url;
+  }
+
+  /** Encodes one intent into a QR payload. */
+  async function buildIntentQr({ app, intentKey, qrResultType }) {
+    const source = clone(app.intents[intentKey]?.code || {});
+    const code = typeof app.config.getIntentCode === 'function'
+      ? app.config.getIntentCode({ app, intentKey, code: source })
+      : source;
+
+    return await window.gc.encode.qr({
+      input: JSON.stringify(code),
+      apiVersion: "2",
+      network: app.options.network,
+      encoding: app.options.encoding,
+      refAddress: app.options.refAddress || undefined,
+      disableNetworkRouter: !!app.options.disableNetworkRouter,
+      urlPattern: "https://wallet.gamechanger.finance/api/2/run/{gcscript}",
+      qrResultType: qrResultType || 'png'
+    }).catch(err=>{console.error(err)});
+  }
+
+  /** Opens an encoded intent in a popup or in the current tab. */
+  async function openIntent({ app, intentKey }) {
+    const key = intentKey || app.ui.currentIntentKey;
+    const url = await buildIntentUrl({ app, intentKey: key });
+
+    if (!app.options.usePopup) {
+      window.location.href = url;
+      return url;
+    }
+
+    window.open(url, 'gc_udc_popup', app.options.popupFeatures || 'noopener,width=480,height=720');
+    return url;
+  }
+
+  /** Decodes one wallet response payload and merges its exports into app state. */
+  async function decodeWalletResultValue({ app, resultValue }) {
+    if (!resultValue || !window.gc?.encodings?.msg?.decoder) throw new Error('GameChanger decoder not loaded');
+
+    const decoded = await window.gc.encodings.msg.decoder(resultValue);
+    const exportsValue = decoded?.exports || {};
+    const key = Object.keys(exportsValue).find((name) => app.defaultIntents[name]) || app.ui.currentIntentKey || Object.keys(app.defaultIntents)[0] || '';
+
+    if (key && app.intents[key]) {
+      app.intents[key].exports = merge({ base: app.intents[key].exports || {}, extra: exportsValue });
+    }
+
+    app.exports = merge({ base: app.exports || {}, extra: exportsValue });
+    app.lastResult = { intentKey: key, at: new Date().toISOString(), exports: exportsValue };
+    app.result = { decoded, exports: exportsValue, intentKey: key };
+
+    if (typeof app.config.onResultCaptured === 'function') {
+      app.config.onResultCaptured({ app, result: app.result });
+    }
+
+    return { decoded, exportsValue, intentKey: key };
+  }
+
+  /** Decodes wallet return data from the URL, merges exports, and closes popups. */
+  async function captureWalletResult({ app }) {
+    const url = new URL(window.location.href);
+    const resultValue = url.searchParams.get('result');
+    if (!resultValue || !window.gc?.encodings?.msg?.decoder) return false;
+
+    await decodeWalletResultValue({ app, resultValue });
+
+    window.history.replaceState({}, document.title, `${url.pathname}${url.hash}`);
+    savePersisted({ app });
+
+    try {
+      window.close();
+      setTimeout(() => {
+        try {
+          window.open('', '_self');
+          window.close();
+        } catch (_error) {}
+      }, 30);
+    } catch (_error) {}
+
+    return true;
+  }
+
+  /** Applies persisted runtime data to the current app proxy. */
+  function applyPersisted({ app, data }) {
+    const next = data || {};
+
+    app.options = merge({ base: app.config.defaults.options || {}, extra: next.options || {} });
+    app.custom = merge({ base: app.config.defaults.custom || {}, extra: next.custom || {} });
+    app.exports = next.exports || {};
+    app.lastResult = next.lastResult || null;
+
+    reconcileIntents({ app, sourceIntents: next.intents || app.intents || {} });
+
+    const currentKey = next.ui?.currentIntentKey || app.ui.currentIntentKey;
+    app.ui.currentIntentKey = app.defaultIntents[currentKey] ? currentKey : Object.keys(app.defaultIntents)[0] || '';
+    app.ui.actionSignature = '';
+  }
+
+  /** Creates the global reactive app state proxy. */
+  function createApp({ config }) {
+    const stored = loadPersisted({ appId: config.id }) || {};
+    let app;
+
+    const state = {
+      id: config.id,
+      version: config.version,
+      title: config.title,
+      description: config.description,
+      config,
+      defaultIntents: config.defaultIntents,
+      intents: {},
+      options: merge({ base: config.defaults.options || {}, extra: stored.options || {} }),
+      custom: merge({ base: config.defaults.custom || {}, extra: stored.custom || {} }),
+      exports: stored.exports || {},
+      lastResult: stored.lastResult || null,
+      result: null,
+      status: '',
+      dirty: false,
+      queued: false,
+      rendering: false,
+      needsUpdate: false,
+      muting: false,
+      ui: {
+        currentIntentKey: stored.ui?.currentIntentKey || Object.keys(config.defaultIntents)[0] || '',
+        showOptions: false,
+        showDebug: false,
+        showIntentSelect: false,
+        showThemeSelect: false,
+        showAction: false,
+        showOptionsToggle: false,
+        hasArgs: false,
+        currentFields: [],
+        optionFields: [],
+        intentSummary: { title: '', lead: '', sub: '' },
+        actionUrl: '',
+        actionSignature: '',
+        fieldStatus: '',
+        fieldStatusLevel: '',
+        actionStatusLevel: '',
+        actionDisabled: false,
+        actionQr: '',
+        actionQrError: '',
+        actionSectionDisabled: false,
+        showQR: false,
+        migrationNeeded: !!(stored.version && stored.version !== config.version),
+        migrationSourceVersion: stored.version || '',
+        queryHandled: false,
+        resultHandled: false
+      }
+    };
+
+    app = proxify({ value: state, onChange: () => queueUpdate({ app }), cache: new WeakMap() });
+
+    Object.defineProperties(state, {
+      update: { value: () => update(app), enumerable: false },
+      openIntent: { value: ({ intentKey } = {}) => openIntent({ app, intentKey: intentKey || app.ui.currentIntentKey }), enumerable: false },
+      buildIntentUrl: { value: ({ intentKey } = {}) => buildIntentUrl({ app, intentKey: intentKey || app.ui.currentIntentKey }), enumerable: false },
+      buildIntentQr: { value: ({ intentKey, qrResultType } = {}) => buildIntentQr({ app, intentKey: intentKey || app.ui.currentIntentKey, qrResultType }), enumerable: false },
+      resetIntent: {
+        value: ({ intentKey } = {}) => {
+          const key = intentKey || app.ui.currentIntentKey;
+          if (!app.defaultIntents[key]) return;
+          const code = merge({ base: app.defaultIntents[key].code || {}, extra: {} });
+          code.args = merge({ base: app.defaultIntents[key].code?.args || {}, extra: {} });
+          app.intents[key] = { label: app.defaultIntents[key].label, description: app.defaultIntents[key].description, code, exports: app.intents[key]?.exports || {} };
+        },
+        enumerable: false
+      },
+      resetStorage: {
+        value: () => {
+          clearPersisted({ app });
+          applyPersisted({ app, data: {} });
+          app.ui.showOptions = false;
+        },
+        enumerable: false
+      }
+    });
+
+    applyPersisted({ app, data: stored });
+    return app;
+  }
+
+  /** Runs one business-logic pass before render(). */
+  async function logic(app) {
+    reconcileIntents({ app, sourceIntents: app.intents || {} });
+
+    if (!app.ui.queryHandled) {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('options')) {
+        app.options.useOptions = url.searchParams.get('options') === 'true';
+        cleanLocationParams({ names: ['options'] });
+      }
+      if (url.searchParams.has('intent')) {
+        const key = url.searchParams.get('intent');
+        if (app.defaultIntents[key]) app.ui.currentIntentKey = key;
+      }
+      app.ui.queryHandled = true;
+    }
+
+    if (!app.ui.resultHandled) {
+      app.ui.resultHandled = true;
+      await captureWalletResult({ app });
+    }
+
+    if (!app.defaultIntents[app.ui.currentIntentKey]) {
+      app.ui.currentIntentKey = Object.keys(app.defaultIntents)[0] || '';
+    }
+
+    app.config.logic(app);
+
+    const signature = JSON.stringify({
+      key: app.ui.currentIntentKey,
+      options: {
+        network: app.options.network,
+        encoding: app.options.encoding,
+        walletBaseUrl: app.options.walletBaseUrl,
+        refAddress: app.options.refAddress,
+        disableNetworkRouter: app.options.disableNetworkRouter
+      },
+      code: app.intents[app.ui.currentIntentKey]?.code || {},
+      custom: app.custom
+    });
+
+    if (signature !== app.ui.actionSignature) {
+      app.ui.actionSignature = signature;
+      try {
+        app.ui.actionUrl = await buildIntentUrl({ app, intentKey: app.ui.currentIntentKey });
+        app.ui.actionQrError = '';
+        try {
+          const qrValue = await buildIntentQr({ app, intentKey: app.ui.currentIntentKey, qrResultType: 'png' });
+          app.ui.actionQr = text(qrValue || '');
+          if (!app.ui.actionQr) app.ui.actionQrError = 'QR code returned an empty payload.';
+        } catch (error) {
+          app.ui.actionQr = '';
+          app.ui.actionQrError = error.message || 'Failed to render QR code';
         }
-
-
-        window.onload = function () {
-            main();
+        if (!app.dirty) {
+          app.status = '';
+          app.ui.actionStatusLevel = '';
         }
+      } catch (error) {
+        app.ui.actionUrl = '';
+        app.ui.actionQr = '';
+        app.ui.actionQrError = '';
+        app.status = error.message || 'Failed to build URL';
+        app.ui.actionStatusLevel = 'err';
+      }
+    }
+  }
 
-    </script>
+  /** Renders the current app state into the DOM. */
+  function render(app) {
+    document.body.dataset.theme = app.options.theme;
+    document.title = app.title;
+    $('app-title').textContent = app.title;
+    $('app-copy').textContent = app.description;
 
-    <style>
-        body {
-            background: fixed;
-            background-image: linear-gradient(to left top, #097790, #006c8a, #006184, #00567c, #0b4b74, #184878, #26457b, #35417c, #514187, #6f3e8d, #8d378e, #ab2b89);
-            font-family: Arial, Helvetica, sans-serif;
-            color: rgb(222, 222, 222);
-            text-align: center;
-            margin: 12px;
-        }
+    $('theme-select').classList.toggle('hidden', !app.ui.showThemeSelect);
+    $('theme-select').value = app.options.theme;
 
-        .box {
-            background: #332f39;
-            margin: auto;
-            padding: 30px;
-            border: thin solid black;
-            border-radius: 30px;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-              0 2px 2px rgba(0,0,0,0.2), 
-              0 4px 4px rgba(0,0,0,0.2), 
-              0 8px 8px rgba(0,0,0,0.2), 
-              0 16px 16px rgba(0,0,0,0.2), 
-              0 32px 32px rgba(0,0,0,0.15);
-            max-width: 600px;
-        }
+    $('intent-select-field').classList.toggle('hidden', !app.ui.showIntentSelect);
+    if (app.ui.showIntentSelect) {
+      const select = $('intent-select');
+      if (select.dataset.count !== String(Object.keys(app.defaultIntents).length)) {
+        select.innerHTML = '';
+        Object.keys(app.defaultIntents).forEach((key) => {
+          const option = document.createElement('option');
+          option.value = key;
+          option.textContent = app.defaultIntents[key].label;
+          select.appendChild(option);
+        });
+        select.dataset.count = String(Object.keys(app.defaultIntents).length);
+      }
+      select.value = app.ui.currentIntentKey;
+    }
 
-        a:link {
-            color: rgb(174, 47, 174);
-        }
+    $('intent-meta').innerHTML = [
+      `<h2 class="intent-meta__title">${app.ui.intentSummary.title}</h2>`,
+      `<p class="intent-meta__lead">${app.ui.intentSummary.lead}</p>`,
+      app.ui.intentSummary.sub ? `<div class="intent-meta__sub">${app.ui.intentSummary.sub}</div>` : '',
+      app.ui.showDebug ? `<div class="intent-meta__sub">Intent key: <code>${app.ui.currentIntentKey}</code></div>` : ''
+    ].join('');
 
-        /* visited link */
-        a:visited {
-            color: rgb(76, 122, 171);
-        }
+    $('args-section').classList.toggle('hidden', !app.ui.hasArgs);
+    $('reset-args-btn').classList.toggle('hidden', !app.ui.hasArgs);
+    if (app.ui.hasArgs) {
+      renderFields({ app, root: $('args-form'), fields: app.ui.currentFields, formId: 'intent-args' });
+    } else {
+      $('args-form').innerHTML = '';
+    }
 
-        /* mouse over link */
-        a:hover {
-            color: rgb(203, 64, 215);
-        }
+    $('options-panel').classList.toggle('hidden', !app.ui.showOptions);
+    if (app.ui.showOptions) {
+      renderFields({ app, root: $('options-form'), fields: app.ui.optionFields, formId: 'app-options' });
+    } else {
+      $('options-form').innerHTML = '';
+    }
 
-        /* selected link */
-        a:active {
-            color: blue;
-        }
-        #errorBox{
-            color: #f58000;
-            font-weight: bold;
-        }
-        .console {
-            overflow: auto;
-            text-align: left;
-            background-color: rgb(30, 30, 30);
-            color: green;
-            min-height: 200px;
-            padding: 8px;
-            border-radius: 5px;
-            box-shadow: inset 0 1px 1px rgba(0,0,0,0.11), 
-            inset 5px 2px 2px 2px rgba(0,0,0,0.2), 
-            inset 5px 4px 4px rgba(0,0,0,0.2), 
-            inset  0 8px 8px rgba(0,0,0,0.2), 
-            inset   0 16px 16px rgba(0,0,0,0.2), 
-            inset  0 32px 32px rgba(0,0,0,0.15);
-        }
+    $('toggle-options-btn').classList.toggle('hidden', !app.ui.showOptionsToggle);
+    $('actions-section').classList.toggle('hidden', !!app.ui.actionSectionDisabled);
+    $('action-status').classList.toggle('hidden', !!app.ui.actionSectionDisabled);
+    $('field-status').classList.toggle('hidden', !!app.ui.actionSectionDisabled);
+    $('copy-url-btn').classList.toggle('hidden', !app.ui.showAction || !!app.ui.actionSectionDisabled);
+    $('qr-link').classList.toggle('hidden', !app.ui.showAction || !app.ui.showQR || !!app.ui.actionSectionDisabled || app.ui.actionDisabled || !app.ui.actionUrl);
+    $('connect-link').classList.toggle('hidden', !app.ui.showAction || !!app.ui.actionSectionDisabled);
+    $('connect-link').href = app.ui.actionUrl || '#';
+    $('connect-link').textContent = app.ui.actionUrl ? 'Continue' : 'Loading...';
+    $('qr-link').href = app.ui.actionQr || '#';
+    $('copy-url-btn').disabled = !!app.ui.actionDisabled || !app.ui.actionUrl;
+    $('qr-link').setAttribute('aria-disabled', app.ui.actionDisabled || !app.ui.actionUrl || !app.ui.actionQr ? 'true' : 'false');
+    if (app.ui.actionDisabled || !app.ui.actionUrl) $('connect-link').setAttribute('aria-disabled', 'true');
+    else $('connect-link').removeAttribute('aria-disabled');
 
-        .flexrow {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px;
-        }
+    $('migration-banner').classList.toggle('hidden', !app.ui.migrationNeeded);
 
-        form{
-            width: 100%;
-        }
-        .a-unstyled, .a-unstyled > *{
-            color: inherit;
-            text-decoration: none; 
-        }
-        .a-unstyled:link { color: inherit;text-decoration: none; }
-        .a-unstyled:visited { color: inherit;text-decoration: none; }
-        .a-unstyled:hover { color: inherit;text-decoration: none; }
-        .a-unstyled:active { color: inherit;text-decoration: none; }
-        .button {
-            display:inline-block;
-            background-color: #181818;
-            color: rgb(222, 222, 222);
-            border: thin solid white;
-            width: 100%;
-            margin: 10px 0px;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-              0 2px 2px rgba(0,0,0,0.2), 
-              0 4px 4px rgba(0,0,0,0.2), 
-              0 8px 8px rgba(0,0,0,0.2), 
-              0 16px 16px rgba(0,0,0,0.11);
-            background-color:#734cad60;
-        }
-        .button:hover {
-            background:linear-gradient(to bottom, #734cad 5%, #644b8a 100%);
-            background-color:#734cad;
-        }
-        .button:active {
-            position:relative;
-            top:1px;
-        }
+    const debug = $('debug-panel');
+    const layout = $('layout');
+    debug.classList.toggle('hidden', !app.ui.showDebug);
+    layout.classList.toggle('layout--single', !app.ui.showDebug);
 
-        /* ===== Scrollbar CSS ===== */
-        /* Firefox */
-        * {
-            scrollbar-width: 10px!important;
-            scrollbar-color: gray rgb(30, 30, 30,0);
-        }
+    if (app.ui.showDebug) {
+      $('state-intent-key').textContent = app.ui.currentIntentKey || '-';
+      $('state-network').textContent = app.options.network || '-';
+      $('state-intent-count').textContent = String(Object.keys(app.intents).length);
+      $('state-last-result').textContent = app.lastResult?.at ? new Date(app.lastResult.at).toLocaleString() : 'None';
+      $('exports-box').textContent = Object.keys(app.exports || {}).length ? JSON.stringify(app.exports, null, 2) : 'No wallet exports captured yet.';
+      $('exports-box').classList.toggle('empty', !Object.keys(app.exports || {}).length);
+      $('state-box').textContent = JSON.stringify({
+        version: app.version,
+        options: app.options,
+        ui: { currentIntentKey: app.ui.currentIntentKey, showOptions: app.ui.showOptions, showDebug: app.ui.showDebug },
+        custom: app.custom,
+        exports: app.exports,
+        lastResult: app.lastResult,
+        intents: app.intents
+      }, null, 2);
+    }
 
-        /* Chrome, Edge, and Safari */
-        *::-webkit-scrollbar {
-            width: 10px!important;
-        }
+    $('action-status').textContent = app.status || '';
+    $('action-status').className = 'status' + (app.status ? ` status--${app.ui.actionStatusLevel || (app.ui.actionUrl ? 'ok' : 'err')}` : '');
+    $('field-status').textContent = app.ui.fieldStatus || '';
+    $('field-status').className = 'status' + (app.ui.fieldStatus ? (app.ui.fieldStatusLevel === 'warn' ? ' status--warn' : ' status--err') : '');
 
-        *::-webkit-scrollbar-track {
-            background: rgb(30, 30, 30,0);
-        }
+    if (typeof app.config.render === 'function') app.config.render(app);
+  }
 
-        *::-webkit-scrollbar-thumb {
-            background-color: gray;
-            border-radius: 10px;
-            border: 3px solid rgb(30, 30, 30,0);
-        }
-    </style>
-</head>
+  /** Attaches DOM event handlers to the current app instance. */
+  function bind(app) {
+    $('theme-select').onchange = (event) => {
+      app.options.theme = event.target.value;
+      app.dirty = true;
+    };
 
-<body>
-    <div class="box">
-        <h1>A GameChanger Dapp</h1>
-        <p><i>Click Connect to stablish wallet connection</i></p>
-         
-            <div id="dappConnectorBox">
-                <a href="#" id="connectBtn" class="button a-unstyled">
-                    Loading....
-                </a>
-            </div>
+    $('intent-select').onchange = (event) => {
+      app.ui.currentIntentKey = event.target.value;
+      app.dirty = true;
+    };
 
-        <pre id="errorBox"  class="errors"></pre>
-        <pre id="resultBox" class="console">Results will appear here after you connect with the wallet</pre>
+    $('toggle-options-btn').onclick = () => {
+      app.ui.showOptions = !app.ui.showOptions;
+    };
 
-        <pre id="encodersBox"></pre>
+    $('copy-url-btn').onclick = async () => {
+      if (app.ui.actionDisabled || !app.ui.actionUrl) return;
+      try {
+        await navigator.clipboard.writeText(app.ui.actionUrl || '');
+        app.status = 'Intent URL copied.';
+        app.ui.actionStatusLevel = 'success';
+      } catch (error) {
+        app.status = error.message || 'Failed to copy URL';
+        app.ui.actionStatusLevel = 'err';
+      }
+    };
 
-        <h6><i> 💪 Lets turn Cardano into the Blockchain of the Web! 💪 </i> </h6>
+    $('qr-link').onclick = (event) => {
+      if (app.ui.actionDisabled || !app.ui.actionUrl) {
+        event.preventDefault();
+        return;
+      }
+      if (!app.ui.actionQr) {
+        event.preventDefault();
+        app.status = app.ui.actionQrError || 'QR code could not be rendered.';
+        app.ui.actionStatusLevel = app.ui.actionQrError ? 'err' : 'warn';
+        return;
+      }
+      app.status = 'QR code opened.';
+      app.ui.actionStatusLevel = 'success';
+      if (app.options.usePopup) {
+        const popup = window.open(app.ui.actionQr, 'gc_udc_qr', app.options.popupFeatures || 'noopener,width=480,height=720');
+        if (popup) event.preventDefault();
+      }
+    };
 
-        <i>Generated with ❤️ 
-        <br/>
-        by <b>
-            <a target="_blank" rel="noopener noreferrer" href="https://wallet.gamechanger.finance/playground"> GameChanger Wallet Playground IDE</a>
-        </b>
-        <br/>
-         2023 </i></p>
-        </p>
+    $('connect-link').onclick = (event) => {
+      if (app.ui.actionDisabled || !app.ui.actionUrl) {
+        event.preventDefault();
+        return;
+      }
+      if (app.options.usePopup) {
+        event.preventDefault();
+        app.openIntent({});
+      }
+    };
 
-        <h6 class="flexrow">
-            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/GameChangerOk">News on Twitter</a> 
-            <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/vpbfyRaDKG">Support on Discord</a> 
-            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@gamechanger.finance">Tutorials on Youtube</a>            
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/GameChangerFinance/gamechanger.wallet/">Docs and examples on Github</a>            
-            <a target="_blank" rel="noopener noreferrer" href="https://gamechanger.finance">Website</a>
-        </h6>
-    </div>
+    $('reset-args-btn').onclick = () => {
+      app.resetIntent({});
+      app.dirty = true;
+    };
+
+    $('reset-storage-btn').onclick = () => {
+      app.resetStorage();
+      app.dirty = true;
+    };
+
+    $('migration-update-btn').onclick = () => {
+      clearPersisted({ app });
+      applyPersisted({ app, data: {} });
+      app.ui.migrationNeeded = false;
+      app.ui.migrationSourceVersion = '';
+      app.status = 'Stored data updated to the latest version. Previous local data was replaced.';
+      app.ui.actionStatusLevel = 'success';
+      app.dirty = true;
+    };
+
+    window.addEventListener('storage', (event) => {
+      if (event.key !== app.id) return;
+      app.muting = true;
+      applyPersisted({ app, data: loadPersisted({ appId: app.id }) || {} });
+      app.muting = false;
+      queueUpdate({ app });
+    });
+
+    if (typeof app.config.bind === 'function') app.config.bind(app);
+  }
+
+  /** Runs one full update cycle: logic, render, then persistence. */
+  async function update(app) {
+    if (app.rendering) return;
+    app.queued = false;
+    app.rendering = true;
+    app.muting = true;
+    app.needsUpdate = false;
+
+    await logic(app);
+    render(app);
+    savePersisted({ app });
+
+    app.muting = false;
+    app.rendering = false;
+    if (app.needsUpdate) {
+      app.needsUpdate = false;
+      queueUpdate({ app });
+    }
+  }
+
+  /** Boots the dapp, binds events, and runs the first update. */
+  async function main() {
+    bind(app);
+    await app.update();
+  }
+
+  main().catch((error) => {
+    const box = $('action-status');
+    if (box) {
+      box.textContent = error.message || 'Boot failed';
+      box.className = 'status status--err';
+    }
+    console.error(error);
+  });
+
+</script>
 </body>
-
 </html>
-
