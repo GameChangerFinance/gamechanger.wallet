@@ -34,10 +34,10 @@ These networks are supported:
 
 ## Documentation
 
-- [Transactions / Quick Start](docs/transactions/quick-start.md): A single page covering from making a Cardano transaction to code snippets to help integrate the wallet
+- [Transactions / Quick Start](docs/transactions/quick-start.md): A simple payment dapp
+- [90+ basic example dapps](examples/README.md)
 - [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more. **HTML version[ here](https://gamechangerfinance.github.io/gamechanger.wallet/)**
-- [GCScript Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation. Functions, types, and other definitions.
-- [JSON Schema](/release/README.md)
+- [Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation
 
 ## Ecosystem:
 
@@ -59,7 +59,7 @@ These networks are supported:
     - [HTML5 Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/htmlDapp.html)
     - [ReactJs Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/reactDapp.html)
     - [ExpressJs Backend](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/expressBackend.js)
-- **[70+ full open source example dapps](examples/README.md)**
+- **[90+ full open source example dapps](examples/README.md)**
     - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://wallet.gamechanger.finance/playground)
     - GCScript code
     - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero backends!
