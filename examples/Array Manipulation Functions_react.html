@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: "Cryptographic Macros"</title>
-<meta name="title" content="Cardano Dapp: "Cryptographic Macros"">
+<title>Cardano Dapp: "Array Manipulation Functions"</title>
+<meta name="title" content="Cardano Dapp: "Array Manipulation Functions"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -69,9 +69,9 @@ function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
 }
 
 const config = {
-  id: 'gc-dapp-cryptographic-macros',
+  id: 'gc-dapp-array-manipulation-functions',
   version: '0.0.1',
-  title: 'Cardano Dapp: "Cryptographic Macros"',
+  title: 'Cardano Dapp: "Array Manipulation Functions"',
   description: 'Review the action details below and continue in GameChanger Wallet.',
 
   defaults: {
@@ -165,37 +165,42 @@ const config = {
         //   }
         // },
         userIntent: {
-          "label": "Cryptographic Macros",
-          "description": "This demo will test and explore basic cryptographic macros",
+          "label": "Array Manipulation Functions",
+          "description": "This demo will test and explore basic array convertion and manipulation functions",
           "code": {
-            "title": "Cryptographic Macros",
-            "description": "This demo will test and explore basic cryptographic macros",
+            "title": "Array Manipulation Functions",
+            "description": "This demo will test and explore basic array convertion and manipulation functions",
             "type": "script",
-            "exportAs": "CryptoMacrosDemo",
+            "exportAs": "ArraysDemo",
             "run": {
-              "payload": {
-                "type": "data",
-                "value": "GC Wallet"
-              },
-              "sha512": {
+              "useCases": {
                 "type": "macro",
-                "run": "{sha512(get('cache.payload'))}"
-              },
-              "sha256": {
-                "type": "macro",
-                "run": "{sha256(get('cache.payload'))}"
-              },
-              "sha1": {
-                "type": "macro",
-                "run": "{sha1(get('cache.payload'))}"
-              },
-              "md5": {
-                "type": "macro",
-                "run": "{md5(get('cache.payload'))}"
-              },
-              "uuid": {
-                "type": "macro",
-                "run": "{uuid()}"
+                "run": {
+                  "getArray(0)": "{getArray(0)}",
+                  "getArray('a')": "{getArray('a')}",
+                  "getArray(00)": "{getArray(00)}",
+                  "getArray('aa')": "{getArray('aa')}",
+                  "getArray(,,,0,,,,)": "{getArray(,,,0,,,,)}",
+                  "getArray(,,,'',,,,)": "{getArray(,,,'',,,,)}",
+                  "getArray()": "{getArray()}",
+                  "split(',', '')": "{split(',', '')}",
+                  "split(',', ',')": "{split(',', ',')}",
+                  "split(',', ',,')": "{split(',', ',,')}",
+                  "join(',', getArray())": "{join(',', getArray())}",
+                  "getArray(getArray(00))": "{getArray(getArray(00))}",
+                  "getArray(getArray('aa'))": "{getArray(getArray('aa'))}",
+                  "getArray(getArray(0),getArray(1,2),getArray(3,4,5),getArray(6,7,8))": "{getArray(getArray(0),getArray(1,2),getArray(3,4,5),getArray(6,7,8))}",
+                  "getArray(getArray('a'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))": "{getArray(getArray('a'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))}",
+                  "getArray(getArray('aa'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))": "{getArray(getArray('aa'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))}",
+                  "split(',','a,b,c,d,e')": "{split(',','a,b,c,d,e')}",
+                  "split(',',',,,a,b,c,d,e,,,')": "{split(',',',,,a,b,c,d,e,,,')}",
+                  "join(',',getArray('','','','a','b','c','d','e','','',''))": "{join(',',getArray('','','','a','b','c','d','e','','',''))}",
+                  "flatten()": "{flatten()}",
+                  "flatten(0)": "{flatten(0)}",
+                  "flatten(getArray())": "{flatten(getArray())}",
+                  "flatten(getArray(0))": "{flatten(getArray(0))}",
+                  "flatten([1,2],[3,[4,5]],6)": "{flatten(getArray(1,2),getArray(3,getArray(4,5)),6)}"
+                }
               }
             }
           }

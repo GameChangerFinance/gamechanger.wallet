@@ -1,8 +1,8 @@
 {
-  "title": "String Manipulation Macros",
-  "description": "This demo will test and explore basic string convertion and manipulation macros",
+  "title": "String Manipulation Functions",
+  "description": "This demo will test and explore basic string convertion and manipulation functions",
   "type": "script",
-  "exportAs": "StringMacrosDemo",
+  "exportAs": "StringDemo",
   "run": {
     "payload": {
       "type": "data",
@@ -51,6 +51,14 @@
     "join": {
       "type": "macro",
       "run": "{join('.',get('cache.split'))}"
+    },
+    "hexToBytes": {
+      "type": "macro",
+      "run": "{hexToByteArray(strToHex(get('cache.payload')))}"
+    },
+    "bytesToHex": {
+      "type": "macro",
+      "run": "{hexToStr(byteArrayToHex(get('cache.hexToBytes')))}"
     }
   }
 }

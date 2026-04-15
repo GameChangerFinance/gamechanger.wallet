@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: "Cryptographic Macros"</title>
-<meta name="title" content="Cardano Dapp: "Cryptographic Macros"">
+<title>Cardano Dapp: "Cryptographic Functions"</title>
+<meta name="title" content="Cardano Dapp: "Cryptographic Functions"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 
 <!-- Use for local deployments or for testing the library: -->
@@ -38,7 +38,7 @@
 <section class="hero">
 <div class="hero__top">
 <div>
-<h1 id="app-title">Cardano Dapp: "Cryptographic Macros"</h1>
+<h1 id="app-title">Cardano Dapp: "Cryptographic Functions"</h1>
 <p id="app-copy">Review the action details below and continue in GameChanger Wallet.</p>
 </div>
 <div class="hero__tools">
@@ -152,9 +152,9 @@
    */
   const app = createApp({
     config: {
-      id: 'gc-dapp-cryptographic-macros',
+      id: 'gc-dapp-cryptographic-functions',
       version: '0.0.1',
-      title: 'Cardano Dapp: "Cryptographic Macros"',
+      title: 'Cardano Dapp: "Cryptographic Functions"',
       description: 'Review the action details below and continue in GameChanger Wallet.',
 
       /**
@@ -296,33 +296,42 @@
         //   }
         // },
         userIntent: {
-          "label": "Cryptographic Macros",
-          "description": "This demo will test and explore basic cryptographic macros",
+          "label": "Cryptographic Functions",
+          "description": "This demo will test and explore cryptographic functions",
           "code": {
-            "title": "Cryptographic Macros",
-            "description": "This demo will test and explore basic cryptographic macros",
+            "title": "Cryptographic Functions",
+            "description": "This demo will test and explore cryptographic functions",
             "type": "script",
-            "exportAs": "CryptoMacrosDemo",
+            "args": {
+              "message-to-hash": "⚡ GC Wallet"
+            },
+            "exportAs": "CryptoDemo",
             "run": {
               "payload": {
-                "type": "data",
-                "value": "GC Wallet"
-              },
-              "sha512": {
                 "type": "macro",
-                "run": "{sha512(get('cache.payload'))}"
+                "run": "{get('args.message-to-hash')}"
               },
-              "sha256": {
+              "bytes": {
                 "type": "macro",
-                "run": "{sha256(get('cache.payload'))}"
+                "run": "{hexToByteArray(strToHex(get('cache.payload')))}"
               },
-              "sha1": {
+              "using_utf8": {
                 "type": "macro",
-                "run": "{sha1(get('cache.payload'))}"
+                "run": {
+                  "sha512": "{sha512(get('cache.payload'))}",
+                  "sha256": "{sha256(get('cache.payload'))}",
+                  "sha1": "{sha1(get('cache.payload'))}",
+                  "md5": "{md5(get('cache.payload'))}"
+                }
               },
-              "md5": {
+              "using_bytes": {
                 "type": "macro",
-                "run": "{md5(get('cache.payload'))}"
+                "run": {
+                  "sha512": "{sha512(get('cache.bytes'))}",
+                  "sha256": "{sha256(get('cache.bytes'))}",
+                  "sha1": "{sha1(get('cache.bytes'))}",
+                  "md5": "{md5(get('cache.bytes'))}"
+                }
               },
               "uuid": {
                 "type": "macro",

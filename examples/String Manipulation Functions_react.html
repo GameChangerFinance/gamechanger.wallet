@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: "Arithmetic Macros"</title>
-<meta name="title" content="Cardano Dapp: "Arithmetic Macros"">
+<title>Cardano Dapp: "String Manipulation Functions"</title>
+<meta name="title" content="Cardano Dapp: "String Manipulation Functions"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -69,9 +69,9 @@ function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
 }
 
 const config = {
-  id: 'gc-dapp-arithmetic-macros',
+  id: 'gc-dapp-string-manipulation-functions',
   version: '0.0.1',
-  title: 'Cardano Dapp: "Arithmetic Macros"',
+  title: 'Cardano Dapp: "String Manipulation Functions"',
   description: 'Review the action details below and continue in GameChanger Wallet.',
 
   defaults: {
@@ -165,76 +165,69 @@ const config = {
         //   }
         // },
         userIntent: {
-          "label": "Arithmetic Macros",
-          "description": "This demo will test and explore basic arithmetic macros",
+          "label": "String Manipulation Functions",
+          "description": "This demo will test and explore basic string convertion and manipulation functions",
           "code": {
-            "title": "Arithmetic Macros",
-            "description": "This demo will test and explore basic arithmetic macros",
+            "title": "String Manipulation Functions",
+            "description": "This demo will test and explore basic string convertion and manipulation functions",
             "type": "script",
-            "exportAs": "ArithmeticMacrosDemo",
+            "exportAs": "StringDemo",
             "run": {
-              "addBigNum": {
-                "type": "script",
-                "run": {
-                  "1_arg": {
-                    "type": "macro",
-                    "run": "{addBigNum('1')}"
-                  },
-                  "2_arg": {
-                    "type": "macro",
-                    "run": "{addBigNum('1','10')}"
-                  },
-                  "n_arg": {
-                    "type": "macro",
-                    "run": "{addBigNum('1','10','100','1000','10000','100000','1000000')}"
-                  },
-                  "n_arg_types": {
-                    "type": "macro",
-                    "run": "{addBigNum('1',10,'100',1000,'10000',100000,'1000000')}"
-                  }
-                }
+              "payload": {
+                "type": "data",
+                "value": "🖖 Space: the final frontier. These are the voyages of the starship Enterprise. Its continuing mission: to explore strange new worlds. To seek out new life and new civilizations. To boldly go where no one has gone before!"
               },
-              "mulBigNum": {
-                "type": "script",
-                "run": {
-                  "1_arg": {
-                    "type": "macro",
-                    "run": "{mulBigNum('2')}"
-                  },
-                  "2_arg": {
-                    "type": "macro",
-                    "run": "{mulBigNum('2','2')}"
-                  },
-                  "n_arg": {
-                    "type": "macro",
-                    "run": "{mulBigNum('2','2','2','2','2','2','2')}"
-                  },
-                  "n_arg_types": {
-                    "type": "macro",
-                    "run": "{mulBigNum('2',2,'2',2,'2',2,'2')}"
-                  }
-                }
+              "prefix": {
+                "type": "macro",
+                "run": "{truncate(get('cache.payload'),28,0,'')}"
               },
-              "subBigNum": {
-                "type": "script",
-                "run": {
-                  "1_arg": {
-                    "type": "macro",
-                    "run": "{subBigNum('1111111')}"
-                  },
-                  "2_arg": {
-                    "type": "macro",
-                    "run": "{subBigNum('1111111','1111111')}"
-                  },
-                  "n_arg": {
-                    "type": "macro",
-                    "run": "{subBigNum('1111111','1000000','100000','10000','1000','100','10','1')}"
-                  },
-                  "n_arg_types": {
-                    "type": "macro",
-                    "run": "{subBigNum('1111111',1000000,'100000',10000,'1000',100,'10',1)}"
-                  }
-                }
+              "suffix": {
+                "type": "macro",
+                "run": "{truncate(get('cache.payload'),0,42,'')}"
+              },
+              "sandwich": {
+                "type": "macro",
+                "run": "{truncate(get('cache.payload'),28,42,'...')}"
+              },
+              "toBase64": {
+                "type": "macro",
+                "run": "{strToBase64(get('cache.payload'))}"
+              },
+              "toHex": {
+                "type": "macro",
+                "run": "{strToHex(get('cache.payload'))}"
+              },
+              "toMetadataString": {
+                "type": "macro",
+                "run": "{strToMetadataStr(get('cache.payload'))}"
+              },
+              "fromBase64": {
+                "type": "macro",
+                "run": "{base64ToStr(get('cache.toBase64'))}"
+              },
+              "fromHex": {
+                "type": "macro",
+                "run": "{hexToStr(get('cache.toHex'))}"
+              },
+              "fromMetadataString": {
+                "type": "macro",
+                "run": "{metadataStrToStr(get('cache.toMetadataString'))}"
+              },
+              "split": {
+                "type": "macro",
+                "run": "{split('.',get('cache.payload'))}"
+              },
+              "join": {
+                "type": "macro",
+                "run": "{join('.',get('cache.split'))}"
+              },
+              "hexToBytes": {
+                "type": "macro",
+                "run": "{hexToByteArray(strToHex(get('cache.payload')))}"
+              },
+              "bytesToHex": {
+                "type": "macro",
+                "run": "{hexToStr(byteArrayToHex(get('cache.hexToBytes')))}"
               }
             }
           }
