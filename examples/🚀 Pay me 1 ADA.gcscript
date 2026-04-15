@@ -1,48 +1,71 @@
 {
   "type": "script",
   "title": "🚀 Pay me 1 ADA",
-  "description": "This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
-  "exportAs": "CoinSendingDemo",
-  "return": {
-    "mode": "last"
+  "description": "This is a payment request of 1 ADA",
+  "exportAs": "PaymentRequest",
+  "args": {
+    "title": "Payment request",
+    "message": "\nSent using \n\nhttps://gamechanger.finance/\n",
+    "return-URL": "https://cardanoscan.io/transaction/{txHash}",
+    "to-address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+    "policy-id": "ada",
+    "asset-name": "ada",
+    "decimals": "1000000",
+    "quantity": "1"
   },
   "run": {
-    "stage1_build_transaction": {
+    "build": {
       "type": "buildTx",
       "title": "🚀 Pay me 1 ADA",
-      "description": "This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
-      "name": "Unsigned Demo Transaction",
+      "returnURLPattern": "{get('args.return-URL')}",
       "tx": {
-        "outputs": [
-          {
-            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+        "outputs": {
+          "payment": {
+            "address": "{get('args.to-address')}",
             "assets": [
               {
-                "policyId": "ada",
-                "assetName": "ada",
-                "quantity": "1000000"
+                "policyId": "{get('args.policy-id')}",
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{mulBigNum(get('args.quantity'),get('args.decimals'))}"
               }
             ]
           }
-        ]
+        },
+        "auxiliaryData": {
+          "674": {
+            "msg": "{strToMetadataStr(get('args.message'))}"
+          }
+        },
+        "options": {
+          "autoProvision": {
+            "workspaceNativeScript": true
+          },
+          "autoOptionalSigners": {
+            "nativeScript": true
+          }
+        }
       }
     },
-    "stage2_sign_transaction": {
-      "type": "signTxs",
-      "namePattern": "Signed Demo Transaction",
+    "sign": {
       "detailedPermissions": false,
+      "type": "signTxs",
       "txs": [
-        "{get('cache.stage1_build_transaction.txHex')}"
+        "{get('cache.build.txHex')}"
       ]
     },
-    "stage3_submit_transaction": {
+    "submit": {
       "type": "submitTxs",
-      "namePattern": "Submitted Demo Transaction",
-      "txs": "{get('cache.stage2_sign_transaction')}"
+      "mode": "noWait",
+      "txs": "{get('cache.sign')}"
     },
-    "stage4_export_results": {
+    "finally": {
       "type": "macro",
-      "run": "{get('cache.stage1_build_transaction.txHash')}"
+      "run": {
+        "txHash": "{get('cache.build.txHash')}"
+      }
     }
+  },
+  "return": {
+    "mode": "last"
   }
 }

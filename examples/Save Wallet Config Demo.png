@@ -50,21 +50,21 @@ window.$RefreshSig$ = () => (type) => type;</script>
 
     
     <!-- Primary Meta Tags -->
-    <title>GameChanger Wallet - 2.5.4  (development)</title>
-    <meta name="title" content="GameChanger Wallet - 2.5.4  (development)">
+    <title>GameChanger Wallet - 2.5.6  (development)</title>
+    <meta name="title" content="GameChanger Wallet - 2.5.6  (development)">
     <meta name="description" content="The cutting edge, non-custodial, web meta wallet for Cardano. Easy to use for starters, full development environment for advanced users and developers. URL and JSON based universal dapp connector, multisig, multi-account, multi-transaction multi-outputs, friendly graphics. The wallet for freedom, the wallet for people">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="/">
-    <meta property="og:title" content="GameChanger Wallet - 2.5.4  (development)">
+    <meta property="og:title" content="GameChanger Wallet - 2.5.6  (development)">
     <meta property="og:description" content="The cutting edge, non-custodial, web meta wallet for Cardano. Easy to use for starters, full development environment for advanced users and developers. URL and JSON based universal dapp connector, multisig, multi-account, multi-transaction multi-outputs, friendly graphics. The wallet for freedom, the wallet for people">
     <meta property="og:image" content="/images/logo/gcw-logo-1500x500.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/"/>
-    <meta property="twitter:title" content="GameChanger Wallet - 2.5.4  (development)">
+    <meta property="twitter:title" content="GameChanger Wallet - 2.5.6  (development)">
     <meta property="twitter:description" content="The cutting edge, non-custodial, web meta wallet for Cardano. Easy to use for starters, full development environment for advanced users and developers. URL and JSON based universal dapp connector, multisig, multi-account, multi-transaction multi-outputs, friendly graphics. The wallet for freedom, the wallet for people">
     <meta property="twitter:image" content="/images/logo/gcw-logo-1500x500.png">
     
@@ -127,7 +127,7 @@ window.$RefreshSig$ = () => (type) => type;</script>
         </div>
       </div>
     </div>
-    <script type="module" src="/src/index.js?t=1776012149770"></script>
+    <script type="module" src="/src/index.js"></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

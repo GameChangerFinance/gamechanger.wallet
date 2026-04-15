@@ -1,0 +1,37 @@
+{
+  "title": "Array Manipulation Functions",
+  "description": "This demo will test and explore basic array convertion and manipulation functions",
+  "type": "script",
+  "exportAs": "ArraysDemo",
+  "run": {
+    "useCases": {
+      "type": "macro",
+      "run": {
+        "getArray(0)": "{getArray(0)}",
+        "getArray('a')": "{getArray('a')}",
+        "getArray(00)": "{getArray(00)}",
+        "getArray('aa')": "{getArray('aa')}",
+        "getArray(,,,0,,,,)": "{getArray(,,,0,,,,)}",
+        "getArray(,,,'',,,,)": "{getArray(,,,'',,,,)}",
+        "getArray()": "{getArray()}",
+        "split(',', '')": "{split(',', '')}",
+        "split(',', ',')": "{split(',', ',')}",
+        "split(',', ',,')": "{split(',', ',,')}",
+        "join(',', getArray())": "{join(',', getArray())}",
+        "getArray(getArray(00))": "{getArray(getArray(00))}",
+        "getArray(getArray('aa'))": "{getArray(getArray('aa'))}",
+        "getArray(getArray(0),getArray(1,2),getArray(3,4,5),getArray(6,7,8))": "{getArray(getArray(0),getArray(1,2),getArray(3,4,5),getArray(6,7,8))}",
+        "getArray(getArray('a'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))": "{getArray(getArray('a'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))}",
+        "getArray(getArray('aa'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))": "{getArray(getArray('aa'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))}",
+        "split(',','a,b,c,d,e')": "{split(',','a,b,c,d,e')}",
+        "split(',',',,,a,b,c,d,e,,,')": "{split(',',',,,a,b,c,d,e,,,')}",
+        "join(',',getArray('','','','a','b','c','d','e','','',''))": "{join(',',getArray('','','','a','b','c','d','e','','',''))}",
+        "flatten()": "{flatten()}",
+        "flatten(0)": "{flatten(0)}",
+        "flatten(getArray())": "{flatten(getArray())}",
+        "flatten(getArray(0))": "{flatten(getArray(0))}",
+        "flatten([1,2],[3,[4,5]],6)": "{flatten(getArray(1,2),getArray(3,getArray(4,5)),6)}"
+      }
+    }
+  }
+}

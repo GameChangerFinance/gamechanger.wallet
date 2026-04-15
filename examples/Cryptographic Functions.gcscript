@@ -1,0 +1,41 @@
+{
+  "title": "Cryptographic Functions",
+  "description": "This demo will test and explore cryptographic functions",
+  "type": "script",
+  "args": {
+    "message-to-hash": "⚡ GC Wallet"
+  },
+  "exportAs": "CryptoDemo",
+  "run": {
+    "payload": {
+      "type": "macro",
+      "run": "{get('args.message-to-hash')}"
+    },
+    "bytes": {
+      "type": "macro",
+      "run": "{hexToByteArray(strToHex(get('cache.payload')))}"
+    },
+    "using_utf8": {
+      "type": "macro",
+      "run": {
+        "sha512": "{sha512(get('cache.payload'))}",
+        "sha256": "{sha256(get('cache.payload'))}",
+        "sha1": "{sha1(get('cache.payload'))}",
+        "md5": "{md5(get('cache.payload'))}"
+      }
+    },
+    "using_bytes": {
+      "type": "macro",
+      "run": {
+        "sha512": "{sha512(get('cache.bytes'))}",
+        "sha256": "{sha256(get('cache.bytes'))}",
+        "sha1": "{sha1(get('cache.bytes'))}",
+        "md5": "{md5(get('cache.bytes'))}"
+      }
+    },
+    "uuid": {
+      "type": "macro",
+      "run": "{uuid()}"
+    }
+  }
+}

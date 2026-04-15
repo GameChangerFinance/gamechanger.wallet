@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: "String Manipulation Macros"</title>
-<meta name="title" content="Cardano Dapp: "String Manipulation Macros"">
+<title>Cardano Dapp: "Cryptographic Functions"</title>
+<meta name="title" content="Cardano Dapp: "Cryptographic Functions"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -69,9 +69,9 @@ function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
 }
 
 const config = {
-  id: 'gc-dapp-string-manipulation-macros',
+  id: 'gc-dapp-cryptographic-functions',
   version: '0.0.1',
-  title: 'Cardano Dapp: "String Manipulation Macros"',
+  title: 'Cardano Dapp: "Cryptographic Functions"',
   description: 'Review the action details below and continue in GameChanger Wallet.',
 
   defaults: {
@@ -165,61 +165,46 @@ const config = {
         //   }
         // },
         userIntent: {
-          "label": "String Manipulation Macros",
-          "description": "This demo will test and explore basic string convertion and manipulation macros",
+          "label": "Cryptographic Functions",
+          "description": "This demo will test and explore cryptographic functions",
           "code": {
-            "title": "String Manipulation Macros",
-            "description": "This demo will test and explore basic string convertion and manipulation macros",
+            "title": "Cryptographic Functions",
+            "description": "This demo will test and explore cryptographic functions",
             "type": "script",
-            "exportAs": "StringMacrosDemo",
+            "args": {
+              "message-to-hash": "⚡ GC Wallet"
+            },
+            "exportAs": "CryptoDemo",
             "run": {
               "payload": {
-                "type": "data",
-                "value": "🖖 Space: the final frontier. These are the voyages of the starship Enterprise. Its continuing mission: to explore strange new worlds. To seek out new life and new civilizations. To boldly go where no one has gone before!"
-              },
-              "prefix": {
                 "type": "macro",
-                "run": "{truncate(get('cache.payload'),28,0,'')}"
+                "run": "{get('args.message-to-hash')}"
               },
-              "suffix": {
+              "bytes": {
                 "type": "macro",
-                "run": "{truncate(get('cache.payload'),0,42,'')}"
+                "run": "{hexToByteArray(strToHex(get('cache.payload')))}"
               },
-              "sandwich": {
+              "using_utf8": {
                 "type": "macro",
-                "run": "{truncate(get('cache.payload'),28,42,'...')}"
+                "run": {
+                  "sha512": "{sha512(get('cache.payload'))}",
+                  "sha256": "{sha256(get('cache.payload'))}",
+                  "sha1": "{sha1(get('cache.payload'))}",
+                  "md5": "{md5(get('cache.payload'))}"
+                }
               },
-              "toBase64": {
+              "using_bytes": {
                 "type": "macro",
-                "run": "{strToBase64(get('cache.payload'))}"
+                "run": {
+                  "sha512": "{sha512(get('cache.bytes'))}",
+                  "sha256": "{sha256(get('cache.bytes'))}",
+                  "sha1": "{sha1(get('cache.bytes'))}",
+                  "md5": "{md5(get('cache.bytes'))}"
+                }
               },
-              "toHex": {
+              "uuid": {
                 "type": "macro",
-                "run": "{strToHex(get('cache.payload'))}"
-              },
-              "toMetadataString": {
-                "type": "macro",
-                "run": "{strToMetadataStr(get('cache.payload'))}"
-              },
-              "fromBase64": {
-                "type": "macro",
-                "run": "{base64ToStr(get('cache.toBase64'))}"
-              },
-              "fromHex": {
-                "type": "macro",
-                "run": "{hexToStr(get('cache.toHex'))}"
-              },
-              "fromMetadataString": {
-                "type": "macro",
-                "run": "{metadataStrToStr(get('cache.toMetadataString'))}"
-              },
-              "split": {
-                "type": "macro",
-                "run": "{split('.',get('cache.payload'))}"
-              },
-              "join": {
-                "type": "macro",
-                "run": "{join('.',get('cache.split'))}"
+                "run": "{uuid()}"
               }
             }
           }

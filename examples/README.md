@@ -2,16 +2,16 @@
 # Cardano Example Dapps
 
 
-## **93 built-in examples on IDE**: 
+## **94 built-in examples on IDE**: 
 
 
 ### **1: 🚀 Pay me 1 ADA** 
 
-This is a payment request. Developer notes: The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+This is a payment request of 1 ADA
 
 - [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/%F0%9F%9A%80%20Pay%20me%201%20ADA.html)        
 - [documentation](%F0%9F%9A%80%20Pay%20me%201%20ADA.md)     
-- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA-1TTWvbQBD9K4MubiF1bCe2sW8mgTaXYIhLDyWYsTSWtpV2pd1ZW6ox9Hf00r_Yn9BZyYZAauipp-oDiXmzO2_emz1E3JQUzSMXW1VydBWx4jwEfv388R2W2EBBMITF_UKwhLo0ZbRkrDLlQB6EEpuCNIOlypPjPtzTjnJTkgVtmNwcVhlBz3guPbselDZg3IDZAgdk41WerOoeLJYPsPU6DiUA89zsHTTGAxtIaKs0QeFzVu_QOWJgi9phl3zavA8PGu7QJqgNtFlC0NJpdQKbJvA1uYqbhwRQh7fLe8SCrmBrbGgW9gTeCTNMsAdKw8ZwBjE6kgoLeC-5dxnqVDr8JDSFyz2WpfRdmD5kzKWbX1-nkhV3WX2pjjqma1GR6tJYXjiR8M4o_UQ6UToNSwW0xN6KuoeoMEnwIUfH0VEA30YdY0rDdSvY-kX_ATtZeRLzv5f_wEstYZHvo3YqDZTCIli9sEVMqIM3p5ai-edDhEliyQX_w9-wmm0Ri2r2dTIeT9Md3Yyx4KQqs9ksm1UjrrNvg6nUrtOJ3-_TZPJlshts48GtHlOWjmajpt45-ezI2aoq6mqry2nj93raVPE3X-2tsOjka8ufFWvr4xl77DrpIpVHLcPTSGA4aK_o-Cy3zGE7gKN16PfC_AVoVbuTOktkpjDR0dNFiRJiVDklS7KFck6CwnSLuaMgX2AdHVLiN70Y44z6l85An-sPVPfeHqPnM9GbtfObQvElqi34R7ItwpcsDea9ovRalcDlTOV23R38tXgvc-9e0Cgwtu3hD2f8r1tFl7X7H4-_Aailr4fGBQAA)
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA4VUzW7bMAx-FcOXtEDz065JkN469LABWxc0GXZYemBtxdZqSbZEJXYNA32OXfaKe4RRUv66HRYEsEN-_Eh-JNPG2JQsvolNonmJ8UWMHAtn-P3r52s0hyYSLLqMbu9uyZeyAONKEmKZcxPRF6ISGsEkRppVlhmM1PoQwupSabw1hJ8H1EMAkQ90Rvb2kHL-loYQghkDmfOt5MK5rOEyi1ZyJXPE0twMhxkIluQgM6YHay5BJmy4khSrGVot-18fPlH4Hp2ATkEqk4AccDVEDdJA4hoatlh_AJN3TgPVhzTVlJxC3dtlNVsDiGr2PBmPp9mGvRuDwLQq89ksn1VXWOcvoymVUWcTu91m6eTHZDNaJ6NrOWZ5djW7auqNoceGGV1Voq7Wspw2diunTZW82GqrKW2pCp40fZ76rOAUMoZhX1KLB1PKEi6gcJVdjvyHjJUFSSo2zhh31LuVTtgny4vUKxyG7H8v6_9MOQhHus0BkWk36jZjeNZz8xocZe2de61ql0BZLC36ae6Wwb0eRTwhOIobCHyPhPne7gT4mL4NOMhygr8PkpygjlIF2IkkrbDFe57dW3F2xO_9vfOLo3Evbu-cOLrHjqQEW_OCg27uAME1NZleu4cwmaM2qJfqM0MaDsIC9UmG3fIGLmJS_nC8RmBRzbXacONPqY23Sj-bEhJ2D8g3bBGu8Qa1Zb4GVF98NBQLnkmmPYv8F9u5RIYgzp9SWbxg6ZxpwY0JydfUHrs4nD1Bl7Xxc3Qz2CmaQJKzgV-XAZ0Fq52mj47aPgmOJysVDIFCqNSZpPoGHPeUbxhdOkdFTO5Wi6I5oRKQaBUfljec418Eh5LI5Ylcv2El_VBCBQXQv0fX_QHGmMfZ3QQAAA)
 
 
 
@@ -127,11 +127,11 @@ Parameterizes and compiles an Helios Smart Contract on the fly on user wallet, a
 
 ### **13: Plutus Script Parametrization** 
 
-Parameterizes a Plutus Script with same parameters obtained from decoding it and verifies the hashes remains equal
+Parameterizes a Plutus Script with same original parameters and verifies the hashes remains equal. Modify parameters to trigger a hash mismatch error. Remove 'strictScriptHashHex' to allow for the new parametrization
 
 - [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Plutus%20Script%20Parametrization.html)        
 - [documentation](Plutus%20Script%20Parametrization.md)     
-- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA51Y247jNhL9FcMv2QWSgKRIipy3zFMeA-QDFhRJzTTQ093r9mSTDebf95wqSnJ3emYXa1uWLRWLp-5V-vN8vbve9_O78y_3n6-fn0-_1svd0_X0S7mUT_16uft3ud49Ppy_P7f-LLf4D9R6v4OgP5_K6eXqf91dP56eQXB62uieT4_Ltdw99HZaL4-fTq3Xx3b38OF0dz2Vh3b6DazWO_C6fuynj-X5I35e-ieseD71f34u94Bw_eOJSBUH_pfLh-fzuz_PTzdg2g9PAuWHQfXuHLIpcZXvaizeZpKX01dOxpSleBwOh8VhSlnyyq_Or4aj5KU0Y6Kegp68npxPxyvHyA2MsTjmaQ7e2MXh94Kj4nK2-OCNbeXjrHUVNzy4Y4WdHKEF3s95yYA7Y4tUhKa2OiczJWO90tdkYnHcs-ATjcOvhGuptdkmUhiA5N5NIa04eTN5l-fS-hprJEHw2M7FbpvDOS9p5gWrGgIi0RKO2S6l7EJsIuD3LgIorZlamgtumZSz3qHmeTdid6B1ldvMpZMCDMgjiXoc1DkZGwVmAGJcAVEymTc9XstQLvh7rLZ5271CTdUE31qgUQK14rhX7AADYaLHOx4cOrhnMZFZoPdN5ylTeIGrlNNM8EB2UCWTALplVYfA2EBA_RTUv9xtmk2HCM4ma1WJu01hJa4CbNyceABt9TUPASYc4EQhhPGAD-jUlcCf6DYbNBvEP2pNg0PsC_SPjeaKHUttzVuICZlWSprdGqq1snp3M--8KokOCDGhK1dxqL7ighNcxwNacALthdI3sUXKQCN74buJJOvSLlJfcJtHNdACJOA7bsotnp4EqUADLiIOf5Jc_hacmxtBg0_dTE-PbJbRCHCT-LjL3hrX_I5l4wYaQWxlt6GHKq4JUHGAyhpNoKTV6bZLifjvh6TeIGSHIyWSOdEjFcl8MEhSsjPAI3gBjHmhEIqQFIYWfcvoGb4isbC0mRTuEFNMvKHeIw6EcZ0XYMJtYQsBqbk0VLUpkR_ksy37wORQtKejI78c2ea4RoEY3Z64iuJygguvKrp6hQX8val2JIqJ23pGv-mGDm2QfGKnyT05C0MvcW9rkuQVHWPczgVWc-MAf6je0s-Zfwt80u5-aQE3e4k-1aijATZftOKLQ7ZX5sdhJHHA08AEok9Cp_7IsI0j96lG9NuLu2TrCx3UDDU7gaDSeDh6p3MALSLIB5ec8V0dIdM559AZDAAae0571Iq0e46WDLNl3BL6Mi9tgY4GsWQAuiXYQW29EFhrFPsgxgZiIA3dUFmnZoYKAXL1pLVs1wydGkenLDEdtvJqKxg-vKhLXvMWqAxyDF0XGQ-GYez3DaI_IJJqUkc3GiCoYkgO0CMIrbjCUg9bHuq4iXWv5tv3m7xWefuNWPCaRfwWFvRTSHUbC8ZMmzT1hvt8cH8t_X-nZ51gCsnLYqB5pxFJlxuJRvKBWx0sYiUHQB-hejjbAA7NFK1vEzN4gbWsiYFOP_nFB6kF82S22oPvHjcPwZbiV1wjrulJMGJjGh4m6Yfp0o4NMioncR36bjU4ev8UltBcljhPeaPmVUggNVIW7PRup85WyoFxRfPXLKZ2WbsxbO-ln8G-wbI-IVPsxZmZEY42sevp7A6wmcb2XrqoN8laQequGYRJglUWR8cMA7CsxXW4PvRTNOdI_lBvpx2SNFFQ6-Q0fLw2am_oxM3L3LZ8uWlkHhphjZ5GKuK_GwYSZUeeGvUSCmKWlI51RgKhHzlIvms3gKxV6QSLKqsAcNXioEWFSXliCdnxvM2BaZlfaXRWL7jBAmgApix2akwFNBbRODPkRdRWLcWvJNl2pbe81sxXfcUO2s1TbFdPGfWhbZ7CoqKeQnCwXYywTxL7gJx_iqgnSGMtSgTqmNxMC9zsizY9aTNPZaiAwOGkvPkRLrf9oM_jhpYbr8UPzq2tVdgZCXd2rzcOilYW_g5fZFqmi9DHyZgrJLdsSZjqQaoAaZFiiiVLFotC94ZrjJQLJhnsHNXD0UwjKUnc26EUGhlrjagYacZVsnZv-iTSlL1x7CCd4MvOQKNMepvdN61rOvwwhohM431rD7jM6TKXds0QdVDUgVjVmRbIGWWiqmnMFqxpN_WO-XcbL8QIdF6ES7lt--C0QbCYUWGs-KlQoSZnM1jfVD2WvEyYjPs6tpspTVKjF9GKmJlXy7jqvPSjjk0hAvdVpa-SbONogEQac9uZSO1Itz27Zx9EvrvTdSmjQemRi0LVpkz7siIeEeoo70XL3ahxXptlmL2zfbPqGdpaK393M0GYVY2_t-uwSvBs16vUKo4QHFbIKmib7tOWnBldMkXp71G9RoNfklQvuw8KOnL6vTkLMBCbKSqzjI5MdmHjqe0ezOiSZmEnuCRY9DB2tdLEWOjDl7Q4dtiS2INTWco2dlQ6eYVpcOhOFmaFEscYZkd7yexBRt7p92R0NpLeiVHu9SRjmk5sdejK6z7Q59e8WBro18MaAXG1grLafxqFI2Of3adW_JmGg_uhR_EJYQ8NThzcpGwJIfTKxnpCyzmlQxHs2DA-w6wRrrUyn1D6FdvxqEPbwGJh0Bjke5iVLU7U6RUjLlhpnywqY0uK1eLIxIz4nIaK4v5zG9AFyFL4XSB-0OE41Co5AT991dH-mO86m-_bJybSuhwD4D77M2yAOTS706Vv0_HbEMkRBpaUQ2vdbU8RYA8rY7g8hYFOzACcAHfmYw0ci92NZ6MQQyf7viKZK17Homl0x03ncl8mgvHNHpma56YOyKcDk789NB--mHpuuyMgQddt0c4wZVidio9phUaZZKDBLIrFmKDiJqG0CW48ihiPmDiF5HyYnAOv5yOc8eyGJ5ZF5EPkhcWBBDmNyuyYE3NeA1qM0v6_N3pedDq-of_tYUUfvLIL9n1dxzOnQBmnZqQOHVd89RwCjiuxrmmu40owiuzAt4LjjPY7TSG2GQ44W4wiiMo6o1GA-03obTkzzvDDSOOix5pbXtdbTge_aBs6T-zp-oLQK66srawZ2dD2ikTvp7L4Dknq0lFbw-LhHT3FdbwGcgDg5GLs-ftzf1gfL7WP554_8BHq-d05WjQCa1pzQ4ULqPnNzLkvzs7J5UDrewyhEHmelpbjWjPgp-7B8L48fAAHfZz6j9-m85fvz5d-_Xx54DPXT4-Nz2Lvy_OVN_rvT4-X60_PuNTKtWD55bPQKZyf-HM8vlWGv24PcbfntBvpz_13EP35oV__9h0f8P74jae73_39ywH0Zgmv8N6XLxv_9_8TgOvlrl71xs_Q31-gvKFjhfBX6LXUj_3HIf2P-_03EL-k3KBvPOVB-_M32SrJJu9691Du7_-4kfdTqZfHwyJE_dO3carsCoPk798kf_8W-dPX8b5_A--XL_8BuHYI3oIYAAA)
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA51ZXY_buhH9K4Zf0gJJQFKkRO1b3_JS4KJ5LIqCIqmsgd11ajtfDfLfe84MJXk3m-Q29sqypeHwzPeM9uv-crjc1f3N_o-7D5cP593bfDq8v-z-SKd0Xy-nw3_T5XB82L_cl3qWW_wFar1fQVDPu7R7vPrT4XK7O4Ngdzwd3h0e0t3u_bIA1A9l9xEr5wOWXm7r7jadb_H1VO_T4eG8q__5kO5e7_5-LIf5y_XCy3EHRO_e1RN25KLd_eF8ny75dldPp-Pp9e4f9f74se5enEGXL4rmDQjf1M8vuDzd3R0_7ebjSfZ9qJ8W9leCXr68pz5UWvxOp3fn_c3X_XsR8VW7frMPo0n9LJ_ZWLxNJy-nrzEak6bkcTgcFodJaRpnflR-FBxpnFIxptdT0JPXk_Nxe419zw2MsTiGbgje2Mnh-4Qj4_Jo8Yc3tpU_Z63LuOHBHSts5wgt8P44TiPgDtgiJqHJJQ_RdNFYr_Q5mj457pnw1xuHbxHXYimDjaQwAMm9i0KacfKm824cUqlzn3sSBI_tXF9tcTiPUxx4waqGgEi0hGOwU0qrEIsI-L6KAEpruhKHhFsmjqPeoeZ5t8fuQOsytxlSJQUYkEcU9TioszO2F5gBiHEFRNGMvOnxmppywd9jtR2X3TPUlE3wpQQaJVArjnv1FWAgTO_x7jcOFdxHMZGZoPdF53Gk8AJXKbuB4IFso4omAnQZVR0CYwEB9VNQ_3i3bjAVIjgbrVUlrjaFlbgKsHGz4wG02eexCdDhACcKIYwbfECnrgR-R7dZoNkg_pFzbBz6OkH_2GjI2DHlUryFmJBppqSjm0O2VlavbuadVyXRASEmdOUyDtVXP-EE1_GAFpxAe6T0RWyRMtDIXvguIsm6uIpUJ9zmkQ20AAn47hflJk9PglSgARcRh19JLj8TzsW1oMFfXkxPjyyW0Qhwnfi4G701rvgVy8INNILYym5ND1lcE6D6BmrUaAIlrU63nVKP375J6g1CtjlSJJkTPVKRzAeNJEY7ADyCF8CYFxKhCEliaNG3jJ7hKxILUxlI4TYxxcQL6jXiQNjPwwRMuC1sISA1F5uqFiXyD_lsyT4wORTt6ejIL1u22a5RIEa3J66kuJzgwiuLrp5gAX9vsm2JouO2ntFvqqFDGySfvtLknpyFoZe4tzlK8uodY9wOCVZz7QB_qN7Sz5l_E3zSrn5pAXf0En2qUUcDLL5oxRebbE_Mj8NI4oCngQlE74RO_ZFh27fcpxrRTy_uMlqf6KCmqdkJBJXGw9ErnQNoEUE-uOiMr-oII51zCJXBAKB9HeMatSLtmqMlwywZN4U6DVOZoKNGLBmAbgl2UFtNBFYKxd6IsYEYSEM3ZNapgaFCgFzdaS1bNUOnxlEpSx83W3m1FQwfHtUlr3kLVAY5hq6LjAfDMPbrAtFvEEnVqaMbDRBUMSQH6BGEVlxhypstN3VcxbpX8637dV6rvP1JLHjNIn4JC_oppLqOBWO6RZp8xX3YuD-V_tf0rBNMIeM0GWjeaUTS5VqikXzgZgeLWMkB0EfIHs7WgEMzSetbxwyeYC1r-kCn7_zkg9SCoTNL7cFn7RcPwZbiV1wjrulJ0GKjax4m6Yfp0rYNRlRO4tr0XXJw9P4uTKG4UeI8jgs1r0ICqZGyYKV3K_VopRwYlzR_DWJqN2o3hu299DPYN1jWJ2SKtTgzM8LROnY9ld0BNtPYXksX9SZZK0jdNY0wSrDK4t4xwwAsa3Furg_9JM05kj_U22mHKE0U1No5DR-vjdozOnHDNJQlXy4aGZpGWKO7lor464qBRNmWp1q9hIKYJaVjHZBA6EcOkq_aDSArWTrBpMpKAJy1OGhRYVLuWEJWPM9zYFrmR2yd1SNusAAagG4UOxWmAhqLaJxp8iJqs5biJ5Isu9Jbnmrmh75iG-3iKbaqp7T6UBZPYVFRTyE42K7vYZ8o9gE5fyRRT5DGWpQI1H10Ay1wtS_a9KjNPJWhAgKHk_LmW7hc94N-bDe03HgtfnBuba3Cyki4s3u9clC0svB3-CLTMl2EPk7GXCG5ZUnCVA9SBUiTFFMsmUaxKHRvuMZIuWCSwc69ejiaaSQliXvblEIjY60RFSPNuEzW7lmfRJqyV44dpBN83BlolElvs_qmdUWHH8YQkWm8L-0Blzld5uKqGaIOijoQqzrTBDl7mahybLMFa9pVvWP-XcYLMQKdF-GSrts-OG0QLKZVGCt-KlSoyaNprK-qHkveSJiM-9y2GyhNVKMn0YqYmVdTu-q89KOOTSEC90mlz5Js-9YAiTTmujOR2hGve3bPPoh8V6erUkaD0iMXhaxNmfZlSTwi5Fbek5a7VuO8Nsswe2X7ZtUztLVW_u5qgjCzGn9t12GV4NmuZ6lVHCE4rJBV0DbdxyU5M7pkitLvrXq1Bj9FqV52HRR05PRrcxZgIDZTVGZqHZnswsZT2z2Y0UXNwk5wSbDoYexspYmx0IdPcXLssCWxB6eypGXsyHTyDNPg0J0szAoltjHMtvaS2YOMvNPPzuhsJL0To9zrScY0ndhy05XXfaDPH3mxNNBPhzUC4moFZbX_NApHxj67Tq340TUH902P4hPCHhrsOLhJ2RJC6JWNdYeWs4ubItixYXyGWXu41sx8QulnbMcjN20Di4VB-yCfzaxscXqdXjHigpX2yaIytqRYLY5MzIjPrqmoX78uA7oAmRI_E8QPOhyHnCUn4KvPOtpv811l8339xERal20AXGd_hg0wh2JXuvhzOn4aItnCwJKyaa265SkC7GFlDJenMNCJaYAj4A58rIFjsqvxbC_E0Mm6r0jmktexqGvdcdG53KeOYHyxW6bmuagD8ulA568PzYePpp7r7ghI0HVbtDNMGVan4m1aoVE6GWgwi2IxJqh-kVDaBNceRbRHTJxCxnEzOQdez0c47dkNTyyLyIfIC5MDCXIalVkxJ47jHNBipPJ7b_S86HR8Qf9bw4w-eGYX7Os8t2dOgTJ2xUgd2q747DkEbFf6PMchtyvBKLIN3wyOA9rv2IW-DHDAwWIUQVTmAY0C3K9Db8uZcYAf9jQueqyhjPN8zWnj19uCzhN7ujoh9JJLc0nziGxoa0ai912afIUkeaqorWHy8I4a-7m9GnIA4ORi7P7l48eer_jUdX-z7y36gDnOY0GBCyj5xQxjnZwdohsDje8xg0LioZvK2M95BPpYPfjdpYd34KBs__2xw6WH-unV9ph3f_PPr_t8fDhfTh_y5Xja35iX-_lQ74remr5cKr7tf9e2-28vNybPm3n_7V8kOjxc9jdeO431d3jyG4HkRFm88hPYf0Ki3_WGBvf3Nv8TuH7Xq4hL36uyoCb82p_q5cPpgU_V74-FT9vv0vkCw-zr5_fH0-Vv3LWkS4JznD4I3fGuvG1P3r8uj-jVh94uD-rP63399qZ-BtHXd_Xylxd8iP_6kSu_-Ou3zRuviHiF974BzbVTrrvep3w6PgK2Msgp39bXK9TXupP8r-Ss-8HVH2_32PeXjXH1_5D2-392_ERuCWEF872anheA_z35XltPaRfFLXxV7Cfkm6iUfBF35r-I7r78VMmbfL9C2_7fI1DWm8-i-YWlfrjleu-5Ldebz275dOm25Te8_gfggHEsjxsAAA)
 
 
 
@@ -245,37 +245,47 @@ Encrypts data and exports a ready to use decrypter script
 
 
 
-### **25: Arithmetic Macros** 
+### **25: Arithmetic Functions** 
 
-This demo will test and explore basic arithmetic macros
+This demo will test and explore basic arithmetic functions
 
-- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Arithmetic%20Macros.html)        
-- [documentation](Arithmetic%20Macros.md)     
-- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WSUWuDMBSF_0rIix0IRvfmW8ceuzHG9lxSDTUQTUiubEP870uqxsUJrVTwxkvu-U44psPAQTCc473mUNUMeIFeaKGlwTEumSk0V8BlYyc-Km5QyWqJvrgQCJgBRJsSsW8lpGboRI0V05lTTxz4Uc5igNneKqSGvQlsB9dny7cTmkGrm8_3wxsFYNrZVwAqTxIhCyoqaSB_JIQk7jwJVTwpqVJO2NrZDtOyfOLn17Z2zdJ-nEmPVJ__7F-OO23jziN2URo99LiPcbZBEUcpGWXNVpkrY50Wv84fAf7o2OZWk5SMFo7kDQZsiO-tQd2Ke8P0iF2U3RZmoIi96kqW_1Rr74bYQl4WL-qUkGlP9ybkEfYHDc9tOa3o4gXhSmbrBEJWb11wK_1t3RLpmt3oNpulc3tpBqN0yLvvfwFtghP4twQAAA)
-
-
-
-### **26: Cryptographic Macros** 
-
-This demo will test and explore basic cryptographic macros
-
-- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Cryptographic%20Macros.html)        
-- [documentation](Cryptographic%20Macros.md)     
-- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA32OwUrEMBRFfyVkMx0YTDtSF93JCLMZQURx_Uwek0DahORVLaX_bmI7oovpLuHec-4bORmyyBt-CIMndw7gtZHsEWRwke-4wiiD8WRcl0ov2kSmsHXs01jLCCMx6BTDL29dQPYOMcHyn6q9qGjweWj2pX-CXKD7-Ds-jz4kfUoDUh-61-fTExBhyOuayDdCWCfBahepuS3LUuRzBHgjFHifwT51R-5hsA5Ufi7DCghS_gG2z9_jgb2BtUh82vGooa72f8o_V19sfJzz4oxUbCRIjTeLf7PdTotgX9-tClK-LqhW8WoFblV9nU3hCtr3Rl1nc1rk4jR9A_6m9xgrAgAA)
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Arithmetic%20Functions.html)        
+- [documentation](Arithmetic%20Functions.md)     
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WSQWuEMBCF_0rIxS0IJvbmbUvpqZRS2vOS1XQNRBOSkbaI_71J1bhaYVdWcJIhed-T57QYBEiOM7w3AsqKg8jRU1PnIFRtcYwLbnMjtG_dpfdSWFTwSqEvISUCbgGxukD8W0tlODoy6_RsQn2eoeBHe6Oe53onUgb2dmb-6ODuzHBoTP3x9vzKALjx3iWAzpJEqpzJUlnI7gkhif-YhGmRFExrL2zc3RazongQp5em8s3SeLhDD8yczs4rlhs1HuM2IHYRje463MU43aCII0oGWb1V5stQxyWs02aGP3i2vdaEksHCk4JBj53jO2dQNfLWMANiF6XXhTlTxEF1Ict_qrV3Q2xzXhov6piQbY63JhQQ7gf1z3U5rejiBeFCZusEQlanbjaVYVq3RLpmN7hNZnRq_5reiPZ5d90vX5tQF7cEAAA)
 
 
 
-### **27: String Manipulation Macros** 
+### **26: Cryptographic Functions** 
 
-This demo will test and explore basic string convertion and manipulation macros
+This demo will test and explore cryptographic functions
 
-- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/String%20Manipulation%20Macros.html)        
-- [documentation](String%20Manipulation%20Macros.md)     
-- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WSX24TMRDGrzLsy6bSahOVCqG8gUACiUqIhgNMdmdjg9e27Nn8Ico1-soVOQLj3aQNVZIi9ckez-ffzHz2NmPNhrJpdsdB2wXcotW-M8jaWQmq4GJWZDXFKmifDkU6UzpCTa2DlTYGmCID2hpo7Y0LBHOMuoI4ACtnlxR6XNK0x_z2wOeNTz0MRSQWkgv8Lj70NXTyQWpKNhB3wX7_9uUrMlNILSlmPx2PjavQKBd5-noymYxTj2P0elyj9-liJ9pt5nFjHNZpuy9cI6Pkl2i6FP75fX8Pdx4rmgIrgkZbNNAEZ1lTKGGmKBKgjJqyS7fBBUVwTR9GxhCV9vDRSnM-6EglfOaYnGBtu2RKq2MUA4TuHlwTv9AuCCytYOWCqaMUchCJfoLruD83uqHexhRUeqmN_tVbOWjnztRmAwt5GEWCtA6cJVAY5Uw2c2qk0qtsV2Q-UKPXRxb0b3HwKNuyrBUyjRbEo7zCSlG59y2_Kq7fFpMiz692CRW75gWoSXFz_YiS2Va6Ui_oK9HKstwD2b3HSG9uzgPF9tledJJ54HyiCyP2EFFcJNwSY_pow49-BnYkvgCVL9k-N-C8z8_cE9LBmWPUxRkVrU9A5Mox4X9nbB91J6D_Ug786I3mC7al9Cgv8-K8Xz-ctucJKfsU0FOH67vdX5tBj4IuBQAA)
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Cryptographic%20Functions.html)        
+- [documentation](Cryptographic%20Functions.md)     
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA42S0UrDMBSGXyXkZh1s6zaZSO_mRL3wQmTipRzTrAmkTUhOcaX0Rbzz1XwSk67OObbiVU_Id_7zndCaokTFaUJXtjKoMwtGSEZuy4Kh1IWjI5pyx6w04ei5tZCOpDzX5F0qRZA7JFCkhG-N0pYT9idnc5CDlQmDdmH-DDZzNKlpzp2DjI9RjwU44ZGvj09ytyIvoBRH2oyoD9cWl27veeMFfITlWNri-enhERC5DX4C0SRxrDQDJbTD5GI6ncZBOAYj4xSMCY1lEUYbqJSGNJSdXQ7M6h-A1hnHaBBEJ0eWg2ETxN4q_wDn2wXfrvW1Z5bWQhU5tGt9z7dRG8uACT7pFAbD4S6xdLLIXkvcXJ2LrakTsJjNw4BddTqv8Q3-fr647Ehf9ZKzjpudp_J0ESD_Occ0-x1636Z_ibb1HysccScXOGRO6_8SrXwpe36IcBu1ZPMNGxBaFjwDAAA)
 
 
 
-### **28: GCFS Multisig Transaction Discovery Demo** 
+### **27: String Manipulation Functions** 
+
+This demo will test and explore basic string convertion and manipulation functions
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/String%20Manipulation%20Functions.html)        
+- [documentation](String%20Manipulation%20Functions.md)     
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA6WUX27bMAzGr8L5JSlgOEFXDEPeWmzDBqzAsGYHYGw61iZLgkQn8Ypco6-74o4wyvm7LnEG9Cmi-OlH8jORx4QVa0omyQN7ZeZwj0a5RiMra-BDY_J4CEmaFBRyr1wMRT2tVICCagtLpTUwBQY0BdDKaesJZhhUDmHDzK1ZkO-IUVMflyiPSnDrYiebOhILzHq-Dfvu3klBuffEjTffvn7-gszkYz8Vs5uMRtrmqCsbePJ6PB6PYoMjdGpUoHPxYSPax8Rhqy0W8bgtWSCj5Beomxj-_vX0BA8Oc5oAVwSlMqih9NawIp_BtKJAgDJnzC5si3MKYMsuDIw-VMrBeyPNOa8CZfCJQ7SBlWmiI7UKQYYWut1bJmahmRMYWsLSel0EKWQhEP0A23B3r1VJnYcxyNVCafWz83GjnVld6Bbm8lUqEqSxYA1BhUHu5DCjUiq9StZp4jyVanVkQY25tzuPkkeW3xyZhnPi4SDHvKJs69vgKr1-m47TweBqHVGhKV-AGqc31weUzLZUefWCviIty7ItkO0dBnpzcx4otk-3opPMHecj9YzYQUTRS7gnxrhom12-ADsS90BlJetLA866_NQ-I-2cOUb1zljR6gREnhwT_nfG-qA7Af2bsuMHpxX32BbTw0E2SM_79d0qc54Qs88BHXX3vLPgrpV_uws2Rc2t99gO-zdjg51F4rR_w_buz3bof7CH7rbk9foP9rkN998FAAA)
+
+
+
+### **28: Array Manipulation Functions** 
+
+This demo will test and explore basic array convertion and manipulation functions
+
+- [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/Array%20Manipulation%20Functions.html)        
+- [documentation](Array%20Manipulation%20Functions.md)     
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VUwYrbMBD9FeGLNjBgtWm3Jbely55aKKU9hRwUW9moKJaQ5LZLyL93ZLuOJNsLS1tjgea9NzNPwuNz4aVXotgUd9byJ_KJN9K0inupG_LQNlXYuAKKWrjKShNCFH89SkdqcdLkp1SKeOE84U1NxC-jtBVkz52sCO9KVrr5IWxXMEhOcYdD1ME_meCjb4Mx1tLW37k_3tw99kPcCt_a5tuXj5-598IGO0fvzaYsla64OmrnN2vGWBn8ldzIsubGhMQWteeideIDd8KF_dDzxCurr4pH4buON2yF5DkKLygaQ8ppygcgUbC8wKTCtEReAwAYLkh1I5prKZ0VD3CiTkUd54yS_oYCBUJ7ZymSa2AqghnVnGzQfdey6aGrk048SyT-42tNz5Iw8zndRS9k9dxCrxWM-1fwOorW8AbeRvEtvIP3i8ZeWmbpFDSS0j3eV5UgNSIC1yFBHxE54pLPXMFfF37m3v-T5X_j-fqVUg57qKAGkX-_MZPl4JiNJEy__CmfTMHVFoXh5bj6s8B4guHNJuWlyaHzQYW_aNP_DMYgZlhCsYTLZnYGnlWzBTlL9VucjB1s17DFkdjt4HY-K5-fcRsGaYVZl-KCz28AFppZ6wYAAA)
+
+
+
+### **29: GCFS Multisig Transaction Discovery Demo** 
 
 Demo that replicates the GCFS search query to retrieve all broadcasted transactions to be signed. The hash (rayId) used is calculated upon sorted transaction hashes (txHash)
 
@@ -285,7 +295,7 @@ Demo that replicates the GCFS search query to retrieve all broadcasted transacti
 
 
 
-### **29: GCFS Multisig Witness Discovery Demo** 
+### **30: GCFS Multisig Witness Discovery Demo** 
 
 Demo that replicates the GCFS search query to retrieve all shared signatures of a particular transaction. The hash (txHash) used is calculated upon transaction cbor hex
 
@@ -295,7 +305,7 @@ Demo that replicates the GCFS search query to retrieve all shared signatures of 
 
 
 
-### **30: Internal Multi Signing Demo** 
+### **31: Internal Multi Signing Demo** 
 
 Demo that tries to sign 3 transactions with internal spending and staking private keys with any desired multisig provider. Partially sign them over and over again combining providers to try it out.
 
@@ -305,7 +315,7 @@ Demo that tries to sign 3 transactions with internal spending and staking privat
 
 
 
-### **31: Kobayashi Maru Multi Signing Demo** 
+### **32: Kobayashi Maru Multi Signing Demo** 
 
 Demo that tries to sign 3 transactions with unobtainable foreign keys and internal spending and staking private keys
 
@@ -315,7 +325,7 @@ Demo that tries to sign 3 transactions with unobtainable foreign keys and intern
 
 
 
-### **32: Transaction Time to Live Demo** 
+### **33: Transaction Time to Live Demo** 
 
 Script that will try the different time validity interval parameters of transaction builder
 
@@ -325,7 +335,7 @@ Script that will try the different time validity interval parameters of transact
 
 
 
-### **33: Password Provider Demo** 
+### **34: Password Provider Demo** 
 
 Script that will use password providers to encrypt and decrypt data using by default password a CIP8 signature with current wallet address
 
@@ -335,7 +345,7 @@ Script that will use password providers to encrypt and decrypt data using by def
 
 
 
-### **34: Subroutines Demo** 
+### **35: Subroutines Demo** 
 
 Script that will test and explore subroutines, similar to functions in structured programming.
 
@@ -345,7 +355,7 @@ Script that will test and explore subroutines, similar to functions in structure
 
 
 
-### **35: Script Return Modes Demo** 
+### **36: Script Return Modes Demo** 
 
 Script that will test and explore the different types of script return modes, allowing batch only operations, data formatting and even data privacy by choosing only what to return from block code context
 
@@ -355,7 +365,7 @@ Script that will test and explore the different types of script return modes, al
 
 
 
-### **36: Dynamic Code Attempt Demo** 
+### **37: Dynamic Code Attempt Demo** 
 
 Illegal Script that will execute dynamic code using inline macros
 
@@ -365,7 +375,7 @@ Illegal Script that will execute dynamic code using inline macros
 
 
 
-### **37: Scopes Demo** 
+### **38: Scopes Demo** 
 
 Script that will test and explore code scopes and inline macro scripting access reach
 
@@ -375,7 +385,7 @@ Script that will test and explore code scopes and inline macro scripting access 
 
 
 
-### **38: Load Wallet Config Demo** 
+### **39: Load Wallet Config Demo** 
 
 Script that will build and load wallet artifacts: derive child keys, build child addresses and even setup address books on more than one wallet workspace. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires.
 
@@ -385,7 +395,7 @@ Script that will build and load wallet artifacts: derive child keys, build child
 
 
 
-### **39: Save Wallet Config Demo** 
+### **40: Save Wallet Config Demo** 
 
 Script that will save wallet artifacts on default wallet settings GCFS DiskNFT. Settings can be derived child keys, built child addresses and even setup address books, all these inside different wallet workspaces. Workspaces are virtual groups of artifacts that allow users to have a specialized wallet experience like multi-delegation, import a Yoroi or Daedalus wallet, work with enhanced anonymity, or whatever config a dapp requires.
 
@@ -395,7 +405,7 @@ Script that will save wallet artifacts on default wallet settings GCFS DiskNFT. 
 
 
 
-### **40: Import Wallet Config Demo** 
+### **41: Import Wallet Config Demo** 
 
 Script that will import and run your saved wallet configuration script. Run SAVE_WALLET_CONFIG_DEMO first and update policyId on GCFS URI
 
@@ -405,7 +415,7 @@ Script that will import and run your saved wallet configuration script. Run SAVE
 
 
 
-### **41: CIP-8 Data Signing and Encrypting Demo** 
+### **42: CIP-8 Data Signing and Encrypting Demo** 
 
 Demo that signs data with main and current addresses and their associated reward ones, verifies the signatures and encrypt and decrypt the data using the signatures. Run 'Wallet Setup Demo' or create some Workspaces first and switch current addresses to test it out
 
@@ -415,7 +425,7 @@ Demo that signs data with main and current addresses and their associated reward
 
 
 
-### **42: Simple Wallet derivation script** 
+### **43: Simple Wallet derivation script** 
 
 Will derive key pairs and build custom addresses
 
@@ -425,7 +435,7 @@ Will derive key pairs and build custom addresses
 
 
 
-### **43: Metadatum Label Edge Cases** 
+### **44: Metadatum Label Edge Cases** 
 
 Script that will allow checking the full circuit, from building a tx with edge metadatum label cases, to query it then with the APIs on UI to check if there are any encoding issues, overflows or manipulations
 
@@ -435,7 +445,7 @@ Script that will allow checking the full circuit, from building a tx with edge m
 
 
 
-### **44: Search Demo** 
+### **45: Search Demo** 
 
 Script that will search for files across all onchain GCFS file systems
 
@@ -445,7 +455,7 @@ Script that will search for files across all onchain GCFS file systems
 
 
 
-### **45: Import Demo** 
+### **46: Import Demo** 
 
 Script that will import data and scripts from different kind of allowed sources. (example data is from preproduction testnet)
 
@@ -455,17 +465,17 @@ Script that will import data and scripts from different kind of allowed sources.
 
 
 
-### **46: GCFS Disk** 
+### **47: GCFS Disk** 
 
 Script that will create a GCFS Disk in more than one transaction using API 'buildFsTxs' endpoint. Also the script will generate some of the files to be written on chain, one of them is an encrypted GC script
 
 - [try dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/GCFS%20Disk.html)        
 - [documentation](GCFS%20Disk.md)     
-- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VWTW_bOBD9K4QubgHDciynwfrmbTdtFkER1ClyWCwKWhxZrClSS1KxFcP_vTMSZSt20x7aDeBIJIfz9d7MaBd56RVEs-g9eGaBi5plxjJnCmBZpUejUTSMBLjUytJLo1Fy0bwzn3PPNlIpluI9D4yz92-vF-yddGsmNSuMBRLSzGh8sVw7npIKVjmpV2x-d8MGy0oqce3ut27AQIvSSO1HbK6cwavAWrOtlRVosGSn8c1kjUAmFTjmDVsC21jpPZA5luZc6mFjuBUsmHQMXQGd2rr0INDXoB3j83VJKTisLfjK6s-fbu84arQUdO59OYtjZVKucuP8LBmPx7GAwsS8lLHgZUkXK5TdYb5KDAZtSXC0PtUP29JYP8ezSHDPjxe_OqPf0c7xUhB45KoC2s6Mwd0L3FpyG80m9HyKZt5WQK9ZNNOVUsOI0k_yUmeGnjnQOvrrkICN9DllgXB4nER7_Bs2DrT4_sCF03A6Ci1kUSpgD1wpJNO88vkZdx4ISSdXGtlSgHN8BSw12iNcxIlNe5ULYfFwGJjyfJfQJg2_glMPALSuIT2iTgEWRlA8SB_cXkNNwaJFjucQ7Q9olVY-IiEJsHsshkVuKiU-Gv8n3AJfg3gxhdFNxmpTMQdUIRIDJS5vjFWCeLq0Zg2aDIWQe4pW4N9W1oL283CGYkfneujgHnn2gDB3oj2F0Q41vRqkPM1hFHYHr_cEGF76AFsScd7eG3x_1ZP9WdCD16ilJVMO2xMyFzy1pqN7T79Zfr03fyP3-pb6VTTqKgPVk_5G-RlRf019q-5g4NAqPpyFEY4azvxXSQt33DmEr0F8LbUgX4zg6oz_c1YGUQI63BZE6aCz4QMLdNlgRrvSFpDxSmG00bZ-upgkU_IxlFCA66XgAg6D87jOMvi_R3ZoGr8vtg63hnbYA2mk4EDpRXWcMmduB-doLHlwvqkR58B_5EVTbulI4Dxr8lEqmXIXmq8285LciGYZVw5o4wad2l7jQKK77nsHLY3CvuI1WBT7ZxfFMXXpuCoRdxBz30s2DTg0R482E5fJ1eUbmIynF1fjq8lknFwk9H-S0O9Ns04SnkxxxZPL5A-UvJqKy-lEoESCvzElN46hKH0dC2l7xnCFrdDYuhUhFsYHupDzo5YdP3Dvuz3jGWKndTUI9RbHLS7uaLJF9ncbPdQ5Eebf0D6fE6bbQfQQy-N0oQ-cLws8BPFlh4OB-qXfnrbTjoEjv72Vzoe2CjjkFIg7sIV0DgnXUYQ8qJaF9Cc-HPaG3UAquaVRqF7wq7mAMb7sWYgrdIJMalRX_-QLJRTP8SPFP3PzpOf2jXUBhNLc778Bi9krh24KAAA)
+- [standalone](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA7VW227bOBD9FUIvbgHD8jUB_OZtN20WQRGsU-ShKApaHFmsKVJLUrFVw__eGYmyFbtpH9o1IEsih3M7Z2a0j7z0CqJ59A48s8BFxVJjmTM5sLTUg8Eg6kcCXGJl4aXRKLmsn5nPuGdbqRRL8JwHxtm7NzdL9la6DZOa5cYCCWlmND5Yrh1PSAUrndRrtri_Zb1VKZW4cQ8712OgRWGk9gO2UM7gUWCN2cbKGjRYslP7ZtJaIJUKHPOGrYBtrfQeyBxLMi51vzbcCOZMOoaugE5sVXgQ6GvQjvH5qqAUHN8t-NLqj__e3XPUaCnozPtiHsfKJFxlxvn5ZDgcxgJyE_NCxoIXBR0sUXaP-SowGLQlwdH7uX7YFcb6Be5Fgnt-OvjVGf2WVk6HgsATVyXQcmoMro5wacVtNB_T_Vs097YEekyjuS6V6keUfpKXOjV0z4Deo7-PCdhKn1EWCIencXTAX792oMH3Jy6ch9NSaCnzQgF75EohmRalzy6480hIOrnWyJYcnONrYInRHuEiTmybo1wIi5v9wJTnq4Q2afgdnDoAoHUNyQl1CjA3guJB-uDyBioKFi1y3IfocESrsPIJCUmAPWAxLDNTKvHB-L_gDvgGxIspjG5TVpmSOaAKkRgocXlrrBLE05U1G9BkKITcUbQG_6a0FrRfhD0UOznXQQfXyLNHhLkV7SiM9qjpVS_hSQaDsNp7fSDA8NB72JGI8_bB4POrjuyvgu69Ri0NmTLYnZE554k1Ld07-s3q64P5B7nXtdStokFbGaie9NfKL4j6e-obdUcDx1bx_iKMsFVz5r9SWrjnziF8NeIbqQX5YgRXF_xfsCKIEtDhtCBKB501H1igyxYz2pa2gJSXCqONdtW30XgyJR9DCQW4Xgou4NC7jOsig_97ZMem8edia3GraYc9kEYKDpROVKcpc-F2cI7Gkgfn6xpxDvwHntfllgwEzrM6H4WSCXeh-WqzKMiNaJ5y5YAWbtGp3Q0OJDrrfrTR0CisK16BRbFP-yiOqUvHZYG4g1j4TrJpwKE5ujWZmF1fza6m4-F0dD28Ho-Hk9Fkhv_jCV1X-ER3jtcI_2eTEUpeT8VsOha4M8FrSMmNY8gLX8VC2o4xfMNWaGzViBAL4yNdyPlBw46fuPfDnvEMsfO66oV6i-MGF3cy2SD7p40e65wI8zm0z-eEaVcQPcTyNF3oA-fLEjdBfNnjYKB-6Xfn7bRl4MDv7qTzoa0CDjkF4h5sLp1DwrUUIQ_KVS79mQ_HtX47kApuaRSqF_yqD2CML3sW4gqdIJUa1VW_-EIJxXP6SPHP3DzruV1jbQChNA-H7zuWZnVuCgAA)
 
 
 
-### **47: Delegate Current Address to PEACE (MAINNET)** 
+### **48: Delegate Current Address to PEACE (MAINNET)** 
 
 Script that delegates current address to [PEACE] pool (mainnet only)
 
@@ -475,7 +485,7 @@ Script that delegates current address to [PEACE] pool (mainnet only)
 
 
 
-### **48: Child Keys Multisign** 
+### **49: Child Keys Multisign** 
 
 Script that requires signatures from derived child keys in a single simple transaction
 
@@ -485,7 +495,7 @@ Script that requires signatures from derived child keys in a single simple trans
 
 
 
-### **49: Multi Stake Delegation** 
+### **50: Multi Stake Delegation** 
 
 Script that sets up a wallet workspace to generate 3 addresses, to later fund them and delegate their stake to different staking pools on a single transaction. The optional registration transaction is meant to fail when keys are already registered, don't panic, script is built to succeed anyways
 
@@ -495,7 +505,7 @@ Script that sets up a wallet workspace to generate 3 addresses, to later fund th
 
 
 
-### **50: Multi Stake Withdrawal** 
+### **51: Multi Stake Withdrawal** 
 
 Script that requests 3 child wallet's reward addresses from an specific workspace, to later withdraw some staking rewards from each of them on a single transaction. You need to have staking rewards on each child wallet and run 'Multi Stake Delegation' demo first or load it's wallet configuration on this device
 
@@ -505,7 +515,7 @@ Script that requests 3 child wallet's reward addresses from an specific workspac
 
 
 
-### **51: Stake Delegation** 
+### **52: Stake Delegation** 
 
 Script that registers and delegates stake from custom child derivation in a transaction
 
@@ -515,7 +525,7 @@ Script that registers and delegates stake from custom child derivation in a tran
 
 
 
-### **52: Stake Withdrawal** 
+### **53: Stake Withdrawal** 
 
 Script that withdraw stake rewards from custom child derivation in a transaction
 
@@ -525,7 +535,7 @@ Script that withdraw stake rewards from custom child derivation in a transaction
 
 
 
-### **53: Lock and Redeem Smart Contract** 
+### **54: Lock and Redeem Smart Contract** 
 
 Coin locking transaction ( 5 eUTXOs) and later an unlocking one of previously locked coin, in 2 secuential transactions. Using deployed smart contract.
 
@@ -535,7 +545,7 @@ Coin locking transaction ( 5 eUTXOs) and later an unlocking one of previously lo
 
 
 
-### **54: Native asset minter and burner** 
+### **55: Native asset minter and burner** 
 
 Native asset minter and later burner of previously minted assets, in 2 secuential transactions
 
@@ -545,7 +555,7 @@ Native asset minter and later burner of previously minted assets, in 2 secuentia
 
 
 
-### **55: Build Certificates** 
+### **56: Build Certificates** 
 
 Script that builds or imports different kind of certificates
 
@@ -555,7 +565,7 @@ Script that builds or imports different kind of certificates
 
 
 
-### **56: Wallet derivation script** 
+### **57: Wallet derivation script** 
 
 Will derive key pairs and build custom addresses
 
@@ -565,7 +575,7 @@ Will derive key pairs and build custom addresses
 
 
 
-### **57: Complex Native Scripts** 
+### **58: Complex Native Scripts** 
 
 Nested, tagged, complex native script building
 
@@ -575,7 +585,7 @@ Nested, tagged, complex native script building
 
 
 
-### **58: Transaction Pipeline** 
+### **59: Transaction Pipeline** 
 
 Transaction pipeline without UTXO consumption conflicts using deterministic coin selection and UTXO locking
 
@@ -585,7 +595,7 @@ Transaction pipeline without UTXO consumption conflicts using deterministic coin
 
 
 
-### **59: Advanced DAPP connection** 
+### **60: Advanced DAPP connection** 
 
 Connection that requires some wallet data and then signs it with private keys
 
@@ -595,7 +605,7 @@ Connection that requires some wallet data and then signs it with private keys
 
 
 
-### **60: Simple Script No Export** 
+### **61: Simple Script No Export** 
 
 Simple script that has no exported data
 
@@ -605,7 +615,7 @@ Simple script that has no exported data
 
 
 
-### **61: Simple Script No Export No Return URL** 
+### **62: Simple Script No Export No Return URL** 
 
 Simple script that has no exported data and no return URL
 
@@ -615,7 +625,7 @@ Simple script that has no exported data and no return URL
 
 
 
-### **62: Simple Export** 
+### **63: Simple Export** 
 
 Simple script that exports data
 
@@ -625,7 +635,7 @@ Simple script that exports data
 
 
 
-### **63: Enable Terminal Mode** 
+### **64: Enable Terminal Mode** 
 
 Script that will adapt the application to work on public terminal devices. WARNING: this cannot be undone!, to revert this you will have to clear browser data
 
@@ -635,7 +645,7 @@ Script that will adapt the application to work on public terminal devices. WARNI
 
 
 
-### **64: DAO Demo** 
+### **65: DAO Demo** 
 
 This script will create a workspace to import addresses, scripts, manage funds and signatures from a DAO where you are a powerful member, you have full control when you use 2 of your keys. 
 
@@ -645,7 +655,7 @@ This script will create a workspace to import addresses, scripts, manage funds a
 
 
 
-### **65: Macro Edge Cases** 
+### **66: Macro Edge Cases** 
 
 This demo will test some edge cases around macro solver and syntax
 
@@ -655,7 +665,7 @@ This demo will test some edge cases around macro solver and syntax
 
 
 
-### **66: Code Validation Tests** 
+### **67: Code Validation Tests** 
 
 Script that will fail to test local and imported code validation
 
@@ -665,7 +675,7 @@ Script that will fail to test local and imported code validation
 
 
 
-### **67: Address Identity Tester** 
+### **68: Address Identity Tester** 
 
 This demo will test addresses default native scripts or 'Identities', and explore differencies between ways to obtain them
 
@@ -675,7 +685,7 @@ This demo will test addresses default native scripts or 'Identities', and explor
 
 
 
-### **68: Key derivation formats** 
+### **69: Key derivation formats** 
 
 Explore the different ways to derive/obtain keys and obtain all results under the same format
 
@@ -685,7 +695,7 @@ Explore the different ways to derive/obtain keys and obtain all results under th
 
 
 
-### **69: List addresses in workspace** 
+### **70: List addresses in workspace** 
 
 List and sort all addresses in current workspace
 
@@ -695,7 +705,7 @@ List and sort all addresses in current workspace
 
 
 
-### **70: List keys in workspace** 
+### **71: List keys in workspace** 
 
 List and sort all keys in current workspace
 
@@ -705,7 +715,7 @@ List and sort all keys in current workspace
 
 
 
-### **71: 2FA** 
+### **72: 2FA** 
 
 Create a workspace with a Shared Treasury address based on 2 addresses. A second address on the workspace is your main address as Signer
 
@@ -715,7 +725,7 @@ Create a workspace with a Shared Treasury address based on 2 addresses. A second
 
 
 
-### **72: Share your public key information** 
+### **73: Share your public key information** 
 
 This dapp connection will ask your spending and staking public key hashes
 
@@ -725,7 +735,7 @@ This dapp connection will ask your spending and staking public key hashes
 
 
 
-### **73: Shared Treasury - 3 of 4 signers** 
+### **74: Shared Treasury - 3 of 4 signers** 
 
 Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Please customize this code with real public key hashes, you can use 'Share your public key information' example on each member to obtain them. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
 
@@ -735,7 +745,7 @@ Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 
 
 
 
-### **74: Shared Treasury - 3 of 4 signers - using addresses** 
+### **75: Shared Treasury - 3 of 4 signers - using addresses** 
 
 Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Please customize this code with real addresses. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
 
@@ -745,7 +755,7 @@ Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 
 
 
 
-### **75: Shared Treasury - 3 of 4 signers - funded - Gift Wallets** 
+### **76: Shared Treasury - 3 of 4 signers - funded - Gift Wallets** 
 
 Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 3 of 4 signer Gift wallets are required for spending and staking operations. A second address on the workspace is caller main address as 'Signer'. To manage the treasury set 'Shared Treasury' address as current. To sign as a member, set 'Signer' address instead. Customize Gift Wallet generation with proper password settings and distribute them to the signers. This example is not secure as wallet creator has total control over the generated wallets. Please use 'saveConfig' function to save this setup on GCFS to avoid losing funds and data
 
@@ -755,7 +765,7 @@ Creates a workspace named 'DAO' with a 'Shared Treasury' address where at least 
 
 
 
-### **76: Multisig using Unimatrix and Roundtable** 
+### **77: Multisig using Unimatrix and Roundtable** 
 
 Builds 3 multisig transactions and tries to sign them only with local private keys and with remote signers using Unimatrix Sync and Roundtable. Customize required keys to real ones or experience a Kobayashi Maru scenario
 
@@ -765,7 +775,7 @@ Builds 3 multisig transactions and tries to sign them only with local private ke
 
 
 
-### **77: Simple Kobayashi Maru Multi Signing Demo** 
+### **78: Simple Kobayashi Maru Multi Signing Demo** 
 
 Builds and signs 2 transactions with unobtainable foreign keys. Triggers the default multisig strategy to obtain remote signatures through Roundtable and Unimatrix
 
@@ -775,7 +785,7 @@ Builds and signs 2 transactions with unobtainable foreign keys. Triggers the def
 
 
 
-### **78: Smart Handles - Swap ADA to MIN on Minswap** 
+### **79: Smart Handles - Swap ADA to MIN on Minswap** 
 
 Interact with a Smart Handles instance for swapping ADA to MIN, with a routing fee of 1 ADA (preprod). Uses the Minswap V2 instance of Anastasia Labs Smart Handles. https://github.com/Anastasia-Labs/smart-handles
 
@@ -785,7 +795,7 @@ Interact with a Smart Handles instance for swapping ADA to MIN, with a routing f
 
 
 
-### **79: Arguments and ISL** 
+### **80: Arguments and ISL** 
 
 Script that will test and explore subroutines, argument passing and ISL execution
 
@@ -795,7 +805,7 @@ Script that will test and explore subroutines, argument passing and ISL executio
 
 
 
-### **80: Spirois-Montiel-SudoScientist Token Minting Test** 
+### **81: Spirois-Montiel-SudoScientist Token Minting Test** 
 
 Testing the fix for the 'Spirois bug' using Montiel's and SudoScientist's test case assetNames, added some others as well. Use an address of yours for exampleDrop01. Thanks for testing guys!
 
@@ -805,7 +815,7 @@ Testing the fix for the 'Spirois bug' using Montiel's and SudoScientist's test c
 
 
 
-### **81: Address Impersonator** 
+### **82: Address Impersonator** 
 
 Create a workspace to impersonate a wallet without having their private keys. Wallet operations will trigger multisig transactions. Use to remotely control a wallet or be able to build transactions in behalf of the owner
 
@@ -815,7 +825,7 @@ Create a workspace to impersonate a wallet without having their private keys. Wa
 
 
 
-### **82: Governance - Key Derivation Paths** 
+### **83: Governance - Key Derivation Paths** 
 
 Explore Conway Era key derivation
 
@@ -825,7 +835,7 @@ Explore Conway Era key derivation
 
 
 
-### **83: Governance - Workspace** 
+### **84: Governance - Workspace** 
 
 A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 CCHot keys. Welcome to the Conway Era.
 
@@ -835,7 +845,7 @@ A workspace dedicated for Governance, made of 3 DRep keys, 3 CCCold keys and 3 C
 
 
 
-### **84: Governance - Vote Delegation - Abstain** 
+### **85: Governance - Vote Delegation - Abstain** 
 
 About to sign a transaction with a vote to Always Abstain. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same
 
@@ -845,7 +855,7 @@ About to sign a transaction with a vote to Always Abstain. If current stake key 
 
 
 
-### **85: Governance - Vote Delegation - No Confidence** 
+### **86: Governance - Vote Delegation - No Confidence** 
 
 About to sign a transaction with a vote of Always No Confidence. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same
 
@@ -855,7 +865,7 @@ About to sign a transaction with a vote of Always No Confidence. If current stak
 
 
 
-### **86: Governance - Vote Delegation - DRep** 
+### **87: Governance - Vote Delegation - DRep** 
 
 About to sign a transaction with a vote delegation to a DRep. If current stake key is already registered, 'autoClean' will remove 'myRegistration' certificate automatically. Works with personal and multisig wallets the same
 
@@ -865,7 +875,7 @@ About to sign a transaction with a vote delegation to a DRep. If current stake k
 
 
 
-### **87: Script Requirements** 
+### **88: Script Requirements** 
 
 Using script requirement checks to only allow a certain user wallet context to run this script. Usefull for 'sticky sessions' on dapps or for wallet type or network specific scripts
 
@@ -875,7 +885,7 @@ Using script requirement checks to only allow a certain user wallet context to r
 
 
 
-### **88: Get Wallet Type** 
+### **89: Get Wallet Type** 
 
 Getting extra information about your current wallet type, such as brand, default staking, and more.
 
@@ -885,7 +895,7 @@ Getting extra information about your current wallet type, such as brand, default
 
 
 
-### **89: DRep parsing and certificate building** 
+### **90: DRep parsing and certificate building** 
 
 Parses different DRep IDs following legacy and CIP129 formats and builds the corresponding vote delegation certificates in bulk
 
@@ -895,7 +905,7 @@ Parses different DRep IDs following legacy and CIP129 formats and builds the cor
 
 
 
-### **90: Write registration to join Dandelion Network (GCFS)** 
+### **91: Write registration to join Dandelion Network (GCFS)** 
 
 Register your Dandelion Node Group on-chain with GCFS. Writes a json file with your Node Group definition on-chain for backend peer discovery on Dandelion, the decentralized API service for Cardano. Set the URL of your node in 'node-url'.
 
@@ -905,7 +915,7 @@ Register your Dandelion Node Group on-chain with GCFS. Writes a json file with y
 
 
 
-### **91: Read your registration on Dandelion Network (GCFS)** 
+### **92: Read your registration on Dandelion Network (GCFS)** 
 
 Reads a json file with your Node Group definition from an on-chain GCFS resource, used for backend peer discovery on Dandelion, the decentralized API service for Cardano
 
@@ -915,7 +925,7 @@ Reads a json file with your Node Group definition from an on-chain GCFS resource
 
 
 
-### **92: List all registrations on Dandelion Network (GCFS)** 
+### **93: List all registrations on Dandelion Network (GCFS)** 
 
 Search for all matching json files with Node Group definitions on all GCFS resources on-chain. These files are used for backend peer discovery on Dandelion, the decentralized API service for Cardano
 
@@ -925,7 +935,7 @@ Search for all matching json files with Node Group definitions on all GCFS resou
 
 
 
-### **93: Multi-Network support** 
+### **94: Multi-Network support** 
 
 Example that shows how to make multi-network protocols, meaning scripts that are prepared to run in multiple networks (and DLTs)
 

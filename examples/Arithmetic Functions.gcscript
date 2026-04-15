@@ -1,8 +1,8 @@
 {
-  "title": "Arithmetic Macros",
-  "description": "This demo will test and explore basic arithmetic macros",
+  "title": "Arithmetic Functions",
+  "description": "This demo will test and explore basic arithmetic functions",
   "type": "script",
-  "exportAs": "ArithmeticMacrosDemo",
+  "exportAs": "ArithmeticDemo",
   "run": {
     "addBigNum": {
       "type": "script",

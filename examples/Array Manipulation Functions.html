@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: "String Manipulation Macros"</title>
-<meta name="title" content="Cardano Dapp: "String Manipulation Macros"">
+<title>Cardano Dapp: "Array Manipulation Functions"</title>
+<meta name="title" content="Cardano Dapp: "Array Manipulation Functions"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 
 <!-- Use for local deployments or for testing the library: -->
@@ -38,7 +38,7 @@
 <section class="hero">
 <div class="hero__top">
 <div>
-<h1 id="app-title">Cardano Dapp: "String Manipulation Macros"</h1>
+<h1 id="app-title">Cardano Dapp: "Array Manipulation Functions"</h1>
 <p id="app-copy">Review the action details below and continue in GameChanger Wallet.</p>
 </div>
 <div class="hero__tools">
@@ -152,9 +152,9 @@
    */
   const app = createApp({
     config: {
-      id: 'gc-dapp-string-manipulation-macros',
+      id: 'gc-dapp-array-manipulation-functions',
       version: '0.0.1',
-      title: 'Cardano Dapp: "String Manipulation Macros"',
+      title: 'Cardano Dapp: "Array Manipulation Functions"',
       description: 'Review the action details below and continue in GameChanger Wallet.',
 
       /**
@@ -296,61 +296,42 @@
         //   }
         // },
         userIntent: {
-          "label": "String Manipulation Macros",
-          "description": "This demo will test and explore basic string convertion and manipulation macros",
+          "label": "Array Manipulation Functions",
+          "description": "This demo will test and explore basic array convertion and manipulation functions",
           "code": {
-            "title": "String Manipulation Macros",
-            "description": "This demo will test and explore basic string convertion and manipulation macros",
+            "title": "Array Manipulation Functions",
+            "description": "This demo will test and explore basic array convertion and manipulation functions",
             "type": "script",
-            "exportAs": "StringMacrosDemo",
+            "exportAs": "ArraysDemo",
             "run": {
-              "payload": {
-                "type": "data",
-                "value": "🖖 Space: the final frontier. These are the voyages of the starship Enterprise. Its continuing mission: to explore strange new worlds. To seek out new life and new civilizations. To boldly go where no one has gone before!"
-              },
-              "prefix": {
+              "useCases": {
                 "type": "macro",
-                "run": "{truncate(get('cache.payload'),28,0,'')}"
-              },
-              "suffix": {
-                "type": "macro",
-                "run": "{truncate(get('cache.payload'),0,42,'')}"
-              },
-              "sandwich": {
-                "type": "macro",
-                "run": "{truncate(get('cache.payload'),28,42,'...')}"
-              },
-              "toBase64": {
-                "type": "macro",
-                "run": "{strToBase64(get('cache.payload'))}"
-              },
-              "toHex": {
-                "type": "macro",
-                "run": "{strToHex(get('cache.payload'))}"
-              },
-              "toMetadataString": {
-                "type": "macro",
-                "run": "{strToMetadataStr(get('cache.payload'))}"
-              },
-              "fromBase64": {
-                "type": "macro",
-                "run": "{base64ToStr(get('cache.toBase64'))}"
-              },
-              "fromHex": {
-                "type": "macro",
-                "run": "{hexToStr(get('cache.toHex'))}"
-              },
-              "fromMetadataString": {
-                "type": "macro",
-                "run": "{metadataStrToStr(get('cache.toMetadataString'))}"
-              },
-              "split": {
-                "type": "macro",
-                "run": "{split('.',get('cache.payload'))}"
-              },
-              "join": {
-                "type": "macro",
-                "run": "{join('.',get('cache.split'))}"
+                "run": {
+                  "getArray(0)": "{getArray(0)}",
+                  "getArray('a')": "{getArray('a')}",
+                  "getArray(00)": "{getArray(00)}",
+                  "getArray('aa')": "{getArray('aa')}",
+                  "getArray(,,,0,,,,)": "{getArray(,,,0,,,,)}",
+                  "getArray(,,,'',,,,)": "{getArray(,,,'',,,,)}",
+                  "getArray()": "{getArray()}",
+                  "split(',', '')": "{split(',', '')}",
+                  "split(',', ',')": "{split(',', ',')}",
+                  "split(',', ',,')": "{split(',', ',,')}",
+                  "join(',', getArray())": "{join(',', getArray())}",
+                  "getArray(getArray(00))": "{getArray(getArray(00))}",
+                  "getArray(getArray('aa'))": "{getArray(getArray('aa'))}",
+                  "getArray(getArray(0),getArray(1,2),getArray(3,4,5),getArray(6,7,8))": "{getArray(getArray(0),getArray(1,2),getArray(3,4,5),getArray(6,7,8))}",
+                  "getArray(getArray('a'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))": "{getArray(getArray('a'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))}",
+                  "getArray(getArray('aa'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))": "{getArray(getArray('aa'),getArray('b','c'),getArray('d','e','f'),getArray('g','h','i'))}",
+                  "split(',','a,b,c,d,e')": "{split(',','a,b,c,d,e')}",
+                  "split(',',',,,a,b,c,d,e,,,')": "{split(',',',,,a,b,c,d,e,,,')}",
+                  "join(',',getArray('','','','a','b','c','d','e','','',''))": "{join(',',getArray('','','','a','b','c','d','e','','',''))}",
+                  "flatten()": "{flatten()}",
+                  "flatten(0)": "{flatten(0)}",
+                  "flatten(getArray())": "{flatten(getArray())}",
+                  "flatten(getArray(0))": "{flatten(getArray(0))}",
+                  "flatten([1,2],[3,[4,5]],6)": "{flatten(getArray(1,2),getArray(3,getArray(4,5)),6)}"
+                }
               }
             }
           }
