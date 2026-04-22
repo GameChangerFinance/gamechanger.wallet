@@ -16,15 +16,13 @@ The smart design principles of the wallet allows you to import or connect these 
  - Nami, Eternl, Flint, Vespr, any CIP-30 or browser extension wallet
  - Shared Treasuries (script addresses)
  
- And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet.
+ And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet using intents.
 
- **One wallet to have them all, on Desktop and Mobile, with the same dapp connector.**
+ **One wallet to have them all, on Desktop and Mobile, with the same intent-based dapp connector.**
 
 ## Link
 
-This is the official link to access **GameChanger Wallet v2 (Production)**:
-
-[**🚀 GameChanger Wallet v2**](https://wallet.gamechanger.finance/)
+🚀 Official link to access: **[ GameChanger Wallet v2](https://wallet.gamechanger.finance/)**
 
 These networks are supported: 
 - Cardano Mainnet
@@ -35,7 +33,7 @@ These networks are supported:
 ## Documentation
 
 - [Transactions / Quick Start](docs/transactions/quick-start.md): A simple payment dapp
-- [90+ basic example dapps](examples/README.md)
+- ⭐ [90+ basic example dapps](examples/README.md)
 - [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more. **HTML version[ here](https://gamechangerfinance.github.io/gamechanger.wallet/)**
 - [Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation
 
@@ -49,9 +47,20 @@ These networks are supported:
 - [Dandelion Contributor Portal](https://contrib.dandelion.link) (GameChanger V1)
 
 ### Examples and Boilerplates:
-- [🔥 gc-connect](https://github.com/arpradio/gc-connect): great open-dapp boilerplate to integrate UDC/GameChanger Wallet, is the software that powers ARP Radio and Moments integrations. Developed by SudoScientist
-- Examples using **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:
-    - [✨ Kitchen Sink ✨](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
+- ⭐ [Builder Fest 2026 Challenge](https://github.com/GameChangerFinance/builderfest-2026-ticket): Builder Fest 2026 Ticket Sale dapp solved on GCScript DSL intents and an HTML frontend:
+    - Plutus script (validator) parametrization on user's wallets. Feature to deploy your own.
+    - Query beacon tokens to get last dapp on-chain state
+    - Plutus transactions using deployed validators.
+    - Cryptographically-verifiable, on-chain, reusable GCScript library with GCFS. Feature to deploy your own.
+    - For Cypherpunks only: bypass frontend completely and buy the ticket via QR codes, no middleman involved!
+- ⭐ [90+ full open source example dapps](examples/README.md):
+    - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://wallet.gamechanger.finance/playground)
+    - GCScript DSL code
+    - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero custom backends!
+    - HTML5 frontend code with zero external dependencies, and zero custom backends!
+    - QR code dapp connectors included  
+- ⭐ Examples using **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:
+    - [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
     - [URL](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/URL.txt)
     - [QR (png)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.png)
     - [QR (svg)](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/QR.svg)
@@ -59,23 +68,15 @@ These networks are supported:
     - [HTML5 Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/htmlDapp.html)
     - [ReactJs Dapp](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/reactDapp.html)
     - [ExpressJs Backend](https://github.com/GameChangerFinance/gamechanger/blob/master/examples/expressBackend.js)
-- **[90+ full open source example dapps](examples/README.md)**
-    - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://wallet.gamechanger.finance/playground)
-    - GCScript code
-    - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero backends!
-    - HTML5 frontend code with zero external dependencies, and zero backends!
-    - QR code dapp connectors included    
+- [gc-connect](https://github.com/arpradio/gc-connect): great open-dapp boilerplate to integrate UDC/GameChanger Wallet
+    - Software that powers ARP Radio and Moments integrations.
+    - Rich integration, pointing user directly to import/create pages for best UX 
+    - Developed by SudoScientist
 - [Unimatrix Live Demo](https://unimatrix-live-demo.netlify.app/): Signing Bot and Pasive listener for multisig transactions on private obfuscated channels using [Unimatrix Sync](https://github.com/GameChangerFinance/unimatrix/). With **Universal Dapp Connector** it builds and signs multi-signature transactions fully on users wallets, on client-side. With 4 built-in use cases :
     - 3 transactions in 1 dapp connection call: Be sure to have more than 3 UTXOs available as you will be using GameChanger Wallet's well known multi-transaction multisig features, otherwise you will face a missing balance screen.
     - Token sale: a decentralized, backend-less, token sale with instant, in-user-wallet multisig minting
     - NFT sale: a decentralized, backend-less, NTF sale with instant, in-user-wallet multisig minting
     - Passive mode: monitor announced transactions live, letting users manually sign and share their transactions by connecting their wallets. Handy for DAOs and user groups, or single users with semi-cold wallet setups.
-     
-- [Builder Fest 2026 Challenge](https://github.com/GameChangerFinance/builderfest-2026-ticket): How to solve the Builder Fest on-chain registration challenge in GCScript DSL. (auxiliary scripts are available, and Docs pending. WIP). Full project uses
-    - Plutus script parametrization on user's wallets
-    - Query beacon tokens
-    - Plutus transactions
-    - more.. 
 - [gc-contract-app](https://github.com/M2tec/gc-contract-app)
     - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
     - It builds a smart contract on-the-fly using *Helios Language*, 
@@ -84,17 +85,28 @@ These networks are supported:
     - First dapp on Cardano working from hosted source code stored on-chain. 
     - **The PAB for the web:** Helios smart contract code compiled on-the-fly on GameChanger dapp connections
     - **The big picture behind GameChanger Dapps** explained on-dapp for the Cardano Community
+- [Swap Limit Order](): P2P DeFi Kernel over intents with UDC + GCScript DSL. (Demo coming soon!) 
+    - by Agustin Badi in collaboration with Adriano Fiorenza, initially made for a presentation at **Cardano Foundation Dev Office Hours**
+
+
 ### Tools:
+- ⭐ [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
+- [Gift Wallet Generator](https://github.com/GameChangerFinance/gift-wallet-generator): A simple dapp to generate and fund GameChanger Gift Wallets in bulk for events, workshops and classrooms:
+    - Simple frontend leveraging on GCScript DSL intents
+    - Generates gift wallets in bulk using custom patterns for labels, passwords, descriptions,etc..
+    - Packs outputs on a few transactions to fund them in bulk
+    - Creates a special read-only workspace to monitor the generated addresses on your own mobile/desktop GameChanger wallet
+    - Powering crypto events worldwide like: https://x.com/blockdev_id/status/1875363843758854462
 - [Inception IDE Beta](https://inception.m2tec.nl/)
     - First stand-alone IDE for building **Cardano** dapps fully online (client side PAB)
     - in browser, no cardano-node deployment required. 
     - on-chain and off-chain code, **Helios Language**, **GCScript** and externaly-built **Plutus Scripts**
     - dapp <--> wallet connections you code here can be used on your own backends and frontends
     - By **Maarten Menheere**. [Github](https://github.com/M2tec/inception)
-- [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl)
-- [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
+- [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl): Nice tool to bundle Gift Wallets as paper wallets, suitable for printing
 - **Official CLI Tool [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:URL, QR, HTML, React, ExpressJs, all output format in one CLI tool 
-### Use Cases
+
+### Special Use Cases
 - M2Tec - Hardware and Software Dapps (first hardware dapps on Cardano powered by GameChanger universal dapp connector)
     - M2Tec Paypads: Payment devices for stores, with Odoo integration for ADA and native asset payments, loyalty tokens and more.
     - M2Tec Cardano Totem: The first Cardano ATM-like public terminals with built-in stake pool
@@ -104,7 +116,7 @@ These networks are supported:
     - powered by SSI
     - no minting required
 - [DCorps - Digital Companies Registry on Cardano](https://www.lidonation.com/zh/proposals/dcorps-digital-companies-registry-registering-your-catalyst-project-on-chain-f10) (GameChanger V1)
-
+- Powering crypto events worldwide, like hackatons and classrooms: https://x.com/blockdev_id/status/1875363843758854462
 
 ### Some videos and articles:
 
