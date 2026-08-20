@@ -1,0 +1,96 @@
+
+{
+  "title": "Token-Gated Sign-In",
+  "description": "Backend-less 'sign in with Cardano' for native asset holders only. The wallet blocks on an await/balance condition until the gating token is actually held, then signs a dapp-supplied nonce with CIP-8 and verifies its own signature before returning. The dapp learns the bare-minimum to verify: the realm, the address, the proof and nothing else.",
+  "type": "script",
+  "exportAs": "TokenGatedSignIn",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "realm": "gamechanger-demo",
+    "nonce": "1d5f9c2e-3a47-4d1b-9a6e-0c8f27b41ad3",
+    "policy-id": "d491234d8b40b63aceab0d7329c6db111c3634d9e0d3c6166c66c13b",
+    "asset-name-hex": "{strToHex('FakeUSD')}",
+    "quantity": "1"
+  },
+  "run": {
+    "guards": {
+      "type": "macro",
+      "run": {
+        "nonce-must-be-a-string": "{ assert( isType('string',get('args.nonce'))          ,'nonce must be a string'                                  , get('args') ) }",
+        "nonce-must-not-be-empty": "{ assert( not(isEmptyString(get('args.nonce')))       ,'nonce must not be empty: a replayable login is not a login' , get('args') ) }",
+        "realm-must-be-a-string": "{ assert( isType('string',get('args.realm'))          ,'realm must be a string'                                  , get('args') ) }",
+        "realm-must-not-be-empty": "{ assert( not(isEmptyString(get('args.realm')))       ,'realm must not be empty: it scopes the signature to one dapp' , get('args') ) }",
+        "policy-id-must-be-a-string": "{ assert( isType('string',get('args.policy-id'))    ,'gate policyId must be a string'                         , get('args.policy-id') ) }",
+        "policy-id-must-not-be-empty": "{ assert( not(isEmptyString(get('args.policy-id'))) ,'gate policyId must not be empty'                         , get('args.policy-id') ) }",
+        "asset-name-hex-must-be-a-string": "{ assert( isType('string',get('args.asset-name-hex'))  ,'gate assetName must be a string'                         , get('args.asset-name-hex') ) }",
+        "quantity-must-be-a-string": "{ assert( isType('string',get('args.quantity'))     ,'gate quantity must be a string'                          , get('args.quantity') ) }",
+        "quantity-must-be-gt-zero": "{ assert( cmpBigNum('gt',get('args.quantity'),'0')  ,'gate quantity must be greater than zero'                  , get('args.quantity') ) }"
+      }
+    },
+    "networkInfo": {
+      "type": "getNetworkInfo"
+    },
+    "networkKey": {
+      "type": "macro",
+      "run": "{ join('-',get('cache.networkInfo.dltTag'),get('cache.networkInfo.networkTag')) }"
+    },
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "gate": {
+      "type": "await",
+      "until": {
+        "holdsGatingToken": {
+          "kind": "balance",
+          "asset": {
+            "policyId": "{get('args.policy-id')}",
+            "assetNameHex": "{get('args.asset-name-hex')}",
+            "quantity": "{get('args.quantity')}"
+          }
+        }
+      }
+    },
+    "challengeText": {
+      "type": "macro",
+      "run": "{join(':',getArray(get('cache.networkInfo.dltTag'),get('cache.networkInfo.networkTag'),get('args.realm'),get('args.nonce'),get('cache.address')))}"
+    },
+    "challengeHash": {
+      "type": "macro",
+      "run": "{sha512(get('cache.challengeText'))}"
+    },
+    "proof": {
+      "type": "script",
+      "run": {
+        "signature": {
+          "type": "signDataWithAddress",
+          "address": "{get('cache.address')}",
+          "dataHex": "{get('cache.challengeHash')}"
+        },
+        "verified": {
+          "type": "verifySignatureWithAddress",
+          "address": "{get('cache.address')}",
+          "dataHex": "{get('cache.challengeHash')}",
+          "dataSignature": "{get('cache.proof.signature')}"
+        }
+      }
+    },
+    "postConditions": {
+      "type": "macro",
+      "run": {
+        "signature-must-verify": "{ assert( eq(get('cache.proof.verified'),true) ,'the wallet could not verify its own CIP-8 signature' , get('cache.proof') ) }",
+        "audit-trail": "{ console('info',get('cache.challengeText')) }"
+      }
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "realm": "{get('args.realm')}",
+        "address": "{get('cache.address')}",
+        "challengeHash": "{get('cache.challengeHash')}",
+        "signature": "{get('cache.proof.signature')}"
+      }
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "title": "Batch Airdrop with Receipt",
+  "description": "Airdrops an existing native asset to five recipients in a single transaction and stamps a CIP-20 receipt on-chain: a SHA-256 digest of the canonical recipient manifest. Anyone can later recompute the digest from the published list and prove the drop was not altered, without trusting the sender. Minimum ADA per output is auto-computed by buildTx, and the change optimizer is left enabled to keep the UTXO set healthy.",
+  "type": "script",
+  "exportAs": "BatchAirdrop",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "asset-policy-id": "d491234d8b40b63aceab0d7329c6db111c3634d9e0d3c6166c66c13b",
+    "asset-name": "FakeUSD",
+    "recipient-1-quantity": "10",
+    "recipient-2-quantity": "25",
+    "recipient-3-quantity": "5",
+    "recipient-4-quantity": "40",
+    "recipient-5-quantity": "20",
+    "cardano-mainnet": {
+      "return-URL": "https://cardanoscan.io/transaction/{txHash}",
+      "recipient-1-address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+      "recipient-2-address": "addr1q98f06pcrsn8x03uw0vlejw684fcu02waffvfscdsz0djgqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq2vsyn7",
+      "recipient-3-address": "addr1q9cyzfctymllue5gx93mxnrymlzzxejkzgsrkgwq7upje4gd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqpnzcra",
+      "recipient-4-address": "addr1q9zlzmrvdrlt8f90va74qa4req68shy5kc54s8np4p6a2eqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqhq5g2r",
+      "recipient-5-address": "addr1qyygq384vhtcys27wedeh7r6jd0arwefvfxt6ggwjld0mjqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqa24x5g"
+    },
+    "cardano-preprod": {
+      "return-URL": "https://preprod.cardanoscan.io/transaction/{txHash}",
+      "recipient-1-address": "addr_test1qpfaamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqm5pqzu",
+      "recipient-2-address": "addr_test1qp8f06pcrsn8x03uw0vlejw684fcu02waffvfscdsz0djgqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqf6dylp",
+      "recipient-3-address": "addr_test1qpcyzfctymllue5gx93mxnrymlzzxejkzgsrkgwq7upje4gd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqz9lc0z",
+      "recipient-4-address": "addr_test1qpzlzmrvdrlt8f90va74qa4req68shy5kc54s8np4p6a2eqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq5kfgxu",
+      "recipient-5-address": "addr_test1qqygq384vhtcys27wedeh7r6jd0arwefvfxt6ggwjld0mjqd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yq7ugxch"
+    }
+  },
+  "run": {
+    "networkInfo": {
+      "type": "getNetworkInfo"
+    },
+    "networkKey": {
+      "type": "macro",
+      "run": "{ join('-',get('cache.networkInfo.dltTag'),get('cache.networkInfo.networkTag')) }"
+    },
+    "network": {
+      "type": "macro",
+      "run": "{ get(join('.','args',get('cache.networkKey'))) }"
+    },
+    "guards_1": {
+      "type": "macro",
+      "run": {
+        "network-must-be-supported": "{ assert( not(isType('null',get('cache.network')))        ,'this dapp has no addresses configured for the connected network'  , get('cache.networkKey') ) }",
+        "audit-trail": "{ console('info',get('cache.network')) }"
+      }
+    },
+    "lines": {
+      "type": "macro",
+      "run": "{getArray(join('=',getArray(get('cache.network.recipient-1-address'),get('args.recipient-1-quantity'))),join('=',getArray(get('cache.network.recipient-2-address'),get('args.recipient-2-quantity'))),join('=',getArray(get('cache.network.recipient-3-address'),get('args.recipient-3-quantity'))),join('=',getArray(get('cache.network.recipient-4-address'),get('args.recipient-4-quantity'))),join('=',getArray(get('cache.network.recipient-5-address'),get('args.recipient-5-quantity'))))}"
+    },
+    "canonical": {
+      "type": "macro",
+      "run": "{join(';',get('cache.lines'))}"
+    },
+    "digest": {
+      "type": "macro",
+      "run": "{sha256(get('cache.canonical'))}"
+    },
+    "totalQuantity": {
+      "type": "macro",
+      "run": "{addBigNum(get('args.recipient-1-quantity'),get('args.recipient-2-quantity'),get('args.recipient-3-quantity'),get('args.recipient-4-quantity'),get('args.recipient-5-quantity'))}"
+    },
+    "receipt": {
+      "type": "macro",
+      "run": "{join(' | ',getArray('Batch airdrop receipt',join(' ',getArray('asset:',get('args.asset-name'))),join(' ',getArray('recipients:','5')),join(' ',getArray('total:',get('cache.totalQuantity'))),join(' ',getArray('manifest sha256:',get('cache.digest')))))}"
+    },
+    "guards_2": {
+      "type": "macro",
+      "run": {
+        "policy-must-not-be-ada": "{ assert( neq(get('args.asset-policy-id'),'ada')                            ,'this dapp airdrops native assets, not ada'            , get('args.asset-policy-id') ) }",
+        "manifest-must-have-five-lines": "{ assert( eq(get('cache.lines.4'),join('=',getArray(get('cache.network.recipient-5-address'),get('args.recipient-5-quantity')))) ,'the manifest did not build all five lines' , get('cache.lines') ) }",
+        "total-must-be-greater-than-zero": "{ assert( cmpBigNum('gt' ,get('cache.totalQuantity'),'0')          ,'nothing to airdrop: total quantity is zero'           , get('cache.totalQuantity') ) }",
+        "audit-trail": "{ console('info',get('cache.canonical')) }"
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "name": "built-BatchAirdrop",
+      "title": "Batch Airdrop with Receipt",
+      "description": "Five recipients, one transaction, one verifiable on-chain receipt.",
+      "returnURLPattern": "{get('cache.network.return-URL')}",
+      "tx": {
+        "outputs": {
+          "r1": {
+            "address": "{get('cache.network.recipient-1-address')}",
+            "assets": [
+              {
+                "policyId": "{get('args.asset-policy-id')}",
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.recipient-1-quantity')}"
+              }
+            ]
+          },
+          "r2": {
+            "address": "{get('cache.network.recipient-2-address')}",
+            "assets": [
+              {
+                "policyId": "{get('args.asset-policy-id')}",
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.recipient-2-quantity')}"
+              }
+            ]
+          },
+          "r3": {
+            "address": "{get('cache.network.recipient-3-address')}",
+            "assets": [
+              {
+                "policyId": "{get('args.asset-policy-id')}",
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.recipient-3-quantity')}"
+              }
+            ]
+          },
+          "r4": {
+            "address": "{get('cache.network.recipient-4-address')}",
+            "assets": [
+              {
+                "policyId": "{get('args.asset-policy-id')}",
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.recipient-4-quantity')}"
+              }
+            ]
+          },
+          "r5": {
+            "address": "{get('cache.network.recipient-5-address')}",
+            "assets": [
+              {
+                "policyId": "{get('args.asset-policy-id')}",
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.recipient-5-quantity')}"
+              }
+            ]
+          }
+        },
+        "auxiliaryData": {
+          "674": {
+            "msg": "{strToMetadataStr(get('cache.receipt'))}"
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-BatchAirdrop",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "namePattern": "submitted-BatchAirdrop",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "network": "{get('cache.networkKey')}",
+        "txHash": "{get('cache.build.txHash')}",
+        "manifest": "{get('cache.lines')}",
+        "manifestDigestSha256": "{get('cache.digest')}",
+        "totalAssetQuantity": "{get('cache.totalQuantity')}"
+      }
+    }
+  }
+}

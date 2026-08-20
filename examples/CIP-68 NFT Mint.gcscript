@@ -1,0 +1,255 @@
+{
+  "title": "CIP-68 NFT Mint",
+  "description": "Mints a CIP-68 token pair under one native script policy: a (100) reference NFT that carries the metadata as an inline datum, and a (222) user NFT that the holder actually owns. Unlike CIP-25, the metadata lives in an eUTXO datum instead of transaction metadata, so it can be updated later by whoever controls the reference token under the script-controlled address that holds it. The datum follows the CIP-68 shape #6.121([metadata, version, extra]) with 'extra' set to Unit/Void. Every value a dapp would want to change is exposed as a flat argument, and after submitting, the wallet redirects to a block explorer that renders CIP-68 tokens so the result can be checked. ONE DELIBERATE SIMPLIFICATION, for example purposes: uniqueness of the reference NFT rests on issuer behaviour plus the policy time-lock, not on a one-shot policy that consumes a specific UTXO, so the policy could technically mint another (100) token before it expires. A production issuer should use a one-shot minting policy. ",
+  "type": "script",
+  "exportAs": "CIP68Mint",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "asset-name": "GameChangerCIP68",
+    "display-name": "GameChanger CIP-68 NFT",
+    "image-uri": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+    "media-type": "image/png",
+    "policy-lifetime-slots": "86400",
+    "cardano-mainnet": {
+      "nft-viewer-URL": "https://cardanoscan.io/token/"
+    },
+    "cardano-preprod": {
+      "nft-viewer-URL": "https://preprod.cardanoscan.io/token/"
+    }
+  },
+  "run": {
+    "cip68": {
+      "type": "macro",
+      "run": {
+        "referenceLabel": "000643b0",
+        "userLabel": "000de140"
+      }
+    },
+    "argumentGuards": {
+      "type": "macro",
+      "run": {
+        "asset-name-must-be-a-string": "{ assert( isType('string',get('args.asset-name')) ,'asset-name must be a string' , get('args') ) }",
+        "asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.asset-name'))) ,'asset-name must not be empty' , get('args') ) }",
+        "display-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.display-name'))) ,'display-name must not be empty: it is the on-chain metadata name' , get('args') ) }",
+        "image-uri-must-not-be-empty": "{ assert( not(isEmptyString(get('args.image-uri'))) ,'image-uri must not be empty' , get('args') ) }",
+        "policy-lifetime-must-be-gt-than-zero": "{ assert( cmpBigNum('gt',get('args.policy-lifetime-slots'),'0') ,'policy-lifetime-slots must be greater than zero' , get('args') ) }"
+      }
+    },
+    "networkInfo": {
+      "type": "getNetworkInfo"
+    },
+    "networkKey": {
+      "type": "macro",
+      "run": "{ join('-',get('cache.networkInfo.dltTag'),get('cache.networkInfo.networkTag')) }"
+    },
+    "network": {
+      "type": "macro",
+      "run": "{ get(join('.','args',get('cache.networkKey'))) }"
+    },
+    "networkGuards": {
+      "type": "macro",
+      "run": {
+        "network-must-be-supported": "{ assert( not(isType('null',get('cache.network'))) ,'this dapp has no data configured for the connected network' , get('cache.networkKey') ) }",
+        "nft-viewer-url-must-be-provided": "{ assert( not(isEmptyString(get('cache.network.nft-viewer-URL'))) ,'this dapp has no NFT viewer configured for the connected network' , get('cache.networkKey') ) }"
+      }
+    },
+    "address": {
+      "type": "getCurrentAddress"
+    },
+    "addressInfo": {
+      "type": "macro",
+      "run": "{getAddressInfo(get('cache.address'))}"
+    },
+    "currentSlotNumber": {
+      "type": "getCurrentSlot"
+    },
+    "deadlineSlotNumber": {
+      "type": "macro",
+      "run": "{addBigNum(get('cache.currentSlotNumber'),get('args.policy-lifetime-slots'))}"
+    },
+    "assetNames": {
+      "type": "macro",
+      "run": {
+        "bare": "{strToHex(get('args.asset-name'))}",
+        "referenceHex": "{join('',getArray(get('cache.cip68.referenceLabel'),strToHex(get('args.asset-name'))))}",
+        "userHex": "{join('',getArray(get('cache.cip68.userLabel'),strToHex(get('args.asset-name'))))}"
+      }
+    },
+    "assetNameGuards": {
+      "type": "macro",
+      "run": {
+        "labelled-asset-name-must-fit-in-32-bytes": "{ assert( eq(get('cache.assetNames.referenceHex'),truncate(get('cache.assetNames.referenceHex'),64,0,'')) ,'CIP-68 label plus asset-name must not exceed 32 bytes (64 hex chars)' , get('cache.assetNames') ) }",
+        "audit-trail": "{ console('info',objToJson(get('cache.assetNames'))) }"
+      }
+    },
+    "mintingPolicy": {
+      "type": "nativeScript",
+      "script": {
+        "all": {
+          "issuer": {
+            "pubKeyHashHex": "{get('cache.addressInfo.paymentKeyHash')}"
+          },
+          "timeLock": {
+            "slotNumEnd": "{get('cache.deadlineSlotNumber')}"
+          }
+        }
+      }
+    },
+    "scriptAddress": {
+        "type": "buildAddress",
+        "name":"ScriptAddressForUser",
+        "addr": {
+            "spendScriptHashHex": "{get('cache.mintingPolicy.scriptHashHex')}"
+        }
+    },
+    "metadataKeys": {
+      "type": "macro",
+      "run": {
+        "name": "{strToHex('name')}",
+        "image": "{strToHex('image')}",
+        "mediaType": "{strToHex('mediaType')}",
+        "displayName": "{strToHex(get('args.display-name'))}",
+        "imageUri": "{strToHex(get('args.image-uri'))}",
+        "mediaTypeValue": "{strToHex(get('args.media-type'))}"
+      }
+    },
+    "metadatumDatum": {
+      "type": "plutusData",
+      "data": {
+        "fromJSON": {
+          "schema": 1,
+          "obj": {
+            "constructor": 0,
+            "fields": [
+              {
+                "map": [
+                  {
+                    "k": {
+                      "bytes": "{get('cache.metadataKeys.name')}"
+                    },
+                    "v": {
+                      "bytes": "{get('cache.metadataKeys.displayName')}"
+                    }
+                  },
+                  {
+                    "k": {
+                      "bytes": "{get('cache.metadataKeys.image')}"
+                    },
+                    "v": {
+                      "bytes": "{get('cache.metadataKeys.imageUri')}"
+                    }
+                  },
+                  {
+                    "k": {
+                      "bytes": "{get('cache.metadataKeys.mediaType')}"
+                    },
+                    "v": {
+                      "bytes": "{get('cache.metadataKeys.mediaTypeValue')}"
+                    }
+                  }
+                ]
+              },
+              {
+                "int": 1
+              },
+              {
+                "constructor": 0,
+                "fields": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "name": "built-CIP68Mint",
+      "title": "CIP-68 NFT Mint",
+      "description": "Mints the (100) reference NFT with its metadata datum and the matching (222) user NFT.",
+      "returnURLPattern": "{join('',getArray(get('cache.network.nft-viewer-URL'),get('cache.mintingPolicy.scriptHashHex'),get('cache.assetNames.userHex')))}",
+      "tx": {
+        "ttl": {
+          "until": "{get('cache.deadlineSlotNumber')}"
+        },
+        "mints": [
+          {
+            "policyId": "{get('cache.mintingPolicy.scriptHashHex')}",
+            "assets": [
+              {
+                "assetNameHex": "{get('cache.assetNames.referenceHex')}",
+                "quantity": "1"
+              },
+              {
+                "assetNameHex": "{get('cache.assetNames.userHex')}",
+                "quantity": "1"
+              }
+            ]
+          }
+        ],
+        "outputs": {
+          "referenceNFT": {
+            "address": "{get('cache.scriptAddress')}",
+            "datum": {
+              "datumHex": "{get('cache.metadatumDatum.dataHex')}"
+            },
+            "assets": [
+              {
+                "policyId": "{get('cache.mintingPolicy.scriptHashHex')}",
+                "assetNameHex": "{get('cache.assetNames.referenceHex')}",
+                "quantity": "1"
+              }
+            ]
+          },
+          "userNFT": {
+            "address": "{get('cache.address')}",
+            "assets": [
+              {
+                "policyId": "{get('cache.mintingPolicy.scriptHashHex')}",
+                "assetNameHex": "{get('cache.assetNames.userHex')}",
+                "quantity": "1"
+              }
+            ]
+          }
+        },
+        "requiredSigners": {
+          "issuer": "{get('cache.addressInfo.paymentKeyHash')}"
+        },
+        "witnesses": {
+          "nativeScripts": {
+            "mintingScript": "{get('cache.mintingPolicy.scriptHex')}"
+          }
+        }
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "namePattern": "signed-CIP68Mint",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "namePattern": "submitted-CIP68Mint",
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "network": "{get('cache.networkKey')}",
+        "txHash": "{get('cache.build.txHash')}",
+        "policyId": "{get('cache.mintingPolicy.scriptHashHex')}",
+        "mintingScript": "{get('cache.mintingPolicy.scriptHex')}",
+        "scriptAddress": "{get('cache.scriptAddress')}",
+        "canMintUntilSlotNumber": "{get('cache.deadlineSlotNumber')}",
+        "referenceAssetNameHex": "{get('cache.assetNames.referenceHex')}",
+        "userAssetNameHex": "{get('cache.assetNames.userHex')}",
+        "metadataDatumHex": "{get('cache.metadatumDatum.dataHex')}",
+        "viewerURL": "{join('',getArray(get('cache.network.nft-viewer-URL'),get('cache.mintingPolicy.scriptHashHex'),get('cache.assetNames.userHex')))}"
+      }
+    }
+  }
+}
