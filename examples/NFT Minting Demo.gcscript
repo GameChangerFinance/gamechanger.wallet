@@ -1,14 +1,40 @@
 {
   "type": "script",
   "title": "NFT Minting Demo",
-  "description": "Demo that creates a native script and use it as policy to mint an NFT. Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "description": "Demo that creates a native script and use it as policy to mint an NFT. Raise 'mint-quantity' and you will be minting Semi-fungible tokens (SFT). Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. Asset name, quantities, policy lifetime, receiver and every CIP-25 metadata field are exposed as flat arguments so an auto-generated dapp can drive the whole mint, and they are checked with assert() before the wallet builds anything. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
   "exportAs": "NFTMintingDemo",
   "return": {
     "mode": "last"
   },
+  "args": {
+    "asset-name": "GameChangerNFT",
+    "mint-quantity": "1",
+    "send-quantity": "1",
+    "to-address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+    "policy-lifetime-slots": "86400",
+    "project-url": "https://gamechanger.finance",
+    "author": "GameChanger Wallet",
+    "media-type": "image/png",
+    "image-uri": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+    "image-sha256": "5b8ee29640bf24074a3988bb6b852165731fe8612793ef5a74433f1689e2cb4b"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": {
+        "asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.asset-name'))) ,'asset-name must not be empty' , get('args') ) }",
+        "to-address-must-not-be-empty": "{ assert( not(isEmptyString(get('args.to-address'))) ,'to-address must not be empty' , get('args') ) }",
+        "image-uri-must-not-be-empty": "{ assert( not(isEmptyString(get('args.image-uri'))) ,'image-uri must not be empty' , get('args') ) }",
+        "media-type-must-not-be-empty": "{ assert( not(isEmptyString(get('args.media-type'))) ,'media-type must not be empty, CIP-25 requires a mediaType' , get('args') ) }",
+        "mint-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.mint-quantity'),'0') ,'mint-quantity must be greater than zero' , get('args') ) }",
+        "send-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.send-quantity'),'0') ,'send-quantity must be greater than zero' , get('args') ) }",
+        "send-quantity-must-not-exceed-mint": "{ assert( cmpBigNum('lte',get('args.send-quantity'),get('args.mint-quantity')) ,'send-quantity must not exceed mint-quantity' , get('args') ) }",
+        "policy-lifetime-must-be-gt-zero": "{ assert( cmpBigNum('gt',get('args.policy-lifetime-slots'),'0') ,'policy-lifetime-slots must be greater than zero' , get('args') ) }"
+      }
+    },
     "dependencies": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "address": {
           "type": "getCurrentAddress"
@@ -17,20 +43,12 @@
           "type": "macro",
           "run": "{getAddressInfo(get('cache.dependencies.address'))}"
         },
-        "assetName": {
-          "type": "data",
-          "value": "GameChangerNFT"
-        },
-        "quantity": {
-          "type": "data",
-          "value": "100"
-        },
         "currentSlotNumber": {
           "type": "getCurrentSlot"
         },
         "deadlineSlotNumber": {
           "type": "macro",
-          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),'86400')}"
+          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),get('args.policy-lifetime-slots'))}"
         },
         "mintingPolicy": {
           "type": "nativeScript",
@@ -60,25 +78,20 @@
             "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
             "assets": [
               {
-                "assetName": "{get('cache.dependencies.assetName')}",
-                "quantity": "{get('cache.dependencies.quantity')}"
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.mint-quantity')}"
               }
             ]
           }
         ],
         "outputs": {
-          "exampleDrop01": {
-            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+          "exampleDrop": {
+            "address": "{get('args.to-address')}",
             "assets": [
               {
-                "policyId": "ada",
-                "assetName": "ada",
-                "quantity": "2000000"
-              },
-              {
                 "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
-                "assetName": "{get('cache.dependencies.assetName')}",
-                "quantity": "1"
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.send-quantity')}"
               }
             ]
           }
@@ -91,20 +104,19 @@
         "auxiliaryData": {
           "721": {
             "{get('cache.dependencies.mintingPolicy.scriptHashHex')}": {
-              "{get('cache.dependencies.assetName')}": {
-                "url": "https://gamechanger.finance",
-                "name": "{get('cache.dependencies.assetName')}",
-                "description": "{replaceAll('Only __QUANTITY__ NFTs were minted','__QUANTITY__',get('cache.dependencies.quantity'))}",
-                "author": "GameChanger Wallet",
-                "image": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+              "{get('args.asset-name')}": {
+                "url": "{strToMetadataStr(get('args.project-url'))}",
+                "name": "{get('args.asset-name')}",
+                "description": "{strToMetadataStr(replaceAll('Only __QUANTITY__ NFTs were minted','__QUANTITY__',get('args.mint-quantity')))}",
+                "author": "{strToMetadataStr(get('args.author'))}",
+                "image": "{strToMetadataStr(get('args.image-uri'))}",
                 "version": "1.0",
-                "mediaType": "image/png",
+                "mediaType": "{strToMetadataStr(get('args.media-type'))}",
                 "files": [
                   {
-                    "mediaType": "image/png",
-                    "src": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
-                    "arweaveId": "jn5d55VbVdpvA3y9WAlzRRBP1zhkq8l3QiUR-vVHb-0",
-                    "sha256": "5b8ee29640bf24074a3988bb6b852165731fe8612793ef5a74433f1689e2cb4b"
+                    "mediaType": "{strToMetadataStr(get('args.media-type'))}",
+                    "src": "{strToMetadataStr(get('args.image-uri'))}",
+                    "sha256": "{strToMetadataStr(get('args.image-sha256'))}"
                   }
                 ]
               }
@@ -127,28 +139,13 @@
       "txs": "{get('cache.sign')}"
     },
     "finally": {
-      "type": "script",
+      "type": "macro",
       "run": {
-        "txHash": {
-          "type": "macro",
-          "run": "{get('cache.build.txHash')}"
-        },
-        "assetName": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.assetName')}"
-        },
-        "policyId": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}"
-        },
-        "canMintUntilSlotNumber": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.deadlineSlotNumber')}"
-        },
-        "mintingScript": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
-        }
+        "txHash":"{get('cache.build.txHash')}",
+        "assetName": "{get('args.asset-name')}",
+        "policyId":"{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+        "canMintUntilSlotNumber": "{get('cache.dependencies.deadlineSlotNumber')}",
+        "mintingScript":"{get('cache.dependencies.mintingPolicy.scriptHex')}"
       }
     }
   }

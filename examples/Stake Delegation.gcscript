@@ -1,5 +1,9 @@
+
 {
   "type": "script",
+  "title": "Stake Delegation",
+  "description": "Registers the derived stake key and delegates it to a stake pool in a single transaction, then returns the delegated address so it can be funded. The target stake pool is exposed as a flat argument, so an auto-generated dapp can delegate to any pool without touching the code, and it is checked with assert() before the wallet builds anything. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "SingleDelegate",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -8,7 +12,22 @@
       ]
     }
   },
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "stake-pool-key-hash": "9eb76bb591d689dd06304c77c0df7871df76e768577e26af10d32b0c"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": {
+        "stake-pool-key-hash-must-be-a-string": "{ assert( isType('string',get('args.stake-pool-key-hash')) ,'stake-pool-key-hash must be a string' , get('args') ) }",
+        "stake-pool-key-hash-must-not-be-empty": "{ assert( not(isEmptyString(get('args.stake-pool-key-hash'))) ,'stake-pool-key-hash must not be empty' , get('args') ) }",
+        "stake-pool-key-hash-must-be-56-chars": "{ assert( and(eq(get('args.stake-pool-key-hash'),truncate(get('args.stake-pool-key-hash'),56,0,'')),neq(get('args.stake-pool-key-hash'),truncate(get('args.stake-pool-key-hash'),55,0,''))) ,'stake-pool-key-hash must be exactly 28 bytes (56 hex chars)' , get('args') ) }",
+        "stake-pool-key-hash-must-not-be-bech32": "{ assert( neq(truncate(get('args.stake-pool-key-hash'),4,0,''),'pool') ,'stake-pool-key-hash must be the raw hex pool key hash, not a bech32 pool id starting with \"pool1\"' , get('args') ) }"
+      }
+    },
     "dependencies": {
       "type": "script",
       "run": {
@@ -18,42 +37,6 @@
         "addressInfo": {
           "type": "macro",
           "run": "{getAddressInfo(get('cache.dependencies.currentAddress'))}"
-        },
-        "PoolKeyHash": {
-          "type": "data",
-          "value": "9eb76bb591d689dd06304c77c0df7871df76e768577e26af10d32b0c"
-        },
-        "keys": {
-          "type": "deriveKeys",
-          "keys": {
-            "StakeKey": {
-              "name": "StakeKey",
-              "kind": "stake",
-              "accountIndex": 0,
-              "addressIndex": 0
-            },
-            "PaymentKey": {
-              "name": "PaymentKey",
-              "kind": "spend",
-              "accountIndex": 0,
-              "addressIndex": 0
-            }
-          }
-        },
-        "Address": {
-          "type": "buildAddress",
-          "name": "DelegatedAddress",
-          "addr": {
-            "spendPubKeyHashHex": "{get('cache.dependencies.keys.PaymentKey.pubKeyHashHex')}",
-            "stakePubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
-          }
-        },
-        "RewardAddress": {
-          "type": "buildAddress",
-          "name": "RewardAddress",
-          "addr": {
-            "stakePubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
-          }
         }
       }
     },
@@ -61,22 +44,15 @@
       "type": "certificate",
       "cert": {
         "kind": "StakeRegistration",
-        "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
-      }
-    },
-    "deregistrationCert": {
-      "type": "certificate",
-      "cert": {
-        "kind": "StakeDeregistration",
-        "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
+        "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}"
       }
     },
     "delegationCert": {
       "type": "certificate",
       "cert": {
         "kind": "StakeDelegation",
-        "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}",
-        "poolKeyHashHex": "{get('cache.dependencies.PoolKeyHash')}"
+        "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}",
+        "poolKeyHashHex": "{get('args.stake-pool-key-hash')}"
       }
     },
     "txs": {
@@ -85,45 +61,47 @@
         "buildDelegate": {
           "type": "buildTx",
           "name": "DelegateTx",
+          "title": "Stake Delegation",
           "tx": {
             "certificates": [
               {
-                "certHex": "{get('cache.registrationCert.certHex')}"
+                "certHex": "{get('cache.registrationCert')}"
               },
               {
-                "certHex": "{get('cache.delegationCert.certHex')}"
+                "certHex": "{get('cache.delegationCert')}"
               }
-            ]
+            ],
+            "options": {
+                "autoProvision": {
+                    "workspaceNativeScript": true
+                },
+                "autoOptionalSigners": {
+                    "nativeScript": true
+                },
+                "autoClean": {
+                    "certReRegistrations": true
+                }
+            }
           }
         },
         "signDelegate": {
-          "type": "signTx",
-          "txHex": "{get('cache.txs.buildDelegate.txHex')}"
+          "type": "signTxs",
+          "detailedPermissions":false,
+          "txs": ["{get('cache.txs.buildDelegate.txHex')}"]
         },
         "submitDelegate": {
-          "type": "submitTx",
-          "later": false,
-          "wait": true,
-          "txHex": "{get('cache.txs.signDelegate.txHex')}"
+          "type": "submitTxs",
+          "txs": "{get('cache.txs.signDelegate')}"
         }
       }
     },
     "finally": {
-      "type": "script",
-      "exportAs": "SingleDelegate",
+      "type": "macro",
       "run": {
-        "IMPORTANT": {
-          "type": "data",
-          "value": "Please fund the address below in order to start delegating"
-        },
-        "address": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.Address')}"
-        },
-        "txHash": {
-          "type": "macro",
-          "run": "{get('cache.txs.signDelegate.txHash')}"
-        }
+        "address": "{get('cache.dependencies.currentAddress')}",
+        "rewardAddress": "{get('cache.dependencies.addressInfo.rewardAddress')}",
+        "stakePoolKeyHash": "{get('args.stake-pool-key-hash')}",
+        "txHash": "{get('cache.txs.buildDelegate.txHash')}"
       }
     }
   }

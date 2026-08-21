@@ -1,19 +1,26 @@
+
 {
   "type": "script",
   "title": "Minimal Coin Sending Demo",
-  "description": "Instead of using key-value maps for list of block code, here we use arrays and number indexes, making code less self explanatory but much smaller. The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "description": "Instead of using key-value maps for list of block code, here we use arrays and number indexes, making code less self explanatory but much smaller. The 'outputs' property of the 'buildTx' API function allows you to define multi-asset transaction outputs. In Cardano assets are defined by a policyId and an assetName, for ADA we use 'ada' in both cases. Receiver, asset and quantity are exposed as flat arguments so an auto-generated dapp can drive them",
+  "args": {
+    "to-address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+    "policy-id": "ada",
+    "asset-name-hex": "ada",
+    "quantity": "1000000"
+  },
   "run": [
     {
       "type": "buildTx",
       "tx": {
         "outputs": [
           {
-            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+            "address": "{get('args.to-address')}",
             "assets": [
               {
-                "policyId": "ada",
-                "assetName": "ada",
-                "quantity": "1000000"
+                "policyId": "{get('args.policy-id')}",
+                "assetNameHex": "{get('args.asset-name-hex')}",
+                "quantity": "{get('args.quantity')}"
               }
             ]
           }
