@@ -1,0 +1,60 @@
+{
+  "type": "script",
+  "title": "Repro 29A - Resubmit same signed transaction",
+  "description": "Minimal reproduction for issue #29, case A: the SAME signed transaction CBOR is submitted twice in one run. The first submission succeeds and is included; the second one is rejected by the node with 'All inputs are spent. Transaction has probably already been included'. Nothing actually failed here - the intent was already fulfilled - so this state should resolve as a success carrying the transaction hash, not as an error. Run on preprod with a wallet holding a few ADA. Diagnostic: look up the returned txHash on an explorer; it IS on-chain, which is what distinguishes case A from case B.",
+  "exportAs": "repro29A",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "self": {
+      "type": "getCurrentAddress"
+    },
+    "build": {
+      "type": "buildTx",
+      "title": "Self payment of 1 ADA",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.self')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "detailedPermissions": false,
+      "txs": {
+        "tx": "{get('cache.build.txHex')}"
+      }
+    },
+    "submit": {
+      "type": "submitTxs",
+      "mode": "sequential",
+      "noFail": true,
+      "extras": true,
+      "txs": {
+        "first": "{get('cache.sign.tx')}",
+        "again": "{get('cache.sign.tx')}"
+      }
+    },
+    "report": {
+      "type": "macro",
+      "run": {
+        "firstStatus": "{get('cache.submit.txsExtended.first.status')}",
+        "firstTxHash": "{get('cache.submit.txsExtended.first.txHash')}",
+        "firstError": "{get('cache.submit.txsExtended.first.error')}",
+        "againStatus": "{get('cache.submit.txsExtended.again.status')}",
+        "againTxHash": "{get('cache.submit.txsExtended.again.txHash')}",
+        "againError": "{get('cache.submit.txsExtended.again.error')}"
+      }
+    }
+  }
+}
