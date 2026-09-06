@@ -3,7 +3,7 @@
 
 **to GameChanger Wallet v2 Beta Release**
 
-![GameChanger Wallet v2 Beta](/gcw-logo-300x85.png "GameChanger Wallet v2 Beta")
+![GameChanger Wallet v2 Beta](gcw-logo-300x85.png "GameChanger Wallet v2 Beta")
 
 GameChanger Wallet v2 Beta is now available on Cardano Mainnet after 6+ months of Testnet phase.
 
