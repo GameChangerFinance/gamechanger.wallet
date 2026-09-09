@@ -1,0 +1,76 @@
+{
+  "type": "script",
+  "title": "Repro 29B - Two transactions built on the same UTXO view",
+  "description": "Minimal reproduction for issue #29, case B: TWO different transactions are built before either one is submitted, so both perform coin selection against the same, not-yet-updated UTXO view and both claim the same input. The first submission succeeds; the second is rejected with 'All inputs are spent. Transaction has probably already been included' even though that second transaction was never included. This one is a real failure and is retryable, but only by REBUILDING - resubmitting the same CBOR can never succeed. Run on preprod with a wallet holding a single UTXO (a freshly funded burner wallet is ideal). Diagnostic: the second txHash is NOT on-chain, which is what distinguishes case B from case A.",
+  "exportAs": "repro29B",
+  "return": {
+    "mode": "last"
+  },
+  "run": {
+    "self": {
+      "type": "getCurrentAddress"
+    },
+    "buildOne": {
+      "type": "buildTx",
+      "title": "Self payment of 1 ADA",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.self')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "1000000"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "buildTwo": {
+      "type": "buildTx",
+      "title": "Self payment of 2 ADA, built on the same UTXO view",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.self')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "2000000"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "detailedPermissions": false,
+      "txs": {
+        "one": "{get('cache.buildOne.txHex')}",
+        "two": "{get('cache.buildTwo.txHex')}"
+      }
+    },
+    "submit": {
+      "type": "submitTxs",
+      "mode": "sequential",
+      "noFail": true,
+      "extras": true,
+      "txs": "{get('cache.sign')}"
+    },
+    "report": {
+      "type": "macro",
+      "run": {
+        "oneStatus": "{get('cache.submit.txsExtended.one.status')}",
+        "oneTxHash": "{get('cache.submit.txsExtended.one.txHash')}",
+        "oneError": "{get('cache.submit.txsExtended.one.error')}",
+        "twoStatus": "{get('cache.submit.txsExtended.two.status')}",
+        "twoTxHash": "{get('cache.submit.txsExtended.two.txHash')}",
+        "twoError": "{get('cache.submit.txsExtended.two.error')}"
+      }
+    }
+  }
+}
