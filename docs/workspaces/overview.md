@@ -18,14 +18,14 @@ So we can say about wallets that:
 - a wallet address is like the unique locker ID
 - a private key is like the unique key that opens the locker
 - a public key is like the ID of the unique key that opens the locker
-- a personal account is a numbered section of the storage room where you own all the keys to all it's lockers
+- a personal account is a numbered section of the storage room where you own all the keys to all its lockers
 - a multisig wallet is special locker that only opens if a group of keys is used at the same time
     - some keys you own
     - some keys others may own
     - some keys that are special keys
         - that can be triggered or expire in time
         - that can be smart and work based on some programmable logic combining other kind of keys
-- new wallets are not created, but *located by address* and *owned by private keys*, in the same way all possible lockers already exist on the storage room and only knowing the right ID and having the right key allows you to manage and own it's contents.
+- new wallets are not created, but *located by address* and *owned by private keys*, in the same way all possible lockers already exist on the storage room and only knowing the right ID and having the right key allows you to manage and own its contents.
 
 
 We can say wallet software is like an accountant that keeps track of all the sections you own on this big storage room
