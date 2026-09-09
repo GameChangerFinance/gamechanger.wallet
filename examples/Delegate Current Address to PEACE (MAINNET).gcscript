@@ -1,6 +1,6 @@
 {
   "title": "Delegate to [PEACE]",
-  "description": "About to delegate your ADA to 'PEACEpool Cardano ecosystem developers' stake pool",
+  "description": "About to delegate your ADA to 'PEACEpool Cardano ecosystem developers' stake pool. The stake key is registered and delegated in a single transaction, and an already registered stake key is handled, so the same script also works when re-delegating.",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -11,6 +11,10 @@
     "networkTag": "mainnet"
   },
   "type": "script",
+  "exportAs": "data",
+  "return": {
+    "mode": "last"
+  },
   "run": {
     "dependencies": {
       "type": "script",
@@ -35,13 +39,6 @@
         "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}"
       }
     },
-    "deregistrationCert": {
-      "type": "certificate",
-      "cert": {
-        "kind": "StakeDeregistration",
-        "pubKeyHashHex": "{get('cache.dependencies.addressInfo.stakingKeyHash')}"
-      }
-    },
     "delegationCert": {
       "type": "certificate",
       "cert": {
@@ -56,37 +53,49 @@
         "buildTransaction": {
           "type": "buildTx",
           "name": "Delegate to [PEACE]",
+          "title": "Delegate to [PEACE]",
           "tx": {
             "certificates": [
               {
-                "certHex": "{get('cache.registrationCert.certHex')}"
+                "certHex": "{get('cache.registrationCert')}"
               },
               {
-                "certHex": "{get('cache.delegationCert.certHex')}"
+                "certHex": "{get('cache.delegationCert')}"
               }
-            ]
+            ],
+            "options": {
+              "autoProvision": {
+                "workspaceNativeScript": true
+              },
+              "autoOptionalSigners": {
+                "nativeScript": true
+              },
+              "autoClean": {
+                "certReRegistrations": true
+              }
+            }
           }
         },
         "signTransaction": {
-          "type": "signTx",
-          "txHex": "{get('cache.txs.buildTransaction.txHex')}"
+          "type": "signTxs",
+          "detailedPermissions": false,
+          "txs": [
+            "{get('cache.txs.buildTransaction.txHex')}"
+          ]
         },
         "submitTransaction": {
-          "type": "submitTx",
-          "later": false,
-          "wait": true,
-          "txHex": "{get('cache.txs.signTransaction.txHex')}"
+          "type": "submitTxs",
+          "txs": "{get('cache.txs.signTransaction')}"
         }
       }
     },
     "finally": {
-      "type": "script",
-      "exportAs": "data",
+      "type": "macro",
       "run": {
-        "txHash": {
-          "type": "macro",
-          "run": "{get('cache.txs.signTransaction.txHash')}"
-        }
+        "address": "{get('cache.dependencies.address')}",
+        "rewardAddress": "{get('cache.dependencies.addressInfo.rewardAddress')}",
+        "stakePoolKeyHash": "{get('cache.dependencies.poolKeyHash')}",
+        "txHash": "{get('cache.txs.buildTransaction.txHash')}"
       }
     }
   }
