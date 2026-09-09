@@ -1,5 +1,8 @@
 {
   "type": "script",
+  "title": "Stake Withdrawal",
+  "description": "Withdraws staking rewards from the reward account of the current address. Cardano requires a withdrawal to move the entire reward balance, so 'withdrawal-quantity' must match the rewards available at build time. It is exposed as a flat argument so an auto-generated dapp can drive it without touching the code, and it is checked with assert() before the wallet builds anything. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "exportAs": "SingleWithdraw",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -8,71 +11,78 @@
       ]
     }
   },
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "withdrawal-quantity": "1000000"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": {
+        "withdrawal-quantity-must-be-a-string": "{ assert( isType('string',get('args.withdrawal-quantity')) ,'withdrawal-quantity must be a string' , get('args') ) }",
+        "withdrawal-quantity-must-not-be-empty": "{ assert( not(isEmptyString(get('args.withdrawal-quantity'))) ,'withdrawal-quantity must not be empty' , get('args') ) }",
+        "withdrawal-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.withdrawal-quantity'),'0') ,'withdrawal-quantity must be greater than zero, and must equal the whole reward balance available at build time' , get('args') ) }"
+      }
+    },
     "dependencies": {
       "type": "script",
       "run": {
-        "keys": {
-          "type": "deriveKeys",
-          "keys": {
-            "StakeKey": {
-              "name": "StakeKey",
-              "kind": "stake",
-              "accountIndex": 0,
-              "addressIndex": 0
-            },
-            "PaymentKey": {
-              "name": "PaymentKey",
-              "kind": "spend",
-              "accountIndex": 0,
-              "addressIndex": 0
-            }
-          }
+        "currentAddress": {
+          "type": "getCurrentAddress"
         },
-        "RewardAddress": {
-          "type": "buildAddress",
-          "name": "RewardAddress",
-          "addr": {
-            "stakePubKeyHashHex": "{get('cache.dependencies.keys.StakeKey.pubKeyHashHex')}"
-          }
+        "addressInfo": {
+          "type": "macro",
+          "run": "{getAddressInfo(get('cache.dependencies.currentAddress'))}"
         }
       }
     },
     "txs": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "buildWithdraw": {
           "type": "buildTx",
           "name": "WithdrawTx",
+          "title": "Stake Withdrawal",
           "tx": {
             "withdrawals": {
-              "A": {
-                "address": "{get('cache.dependencies.RewardAddress')}",
-                "quantity": "1000000"
+              "rewards": {
+                "address": "{get('cache.dependencies.addressInfo.rewardAddress')}",
+                "quantity": "{get('args.withdrawal-quantity')}"
+              }
+            },
+            "options": {
+              "autoProvision": {
+                "workspaceNativeScript": true
+              },
+              "autoOptionalSigners": {
+                "nativeScript": true
               }
             }
           }
         },
         "signWithdraw": {
-          "type": "signTx",
-          "txHex": "{get('cache.txs.buildWithdraw.txHex')}"
+          "type": "signTxs",
+          "detailedPermissions": false,
+          "txs": [
+            "{get('cache.txs.buildWithdraw.txHex')}"
+          ]
         },
         "submitWithdraw": {
-          "type": "submitTx",
-          "later": false,
-          "wait": true,
-          "txHex": "{get('cache.txs.signWithdraw.txHex')}"
+          "type": "submitTxs",
+          "txs": "{get('cache.txs.signWithdraw')}"
         }
       }
     },
     "finally": {
-      "type": "script",
-      "exportAs": "SingleWithdraw",
+      "type": "macro",
       "run": {
-        "txHash": {
-          "type": "macro",
-          "run": "{get('cache.txs.signWithdraw.txHash')}"
-        }
+        "address": "{get('cache.dependencies.currentAddress')}",
+        "rewardAddress": "{get('cache.dependencies.addressInfo.rewardAddress')}",
+        "withdrawnQuantity": "{get('args.withdrawal-quantity')}",
+        "txHash": "{get('cache.txs.buildWithdraw.txHash')}"
       }
     }
   }
