@@ -1,0 +1,87 @@
+{
+  "type": "script",
+  "title": "Repro 29B - Two transactions built on the same UTXO view",
+  "description": "Issue #29, case B: two different transactions are built before either is submitted, so both select the same input from the same UTXO view. The first submission wins, the second reports 'All inputs are spent. Transaction has probably already been included'. Here the error is accurate: nothing fulfilled the second intent, and only rebuilding it can. Run on preprod. noFail and extras are used so both outcomes are reported instead of halting the script.",
+  "exportAs": "repro29B",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "first-quantity": "1000000",
+    "second-quantity": "1000001"
+  },
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        }
+      }
+    },
+    "buildFirst": {
+      "type": "buildTx",
+      "name": "repro29B-first",
+      "title": "Repro 29B - first self payment",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.dependencies.address')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetNameHex": "ada",
+                "quantity": "{get('args.first-quantity')}"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "buildSecond": {
+      "type": "buildTx",
+      "name": "repro29B-second",
+      "title": "Repro 29B - second self payment",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.dependencies.address')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetNameHex": "ada",
+                "quantity": "{get('args.second-quantity')}"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "detailedPermissions": false,
+      "txs": {
+        "first": "{get('cache.buildFirst.txHex')}",
+        "second": "{get('cache.buildSecond.txHex')}"
+      }
+    },
+    "submit": {
+      "type": "submitTxs",
+      "mode": "noWait",
+      "noFail": true,
+      "extras": true,
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "firstBuiltTxHash": "{get('cache.buildFirst.txHash')}",
+        "secondBuiltTxHash": "{get('cache.buildSecond.txHash')}",
+        "firstStatus": "{get('cache.submit.txsExtended.first.status')}",
+        "firstError": "{get('cache.submit.txsExtended.first.error')}",
+        "secondStatus": "{get('cache.submit.txsExtended.second.status')}",
+        "secondError": "{get('cache.submit.txsExtended.second.error')}"
+      }
+    }
+  }
+}

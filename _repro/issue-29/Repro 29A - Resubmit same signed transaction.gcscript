@@ -1,0 +1,74 @@
+{
+  "type": "script",
+  "title": "Repro 29A - Resubmit same signed transaction",
+  "description": "Issue #29, case A: the very same signed transaction is submitted twice. This is what a dapp reload, a browser back button or a re-run of the same GCScript URL does. The second submission reports 'All inputs are spent. Transaction has probably already been included' even though the user's intent was fulfilled by the first one. Run on preprod. noFail and extras are used so both outcomes are reported instead of halting the script.",
+  "exportAs": "repro29A",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "quantity": "1000000"
+  },
+  "run": {
+    "dependencies": {
+      "type": "script",
+      "run": {
+        "address": {
+          "type": "getCurrentAddress"
+        }
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "name": "repro29A",
+      "title": "Repro 29A - self payment",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.dependencies.address')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetNameHex": "ada",
+                "quantity": "{get('args.quantity')}"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sign": {
+      "type": "signTxs",
+      "detailedPermissions": false,
+      "txs": {
+        "tx": "{get('cache.build.txHex')}"
+      }
+    },
+    "submitFirst": {
+      "type": "submitTxs",
+      "mode": "noWait",
+      "noFail": true,
+      "extras": true,
+      "txs": "{get('cache.sign')}"
+    },
+    "submitAgain": {
+      "type": "submitTxs",
+      "mode": "noWait",
+      "noFail": true,
+      "extras": true,
+      "txs": "{get('cache.sign')}"
+    },
+    "finally": {
+      "type": "macro",
+      "run": {
+        "builtTxHash": "{get('cache.build.txHash')}",
+        "firstStatus": "{get('cache.submitFirst.txsExtended.tx.status')}",
+        "firstTxHash": "{get('cache.submitFirst.txsExtended.tx.txHash')}",
+        "firstError": "{get('cache.submitFirst.txsExtended.tx.error')}",
+        "secondStatus": "{get('cache.submitAgain.txsExtended.tx.status')}",
+        "secondTxHash": "{get('cache.submitAgain.txsExtended.tx.txHash')}",
+        "secondError": "{get('cache.submitAgain.txsExtended.tx.error')}"
+      }
+    }
+  }
+}
