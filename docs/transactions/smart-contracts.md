@@ -223,7 +223,7 @@ So my eUTXO data is this one:
 ```json
     {
         "txHash":"8ee99a1fa8d3a6632da00a9bfe787456ee97172353c7b050a98a566aed9c03f1",
-        "index":0,
+        "index":0
     }
 ```
 
