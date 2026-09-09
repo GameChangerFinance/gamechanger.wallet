@@ -17,7 +17,7 @@ So in this section the native transaction features we will be using are `outputs
 In GameChanger we define an asset through the `assetName` and `policyId` properties.
 - When `assetName` and `policyId` values are `"ada"` we are referring to the coin of the network, ADA for Mainnet and tADA or TestAda for Pre-Production Testnet networks.
 - When `assetName` and `policyId` values are different than `"ada"` we are referring to a native asset. To know which type, if token, or NFT or any other, this information is not enough and you may need to query and process that information from the chain. GameChanger wallet will tell you this information on the user interface.
-- For ADA/tADA we work with it's minimum unit, *a lovelace*, and `1,000,000 lovelaces = 1 ADA/tADA` 
+- For ADA/tADA we work with its minimum unit, *a lovelace*, and `1,000,000 lovelaces = 1 ADA/tADA` 
 
 Finally, remember that to send assets to a wallet you need to know it's `address`.
 

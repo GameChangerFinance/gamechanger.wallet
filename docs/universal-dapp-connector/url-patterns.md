@@ -117,7 +117,7 @@ This makes links more portable:
 - atomical routing and connector action request (DSL)
 * safer behavior for shared links, QR codes and backend redirects
 
-*If you were using CIP-30 dapp connectors: get ready to think outside the box! You are not targetting desktop-only use cases anymore with UDC, RPCs and real-time bidirectional channels give many assumptions for granted regarding connections. When aiming for real world use-cases beyond desktop requirements differ.*
+*If you were using CIP-30 dapp connectors: get ready to think outside the box! You are not targeting desktop-only use cases anymore with UDC, RPCs and real-time bidirectional channels give many assumptions for granted regarding connections. When aiming for real world use-cases beyond desktop requirements differ.*
 
 
 ### Important default behavior
@@ -388,7 +388,7 @@ This is especially useful for:
 * reusable public examples
 * protocol templates
 * open integrations shared by multiple dapps
-* keeping maintainance easy while preserving determinism  
+* keeping maintenance easy while preserving determinism  
 
 We will cover [GCScript DSL](../gcscript/README.md) and **ISL** soon, but for now this code snippet shows how this can be implemented:
 

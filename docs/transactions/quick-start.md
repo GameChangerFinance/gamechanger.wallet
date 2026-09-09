@@ -7,7 +7,7 @@
 Fair enough. Let's say you want to make someone send coins to Alice and Bob on a single transaction.
 - From any platform
 - From any device, desktop or mobile
-- From any programing language
+- From any programming language
 - From any user wallet type (Nami, Eternl, Flint, Vespr, Ledger, Trezor, multisig, seed phrases, QR wallets, burners, gifts, etc.. )
 
 Let's create a payment request on user's wallets, anyone "connecting" or running this example will be reviewing and signing a P2P (Peer-to-Peer) testnet transaction with a payment to Alice and Bob. 

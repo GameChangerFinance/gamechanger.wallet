@@ -16,7 +16,7 @@ This is intended to cover much more use cases as web3 for Ethereum or [EIP-0012]
 
 Cardano is not Ethereum. Since 2021 **GameChanger Wallet** was committed to find natural design patterns that would make sense for an eUTXO model blockchain like Cardano, slow epic work that had no other prior references on blockchain space and had to be solved from zero.
 
-Cardano have not seen yet it's full potential. Desktop defi-only applications are only a glimpse of what we can be doing out there. The problem: The feature-limited design of overall wallet + dapp connector ecosystem we currently have is not allowing us to look further. We push harder and harder to stablish by force of standards, rules and patches that are harming our exponential growth. With our flexible solution, a dapp or a power user can connect all these Cardano wallets to all these audiences with the same JSON code:
+Cardano have not seen yet its full potential. Desktop defi-only applications are only a glimpse of what we can be doing out there. The problem: The feature-limited design of overall wallet + dapp connector ecosystem we currently have is not allowing us to look further. We push harder and harder to establish by force of standards, rules and patches that are harming our exponential growth. With our flexible solution, a dapp or a power user can connect all these Cardano wallets to all these audiences with the same JSON code:
 
 Wallets:
 - 12,15,24 seed phrases (Mnemonic)
@@ -44,9 +44,9 @@ All these while democratizing access to Cardano with a platform-independent JSON
 Suggested article:
 - [Is Cardano ecosystem decentralized?](https://forum.cardano.org/t/is-cardano-ecosystem-decentralized/121882)
 
-## Dapp-connector ecosystem comparisson
+## Dapp-connector ecosystem comparison
 
-Differently from CIP-30, we do not inject any executable code inside dapps to stablish connections, and we don't need external dependencies or libraries to encode and decode the messages we use to connect with the wallet.
+Differently from CIP-30, we do not inject any executable code inside dapps to establish connections, and we don't need external dependencies or libraries to encode and decode the messages we use to connect with the wallet.
 
 - Dapp   -> Wallet communication carries the encoded/packed GCScript code 
 - Wallet -> Dapp   communication carries the encoded/packed JSON data response from the execution of the code. (developers design these returning payloads - [see URL Patterns](url-patterns.md#returning-data-from-the-wallet) )
@@ -85,7 +85,7 @@ Suggested articles:
 ## Downsides
 
 - "UX": We are so used to desktop browser extension wallets that conveniently pops up when needed that we are willing to accept code injections on all our websites and to limit entire blockchain ecosystems only to desktop scope. Everyone is free to compromise what sees fit.
-- "All connections goes through GameChanger Wallet", and it's not fully open source: This project has 2.5 years old now, and we care for our users until the point that we are the only wallet on Cardano that allows you to even connect any other wallet to it, so you are still free of using your hardware wallets and even your browser extension wallets in GameChanger, even for creating multisig wallets. This is why it's called a "meta" or "universal" wallet. Also the wallet has been created by a solo-developer who wants to gradually open source it all, you will discover that is a really huge project if you do your own research. The good news is that this process already started. Thanks to Catalyst Fund11 voters the full dapp connector JSON Schema and Unimatrix Sync, two important parts of the project are currently being released to the community. We want to make it open source as we love this project and we truly believe it's vision has as a lot to offer to Cardano.
+- "All connections goes through GameChanger Wallet", and it's not fully open source: This project has 2.5 years old now, and we care for our users until the point that we are the only wallet on Cardano that allows you to even connect any other wallet to it, so you are still free of using your hardware wallets and even your browser extension wallets in GameChanger, even for creating multisig wallets. This is why it's called a "meta" or "universal" wallet. Also the wallet has been created by a solo-developer who wants to gradually open source it all, you will discover that is a really huge project if you do your own research. The good news is that this process already started. Thanks to Catalyst Fund11 voters the full dapp connector JSON Schema and Unimatrix Sync, two important parts of the project are currently being released to the community. We want to make it open source as we love this project and we truly believe its vision has as a lot to offer to Cardano.
 
 
 Previous: [Universal Dapp Connector](README.md) | Next: [URL Patterns](url-patterns.md) 

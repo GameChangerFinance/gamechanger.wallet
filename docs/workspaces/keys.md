@@ -10,7 +10,7 @@ Following the locker and storage room analogy, we said that each locker has
 On blockchain cryptography
 - private keys (a secret a user owns) allows to rule over a wallet like unique keys opens each locker
 - a public (shareable) key generated from the private key is like the unique ID of a locker key
-- a private key and it's public key counterpart is called a key pair
+- a private key and its public key counterpart is called a key pair
 - child key pairs can be derived, or generated upon a master private key
 - this master key can be generated using the popular seed phrases we all know about
 - private keys are used to sign messages and transactions
@@ -200,7 +200,7 @@ Now lets overwrite wallet setup with same child keys but derived using the maske
 [loadConfig](https://wallet.gamechanger.finance/doc/api/v2/loadConfig.html),
 [script](https://wallet.gamechanger.finance/doc/api/v2/api.html)
 
-If we audit artifacts on **Workspaces** page we will see the same 6 keys generated and no more. This proves how each artifact is unique and while you can replace or update it's recipe, the resulting object will not change, otherwise new key artifacts would have appear on the list.
+If we audit artifacts on **Workspaces** page we will see the same 6 keys generated and no more. This proves how each artifact is unique and while you can replace or update its recipe, the resulting object will not change, otherwise new key artifacts would have appear on the list.
 
 This is because we produced same keys, and thus same *key hashes*.
 
@@ -518,7 +518,7 @@ Current address indicator, the **Address Picker**, is shown yellow marked becaus
 
 These first key pairs are very important for single address wallets, and while on GameChanger Wallet you can set as current any address, these keys still play an important role, you will later learn how these two are used to create your wallet's **Main Address**. 
 
-The following script serves as a derivation path definition on it's own.
+The following script serves as a derivation path definition on its own.
 
 ```js
 

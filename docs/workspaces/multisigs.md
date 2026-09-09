@@ -170,7 +170,7 @@ When encoding the gcscript as a URL or QR code, you can make your multisig users
 
 ### Example: 2 of 2 signatures
 
-It's native script grants **spend** and **stake** permissions on transactions consuming funds or managing stake on the multisig address only if: `Alice and Bob signs`
+Its native script grants **spend** and **stake** permissions on transactions consuming funds or managing stake on the multisig address only if: `Alice and Bob signs`
 
 The shareable workspace loader code:
 ```js
@@ -286,7 +286,7 @@ After selecting `Multisig Wallets` as current workspace, this is how your **Addr
 
 ### Example: 2 of 3 signatures
 
-It's native script grants **spend** and **stake** permissions on transactions consuming funds or managing stake on the multisig address only if: `At least 2 of Alice, Bob and Charles signs`
+Its native script grants **spend** and **stake** permissions on transactions consuming funds or managing stake on the multisig address only if: `At least 2 of Alice, Bob and Charles signs`
 
 The shareable workspace loader code:
 ```js

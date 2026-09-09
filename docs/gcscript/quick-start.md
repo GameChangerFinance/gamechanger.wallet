@@ -118,7 +118,7 @@ To adapt a code in GCScript to work for a specific network you just need to use 
 
 Playground IDE automated the process of building and deploying a simple HTML + Javascript dapp for you, after you master more your GCScript skills you can start coding your own dapps using our [Official NPM Library](https://www.npmjs.com/package/@gamechanger-finance/gc) for Javascript/Typescript. 
 
-If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to stablish communications by using standard building blocks available on all platforms and programming languages. Same building blocks will allow you to decode or decompress returning JSON data from the wallet to capture script results and use them on your applications. For the current wallet URL shape, router parameters and return URL behavior, see [URL Patterns](../universal-dapp-connector/url-patterns.md).
+If you are working on a different language/platform such as on embedded hardware, you can still create your own URLs or QR codes to establish communications by using standard building blocks available on all platforms and programming languages. Same building blocks will allow you to decode or decompress returning JSON data from the wallet to capture script results and use them on your applications. For the current wallet URL shape, router parameters and return URL behavior, see [URL Patterns](../universal-dapp-connector/url-patterns.md).
 
 ## Code editors and available tools
 
