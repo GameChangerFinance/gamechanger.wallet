@@ -402,7 +402,7 @@ We think the clever Cardano design where only nodes process a tiny portion of tr
 
 This is why on GameChanger wallet we encourage developers to deal with all the wallet-related and transaction-related code on client side, more specifically on wallet-side, allowing users and experts to always be able to review and audit the source code, not only the compiled code. (Also this has great open source collaboration benefits).
 
-That's why we added an [Helios](https://www.hyperion-bt.org/helios-book/) Smart Contract Language compiler into the wallet, to offer developers the possibility of stop dealing with pre-compiled and opaque Plutus Scripts and start relying directly on it's source code on user's wallets.
+That's why we added an [Helios](https://www.hyperion-bt.org/helios-book/) Smart Contract Language compiler into the wallet, to offer developers the possibility of stop dealing with pre-compiled and opaque Plutus Scripts and start relying directly on its source code on user's wallets.
 
 Remember the plutus script we used on previous examples? How can you be sure about what's doing inside? Does it have bugs? Backdoors maybe? Don't trust, always ensure you have means to verify.
 
@@ -570,7 +570,7 @@ But to enable traces feature on **Helios** you must compile the code using the `
 
 ```
 
-> Keep in mind the `simplify` flag will add/remove some bytes from the final compiled script also triggering changes on it's script hash, and this will lead to address, policy ID, and other changes on items generated based on this validator script.
+> Keep in mind the `simplify` flag will add/remove some bytes from the final compiled script also triggering changes on its script hash, and this will lead to address, policy ID, and other changes on items generated based on this validator script.
 
 These traces are originated when you instruct the wallet to build your transaction as GameChanger Wallet sends a draft of it to let **Cardano Node** evaluate an hypothetical outcome based on real current ledger state as UTXOs, stake rewards and certificates, time parameters and more context data is involved. 
 

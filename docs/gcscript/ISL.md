@@ -6,7 +6,7 @@
 
 ## Overview
 
-On this chapter you have learned how every element on GCScript is a function call, which involves a permissioned wallet operation that may have input arguments and may return some results after it's execution, but...
+On this chapter you have learned how every element on GCScript is a function call, which involves a permissioned wallet operation that may have input arguments and may return some results after its execution, but...
 
 - how would you pass the result of a function as argument of another function? 
 - how would you do simple arithmetic, cryptographic, and string operations?
@@ -56,7 +56,7 @@ So far you can ask for and return back the user address which is a not private e
 
 <br/>
 
->**[Macro](https://wallet.gamechanger.finance/doc/api/v2/macro.html):** Is a special GCScript function that acts like a pipe, it returns the isomorphic JSON results of the JSON with (or without) ISL strings passed on the `run` argument. In other terms, it is very handy because you can use it to run ISL code while also for declaring constants like in the `data` function. It's only difference with `data` is that `macro` supports ISL. 
+>**[Macro](https://wallet.gamechanger.finance/doc/api/v2/macro.html):** Is a special GCScript function that acts like a pipe, it returns the isomorphic JSON results of the JSON with (or without) ISL strings passed on the `run` argument. In other terms, it is very handy because you can use it to run ISL code while also for declaring constants like in the `data` function. Its only difference with `data` is that `macro` supports ISL. 
 
 <br/>
 <details>
@@ -135,7 +135,7 @@ Rules:
     - otherwise, providing a wrong formatted block of code results in an ISL critical syntax error
     - GCScript interpreter on ISL critical syntax errors returns the string value instead of the execution result of the code in the string  
     - elements contained on a block of code can either be a
-        - string literal wrapped between quotes (`'`) or JSON-scaped double quotes (`"`) 
+        - string literal wrapped between quotes (`'`) or JSON-escaped double quotes (`"`) 
         - number literal without decimal support
         - *undefined* literal (for example `{}`)
         - function call
@@ -148,7 +148,7 @@ Rules:
         - *undefined* throwing the value of the computed argument of the `fail()` function on dapp connector console. This function halts the execution cursor at position on error state
 - a function call begin with the function name followed by the list of arguments passed between `(` and `)` and separated with `,`
     - elements contained on the argument list of a function can either be a
-        - string literal wrapped between quotes (`'`) or JSON-scaped double quotes (`"`) 
+        - string literal wrapped between quotes (`'`) or JSON-escaped double quotes (`"`) 
         - number literal without decimal support
         - *undefined* literal (for example `uuid()`)
         - function call
@@ -406,7 +406,7 @@ By separating function calls with `;` and by using the `return(<value>)` ISL fun
 }
 ```
 
-*Now same ISL code block but now embedded on GCScript (with scaped line breaks as JSON specification requires)*
+*Now same ISL code block but now embedded on GCScript (with escaped line breaks as JSON specification requires)*
 
 ```json
 {
@@ -649,7 +649,7 @@ In this example we can explore isomorphism with ISL nested at deep levels of a J
 }
 ```
 
-The isomorphic [macro](https://wallet.gamechanger.finance/doc/api/v2/macro.html) function with it's ISL support is very handy for creating complex JSON templates, for example you may find it useful for dealing with 
+The isomorphic [macro](https://wallet.gamechanger.finance/doc/api/v2/macro.html) function with its ISL support is very handy for creating complex JSON templates, for example you may find it useful for dealing with 
 
 - dapp connection results, 
 - NFT metadata, 

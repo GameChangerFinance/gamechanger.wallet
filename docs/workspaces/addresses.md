@@ -13,7 +13,7 @@ On general blockchain cryptography
 - a private key is like the unique key that opens the locker
 - a public key is like the ID of the unique key that opens the locker
 - public keys, and thus the whole key pair, can be referenced by a handy, shorter, unique ID format, a cryptographic hash over the public key: *a key hash*
-- a personal account is a numbered section of the storage room where you own all the keys to all it's lockers
+- a personal account is a numbered section of the storage room where you own all the keys to all its lockers
 - a derivation scheme is the design pattern that serves as recipe to derive groups of keys using your wallet's master private key
 
 On Cardano
@@ -168,7 +168,7 @@ Notice that **Cardano** uses an encoding algorithm known as *Bech 32* to encode 
 
 ### Dynamic Workspace Design
 
-Let's now adapt the static workspace design to became dynamic: to adapt automatically to the wallet that is running it, to it's own *point of view (pov)*.
+Let's now adapt the static workspace design to became dynamic: to adapt automatically to the wallet that is running it, to its own *point of view (pov)*.
 
 For this matter, lets replace these statically-generated address artifacts into addresses built using key artifacts you can own.
 

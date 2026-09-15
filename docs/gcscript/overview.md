@@ -2,7 +2,7 @@
 
 ## Introduction
 
-An innovative Blockchain such as Cardano needs it's own wallet API specification.
+An innovative Blockchain such as Cardano needs its own wallet API specification.
 
 Usually when a dapp communicates with a web3 wallet, it calls a set of functions known as the wallet's API.
 

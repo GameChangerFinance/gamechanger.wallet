@@ -4,7 +4,7 @@
 
 Ethereum tokens, NFTs and other assets are concepts (in-memory balance sheets) created by developers on smart contracts, on Solidity code. The protocol itself does not know what these are. Only smart-contract code does.
 
-On Cardano, one of the low level protocol features offered out-of-the-box is the concept of native assets. The protocol itself is self-aware of the balances and the available supply of tokens and NFTs, in the same fashion it's aware of it's coins.
+On Cardano, one of the low level protocol features offered out-of-the-box is the concept of native assets. The protocol itself is self-aware of the balances and the available supply of tokens and NFTs, in the same fashion it's aware of its coins.
 
 Under same mindset of a limited set of transaction features is that Cardano provides a limited set of native asset features, out of the box. Basically you can send, mint and burn them. Three basic, but rock-solid native protocol features. 
 
@@ -14,7 +14,7 @@ Now lets mint and burn them.
 
 ## Mint 101 and Burn 100 tokens
 
-For minting new assets we must state what the minting policy will be, the rules that tells who can mint or burn assets and when this can be done in time. We need to stablish a law. A contract.
+For minting new assets we must state what the minting policy will be, the rules that tells who can mint or burn assets and when this can be done in time. We need to establish a law. A contract.
 
 But for this we will not be using a fully featured on-chain executable logic or smart contract yet.
 

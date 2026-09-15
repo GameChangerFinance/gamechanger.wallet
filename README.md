@@ -72,10 +72,10 @@ These networks are supported:
     - Software that powers ARP Radio and Moments integrations.
     - Rich integration, pointing user directly to import/create pages for best UX 
     - Developed by SudoScientist
-- [Unimatrix Live Demo](https://unimatrix-live-demo.netlify.app/): Signing Bot and Pasive listener for multisig transactions on private obfuscated channels using [Unimatrix Sync](https://github.com/GameChangerFinance/unimatrix/). With **Universal Dapp Connector** it builds and signs multi-signature transactions fully on users wallets, on client-side. With 4 built-in use cases :
+- [Unimatrix Live Demo](https://unimatrix-live-demo.netlify.app/): Signing Bot and Passive listener for multisig transactions on private obfuscated channels using [Unimatrix Sync](https://github.com/GameChangerFinance/unimatrix/). With **Universal Dapp Connector** it builds and signs multi-signature transactions fully on users wallets, on client-side. With 4 built-in use cases :
     - 3 transactions in 1 dapp connection call: Be sure to have more than 3 UTXOs available as you will be using GameChanger Wallet's well known multi-transaction multisig features, otherwise you will face a missing balance screen.
     - Token sale: a decentralized, backend-less, token sale with instant, in-user-wallet multisig minting
-    - NFT sale: a decentralized, backend-less, NTF sale with instant, in-user-wallet multisig minting
+    - NFT sale: a decentralized, backend-less, NFT sale with instant, in-user-wallet multisig minting
     - Passive mode: monitor announced transactions live, letting users manually sign and share their transactions by connecting their wallets. Handy for DAOs and user groups, or single users with semi-cold wallet setups.
 - [gc-contract-app](https://github.com/M2tec/gc-contract-app)
     - educational dapp by **Maarten Menheere** for **Gimbalabs** that shows how **GameChanger Wallet** is like a *PAB for the web*
@@ -107,7 +107,7 @@ These networks are supported:
 - [Inception IDE Beta](https://inception.m2tec.nl/)
     - First stand-alone IDE for building **Cardano** dapps fully online (client side PAB)
     - in browser, no cardano-node deployment required. 
-    - on-chain and off-chain code, **Helios Language**, **GCScript** and externaly-built **Plutus Scripts**
+    - on-chain and off-chain code, **Helios Language**, **GCScript** and externally-built **Plutus Scripts**
     - dapp <--> wallet connections you code here can be used on your own backends and frontends
     - By **Maarten Menheere**. [Github](https://github.com/M2tec/inception)
 - [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl): Nice tool to bundle Gift Wallets as paper wallets, suitable for printing
@@ -124,7 +124,7 @@ These networks are supported:
     - no minting required
 - [DCorps - Digital Companies Registry on Cardano](https://www.lidonation.com/zh/proposals/dcorps-digital-companies-registry-registering-your-catalyst-project-on-chain-f10) (GameChanger V1)
 - [Dandelion Contributor Portal](https://contrib.dandelion.link) (GameChanger V1)
-- Powering crypto events worldwide, like hackatons and classrooms: https://x.com/blockdev_id/status/1875363843758854462
+- Powering crypto events worldwide, like hackathons and classrooms: https://x.com/blockdev_id/status/1875363843758854462
 
 ### Some videos and articles:
 

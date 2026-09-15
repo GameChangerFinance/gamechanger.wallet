@@ -72,11 +72,11 @@ Since 2021 empowering users with freedom and low barrier access, after almost 2 
     - schema: modular, extensible API schema
     - documentation: auto-generated API documentation
     - open-by-default: GCScript open and auditable nature makes it perfect for viral open-source collaboration
-    - multi-platform: alternative encodings and transports ensures maximum conectivity with any kind of agent, even offline and very limited devices
+    - multi-platform: alternative encodings and transports ensures maximum connectivity with any kind of agent, even offline and very limited devices
 -  **Dapp Connector**: Advanced, multi-transport, dapp connector with live debugging features
 -  **Open Wallet**: almost all mayor wallet features are now API dapp connections, allowing the user to live audit, clone and customize our code
 -  **Playground IDE**: Cardano's first developer wallet since 2021, with built in IDE, now totally improved
-    - new IDE design - new File menu, transport, encoding and priviledge mode selection, 
+    - new IDE design - new File menu, transport, encoding and privilege mode selection, 
     - dapp deployer -  auto-generated HTML5 Dapps now can be deployed instantly on IPFS and GCFS
     - connection launcher - multi-transport, multi-encoding connection launcher. Social sharing for URLs.
     - Doc Explorer
@@ -109,7 +109,7 @@ or developing, you may lose funds and data if you don't backup everything in adv
 ### Decentralized Backend
 
 As you may know so far, **GameChanger Wallet** is a non custodial web wallet powered by a **distributed network of backend nodes** 
-runned by our partners [Dandelion APIs](https://dandelion.link), it is expected to experience some backend downtimes during the first stages of this community effort.
+run by our partners [Dandelion APIs](https://dandelion.link), it is expected to experience some backend downtimes during the first stages of this community effort.
 If you want to join as operator, maintainer or just contribute to this great project please get in touch. *Dandelion Node Operators* may receive incentives in the near future.
 
 ## API Migration
@@ -132,7 +132,7 @@ This is a non custodial wallet, you are your own bank, nobody else is.
 
 Links:
 * [Github Docs and examples](https://github.com/GameChangerFinance/gamechanger.wallet)
-* [Discord **(Recomended)**](https://dsc.gg/gamechanger)
+* [Discord **(Recommended)**](https://dsc.gg/gamechanger)
     * [#General Support](https://discord.com/channels/912354788795109396/912357076284604448)
     * [#Smart Send](https://discord.com/channels/912354788795109396/921686004514054194)
     * [#NFT Creator (single, collections)](https://discord.com/channels/912354788795109396/921686703410913311)

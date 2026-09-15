@@ -2,11 +2,11 @@
 
 ## Syntax
 
-Everything on GCScript are function calls. A main function call, and it's nested function calls. Recursively.
+Everything on GCScript are function calls. A main function call, and its nested function calls. Recursively.
 
 ## Functions
 
-In GCScript a function call is a JSON object with a `type` property. It's value is the name of the function. All the other properties are argument names defined function declarations, and their values are the argument values passed to each function.
+In GCScript a function call is a JSON object with a `type` property. Its value is the name of the function. All the other properties are argument names defined function declarations, and their values are the argument values passed to each function.
 
 *Example of a function call without arguments:*
 ```json
@@ -343,7 +343,7 @@ Let's self document this code better:
 
 ## Anatomy of the interpreter
 
-From last example, we can say that the object properties `name`,`address` and `slot` are variables, and each one will store the result of each of it's functions being called.
+From last example, we can say that the object properties `name`,`address` and `slot` are variables, and each one will store the result of each of its functions being called.
 
 To be more specific GCScript is actually doing underneath something like this javascript code:
 ```js
@@ -376,7 +376,7 @@ Can i break the default isomorphism?"
 
 Well yes, you can!
 
-The solution is to set the mode in which each `script` function returns it's results from it's own `cache` memory. This can be done by setting the `return` property.
+The solution is to set the mode in which each `script` function returns its results from its own `cache` memory. This can be done by setting the `return` property.
 
 The `return` property can take these options and each one alters the code block results in different ways:
 
@@ -385,8 +385,8 @@ The `return` property can take these options and each one alters the code block 
 | :------ | :----------- |
 | `{"mode":"all"}` | Will return all it children code block results. This is the default isomorphic behavior |
 | `{"mode":"none"}` | Will return `undefined`, and because is not a valid JSON value it will be purged. Like a `function():void;` in typescript |
-| `{"mode":"first"}` | Will return the result of it's first child code block. |
-| `{"mode":"last"}` | Will return the result of it's last child code block. |
+| `{"mode":"first"}` | Will return the result of its first child code block. |
+| `{"mode":"last"}` | Will return the result of its last child code block. |
 | `{"mode":"one", "key":"<CHILD_KEY>"}` | Will return the result of one child code block, the one in the `key` name or position argument. |
 | `{"mode":"some","keys":[<CHILD_KEY1>,<CHILD_KEY2>,...,<CHILD_KEY_N>]}` | Will return the result of some children code blocks, the ones in the `keys` name or position list argument. |
 | `{"mode":"macro","exec":"<ISL>"}` | Will return the result of the execution of an inline scripting language macro. Useful for formatting, debugging results |
