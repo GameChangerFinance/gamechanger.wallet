@@ -92,9 +92,11 @@ These networks are supported:
     - Privacy preserving, device run a cryptographic authorization but without knowing the actual allowed user wallet 
     - CIP-8 signature flow even using Ledger Nano X to sign
     - [Announcement on X](https://x.com/GameChangerOk/status/2051667157193265572)
-- **Swap Limit Order**: P2P DeFi Kernel over intents with UDC + GCScript DSL. (Demo coming soon!) 
+- [Swap Limit Order](https://github.com/AgustinBadi/GCscript-Cardano-Swap): P2P DeFi Kernel over intents with UDC + GCScript DSL.  Inspiration for [NeonSoup DEX](https://neonsoup.trade)
     - by Agustin Badi in collaboration with Adriano Fiorenza, initially made for a presentation at **Cardano Foundation Dev Office Hours**
-
+    - **Cardano Foundation Dev Office Hours** [full video, demo at the end](https://youtu.be/_wbcrO_BaOI?si=FwNv-vxX925-7UDi)
+    - [Intent on a dApp frontend](https://youtu.be/ISSW2rBgftc?si=i8SeNhVlGHhjswOF) - Short Swap Demo Video
+    - 🔥 [Intent on a QR code, no need for a dApp frontend](https://youtube.com/shorts/nvAjeM2aD5Q?si=OarLnUHuuzx295GD) - Short Swap Demo Video
 
 ### Tools:
 - ⭐ [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
@@ -127,7 +129,9 @@ These networks are supported:
 - Powering crypto events worldwide, like hackathons and classrooms: https://x.com/blockdev_id/status/1875363843758854462
 
 ### Some videos and articles:
-
+- ⭐ [Cardano Foundation Dev Office Hours](https://youtu.be/_wbcrO_BaOI?si=FwNv-vxX925-7UDi) - Building Intent-Based DApps: GCScript DSL & Universal Dapp Connector (UDC)
+- 🇺🇸 [GameChanger, the metawallet for Cardano](https://youtu.be/ayx1jygG4CI?si=_GaGnbVGD-9az1Di) - English, short crash course video
+- 🇪🇸 [GameChanger, the metawallet for Cardano](https://youtu.be/svNmmFwvta0?si=ALTqIKzwpnQKDQ1b) - Español, video corto intensivo
 - [Do you build Web2.9 or Web3?](https://www.youtube.com/watch?v=cJjI8YBzEs4) - Workshop at UTN Buenos Aires - 30/07/2024 (spanish)
 - [NFTPass RareEvo - onboarding on Cardano at scale ](https://www.youtube.com/watch?v=C96IK0qztbo)
 - [GCFS - Permapinning files on Cardano forever](https://www.youtube.com/watch?v=tq3Sxuh_XGE)
