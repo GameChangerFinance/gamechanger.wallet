@@ -92,7 +92,7 @@ These networks are supported:
     - Privacy preserving, device run a cryptographic authorization but without knowing the actual allowed user wallet 
     - CIP-8 signature flow even using Ledger Nano X to sign
     - [Announcement on X](https://x.com/GameChangerOk/status/2051667157193265572)
-- [Swap Limit Order](): P2P DeFi Kernel over intents with UDC + GCScript DSL. (Demo coming soon!) 
+- **Swap Limit Order**: P2P DeFi Kernel over intents with UDC + GCScript DSL. (Demo coming soon!) 
     - by Agustin Badi in collaboration with Adriano Fiorenza, initially made for a presentation at **Cardano Foundation Dev Office Hours**
 
 

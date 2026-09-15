@@ -26,7 +26,7 @@
     - [Overview](workspaces/overview.md)
     - [Quick Start](workspaces/quick-start.md)
     - [Keys](workspaces/keys.md)
-    - [Addresses](workspaces/keys.md)
+    - [Addresses](workspaces/addresses.md)
     - [Personal Account Wallets](workspaces/accounts.md)
     - [Multisigs Wallets](workspaces/multisigs.md)
 

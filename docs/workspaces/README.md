@@ -5,7 +5,7 @@
 - [Overview](overview.md)
 - [Quick Start](quick-start.md)
 - [Keys](keys.md)
-- [Addresses](keys.md)
+- [Addresses](addresses.md)
 - [Personal Account Wallets](accounts.md)
 - [Multisig Wallets](multisigs.md)
 

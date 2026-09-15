@@ -11,7 +11,7 @@ In GCScript a function call is a JSON object with a `type` property. It's value 
 *Example of a function call without arguments:*
 ```json
 {
-    "type": "getCurrentAddress",
+    "type": "getCurrentAddress"
 }
 ```
 *The [getCurrentAddress](https://wallet.gamechanger.finance/doc/api/v2/getCurrentAddress.html) function returns current wallet address and has no arguments.*
