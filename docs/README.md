@@ -34,7 +34,7 @@
 - [General Documentation](README.md)
 - [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Beta Release Notes](../RELEASE.md)
-- [70+ open source example dapps](../examples/README.md)
+- [100+ open source example dapps](../examples/README.md)
 - [GCScript API documentation](https://wallet.gamechanger.finance/doc/api/v2)
 - [Playground IDE in GameChanger Wallet ](https://wallet.gamechanger.finance/playground)
 - [Catalyst](../catalyst/CATALYST.md)

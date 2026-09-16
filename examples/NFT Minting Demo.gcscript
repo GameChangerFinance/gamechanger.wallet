@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "NFT Minting Demo",
-  "description": "Demo that creates a native script and use it as policy to mint an NFT. Raise 'mint-quantity' and you will be minting Semi-fungible tokens (SFT). Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. Asset name, quantities, policy lifetime, receiver and every CIP-25 metadata field are exposed as flat arguments so an auto-generated dapp can drive the whole mint, and they are checked with assert() before the wallet builds anything. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "description": "It creates a native script and use it as policy to mint an NFT. Raise 'mint-quantity' and you will be minting Semi-fungible tokens (SFT). Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. Asset name, quantities, policy lifetime, receiver and every CIP-25 metadata field are exposed as flat arguments so an auto-generated dapp can drive the whole mint, and they are checked with assert() before the wallet builds anything",
   "exportAs": "NFTMintingDemo",
   "return": {
     "mode": "last"
@@ -11,7 +11,7 @@
     "mint-quantity": "1",
     "send-quantity": "1",
     "to-address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
-    "policy-lifetime-slots": "86400",
+    "policy-lifetime-slots": 86400,
     "project-url": "https://gamechanger.finance",
     "author": "GameChanger Wallet",
     "media-type": "image/png",
@@ -141,11 +141,11 @@
     "finally": {
       "type": "macro",
       "run": {
-        "txHash":"{get('cache.build.txHash')}",
+        "txHash": "{get('cache.build.txHash')}",
         "assetName": "{get('args.asset-name')}",
-        "policyId":"{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+        "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
         "canMintUntilSlotNumber": "{get('cache.dependencies.deadlineSlotNumber')}",
-        "mintingScript":"{get('cache.dependencies.mintingPolicy.scriptHex')}"
+        "mintingScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
       }
     }
   }

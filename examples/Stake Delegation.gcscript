@@ -1,8 +1,7 @@
-
 {
   "type": "script",
   "title": "Stake Delegation",
-  "description": "Registers the derived stake key and delegates it to a stake pool in a single transaction, then returns the delegated address so it can be funded. The target stake pool is exposed as a flat argument, so an auto-generated dapp can delegate to any pool without touching the code, and it is checked with assert() before the wallet builds anything. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "description": "Registers the derived stake key and delegates it to a stake pool in a single transaction, then returns the delegated address so it can be funded. The target stake pool is exposed as a flat argument, so an auto-generated dapp can delegate to any pool without touching the code, and it is checked with assert() before the wallet builds anything",
   "exportAs": "SingleDelegate",
   "require": {
     "not": {
@@ -16,7 +15,8 @@
     "mode": "last"
   },
   "args": {
-    "stake-pool-key-hash": "9eb76bb591d689dd06304c77c0df7871df76e768577e26af10d32b0c"
+    "stake-pool-key-hash": "d71613e6097382e4d522fb17cff10b6c8bbe8575521ae174ba506c70",
+    "stake-pool-ticker": "DRMZ"
   },
   "run": {
     "argumentGuards": {
@@ -57,11 +57,11 @@
     },
     "txs": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "buildDelegate": {
           "type": "buildTx",
-          "name": "DelegateTx",
-          "title": "Stake Delegation",
+          "title": "{join(' ',getArray('Stake Delegation to',get('args.stake-pool-ticker')))}",
           "tx": {
             "certificates": [
               {
@@ -72,22 +72,24 @@
               }
             ],
             "options": {
-                "autoProvision": {
-                    "workspaceNativeScript": true
-                },
-                "autoOptionalSigners": {
-                    "nativeScript": true
-                },
-                "autoClean": {
-                    "certReRegistrations": true
-                }
+              "autoProvision": {
+                "workspaceNativeScript": true
+              },
+              "autoOptionalSigners": {
+                "nativeScript": true
+              },
+              "autoClean": {
+                "certReRegistrations": true
+              }
             }
           }
         },
         "signDelegate": {
           "type": "signTxs",
-          "detailedPermissions":false,
-          "txs": ["{get('cache.txs.buildDelegate.txHex')}"]
+          "detailedPermissions": false,
+          "txs": [
+            "{get('cache.txs.buildDelegate.txHex')}"
+          ]
         },
         "submitDelegate": {
           "type": "submitTxs",

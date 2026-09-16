@@ -98,11 +98,11 @@
       }
     },
     "scriptAddress": {
-        "type": "buildAddress",
-        "name":"ScriptAddressForUser",
-        "addr": {
-            "spendScriptHashHex": "{get('cache.mintingPolicy.scriptHashHex')}"
-        }
+      "type": "buildAddress",
+      "name": "ScriptAddressForUser",
+      "addr": {
+        "spendScriptHashHex": "{get('cache.mintingPolicy.scriptHashHex')}"
+      }
     },
     "metadataKeys": {
       "type": "macro",
