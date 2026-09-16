@@ -1,4 +1,3 @@
-
 {
   "title": "Token-Gated Sign-In",
   "description": "Backend-less 'sign in with Cardano' for native asset holders only. The wallet blocks on an await/balance condition until the gating token is actually held, then signs a dapp-supplied nonce with CIP-8 and verifies its own signature before returning. The dapp learns the bare-minimum to verify: the realm, the address, the proof and nothing else.",

@@ -33,7 +33,7 @@ These networks are supported:
 ## Documentation
 
 - [Transactions / Quick Start](docs/transactions/quick-start.md): A simple payment dapp
-- ⭐ [90+ basic example dapps](examples/README.md)
+- ⭐ [100+ basic example dapps](examples/README.md)
 - [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more. **HTML version[ here](https://gamechangerfinance.github.io/gamechanger.wallet/)**
 - [Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation
 
@@ -53,7 +53,7 @@ These networks are supported:
     - Plutus transactions using deployed validators.
     - Cryptographically-verifiable, on-chain, reusable GCScript library with GCFS. Feature to deploy your own.
     - For Cypherpunks only: bypass frontend completely and buy the ticket via QR codes, no middleman involved!
-- ⭐ [90+ full open source example dapps](examples/README.md):
+- ⭐ [100+ full open source example dapps](examples/README.md):
     - The famous examples included on [Playground, the built-in IDE of GameChanger Wallet](https://wallet.gamechanger.finance/playground)
     - GCScript DSL code
     - HTML5 frontend code using new **Official Library [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**, and zero custom backends!
@@ -144,7 +144,7 @@ These networks are supported:
 - [General Documentation](docs/README.md)
 - [How to connect?](https://www.npmjs.com/package/@gamechanger-finance/gc)
 - [Beta Release Notes](RELEASE.md)
-- [70+ open source example dapps](examples/README.md)
+- [100+ open source example dapps](examples/README.md)
 - [Universal Dapp Connector documentation](DAPP_CONNECTOR.md)
 - [GCScript documentation](https://wallet.gamechanger.finance/doc/api/v2)
 - [Playground IDE in GameChanger Wallet ](https://wallet.gamechanger.finance/playground)

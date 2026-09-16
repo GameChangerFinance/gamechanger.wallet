@@ -3,7 +3,7 @@
 
 ## **NFT Minting Demo**
 
-Demo that creates a native script and use it as policy to mint an NFT. Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/
+It creates a native script and use it as policy to mint an NFT. Raise 'mint-quantity' and you will be minting Semi-fungible tokens (SFT). Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. Asset name, quantities, policy lifetime, receiver and every CIP-25 metadata field are exposed as flat arguments so an auto-generated dapp can drive the whole mint, and they are checked with assert() before the wallet builds anything
 
 
 ## Try it online: 
@@ -11,7 +11,7 @@ Demo that creates a native script and use it as policy to mint an NFT. Image has
 -  Visit [HTML+JS Dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/NFT%20Minting%20Demo.html)
 -  Visit [HTML+React Dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/NFT%20Minting%20Demo_react.html)
 -  Visit [Native HTML dapp](https://gamechangerfinance.github.io/gamechanger.wallet/examples/NFT%20Minting%20Demo_nolib.html)
--  Run [Standalone URL dapp connection](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61WWVPjOBD-K6q8BKqYkPuYtzAMRzHLcgSoZYuiZKtta5BlR5ITG4r_vi3ZFM5AMjPs-CWRuvWp--tLTw1TpND43NC-4qlp7DQMN8JunB7MyF9cGi5Dsg9xgiIGpRZPJCrYTWIiaoivgBrQhBJJDV8AKdUIlYxkGgjHv5qkieB-QUxCYoRFIcErWuQ4piGQCBU8AElSBQueZFoUJEtFQhkwh5NyKfFvIsnx2cFly57VxE-koVxqoiAABdJHI4w1Cgj1TUYF4RZdt8iUHNIYvkRUhqDIDRUCDNmnaep8a5HImFR_3t0NUcsvtVoBlxQhd9FzyNNEmakuealoqVhRYDKFhDw14oRZ5gTVpvGMgsztMkhBMjSOg7brHwmv1ChjCnRdIwTzJVPolplWMgSt1I5lkNRUY-qr5AWr8YQnp696W7jcavrUj6BVN6ZVYTW3t58dtNZgTpGAGjCjhiLugorMLmskIg_20DyjSIYp1p_ptNtW0S9duRSJOc1iD9S7nlqx1WZAmeAS3lX_wVt0Y4-HqLXW0Td3N7d3muNhv91ulq7HZUTPXIrWbirz-fIlVFXMbLSEsD9c66w0Lc28EyiOqI6OIK9isIl0G5hWSosY7aoOVrYYHsO3xH-wqLq0-KtkmyDfkuWg3LfT8DIuWM0nt57l6I50sXYb5lOV15s7gMkdkHHOZygSH7CrpBsz_V-kzTF-vNG9leC0yhhURFu8KnFLvFoObwjBi1J5_DWF1x950XEO3D3f7TSSzKSZcfUKOY1TAfsqSdudlVp2_zrzSUBpPJ88DAeDUbiA3oDGhs3TaDKJJvOuyaPH9gi7Th4Os-UyZMPvw0U78Nt9OYAo7E66Rb7Q-LMArebzOJ8HMh0V2VKOirn_mM2XapWEGqmU0cZKZVc7NZ-7bfdhXP5kOD4eg44lGJNkyY1EEsumWS9Et1FZUZXm75pbmmpvoVnOBaeq2LddC4FHXRfCj7q_6eiKz7aAlC2fDaPntUZ_lcfVEf2kIBXUh6kQW82_Jc7U-_vzq-np7Hj2z_19OUOXODjdRAbW3GnW5c2dn1dDGfDMRIlaHQ_VjEWpG8Eo5Glg3TyPr28O8-lJute9zIverQxuNTO9ME_8g69XVzA-PNvzFf02u708P5nZOQJKl-50Wm1cx8A4nZW9zGHvpjLE_YALKPN_nYZW_v-wg6ol0AW44vguB2wwuPauWbqY9orJzVQ8XlzsnXUeo4f5WPTO-dXFp8X1kffJWqwj2h0M8djAGwN0Jzh4vKDbb4_6tDcZjz1v6I0H3c5wMOp1AhgPO93RpAfBgI76_V4v6AzHE-j6Xt9zlVF2dc1DWX9N4HKW6yphzqgxYN8kbh9YrbkzwBeTAHYGKsbphcQiZwEVGmx3t_yt5JobFi2TV9l9Z2_OvJib-t1u493bncSsGOAuWbnD2lgNBpv3QhQbnkloChbbxqfPG9tfZ-t7T5z1AOsLDaFeW-XvIv2kg9i3EpWWrSs7YH_lBfShAVzrnn_Eg5eeit9_SQde7lYMAAA)
+-  Run [Standalone URL dapp connection](https://wallet.gamechanger.finance/api/2/run/1-H4sIAAAAAAAAA61XW3PaOhD-KxpeCDNAuYRb39JL0kzbnPRATuf0TCYj7LWtRr4gycEuw38_K8mAnUCapOHFZiV9--3Fu6tVTeUJ1N7WpCNYomrNmmKKa8HF6Yx8ZZFikU8-QBjjkgt2F4sj3HCuiCOAKpCEkogqdgfErhMauSSVQBi-SpLEnDk5UTEJEQ8XCWK3yd-U4Za6lrUWKUVNKq-bo3mckiXjnMzBHNEUphCylpdGPptzQKxbiCQ5mp7OGm1yHlIfSICq5gARSQTcsTiVPCdpwmPqgmtgExZF-BpH5PzydNrWLCRx4khRhlgCPBAQOWgOMlUBEOqolHLCNLpskxMpQaGhITRJwZeBbG7M48wDxfSiAAfQGcIoBXzJyfvzy1ZvQEJQ1KWKEo8BR1ICCGRJLDVBSTxO0TvCT0OIlCQy1q6iqYpbPkQg0NMucWmSEAflrtD-1jSXQcytn5pGI8pyA-0E4NzimSVTAeJLEOqogS7yYlGcpJyjSfOUcReDGOUqQFdjoDUpoU6kTYMiC4okEKBSgfFf1cLY1YnCqVS1dbOGzKUWa02qpf2Ei2f4eB_QyAeBSHi8Em7c0EWZhMi9L0OrqesKkJqEfusuJh6l4WJyOxwMRv4d9Ac0VO4iCSaTYLLoqSz41Rk5Ac38Ybpc-u7w5_Cu4zmd42gAgd-b9PLsTuLjDqRYLMJs4UXJKE-X0ShfOL_SxVKgWhvM1iaYLcljhQzGw-NOB1dF_BMc1UoFR1aBUol8--aNjzY61sa2xyKKOYRIGLggFlUXkO_G49oN4DLaKr49k2FvEuN6844KmJYnnsb_Fv7z_Sw7-Zy8602zvP8j8n5IV_X9LHZOP15dwfjs8p0j6JfZj-m3z7MthgxobzBEmMF8DNCboAlzr3fcGR3T_mQ8ns-H8_Gg1x0ORv2uB-Nhtzea9MEb0NHxcb_vdYfjCfSc-fFcB1ekJuSb7DxLqXBNtAsTQuoIkx3Fvm0OtMJU4lusWnNoQZiYAK826Uhw4YjJj1o-VQKz7MgHdVTXudTegdQbjQZp1ncColH1YV0iDGqdNMn2aL1BGmRdyaI_4LEDKXjsBE_lsY3qH9DYYhQstv-fSmKXc3_AYgdS0NgJHvJobgqfgEXKhOkUZv9Mn99PslwfLE_kiDWS6QZToemEyTvmX6ThUd1X9WaJY6WlNJr1Tt0wLYstWSTqmx4msCBiVf0FIt7Pq1KjXsirgrHjVRG_Ai8dV8gcALelTT7EjSt4jNxBdx6grONutZJ7LX0f7ft1duNQX7W0rU_z595ivfPr3uXn-Xe91lNPgtbiZIDdvlTxtgOT7Xu1VensulQJN01sexD3vU8FjhrqpFjTzdO-nkdefKiqGg0nu332o3Qotvl2mWN7V6zWGtqxyqZoPfpwDmIvF71cM9ZSl7MI9m6_xwcVFYE5ROWB7kpiHYifpV0MfpdmT4mDnTSnG-8XYdCe5lw_mJSpJZ2k88-Qf6Iy-ATZNkKHHaad2k5orhtccbBuuWh2X2LnVqNKa8vHyH0M8qEbDZT5NWtm4irZZP7PMjSnGJu0QLWK2evxoVxlBkgZ41Nc4i_gZd2NWfrfqvg0zx81rxKcto1B4Wib_aZVWzzzemHtWu3v7vpEaf5bHaw9SPV6fd2sxalKUmW-KshomHD4IOKk8r2VUcod_B6717P2pSbeK7zGRAwITu0RErY1p5z0RlBQKj6D53K3vLUWmmaMMyryD3gt0cCjXlc_XuqL7dE9DtD5aQbnlVRiFn8tLkM4YpTmi9KIbSrB9pN4xK_Ve-lDdAEJpw6ccH5U_yvCa-HNzberk4vZ-ezfmxt7DVzi3c_0LXDrzXp5_ZHBwvLbDvqPmWU3FRaZye03B8rTnj6D10hp7eu2O5thbmbLx2M4lXlNA3mMg039F0NI4TyT_fYu8vtDdqvtAtebgimZH5V7L_6dZbJIjkuqsJFHhRynnl3ddFER2uteggixMaAD0XSPcgm6cGo3VDLd1OG2yopkvtaa03nIVFm3EezVblZUhYBRUtGhORY1V18WOc8PX6OQCX5a9wC2JIv-9OTy8yqlzqGRNu1KN5ryjPDcltN8pRK2Xv8PFZQ1usMSAAA)
 
 ## Source code:
 
@@ -27,14 +27,40 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://w
 {
   "type": "script",
   "title": "NFT Minting Demo",
-  "description": "Demo that creates a native script and use it as policy to mint an NFT. Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "description": "It creates a native script and use it as policy to mint an NFT. Raise 'mint-quantity' and you will be minting Semi-fungible tokens (SFT). Image has been previously uploaded and pinned on IPFS. NFTs contains references to the actual images. Asset name, quantities, policy lifetime, receiver and every CIP-25 metadata field are exposed as flat arguments so an auto-generated dapp can drive the whole mint, and they are checked with assert() before the wallet builds anything",
   "exportAs": "NFTMintingDemo",
   "return": {
     "mode": "last"
   },
+  "args": {
+    "asset-name": "GameChangerNFT",
+    "mint-quantity": "1",
+    "send-quantity": "1",
+    "to-address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+    "policy-lifetime-slots": 86400,
+    "project-url": "https://gamechanger.finance",
+    "author": "GameChanger Wallet",
+    "media-type": "image/png",
+    "image-uri": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+    "image-sha256": "5b8ee29640bf24074a3988bb6b852165731fe8612793ef5a74433f1689e2cb4b"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": {
+        "asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.asset-name'))) ,'asset-name must not be empty' , get('args') ) }",
+        "to-address-must-not-be-empty": "{ assert( not(isEmptyString(get('args.to-address'))) ,'to-address must not be empty' , get('args') ) }",
+        "image-uri-must-not-be-empty": "{ assert( not(isEmptyString(get('args.image-uri'))) ,'image-uri must not be empty' , get('args') ) }",
+        "media-type-must-not-be-empty": "{ assert( not(isEmptyString(get('args.media-type'))) ,'media-type must not be empty, CIP-25 requires a mediaType' , get('args') ) }",
+        "mint-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.mint-quantity'),'0') ,'mint-quantity must be greater than zero' , get('args') ) }",
+        "send-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.send-quantity'),'0') ,'send-quantity must be greater than zero' , get('args') ) }",
+        "send-quantity-must-not-exceed-mint": "{ assert( cmpBigNum('lte',get('args.send-quantity'),get('args.mint-quantity')) ,'send-quantity must not exceed mint-quantity' , get('args') ) }",
+        "policy-lifetime-must-be-gt-zero": "{ assert( cmpBigNum('gt',get('args.policy-lifetime-slots'),'0') ,'policy-lifetime-slots must be greater than zero' , get('args') ) }"
+      }
+    },
     "dependencies": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "address": {
           "type": "getCurrentAddress"
@@ -43,20 +69,12 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://w
           "type": "macro",
           "run": "{getAddressInfo(get('cache.dependencies.address'))}"
         },
-        "assetName": {
-          "type": "data",
-          "value": "GameChangerNFT"
-        },
-        "quantity": {
-          "type": "data",
-          "value": "100"
-        },
         "currentSlotNumber": {
           "type": "getCurrentSlot"
         },
         "deadlineSlotNumber": {
           "type": "macro",
-          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),'86400')}"
+          "run": "{addBigNum(get('cache.dependencies.currentSlotNumber'),get('args.policy-lifetime-slots'))}"
         },
         "mintingPolicy": {
           "type": "nativeScript",
@@ -86,25 +104,20 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://w
             "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
             "assets": [
               {
-                "assetName": "{get('cache.dependencies.assetName')}",
-                "quantity": "{get('cache.dependencies.quantity')}"
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.mint-quantity')}"
               }
             ]
           }
         ],
         "outputs": {
-          "exampleDrop01": {
-            "address": "addr1q9faamq9k6557gve35amtdqph99h9q2txhz07chaxg6uwwgd6j6v0fc04n5ehg292yxvs292vesrqqmxqfnp7yuwn7yqczuqwr",
+          "exampleDrop": {
+            "address": "{get('args.to-address')}",
             "assets": [
               {
-                "policyId": "ada",
-                "assetName": "ada",
-                "quantity": "2000000"
-              },
-              {
                 "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
-                "assetName": "{get('cache.dependencies.assetName')}",
-                "quantity": "1"
+                "assetName": "{get('args.asset-name')}",
+                "quantity": "{get('args.send-quantity')}"
               }
             ]
           }
@@ -117,20 +130,19 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://w
         "auxiliaryData": {
           "721": {
             "{get('cache.dependencies.mintingPolicy.scriptHashHex')}": {
-              "{get('cache.dependencies.assetName')}": {
-                "url": "https://gamechanger.finance",
-                "name": "{get('cache.dependencies.assetName')}",
-                "description": "{replaceAll('Only __QUANTITY__ NFTs were minted','__QUANTITY__',get('cache.dependencies.quantity'))}",
-                "author": "GameChanger Wallet",
-                "image": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
+              "{get('args.asset-name')}": {
+                "url": "{strToMetadataStr(get('args.project-url'))}",
+                "name": "{get('args.asset-name')}",
+                "description": "{strToMetadataStr(replaceAll('Only __QUANTITY__ NFTs were minted','__QUANTITY__',get('args.mint-quantity')))}",
+                "author": "{strToMetadataStr(get('args.author'))}",
+                "image": "{strToMetadataStr(get('args.image-uri'))}",
                 "version": "1.0",
-                "mediaType": "image/png",
+                "mediaType": "{strToMetadataStr(get('args.media-type'))}",
                 "files": [
                   {
-                    "mediaType": "image/png",
-                    "src": "ipfs://QmVWGxAKpB2Sxy3ZnfZsdt3gxocFEUUe8GPBcraLTZSQKT",
-                    "arweaveId": "jn5d55VbVdpvA3y9WAlzRRBP1zhkq8l3QiUR-vVHb-0",
-                    "sha256": "5b8ee29640bf24074a3988bb6b852165731fe8612793ef5a74433f1689e2cb4b"
+                    "mediaType": "{strToMetadataStr(get('args.media-type'))}",
+                    "src": "{strToMetadataStr(get('args.image-uri'))}",
+                    "sha256": "{strToMetadataStr(get('args.image-sha256'))}"
                   }
                 ]
               }
@@ -153,28 +165,13 @@ Dapp code was autogenerated by [Playground IDE in GameChanger Wallet ](https://w
       "txs": "{get('cache.sign')}"
     },
     "finally": {
-      "type": "script",
+      "type": "macro",
       "run": {
-        "txHash": {
-          "type": "macro",
-          "run": "{get('cache.build.txHash')}"
-        },
-        "assetName": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.assetName')}"
-        },
-        "policyId": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}"
-        },
-        "canMintUntilSlotNumber": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.deadlineSlotNumber')}"
-        },
-        "mintingScript": {
-          "type": "macro",
-          "run": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
-        }
+        "txHash": "{get('cache.build.txHash')}",
+        "assetName": "{get('args.asset-name')}",
+        "policyId": "{get('cache.dependencies.mintingPolicy.scriptHashHex')}",
+        "canMintUntilSlotNumber": "{get('cache.dependencies.deadlineSlotNumber')}",
+        "mintingScript": "{get('cache.dependencies.mintingPolicy.scriptHex')}"
       }
     }
   }
