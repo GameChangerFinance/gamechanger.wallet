@@ -20,6 +20,9 @@
         "asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.asset-name'))) ,'asset-name must not be empty' , get('args') ) }",
         "survivor-asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.survivor-asset-name'))) ,'survivor-asset-name must not be empty' , get('args') ) }",
         "asset-names-must-differ": "{ assert( neq(get('args.asset-name'),get('args.survivor-asset-name')) ,'asset-name and survivor-asset-name must differ, otherwise the burn destroys the token this example is meant to keep alive' , get('args') ) }",
+        "mint-quantity-must-not-be-negative": "{ assert( neq(truncate(get('args.mint-quantity'),1,0,''),'-') ,'mint-quantity must not be negative' , get('args') ) }",
+        "survivor-quantity-must-not-be-negative": "{ assert( neq(truncate(get('args.survivor-quantity'),1,0,''),'-') ,'survivor-quantity must not be negative' , get('args') ) }",
+        "burn-quantity-must-not-be-negative": "{ assert( neq(truncate(get('args.burn-quantity'),1,0,''),'-') ,'burn-quantity must not be negative' , get('args') ) }",
         "mint-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.mint-quantity'),'0') ,'mint-quantity must be greater than zero' , get('args') ) }",
         "survivor-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.survivor-quantity'),'0') ,'survivor-quantity must be greater than zero' , get('args') ) }",
         "burn-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.burn-quantity'),'0') ,'burn-quantity must be greater than zero' , get('args') ) }",
@@ -35,6 +38,12 @@
         "addressInfo": {
           "type": "macro",
           "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+        },
+        "issuerGuards": {
+          "type": "macro",
+          "run": {
+            "current-address-must-have-a-payment-key-hash": "{ assert( and(isType('string',get('cache.dependencies.addressInfo.paymentKeyHash')),not(isEmptyString(get('cache.dependencies.addressInfo.paymentKeyHash')))) ,'the connected address has no payment key hash: this example needs a key-based address to derive the minting policy from, not a script address' , get('cache.dependencies.addressInfo') ) }"
+          }
         },
         "mintingPolicy": {
           "type": "nativeScript",
@@ -95,7 +104,7 @@
             "assets": [
               {
                 "assetName": "{get('args.asset-name')}",
-                "quantity": "{subBigNum('0',get('args.burn-quantity'))}"
+                "quantity": "{join('',getArray('-',get('args.burn-quantity')))}"
               }
             ]
           }
