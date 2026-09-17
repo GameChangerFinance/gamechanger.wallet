@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Stake Withdrawal",
-  "description": "Withdraws staking rewards from the reward account of the current address. Cardano requires a withdrawal to move the entire reward balance, so 'withdrawal-quantity' must match the rewards available at build time. It is exposed as a flat argument so an auto-generated dapp can drive it without touching the code, and it is checked with assert() before the wallet builds anything. A GameChanger Wallet Dapp Demo. https://gamechanger.finance/",
+  "description": "Withdraws staking rewards from the reward account of the current address. Cardano requires a withdrawal to move the entire reward balance, so the quantity must match the rewards available at build time. It is exposed as a flat argument, so an auto-generated dapp can drive it without touching the code, and it is checked with assert() before the wallet builds anything",
   "exportAs": "SingleWithdraw",
   "require": {
     "not": {
@@ -44,8 +44,7 @@
       "run": {
         "buildWithdraw": {
           "type": "buildTx",
-          "name": "WithdrawTx",
-          "title": "Stake Withdrawal",
+          "title": "{join(' ',getArray('Stake Withdrawal of',get('args.withdrawal-quantity'),'lovelace'))}",
           "tx": {
             "withdrawals": {
               "rewards": {
