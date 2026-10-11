@@ -1,5 +1,7 @@
 {
   "type": "script",
+  "title": "Build Certificates",
+  "description": "Builds stake registration, deregistration and delegation certificates for the three kinds of stake credential: a key derived from the current wallet, a native script and a Plutus script. Nothing is submitted: the certificates are exported so they can be inspected or reused in a transaction",
   "require": {
     "not": {
       "walletTypeIn": [
