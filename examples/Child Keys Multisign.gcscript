@@ -59,7 +59,7 @@
         },
         "submitMultiSign": {
           "type": "submitTxs",
-          "txs": "{get('cache.signMultiSign')}"
+          "txs": "{get('cache.txs.signMultiSign')}"
         }
       }
     },
