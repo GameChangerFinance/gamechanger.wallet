@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Multi Stake Delegation",
-  "description": "Sets up a 'demos' workspace with three stake keys, then funds an address for each of them and delegates each stake key to a different pool, all in a single transaction. Stake keys that are already registered get no second registration certificate, so the same script works on the first run and when re-delegating. Run it before 'Multi Stake Withdrawal', which reuses this workspace",
+  "description": "Sets up a 'demos' workspace with three stake keys, then funds an address for each of them and delegates each stake key to a different pool, all in a single transaction. Stake keys that are already registered get no second registration certificate, so the same script works on the first run and when re-delegating. Pools and the funding amount are exposed as flat arguments, and checked with assert() before the wallet builds anything. Run it before 'Multi Stake Withdrawal', which reuses this workspace",
   "exportAs": "MultiDelegationDemo",
   "require": {
     "not": {
@@ -13,7 +13,29 @@
   "return": {
     "mode": "last"
   },
+  "args": {
+    "stake-pool-a-key-hash": "7facad662e180ce45e5c504957cd1341940c72a708728f7ecfc6e349",
+    "stake-pool-a-ticker": "APEX",
+    "stake-pool-b-key-hash": "8ffb4c8e648c0662f2a91157c92feaa95f1a3d2728eaea8257b3d8d9",
+    "stake-pool-b-ticker": "ALFA",
+    "stake-pool-c-key-hash": "db1018753659a073c43ad75c1f243f97a3896a45b81a61300ea96a9f",
+    "stake-pool-c-ticker": "OTG",
+    "funding-quantity": "10000000"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": {
+        "stake-pool-a-key-hash-must-be-56-chars": "{ assert( and(eq(get('args.stake-pool-a-key-hash'),truncate(get('args.stake-pool-a-key-hash'),56,0,'')),neq(get('args.stake-pool-a-key-hash'),truncate(get('args.stake-pool-a-key-hash'),55,0,''))) ,'stake-pool-a-key-hash must be exactly 28 bytes (56 hex chars)' , get('args') ) }",
+        "stake-pool-a-key-hash-must-not-be-bech32": "{ assert( neq(truncate(get('args.stake-pool-a-key-hash'),4,0,''),'pool') ,'stake-pool-a-key-hash must be the raw hex pool key hash, not a bech32 pool id starting with \"pool1\"' , get('args') ) }",
+        "stake-pool-b-key-hash-must-be-56-chars": "{ assert( and(eq(get('args.stake-pool-b-key-hash'),truncate(get('args.stake-pool-b-key-hash'),56,0,'')),neq(get('args.stake-pool-b-key-hash'),truncate(get('args.stake-pool-b-key-hash'),55,0,''))) ,'stake-pool-b-key-hash must be exactly 28 bytes (56 hex chars)' , get('args') ) }",
+        "stake-pool-b-key-hash-must-not-be-bech32": "{ assert( neq(truncate(get('args.stake-pool-b-key-hash'),4,0,''),'pool') ,'stake-pool-b-key-hash must be the raw hex pool key hash, not a bech32 pool id starting with \"pool1\"' , get('args') ) }",
+        "stake-pool-c-key-hash-must-be-56-chars": "{ assert( and(eq(get('args.stake-pool-c-key-hash'),truncate(get('args.stake-pool-c-key-hash'),56,0,'')),neq(get('args.stake-pool-c-key-hash'),truncate(get('args.stake-pool-c-key-hash'),55,0,''))) ,'stake-pool-c-key-hash must be exactly 28 bytes (56 hex chars)' , get('args') ) }",
+        "stake-pool-c-key-hash-must-not-be-bech32": "{ assert( neq(truncate(get('args.stake-pool-c-key-hash'),4,0,''),'pool') ,'stake-pool-c-key-hash must be the raw hex pool key hash, not a bech32 pool id starting with \"pool1\"' , get('args') ) }",
+        "funding-quantity-must-be-a-string": "{ assert( isType('string',get('args.funding-quantity')) ,'funding-quantity must be a string' , get('args') ) }",
+        "funding-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.funding-quantity'),'0') ,'funding-quantity must be greater than zero' , get('args') ) }"
+      }
+    },
     "walletSetup": {
       "type": "loadConfig",
       "updateId": "MultiStakeDelegationDemo",
@@ -128,14 +150,6 @@
         "addresses": {
           "type": "getAddresses",
           "keyPattern": "{artifactName}"
-        },
-        "pools": {
-          "type": "data",
-          "value": {
-            "APEX": "7facad662e180ce45e5c504957cd1341940c72a708728f7ecfc6e349",
-            "ALFA": "8ffb4c8e648c0662f2a91157c92feaa95f1a3d2728eaea8257b3d8d9",
-            "OTG": "db1018753659a073c43ad75c1f243f97a3896a45b81a61300ea96a9f"
-          }
         }
       }
     },
@@ -167,13 +181,14 @@
     },
     "delegationCerts": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "A": {
           "type": "certificate",
           "cert": {
             "kind": "StakeDelegation",
             "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-A.pubKeyHashHex')}",
-            "poolKeyHashHex": "{get('cache.dependencies.pools.APEX')}"
+            "poolKeyHashHex": "{get('args.stake-pool-a-key-hash')}"
           }
         },
         "B": {
@@ -181,7 +196,7 @@
           "cert": {
             "kind": "StakeDelegation",
             "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-B.pubKeyHashHex')}",
-            "poolKeyHashHex": "{get('cache.dependencies.pools.ALFA')}"
+            "poolKeyHashHex": "{get('args.stake-pool-b-key-hash')}"
           }
         },
         "C": {
@@ -189,17 +204,18 @@
           "cert": {
             "kind": "StakeDelegation",
             "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-C.pubKeyHashHex')}",
-            "poolKeyHashHex": "{get('cache.dependencies.pools.OTG')}"
+            "poolKeyHashHex": "{get('args.stake-pool-c-key-hash')}"
           }
         }
       }
     },
     "txs": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "buildDelegation": {
           "type": "buildTx",
-          "title": "Multi Stake Delegation",
+          "title": "{join(' ',getArray('Fund and delegate 3 stake keys to',get('args.stake-pool-a-ticker'),get('args.stake-pool-b-ticker'),get('args.stake-pool-c-ticker')))}",
           "tx": {
             "outputs": {
               "A": {
@@ -208,7 +224,7 @@
                   {
                     "policyId": "ada",
                     "assetName": "ada",
-                    "quantity": "10000000"
+                    "quantity": "{get('args.funding-quantity')}"
                   }
                 ]
               },
@@ -218,7 +234,7 @@
                   {
                     "policyId": "ada",
                     "assetName": "ada",
-                    "quantity": "10000000"
+                    "quantity": "{get('args.funding-quantity')}"
                   }
                 ]
               },
@@ -228,7 +244,7 @@
                   {
                     "policyId": "ada",
                     "assetName": "ada",
-                    "quantity": "10000000"
+                    "quantity": "{get('args.funding-quantity')}"
                   }
                 ]
               }
