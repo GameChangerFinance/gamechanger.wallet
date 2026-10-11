@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Keep Calm NFT",
-  "description": "Keep Calm NFT Demo, dinamically generates the image",
+  "description": "Keep Calm NFT Demo, dynamically generates the image",
   "run": {
     "dependencies": {
       "type": "script",

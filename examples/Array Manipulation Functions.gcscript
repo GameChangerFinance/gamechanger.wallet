@@ -1,6 +1,6 @@
 {
   "title": "Array Manipulation Functions",
-  "description": "This demo will test and explore basic array convertion and manipulation functions",
+  "description": "This demo will test and explore basic array conversion and manipulation functions",
   "type": "script",
   "exportAs": "ArraysDemo",
   "run": {
