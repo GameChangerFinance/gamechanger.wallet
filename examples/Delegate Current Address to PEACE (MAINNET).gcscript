@@ -1,6 +1,8 @@
 {
+  "type": "script",
   "title": "Delegate to [PEACE]",
   "description": "About to delegate your ADA to 'PEACEpool Cardano ecosystem developers' stake pool. The stake key is registered and delegated in a single transaction, and an already registered stake key is handled, so the same script also works when re-delegating.",
+  "exportAs": "data",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -10,8 +12,6 @@
     },
     "networkTag": "mainnet"
   },
-  "type": "script",
-  "exportAs": "data",
   "return": {
     "mode": "last"
   },
@@ -19,12 +19,12 @@
     "dependencies": {
       "type": "script",
       "run": {
-        "address": {
+        "currentAddress": {
           "type": "getCurrentAddress"
         },
         "addressInfo": {
           "type": "macro",
-          "run": "{getAddressInfo(get('cache.dependencies.address'))}"
+          "run": "{getAddressInfo(get('cache.dependencies.currentAddress'))}"
         },
         "poolKeyHash": {
           "type": "data",
@@ -50,9 +50,8 @@
     "txs": {
       "type": "script",
       "run": {
-        "buildTransaction": {
+        "buildDelegate": {
           "type": "buildTx",
-          "name": "Delegate to [PEACE]",
           "title": "Delegate to [PEACE]",
           "tx": {
             "certificates": [
@@ -76,26 +75,26 @@
             }
           }
         },
-        "signTransaction": {
+        "signDelegate": {
           "type": "signTxs",
           "detailedPermissions": false,
           "txs": [
-            "{get('cache.txs.buildTransaction.txHex')}"
+            "{get('cache.txs.buildDelegate.txHex')}"
           ]
         },
-        "submitTransaction": {
+        "submitDelegate": {
           "type": "submitTxs",
-          "txs": "{get('cache.txs.signTransaction')}"
+          "txs": "{get('cache.txs.signDelegate')}"
         }
       }
     },
     "finally": {
       "type": "macro",
       "run": {
-        "address": "{get('cache.dependencies.address')}",
+        "address": "{get('cache.dependencies.currentAddress')}",
         "rewardAddress": "{get('cache.dependencies.addressInfo.rewardAddress')}",
         "stakePoolKeyHash": "{get('cache.dependencies.poolKeyHash')}",
-        "txHash": "{get('cache.txs.buildTransaction.txHash')}"
+        "txHash": "{get('cache.txs.buildDelegate.txHash')}"
       }
     }
   }
