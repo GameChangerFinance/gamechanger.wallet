@@ -1,11 +1,17 @@
 {
   "type": "script",
+  "title": "Child Keys Multisign",
+  "description": "Derives three stake keys at arbitrary account and address indexes of the current wallet, and requires all three of them as signers of a single transaction. Shows how child keys outside the usual account 0 / address 0 path can co-sign, without setting up a workspace first",
+  "exportAs": "MultiSign",
   "require": {
     "not": {
       "walletTypeIn": [
         "extension"
       ]
     }
+  },
+  "return": {
+    "mode": "last"
   },
   "run": {
     "dependencies": {
@@ -41,7 +47,7 @@
       "run": {
         "buildMultiSign": {
           "type": "buildTx",
-          "name": "MultiSignTx",
+          "title": "Multisign with 3 child stake keys",
           "tx": {
             "requiredSigners": {
               "A": "{get('cache.dependencies.keys.A.pubKeyHashHex')}",
@@ -64,13 +70,14 @@
       }
     },
     "finally": {
-      "type": "script",
-      "exportAs": "MultiSign",
+      "type": "macro",
       "run": {
-        "txHash": {
-          "type": "macro",
-          "run": "{get('cache.txs.buildMultiSign.txHash')}"
-        }
+        "requiredSigners": {
+          "A": "{get('cache.dependencies.keys.A.pubKeyHashHex')}",
+          "B": "{get('cache.dependencies.keys.B.pubKeyHashHex')}",
+          "C": "{get('cache.dependencies.keys.C.pubKeyHashHex')}"
+        },
+        "txHash": "{get('cache.txs.buildMultiSign.txHash')}"
       }
     }
   }
