@@ -1,5 +1,7 @@
 {
   "type": "script",
+  "title": "Simple Export",
+  "description": "Exports the wallet name, the current address, the spending and staking public keys and three data constants under a single export named 'wallet'. Shows how exportAs returns the results of a script to the dapp",
   "exportAs": "wallet",
   "run": {
     "name": {

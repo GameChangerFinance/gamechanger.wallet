@@ -1,5 +1,7 @@
 {
   "type": "script",
+  "title": "Wallet derivation script",
+  "description": "Derives six spending and six staking keys of the current wallet and builds every kind of address they allow: a reward address, hierarchical deterministic, delegation portfolio and anonymous addresses, native script multisig treasuries and Plutus smart contract addresses. Nothing is submitted: every address is exported for inspection",
   "require": {
     "not": {
       "walletTypeIn": [

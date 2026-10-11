@@ -1,5 +1,7 @@
 {
   "type": "script",
+  "title": "Load Wallet Config Demo",
+  "description": "Loads a wallet configuration with five workspaces: default, multi-delegation, hierarchical deterministic (the child addresses of a Yoroi or Daedalus wallet), anonymous, and anonymous multi-delegation. Child keys are derived and the addresses each workspace needs are built, then the loaded profile is exported. Workspaces are virtual groups of keys and addresses that give users a specialized wallet experience. See 'Save Wallet Config Demo' to persist one",
   "require": {
     "not": {
       "walletTypeIn": [
