@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Native asset minter and burner",
-  "description": "Creates a native script and uses it as policy to mint two fungible tokens under it, then burns one of them in a second transaction while the other survives. Asset names and quantities are exposed as flat arguments so an auto-generated dapp can drive the whole run without touching the code, and they are checked with assert() before the wallet builds anything",
+  "description": "Creates a native script and uses it as policy to mint two fungible tokens under it, then burns one of them in a second transaction while the other survives. Asset names and quantities are checked with assert() before the wallet builds anything, remove them to explore different outcomes and balance states.",
   "exportAs": "MintAndBurn",
   "return": {
     "mode": "last"
@@ -17,16 +17,8 @@
     "argumentGuards": {
       "type": "macro",
       "run": {
-        "asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.asset-name'))) ,'asset-name must not be empty' , get('args') ) }",
-        "survivor-asset-name-must-not-be-empty": "{ assert( not(isEmptyString(get('args.survivor-asset-name'))) ,'survivor-asset-name must not be empty' , get('args') ) }",
-        "asset-names-must-differ": "{ assert( neq(get('args.asset-name'),get('args.survivor-asset-name')) ,'asset-name and survivor-asset-name must differ, otherwise the burn destroys the token this example is meant to keep alive' , get('args') ) }",
-        "mint-quantity-must-not-be-negative": "{ assert( neq(truncate(get('args.mint-quantity'),1,0,''),'-') ,'mint-quantity must not be negative' , get('args') ) }",
-        "survivor-quantity-must-not-be-negative": "{ assert( neq(truncate(get('args.survivor-quantity'),1,0,''),'-') ,'survivor-quantity must not be negative' , get('args') ) }",
-        "burn-quantity-must-not-be-negative": "{ assert( neq(truncate(get('args.burn-quantity'),1,0,''),'-') ,'burn-quantity must not be negative' , get('args') ) }",
-        "mint-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.mint-quantity'),'0') ,'mint-quantity must be greater than zero' , get('args') ) }",
-        "survivor-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.survivor-quantity'),'0') ,'survivor-quantity must be greater than zero' , get('args') ) }",
-        "burn-quantity-must-be-positive": "{ assert( cmpBigNum('gt',get('args.burn-quantity'),'0') ,'burn-quantity must be greater than zero' , get('args') ) }",
-        "burn-quantity-must-not-exceed-mint": "{ assert( cmpBigNum('lte',get('args.burn-quantity'),get('args.mint-quantity')) ,'burn-quantity must not exceed mint-quantity' , get('args') ) }"
+        "asset-names": "{assert(and(not(isEmptyString(get('args.asset-name'))),not(isEmptyString(get('args.survivor-asset-name'))),neq(get('args.asset-name'),get('args.survivor-asset-name'))),'asset names must be non-empty and differ',get('args'))}",
+        "quantities": "{assert(and(cmpBigNum('gt',get('args.mint-quantity'),'0'),cmpBigNum('gt',get('args.survivor-quantity'),'0'),cmpBigNum('gt',get('args.burn-quantity'),'0'),cmpBigNum('lte',get('args.burn-quantity'),get('args.mint-quantity'))),'quantities must be positive and burn must not exceed mint',get('args'))}"
       }
     },
     "dependencies": {
