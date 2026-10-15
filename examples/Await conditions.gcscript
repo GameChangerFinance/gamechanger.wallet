@@ -1,6 +1,6 @@
 {
   "title": "Await conditions",
-  "description": "This demo will wait for a timer to reach it's timeout and then for the current wallet to receive at least 5.25 coins",
+  "description": "This demo will wait for a timer to reach its timeout and then for the current wallet to receive at least 5.25 coins",
   "type": "script",
   "run": {
     "address": {
