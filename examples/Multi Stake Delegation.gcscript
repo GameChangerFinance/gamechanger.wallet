@@ -1,7 +1,8 @@
 {
   "type": "script",
   "title": "Multi Stake Delegation",
-  "description": "Script that sets up a wallet workspace to generate 3 addresses, to later fund them and delegate their stake to different staking pools on a single transaction. The optional registration transaction is meant to fail when keys are already registered, don't panic, script is built to succeed anyways",
+  "description": "Funds 3 addresses of a 'demos' workspace and delegates their stake keys to 3 pools in one transaction. Run it before 'Multi Stake Withdrawal'",
+  "exportAs": "MultiDelegationDemo",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -9,8 +10,20 @@
       ]
     }
   },
-  "exportAs": "MultiDelegationDemo",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "stake-pool-a": "d71613e6097382e4d522fb17cff10b6c8bbe8575521ae174ba506c70",
+    "stake-pool-b": "bd24b3372791f401cc029455c44ea77f3c8750ce3b804a354af0ff16",
+    "stake-pool-c": "e7b605b72af41d6e8e6894274dedd18114f1759fea500b6d07031535",
+    "quantity": "10000000"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": "{assert(and(eq(get('args.stake-pool-a'),truncate(get('args.stake-pool-a'),56,0,'')),eq(get('args.stake-pool-b'),truncate(get('args.stake-pool-b'),56,0,'')),eq(get('args.stake-pool-c'),truncate(get('args.stake-pool-c'),56,0,''))),'invalid args',get('args'))}"
+    },
     "walletSetup": {
       "type": "loadConfig",
       "updateId": "MultiStakeDelegationDemo",
@@ -31,18 +44,6 @@
             "demos"
           ],
           "items": [
-            {
-              "namePattern": "SpendKey-main",
-              "kind": "spend",
-              "accountIndex": 0,
-              "addressIndex": 0
-            },
-            {
-              "namePattern": "StakeKey-main",
-              "kind": "stake",
-              "accountIndex": 0,
-              "addressIndex": 0
-            },
             {
               "namePattern": "SpendKey-0",
               "kind": "spend",
@@ -75,11 +76,6 @@
             "demos"
           ],
           "items": [
-            {
-              "namePattern": "Address-main",
-              "spendPubKeyName": "SpendKey-main",
-              "stakePubKeyName": "StakeKey-main"
-            },
             {
               "namePattern": "Address-0A",
               "spendPubKeyName": "SpendKey-0",
@@ -115,220 +111,135 @@
       "type": "setCurrentWorkspace",
       "workspaceId": "demos"
     },
-    "dependencies": {
-      "type": "script",
-      "run": {
-        "keys": {
-          "type": "getPublicKeys",
-          "keyPattern": "{artifactName}"
-        },
-        "addresses": {
-          "type": "getAddresses",
-          "keyPattern": "{artifactName}"
-        },
-        "pools": {
-          "type": "data",
-          "value": {
-            "APEX": "7facad662e180ce45e5c504957cd1341940c72a708728f7ecfc6e349",
-            "ALFA": "8ffb4c8e648c0662f2a91157c92feaa95f1a3d2728eaea8257b3d8d9",
-            "OTG": "db1018753659a073c43ad75c1f243f97a3896a45b81a61300ea96a9f"
+    "keys": {
+      "type": "getPublicKeys",
+      "keyPattern": "{artifactName}"
+    },
+    "addresses": {
+      "type": "getAddresses",
+      "keyPattern": "{artifactName}"
+    },
+    "regA": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.keys.StakeKey-A.pubKeyHashHex')}"
+      }
+    },
+    "regB": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.keys.StakeKey-B.pubKeyHashHex')}"
+      }
+    },
+    "regC": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeRegistration",
+        "pubKeyHashHex": "{get('cache.keys.StakeKey-C.pubKeyHashHex')}"
+      }
+    },
+    "delA": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDelegation",
+        "pubKeyHashHex": "{get('cache.keys.StakeKey-A.pubKeyHashHex')}",
+        "poolKeyHashHex": "{get('args.stake-pool-a')}"
+      }
+    },
+    "delB": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDelegation",
+        "pubKeyHashHex": "{get('cache.keys.StakeKey-B.pubKeyHashHex')}",
+        "poolKeyHashHex": "{get('args.stake-pool-b')}"
+      }
+    },
+    "delC": {
+      "type": "certificate",
+      "cert": {
+        "kind": "StakeDelegation",
+        "pubKeyHashHex": "{get('cache.keys.StakeKey-C.pubKeyHashHex')}",
+        "poolKeyHashHex": "{get('args.stake-pool-c')}"
+      }
+    },
+    "build": {
+      "type": "buildTx",
+      "tx": {
+        "outputs": [
+          {
+            "address": "{get('cache.addresses.Address-0A.address')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "{get('args.quantity')}"
+              }
+            ]
+          },
+          {
+            "address": "{get('cache.addresses.Address-0B.address')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "{get('args.quantity')}"
+              }
+            ]
+          },
+          {
+            "address": "{get('cache.addresses.Address-0C.address')}",
+            "assets": [
+              {
+                "policyId": "ada",
+                "assetName": "ada",
+                "quantity": "{get('args.quantity')}"
+              }
+            ]
           }
-        },
-        "registrationCerts": {
-          "type": "script",
-          "exportAs": "RegistrationCerts",
-          "run": {
-            "A": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeRegistration",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-A.pubKeyHashHex')}"
-              }
-            },
-            "B": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeRegistration",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-B.pubKeyHashHex')}"
-              }
-            },
-            "C": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeRegistration",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-C.pubKeyHashHex')}"
-              }
-            }
+        ],
+        "certificates": [
+          {
+            "certHex": "{get('cache.regA')}"
+          },
+          {
+            "certHex": "{get('cache.regB')}"
+          },
+          {
+            "certHex": "{get('cache.regC')}"
+          },
+          {
+            "certHex": "{get('cache.delA')}"
+          },
+          {
+            "certHex": "{get('cache.delB')}"
+          },
+          {
+            "certHex": "{get('cache.delC')}"
           }
-        },
-        "deregistrationCerts": {
-          "type": "script",
-          "exportAs": "DeregistrationCerts",
-          "run": {
-            "A": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeDeregistration",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-A.pubKeyHashHex')}"
-              }
-            },
-            "B": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeDeregistration",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-B.pubKeyHashHex')}"
-              }
-            },
-            "C": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeDeregistration",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-C.pubKeyHashHex')}"
-              }
-            }
-          }
-        },
-        "delegationCerts": {
-          "type": "script",
-          "exportAs": "DelegationCerts",
-          "run": {
-            "A": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeDelegation",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-A.pubKeyHashHex')}",
-                "poolKeyHashHex": "{get('cache.dependencies.pools.APEX')}"
-              }
-            },
-            "B": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeDelegation",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-B.pubKeyHashHex')}",
-                "poolKeyHashHex": "{get('cache.dependencies.pools.ALFA')}"
-              }
-            },
-            "C": {
-              "type": "certificate",
-              "cert": {
-                "kind": "StakeDelegation",
-                "pubKeyHashHex": "{get('cache.dependencies.keys.StakeKey-C.pubKeyHashHex')}",
-                "poolKeyHashHex": "{get('cache.dependencies.pools.OTG')}"
-              }
-            }
+        ],
+        "options": {
+          "autoClean": {
+            "certReRegistrations": true
           }
         }
       }
     },
-    "txs": {
-      "type": "script",
-      "run": {
-        "buildRegistration": {
-          "type": "buildTx",
-          "name": "built-registration",
-          "tx": {
-            "certificates": {
-              "DRegA": {
-                "certHex": "{get('cache.dependencies.registrationCerts.A')}"
-              },
-              "DRegB": {
-                "certHex": "{get('cache.dependencies.registrationCerts.B')}"
-              },
-              "DRegC": {
-                "certHex": "{get('cache.dependencies.registrationCerts.C')}"
-              }
-            }
-          }
-        },
-        "buildDelegation": {
-          "type": "buildTx",
-          "name": "built-delegation",
-          "tx": {
-            "outputs": {
-              "A": {
-                "address": "{get('cache.dependencies.addresses.Address-0A.address')}",
-                "assets": [
-                  {
-                    "policyId": "ada",
-                    "assetName": "ada",
-                    "quantity": "10000000"
-                  }
-                ]
-              },
-              "B": {
-                "address": "{get('cache.dependencies.addresses.Address-0B.address')}",
-                "assets": [
-                  {
-                    "policyId": "ada",
-                    "assetName": "ada",
-                    "quantity": "10000000"
-                  }
-                ]
-              },
-              "C": {
-                "address": "{get('cache.dependencies.addresses.Address-0C.address')}",
-                "assets": [
-                  {
-                    "policyId": "ada",
-                    "assetName": "ada",
-                    "quantity": "10000000"
-                  }
-                ]
-              }
-            },
-            "certificates": {
-              "DelA": {
-                "certHex": "{get('cache.dependencies.delegationCerts.A')}"
-              },
-              "DelB": {
-                "certHex": "{get('cache.dependencies.delegationCerts.B')}"
-              },
-              "DelC": {
-                "certHex": "{get('cache.dependencies.delegationCerts.C')}"
-              }
-            }
-          }
-        },
-        "sign": {
-          "type": "signTxs",
-          "namePattern": "signed-{key}",
-          "detailedPermissions": false,
-          "txs": {
-            "registration": "{get('cache.txs.buildRegistration.txHex')}",
-            "delegation": "{get('cache.txs.buildDelegation.txHex')}"
-          }
-        },
-        "submitRegistrationOrFail": {
-          "type": "submitTxs",
-          "namePattern": "submitted-registration",
-          "mode": "noWait",
-          "txs": [
-            "{get('cache.txs.sign.registration')}"
-          ]
-        },
-        "submitDelegation": {
-          "type": "submitTxs",
-          "namePattern": "submitted-delegation",
-          "mode": "parallel",
-          "txs": [
-            "{get('cache.txs.sign.delegation')}"
-          ]
-        }
-      }
+    "sign": {
+      "type": "signTxs",
+      "detailedPermissions": false,
+      "txs": [
+        "{get('cache.build.txHex')}"
+      ]
+    },
+    "submit": {
+      "type": "submitTxs",
+      "txs": "{get('cache.sign')}"
     },
     "finally": {
-      "type": "script",
-      "exportAs": "MultiDelegationTransactions",
-      "run": {
-        "registration": {
-          "type": "macro",
-          "run": "{get('cache.txs.buildRegistration.txHash')}"
-        },
-        "delegation": {
-          "type": "macro",
-          "run": "{get('cache.txs.buildDelegation.txHash')}"
-        }
-      }
+      "type": "macro",
+      "run": "{get('cache.build.txHash')}"
     }
   }
 }
