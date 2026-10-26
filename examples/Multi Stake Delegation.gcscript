@@ -1,8 +1,7 @@
 {
   "type": "script",
   "title": "Multi Stake Delegation",
-  "description": "Funds 3 addresses of a 'demos' workspace and delegates their stake keys to 3 pools in one transaction. Run it before 'Multi Stake Withdrawal'",
-  "exportAs": "MultiDelegationDemo",
+  "description": "Funds 3 addresses of a 'demos' workspace and delegates their stake keys to 3 pools in one transaction. Run it before 'Multi Stake Withdrawal",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -10,23 +9,27 @@
       ]
     }
   },
+  "exportAs": "MultiDelegationDemo",
   "return": {
     "mode": "last"
   },
   "args": {
-    "stake-pool-a": "d71613e6097382e4d522fb17cff10b6c8bbe8575521ae174ba506c70",
-    "stake-pool-b": "bd24b3372791f401cc029455c44ea77f3c8750ce3b804a354af0ff16",
-    "stake-pool-c": "e7b605b72af41d6e8e6894274dedd18114f1759fea500b6d07031535",
+    "pool-a": "bd24b3372791f401cc029455c44ea77f3c8750ce3b804a354af0ff16",
+    "pool-a-ticker": "PEACE",
+    "pool-b": "8fa4537044c02b232430dca78f51ca74c22d1ed7fb990be8b65d2794",
+    "pool-b-ticker": "WHITE",
+    "pool-c": "d71613e6097382e4d522fb17cff10b6c8bbe8575521ae174ba506c70",
+    "pool-c-ticker": "DRMZ",
     "quantity": "10000000"
   },
   "run": {
-    "argumentGuards": {
+    "guards": {
       "type": "macro",
-      "run": "{assert(and(eq(get('args.stake-pool-a'),truncate(get('args.stake-pool-a'),56,0,'')),eq(get('args.stake-pool-b'),truncate(get('args.stake-pool-b'),56,0,'')),eq(get('args.stake-pool-c'),truncate(get('args.stake-pool-c'),56,0,''))),'invalid args',get('args'))}"
+      "run": "{assert(and(eq(get('args.pool-a'),truncate(get('args.pool-a'),56,0,'')),eq(get('args.pool-b'),truncate(get('args.pool-b'),56,0,'')),eq(get('args.pool-c'),truncate(get('args.pool-c'),56,0,''))),'invalid args')}"
     },
     "walletSetup": {
       "type": "loadConfig",
-      "updateId": "MultiStakeDelegationDemo",
+      "updateId": "{uuid()}",
       "layers": [
         {
           "type": "Workspace",
@@ -34,7 +37,7 @@
             {
               "namePattern": "demos",
               "titlePattern": "Demos",
-              "descriptionPattern": "Wallet settings created by demo scripts"
+              "descriptionPattern": "Example workspace"
             }
           ]
         },
@@ -145,7 +148,7 @@
       "cert": {
         "kind": "StakeDelegation",
         "pubKeyHashHex": "{get('cache.keys.StakeKey-A.pubKeyHashHex')}",
-        "poolKeyHashHex": "{get('args.stake-pool-a')}"
+        "poolKeyHashHex": "{get('args.pool-a')}"
       }
     },
     "delB": {
@@ -153,7 +156,7 @@
       "cert": {
         "kind": "StakeDelegation",
         "pubKeyHashHex": "{get('cache.keys.StakeKey-B.pubKeyHashHex')}",
-        "poolKeyHashHex": "{get('args.stake-pool-b')}"
+        "poolKeyHashHex": "{get('args.pool-b')}"
       }
     },
     "delC": {
@@ -161,11 +164,12 @@
       "cert": {
         "kind": "StakeDelegation",
         "pubKeyHashHex": "{get('cache.keys.StakeKey-C.pubKeyHashHex')}",
-        "poolKeyHashHex": "{get('args.stake-pool-c')}"
+        "poolKeyHashHex": "{get('args.pool-c')}"
       }
     },
     "build": {
       "type": "buildTx",
+      "title": "{join('','🚀 Delegate to ',get('args.pool-a-ticker'),',',get('args.pool-b-ticker'),' and ',get('args.pool-c-ticker'))}",
       "tx": {
         "outputs": [
           {

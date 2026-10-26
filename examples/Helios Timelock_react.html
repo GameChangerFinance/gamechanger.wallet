@@ -340,7 +340,11 @@ const config = {
                 "run": {
                   "locks": {
                     "type": "macro",
-                    "run": "{get('cache.dependencies.locks')}"
+                    "run": {
+                      "coin": "{get('cache.dependencies.coin')}",
+                      "datumHex": "{get('cache.dependencies.datum.dataHex')}",
+                      "datumHash": "{get('cache.dependencies.datum.dataHashHex')}"
+                    }
                   },
                   "smartContract": {
                     "type": "macro",

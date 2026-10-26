@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: undefined</title>
-<meta name="title" content="Cardano Dapp: undefined">
+<title>Cardano Dapp: "Simple Export"</title>
+<meta name="title" content="Cardano Dapp: "Simple Export"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -69,9 +69,9 @@ function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
 }
 
 const config = {
-  id: 'gc-dapp-cardano-dapp',
+  id: 'gc-dapp-simple-export',
   version: '0.0.1',
-  title: 'Cardano Dapp: undefined',
+  title: 'Cardano Dapp: "Simple Export"',
   description: 'Review the action details below and continue in GameChanger Wallet.',
 
   defaults: {
@@ -165,10 +165,12 @@ const config = {
         //   }
         // },
         userIntent: {
-          "label": "Cardano Dapp",
-          "description": "Review the action details below and continue in GameChanger Wallet.",
+          "label": "Simple Export",
+          "description": "Exports the wallet name, the current address, the spending and staking public keys and three data constants under a single export named 'wallet'. Shows how exportAs returns the results of a script to the dapp",
           "code": {
             "type": "script",
+            "title": "Simple Export",
+            "description": "Exports the wallet name, the current address, the spending and staking public keys and three data constants under a single export named 'wallet'. Shows how exportAs returns the results of a script to the dapp",
             "exportAs": "wallet",
             "run": {
               "name": {
