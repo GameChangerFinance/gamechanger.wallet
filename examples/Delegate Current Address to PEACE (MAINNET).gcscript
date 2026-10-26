@@ -1,5 +1,4 @@
 {
-  "type": "script",
   "title": "Delegate to [PEACE]",
   "description": "About to delegate your ADA to 'PEACEpool Cardano ecosystem developers' stake pool. The stake key is registered and delegated in a single transaction, and an already registered stake key is handled, so the same script also works when re-delegating.",
   "exportAs": "data",
@@ -12,6 +11,7 @@
     },
     "networkTag": "mainnet"
   },
+  "type": "script",
   "return": {
     "mode": "last"
   },

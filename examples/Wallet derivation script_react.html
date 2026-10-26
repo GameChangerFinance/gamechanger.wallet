@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: undefined</title>
-<meta name="title" content="Cardano Dapp: undefined">
+<title>Cardano Dapp: "Wallet derivation script"</title>
+<meta name="title" content="Cardano Dapp: "Wallet derivation script"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -69,9 +69,9 @@ function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
 }
 
 const config = {
-  id: 'gc-dapp-cardano-dapp',
+  id: 'gc-dapp-wallet-derivation-script',
   version: '0.0.1',
-  title: 'Cardano Dapp: undefined',
+  title: 'Cardano Dapp: "Wallet derivation script"',
   description: 'Review the action details below and continue in GameChanger Wallet.',
 
   defaults: {
@@ -165,10 +165,12 @@ const config = {
         //   }
         // },
         userIntent: {
-          "label": "Cardano Dapp",
-          "description": "Review the action details below and continue in GameChanger Wallet.",
+          "label": "Wallet derivation script",
+          "description": "Derives six spending and six staking keys of the current wallet and builds every kind of address they allow: a reward address, hierarchical deterministic, delegation portfolio and anonymous addresses, native script multisig treasuries and Plutus smart contract addresses. Nothing is submitted on-chain and every address is exported back to dapp for inspection",
           "code": {
             "type": "script",
+            "title": "Wallet derivation script",
+            "description": "Derives six spending and six staking keys of the current wallet and builds every kind of address they allow: a reward address, hierarchical deterministic, delegation portfolio and anonymous addresses, native script multisig treasuries and Plutus smart contract addresses. Nothing is submitted on-chain and every address is exported back to dapp for inspection",
             "require": {
               "not": {
                 "walletTypeIn": [
@@ -440,7 +442,7 @@ const config = {
                     "type": "nativeScript",
                     "name": "spendingScript",
                     "script": {
-                      "scriptHex": "820183820282830302808201868200581ccc70614c5869a7111bab031145f758342e94a8251bd06cf0d8afc8b68200581c91a471e331588b2d1d6eb98772fee21cd34f5cccbdce05f6d19401b78200581c4b361fca48172296e8b3b3e3ca28dfaacce268d39d987ef9cb46590b8200581c5936ec5e04ba6eb23641dd83a95a8774048a125e23b9cb58c8694aed8200581c6f6101bade176b56b208a0f9a469d7de956b6568370c03d79a97f18d8202838200581c4cdc2038dfacfd716a10774f77a3485564ba73e58492d5a2ad163eb28200581c111fc9cc6fd34bd2783001b3fbf7b456beb93a38d24a1e06542dc6fb8200581c3d86f41b1c87bea0cfecbaf4ff2cd51502ca490af2b7b4e8c9aa22fd82028382018282041a0005d90d82051a0005dbc982018282041a00075fad82051a0007626982018282041a0008e64d82051a0008e90982018382041a0005d90d8200581c111fc9cc6fd34bd2783001b3fbf7b456beb93a38d24a1e06542dc6fb82051a0008e909"
+                      "scriptHex": "820181820400"
                     }
                   },
                   "stakingScript": {

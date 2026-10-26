@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: undefined</title>
-<meta name="title" content="Cardano Dapp: undefined">
+<title>Cardano Dapp: "Load Wallet Config Demo"</title>
+<meta name="title" content="Cardano Dapp: "Load Wallet Config Demo"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 
 <!-- Use for local deployments or for testing the library: -->
@@ -38,7 +38,7 @@
 <section class="hero">
 <div class="hero__top">
 <div>
-<h1 id="app-title">Cardano Dapp: undefined</h1>
+<h1 id="app-title">Cardano Dapp: "Load Wallet Config Demo"</h1>
 <p id="app-copy">Review the action details below and continue in GameChanger Wallet.</p>
 </div>
 <div class="hero__tools">
@@ -152,9 +152,9 @@
    */
   const app = createApp({
     config: {
-      id: 'gc-dapp-cardano-dapp',
+      id: 'gc-dapp-load-wallet-config-demo',
       version: '0.0.1',
-      title: 'Cardano Dapp: undefined',
+      title: 'Cardano Dapp: "Load Wallet Config Demo"',
       description: 'Review the action details below and continue in GameChanger Wallet.',
 
       /**
@@ -296,10 +296,12 @@
         //   }
         // },
         userIntent: {
-          "label": "Cardano Dapp",
-          "description": "Review the action details below and continue in GameChanger Wallet.",
+          "label": "Load Wallet Config Demo",
+          "description": "Loads a wallet configuration with five workspaces: default, multi-delegation, hierarchical deterministic, anonymous, and anonymous multi-delegation. Child keys are derived and the addresses each workspace needs are built, then the loaded profile is exported. Workspaces are virtual groups of keys and addresses that give users a specialized wallet experience. See 'Save Wallet Config Demo' to persist one",
           "code": {
             "type": "script",
+            "title": "Load Wallet Config Demo",
+            "description": "Loads a wallet configuration with five workspaces: default, multi-delegation, hierarchical deterministic, anonymous, and anonymous multi-delegation. Child keys are derived and the addresses each workspace needs are built, then the loaded profile is exported. Workspaces are virtual groups of keys and addresses that give users a specialized wallet experience. See 'Save Wallet Config Demo' to persist one",
             "require": {
               "not": {
                 "walletTypeIn": [

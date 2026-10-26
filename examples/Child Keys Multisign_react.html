@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b17">
-<title>Cardano Dapp: undefined</title>
-<meta name="title" content="Cardano Dapp: undefined">
+<title>Cardano Dapp: "Child Keys Multisign"</title>
+<meta name="title" content="Cardano Dapp: "Child Keys Multisign"">
 <meta name="description" content="Review the action details below and continue in GameChanger Wallet.">
 <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -69,9 +69,9 @@ function ConnectedWalletWidget({ enabled, wallet, onConnect, onDisconnect }) {
 }
 
 const config = {
-  id: 'gc-dapp-cardano-dapp',
+  id: 'gc-dapp-child-keys-multisign',
   version: '0.0.1',
-  title: 'Cardano Dapp: undefined',
+  title: 'Cardano Dapp: "Child Keys Multisign"',
   description: 'Review the action details below and continue in GameChanger Wallet.',
 
   defaults: {
@@ -165,16 +165,22 @@ const config = {
         //   }
         // },
         userIntent: {
-          "label": "Cardano Dapp",
-          "description": "Review the action details below and continue in GameChanger Wallet.",
+          "label": "Child Keys Multisign",
+          "description": "Derives three stake keys at arbitrary account and address indexes of the current wallet, and requires all three of them as signers of a single transaction. Shows how child keys outside the usual account 0 / address 0 path can co-sign, without setting up a workspace first",
           "code": {
             "type": "script",
+            "title": "Child Keys Multisign",
+            "description": "Derives three stake keys at arbitrary account and address indexes of the current wallet, and requires all three of them as signers of a single transaction. Shows how child keys outside the usual account 0 / address 0 path can co-sign, without setting up a workspace first",
+            "exportAs": "MultiSign",
             "require": {
               "not": {
                 "walletTypeIn": [
                   "extension"
                 ]
               }
+            },
+            "return": {
+              "mode": "last"
             },
             "run": {
               "dependencies": {
@@ -210,7 +216,7 @@ const config = {
                 "run": {
                   "buildMultiSign": {
                     "type": "buildTx",
-                    "name": "MultiSignTx",
+                    "title": "Multisign with 3 child stake keys",
                     "tx": {
                       "requiredSigners": {
                         "A": "{get('cache.dependencies.keys.A.pubKeyHashHex')}",
@@ -228,18 +234,19 @@ const config = {
                   },
                   "submitMultiSign": {
                     "type": "submitTxs",
-                    "txs": "{get('cache.signMultiSign')}"
+                    "txs": "{get('cache.txs.signMultiSign')}"
                   }
                 }
               },
               "finally": {
-                "type": "script",
-                "exportAs": "MultiSign",
+                "type": "macro",
                 "run": {
-                  "txHash": {
-                    "type": "macro",
-                    "run": "{get('cache.txs.buildMultiSign.txHash')}"
-                  }
+                  "requiredSigners": {
+                    "A": "{get('cache.dependencies.keys.A.pubKeyHashHex')}",
+                    "B": "{get('cache.dependencies.keys.B.pubKeyHashHex')}",
+                    "C": "{get('cache.dependencies.keys.C.pubKeyHashHex')}"
+                  },
+                  "txHash": "{get('cache.txs.buildMultiSign.txHash')}"
                 }
               }
             }
