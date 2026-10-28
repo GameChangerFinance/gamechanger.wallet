@@ -1,0 +1,48 @@
+name: Documentation experiment (build only)
+
+on:
+  push:
+    branches: [feat/docusaurus]
+  pull_request:
+  workflow_dispatch:
+
+# This workflow cannot publish Pages, including manual runs on any branch.
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: docusaurus
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: docusaurus/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: docusaurus/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm audit --prod --audit-level high
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm test:browser --install-browser
+      - name: Confirm canonical tracked files are untouched
+        run: git diff --exit-code -- . ':!docusaurus' ':!.github/workflows/documentation-experiment.yml'
+        working-directory: .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: documentation-static-${{ github.sha }}
+          path: docusaurus/build
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,41 @@
+diff --git a/src/core/project/edit-link.ts b/src/core/project/edit-link.ts
+index 54f57a2..9705716 100644
+--- a/src/core/project/edit-link.ts
++++ b/src/core/project/edit-link.ts
+@@ -31,6 +31,7 @@ export function readStudioLaunch(
+ ): StudioLaunch {
+   const url = new URL(href);
+   const route = new URL(config.editLinks.route, baseURL);
++  const entry = new URL('index.html', baseURL);
+   const view = url.searchParams.get('view');
+   return {
+     embedded:
+@@ -48,7 +49,9 @@ export function readStudioLaunch(
+     encoded:
+       url.origin === route.origin && url.pathname.startsWith(route.pathname)
+         ? url.pathname.slice(route.pathname.length)
+-        : null,
++        : url.origin === entry.origin && url.pathname === entry.pathname
++          ? url.searchParams.get('__DOCS_STUDIO_SOURCE_PARAMETER__')
++          : null,
+   };
+ }
+ 
+diff --git a/tests/integration/edit-links.test.ts b/tests/integration/edit-links.test.ts
+index e424177..efe5ef3 100644
+--- a/tests/integration/edit-links.test.ts
++++ b/tests/integration/edit-links.test.ts
+@@ -11,6 +11,13 @@ import { runtime } from '../fixtures';
+ const base = 'https://studio.test/gcscript-studio/';
+ const config = DEFAULT_CONFIG;
+ describe('GC edit-link transport', () => {
++  it('reads static-entry payloads only at this deployment entry file', () => {
++    expect(readStudioLaunch(base + 'index.html?__DOCS_STUDIO_SOURCE_PARAMETER__=1-test&embed=true', base, config))
++      .toMatchObject({ encoded: '1-test', embedded: true });
++    expect(readStudioLaunch('https://other.test/index.html?__DOCS_STUDIO_SOURCE_PARAMETER__=1-test', base, config).encoded).toBeNull();
++    expect(readStudioLaunch(base + 'other.html?__DOCS_STUDIO_SOURCE_PARAMETER__=1-test', base, config).encoded).toBeNull();
++    expect(readStudioLaunch(base + 'index.html?result=wallet-data', base, config).encoded).toBeNull();
++  });
+   it('preserves an ampersand-free embedded callback through repeated real builds and URL encoding', async () => {
+     const expected = JSON.parse(withWalletCallback('{}', base, 'roundtrip', true)).returnURLPattern;
+     let input = JSON.stringify({
