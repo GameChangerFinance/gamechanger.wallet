@@ -2,75 +2,66 @@
 
 ## Introduction
 
-An innovative Blockchain such as Cardano needs its own wallet API specification.
+**GCScript DSL is an intent-based, JSON-based domain-specific language for describing and executing wallet workflows.** Applications express what they want to accomplish, and the wallet resolves those instructions using its capabilities, the user's wallet context, and the permissions granted by the user.
 
-Usually when a dapp communicates with a web3 wallet, it calls a set of functions known as the wallet's API.
+GCScript was originally created and implemented in GameChanger Wallet. Its foundations date to the wallet's API design in 2021, which evolved into GCScript in 2022. The language is not designed exclusively for GameChanger Wallet or the Cardano blockchain. This documentation covers language and syntax while using current GameChanger Wallet implementation for Cardano; available functions and blockchain capabilities depend on the implementation.
 
-Since 2021 GameChanger Wallet API specification has taken a different approach from Nami derivatives:
-- it encourages dapp designs where they don't mess with user's UTXOs
-- it encourages dapp designs where they don't require to ask wallets for addresses, balances and UTXOs 
-- it encourages dapp designs where transactions are built by the wallet, not the dapps
-- it lets users audit everything a dapp wants to do, EVERYTHING. We do not force users to trust blindly on dapp brands
-- it lets users bypass dapps frontend completely, for disaster recovery 
-- it works without injecting Javascript code into users websites
-- it lets anyone or anything to connect to Cardano, ANYTHING
+The original design principles applied for Web3:
 
-For these and other reasons the wallet has a Universal Dapp Connector, and such versatile connector needs a versatile API, so in 2022 our dapp connector API turned slightly into a fully featured, flexible and universal programming language called GCScript.
+- Let the wallet build transactions and manage the user's UTxOs, including coin selection and change.
+- Allow applications to work without collecting user addresses, balances, or UTxOs when those details can remain inside the wallet.
+- Make requested operations inspectable so users can review complete dapps/protocol behavior before authorizing it.
+- Keep scripts usable independently of an application's frontend, including for recovery when that frontend is unavailable.
+- Connect applications, hardware, and other agents without requiring JavaScript injection into websites.
 
 ## The GCScript DSL
 
-Communication to GameChanger Wallet is done through scripts coded in a JSON based programming language, a language full of native Cardano-related functions. 
+Applications and other calling agents send GCScript as JSON to a compatible wallet (runner). Its interpreter validates the script, executes the requested operations under the wallet's permission model, and returns explicitly exported results as JSON.
 
-This domain specific language is called GCScript DSL. 
+An **intent** describes a requested action or workflow. It can read wallet data, build a transaction, request signatures, submit transactions, or combine several operations. An intent is distinct from an on-chain transaction: several intents can contribute to one transaction, while one workflow can produce multiple transactions.
 
-Dapps and other entities (agents) send GCScript (JSON) to the user wallet and receives a JSON response. 
+DSL provides native Cardano and wallet-related functions ruled by permissions, with [Inline Scripting Language (ISL)](ISL.md) for transforming data, validating inputs, and passing results between steps in a permission-less way. Applications can leave transaction construction, balancing, and wallet-specific details to the wallet while users retain control over authorization and signing.
 
-The wallet has a GCScript language interpreter that validates, executes, and returns JSON results to dapps or other calling agents.  
-
-The way GCScripts and their JSON results are packed and shared between agents and wallets is called transport.
+The mechanism used to package and exchange scripts and their JSON results is called a **transport**. The language is transport-agnostic; GameChanger Wallet's [Universal Dapp Connector](../universal-dapp-connector/overview.md) delivers these workflows through URLs and QR codes, among other supported transports.
 
 <div style="text-align:center">
     <img src="../img/gcscript-overview.png"/>
 </div>
 
 ## Benefits
- 
-- supported on all platforms: pure JSON, no binary executable code nor any platform-specific language
-    - frontend
-    - backend
-    - hardware
-    - direct user control without a frontend, backend nor hardware as intermediary 
-- transport-agnostic: designed to work even non-live, like on bi-directional URL redirection or even QR code based transports
-- domain specific: cannot execute logic outside Cardano scope for security reasons 
-- non-turing complete: deterministic as possible, minimizes unknown behaviors for security reasons 
-- permission-based: our users have total control over the code and wallet response for security reasons 
-- open by default: our users can audit and fork any agent <-> wallet communication for security and collaborative reasons 
-- privacy-preserving: dapps don't require to know user addresses, balances and UTXOs to function, for privacy and security reasons
-- schema-based: the language itself is defined by a JSON schema, for transparency, self-documenting, and collaborative reasons  
-- extensible: fully featured, Cardano library out of the box, schema can be extended with new native functions and features
-- modular: define reusable code blocks and let anyone import them later
-- interoperable: reusable, modular and open third party code allow creating open protocols interfaces
-- GCScript ❤️ open-source: open and reusable third party code that can even require a fee upon execution as nowhere seen before in Cardano 
+
+- **Intent-based execution:** describe wallet actions and compose them into workflows that the wallet resolves in the user's context.
+- **JSON for universal interoperability:** generate, inspect, store, and exchange scripts from virtually any programming language or platform with JSON support. Frontends, backends, and hardware can integrate without a language-specific SDK. Users can also run scripts directly without an application frontend.
+- **Transport-agnostic delivery:** exchange scripts and results without a persistent connection, including through bidirectional URL redirects and QR codes. Reusable links and printed QR codes can resolve wallet-specific details at execution time.
+- **Scoped capabilities:** scripts invoke functions exposed by the interpreter rather than arbitrary host-platform code. The current implementation provides Cardano and wallet operations; other implementations can define their own domain capabilities.
+- **Determinism by design:** GCScript and ISL are deliberately **not Turing complete**. Their constrained execution model supports deterministic evaluation, easier inspection, and security by limiting expressiveness. Results involving wallet state, network data, or user decisions still depend on those external inputs.
+- **Permissions and user control:** requested capabilities and data sharing are governed by wallet permissions and user approval. See the [permission reference](https://wallet.gamechanger.finance/doc/api/v2/permissions.html) for the current implementation.
+- **Inspectable by default:** deployed scripts can be inspected, debugged, and reused. Encrypted payloads require decryption before inspection; reuse of third-party code is allowed and suggested by default to foster open ecosystems.
+- **Privacy-preserving workflows:** resolve addresses, balances, and UTxOs inside the wallet and return only the data an application needs. Privacy depends on the script's requested operations and exports.
+- **Schema-defined and extensible:** JSON schemas define function arguments and result contracts, supporting validation, generated documentation, and the addition of native functions and features. See the [current API reference](https://wallet.gamechanger.finance/doc/api/v2/).
+- **Codegen-friendly:** Because you can express entire intents/actions/workflows with this JSON-based universally-supported language, you can generate source code with any programming language and on any platform to integrate and execute the JSON payloads on wallet/runners. 
+- **Modular and composable:** define reusable blocks, import third-party scripts, and connect results to later operations. Shared scripts can expose reusable protocol interfaces and include explicit service-fee outputs where appropriate.
+
+
+## What is it for?
+
+Use GCScript to build payment links and checkout flows, token and NFT tools, dapps, backend, and static screen/paper integrations, DeFi and smart-contract interactions, staking operations, wallet onboarding, and workflows involving multiple transactions and wallet generation for events and classrooms. It connects websites, mobile applications, hardware, and AI agents to wallet capabilities while keeping authorization with the user.
+
+For working Cardano integrations, explore the [example catalog](../../examples/README.md). The [Quick Start](quick-start.md) explains how to run your first script.
 
 ## Basic Properties
-- functions calls are JSON objects with at least a type property with function's name as value `"type":"<FUNCTION_NAME>"` 
-- functions of `"type":"script"` are code blocks, and can contain other functions inside, recursively.
-- function arguments are JSON object properties
-- function results are JSON types
-- isomorphic: by default a code structure produce a result with the same structure
-- result of each block of code is stored on a local cache memory with same isomorphic structure as the former block of code
-- arrays and key-value maps are equally valid as "lists" and gets normalized as key-value maps underneath
-- each code block can export it results under a custom name defined by the `"exportAs":"<EXPORT_NAME>"`
-- variable names can be of any `a..z`,`A..Z`, `0..9` and `_` character, no white-spaces and no other special characters 
-- Inline Scripting (ISL): embed lines of a simple Javascript-like language
-    - for debugging to dapp connector's console
-    - to pass the results of a function as argument of another function
-    - to perform encoding, cryptographic, arithmetic, string, system, and other tasks
-- Interpreter executes GCScript on 3 stages: 
-    - preprocessor
-    - runtime
-    - postprocessor
-- Some functions are available for some stages only, for example external code import functions are preprocessor-only 
+
+- Function calls are JSON objects with a `type` property naming the function: `"type":"<FUNCTION_NAME>"`.
+- Calls of `"type":"script"` define code blocks that can contain nested function calls and code blocks.
+- Function arguments are JSON object properties, and function results are JSON values.
+- By default, code blocks produce results with the same structure as their code: an **isomorphic** result structure.
+- Each code block stores its results in a local `cache`, following that structure.
+- Arrays and key-value maps are both accepted as lists of calls and normalized internally as key-value maps.
+- Each code block can export its results under a custom name using `"exportAs":"<EXPORT_NAME>"`.
+- Variable names can contain `a..z`, `A..Z`, `0..9`, and `_`, without whitespace or other special characters.
+- ISL embeds expressions with JavaScript-like syntax in supported function arguments to validate inputs, debug through the connector's console, pass results between functions, and perform encoding, cryptographic, arithmetic, string, and other supported operations.
+- The GameChanger Wallet interpreter processes GCScript in three stages: preprocessing, runtime execution, and postprocessing.
+- Some functions are available only during specific stages. For example, external script imports run during preprocessing.
 
 ## Hello World
 
