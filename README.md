@@ -1,26 +1,50 @@
-# GameChanger Wallet v2 Documentation
+# GCScript DSL + GameChanger Wallet Documentation
+
+## GCScript DSL : Intent-based, low-code programming
+
+[![GCScript DSL](img/editor-screenshot.png)](docs/README.md)
+
+
+**GCScript DSL is an intent-based, JSON-based language for describing workflows.** Mainly applied for web3 ecosystems, applications express actions—such as sending assets, minting tokens, interacting with smart contracts, or requesting wallet data—and the wallet executes them according to permissions and user approval. Originally implemented in **GameChanger Wallet** for **Cardano**, its design is not exclusive to one wallet or blockchain.
+
+Built for interoperability, GCScript can be generated and exchanged by virtually any programming language or platform, including through URLs and QR codes. GCScript and its companion Inline Scripting Language (ISL) are deliberately **not Turing complete**, supporting deterministic evaluation, inspectable workflows, and security through constrained execution. Use them to build payments, DeFi integrations, onboarding flows, and composable wallet operations across websites, applications, devices, and AI agents.
+
+### Documentation
+
+- [Transactions / Quick Start](docs/transactions/quick-start.md): A simple payment dapp
+- ⭐ [100+ basic example dapps](examples/README.md)
+- [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more. **HTML version[ here](https://gamechangerfinance.github.io/gamechanger.wallet/)**
+- [Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation
+
+### Main Tools
+
+- ⭐ [GCScript DSL skill for AI Agents](https://github.com/GameChangerFinance/gcscript-dsl-skill): Turn your agent into an GCScript DSL expert. Implement intent-based solutions for Cardano and other ecosystems even on game engines, paper, screens and hardware devices, and on any programming language and platform. Installing dependencies is not required in order to generate code and integrate.
+- [GCScript Studio IDE](https://www.npmjs.com/package/@gamechanger-finance/gc): Browser IDE for GCScript DSL. Write or edit 100+ examples. Explore as code, nodes, or blocks. Build multi-file projects. Run it in GameChanger Wallet or your wallet of choice. No installation required.
+- [NPM lib + CLI: @gamechanger-finance/gc)](https://www.npmjs.com/package/@gamechanger-finance/gc): Typescript library + CLI. Builds and validates GCScript DSL. Outputs URL, QR integrations and auto-generates dapps and backend code in HTML, React, ExpressJs.
+
+
+
+## GameChanger v2: The Cardano Meta Wallet
 
 [![GameChanger Wallet v2](gcw-logo-300x85.png)](https://wallet.gamechanger.finance)
 
-## The Cardano Meta Wallet
+**GameChanger** is a very powerful, customizable, yet friendly, non custodial web light wallet. 
 
-GameChanger is a very powerful, customizable, yet friendly, non custodial web light wallet. 
-
-Since 2021 unleashes Cardano and eUTXO potential while democratizing users, developers and students access.
+Since 2021 unleashes **Cardano** and **eUTXO** potential while democratizing users, developers and students access.
 
 The smart design principles of the wallet allows you to import or connect these wallet types:
  - seed phrase
  - burner wallets
  - QR encrypted (personal and gift wallets) 
  - Ledger and Trezor hardware wallets 
- - Nami, Eternl, Flint, Vespr, any CIP-30 or browser extension wallet
+ - *Lace*, *Eternl*, *Begin*, *Vespr*, any **CIP-30** or browser extension wallet
  - Shared Treasuries (script addresses)
  
- And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet using intents.
+And dapps, devices, users and other agents can use links and QR codes to seamlessly communicate with the wallet using intents coded in **GCScript DSL**.
 
- **One wallet to have them all, on Desktop and Mobile, with the same intent-based dapp connector.**
+**One wallet to have them all, on Desktop and Mobile, using the same intent-based dapp connector.**
 
-## Link
+### Link
 
 🚀 Official link to access: **[ GameChanger Wallet v2](https://wallet.gamechanger.finance/)**
 
@@ -29,13 +53,6 @@ These networks are supported:
 - Cardano Pre-Production Testnet 
 
 *See bottom of the page for information about the now concluded Beta phase*
-
-## Documentation
-
-- [Transactions / Quick Start](docs/transactions/quick-start.md): A simple payment dapp
-- ⭐ [100+ basic example dapps](examples/README.md)
-- [General Documentation](docs/README.md): Universal Dapp Connector, GCScript DSL, ISL, Transactions, Workspaces and more. **HTML version[ here](https://gamechangerfinance.github.io/gamechanger.wallet/)**
-- [Language Reference (API docs)](https://wallet.gamechanger.finance/doc/api/v2): GCScript and ISL reference documentation
 
 ## Ecosystem:
 
@@ -99,7 +116,10 @@ These networks are supported:
     - 🔥 [Intent on a QR code, no need for a dApp frontend](https://youtube.com/shorts/nvAjeM2aD5Q?si=OarLnUHuuzx295GD) - Short Swap Demo Video
 
 ### Tools:
-- ⭐ [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
+- ⭐ [GCScript DSL skill for AI Agents](https://github.com/GameChangerFinance/gcscript-dsl-skill): Turn your agent into an GCScript DSL expert. Implement intent-based solutions for Cardano and other ecosystems even on game engines, paper, screens and hardware devices, and on any programming language and platform. Installing dependencies is not required in order to generate code and integrate.
+- [GCScript Studio IDE](https://www.npmjs.com/package/@gamechanger-finance/gc): Browser IDE for GCScript DSL. Write or edit 100+ examples. Explore as code, nodes, or blocks. Build multi-file projects. Run it in GameChanger Wallet or your wallet of choice. No installation required.
+- [NPM lib + CLI: @gamechanger-finance/gc)](https://www.npmjs.com/package/@gamechanger-finance/gc): Typescript library + CLI. Builds and validates GCScript DSL. Outputs URL, QR integrations and auto-generates dapps and backend code in HTML, React, ExpressJs.
+- [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
 - [Gift Wallet Generator](https://github.com/GameChangerFinance/gift-wallet-generator): A simple dapp to generate and fund GameChanger Gift Wallets in bulk for events, workshops and classrooms:
     - Simple frontend leveraging on GCScript DSL intents
     - Generates gift wallets in bulk using custom patterns for labels, passwords, descriptions,etc..
@@ -113,7 +133,7 @@ These networks are supported:
     - dapp <--> wallet connections you code here can be used on your own backends and frontends
     - By **Maarten Menheere**. [Github](https://github.com/M2tec/inception)
 - [M2Tec Gift Wallet Printing Tool](https://gift.m2tec.nl): Nice tool to bundle Gift Wallets as paper wallets, suitable for printing
-- **Official CLI Tool [@gamechanger-finance/gc](https://www.npmjs.com/package/@gamechanger-finance/gc)**:URL, QR, HTML, React, ExpressJs, all output format in one CLI tool 
+
 
 ### Special Use Cases
 - M2Tec - Hardware and Software Dapps (first hardware dapps on Cardano powered by GameChanger universal dapp connector)
