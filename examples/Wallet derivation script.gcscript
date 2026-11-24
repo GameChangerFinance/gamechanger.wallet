@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Wallet derivation script",
-  "description": "Derives six spending and six staking keys of the current wallet and builds every kind of address they allow: a reward address, hierarchical deterministic, delegation portfolio and anonymous addresses, native script multisig treasuries and Plutus smart contract addresses. Nothing is submitted on-chain and every address is exported back to dapp for inspection",
+  "description": "Derives volatile keys and addresses on the fly, without workspaces: six spend and six stake keys of 'account-index', then reward, HD, delegation portfolio, anonymous, multisig and Plutus script addresses. Nothing is stored or submitted, addresses are exported",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -9,356 +9,348 @@
       ]
     }
   },
+  "args": {
+    "account-index": 0
+  },
   "run": {
-    "HDSpendKeys": {
+    "guards": {
+      "type": "macro",
+      "run": "{assert(and(isType('number',get('args.account-index')),cmpBigNum('gte',get('args.account-index'),'0'),cmpBigNum('lt',get('args.account-index'),'2147483648')),'account-index must be 0 to 2147483647')}"
+    },
+    "spend": {
       "type": "deriveKeys",
       "keys": [
         {
-          "name": "spend00",
+          "name": "spend0",
           "kind": "spend",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 0
         },
         {
-          "name": "spend01",
+          "name": "spend1",
           "kind": "spend",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 1
         },
         {
-          "name": "spend02",
+          "name": "spend2",
           "kind": "spend",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 2
         },
         {
-          "name": "spend03",
+          "name": "spend3",
           "kind": "spend",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 3
         },
         {
-          "name": "spend04",
+          "name": "spend4",
           "kind": "spend",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 4
         },
         {
-          "name": "spend05",
+          "name": "spend5",
           "kind": "spend",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 5
         }
       ]
     },
-    "HDStakeKeys": {
+    "stake": {
       "type": "deriveKeys",
       "keys": [
         {
-          "name": "stake00",
+          "name": "stake0",
           "kind": "stake",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 0
         },
         {
-          "name": "stake01",
+          "name": "stake1",
           "kind": "stake",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 1
         },
         {
-          "name": "stake02",
+          "name": "stake2",
           "kind": "stake",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 2
         },
         {
-          "name": "stake03",
+          "name": "stake3",
           "kind": "stake",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 3
         },
         {
-          "name": "stake04",
+          "name": "stake4",
           "kind": "stake",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 4
         },
         {
-          "name": "stake05",
+          "name": "stake5",
           "kind": "stake",
-          "accountIndex": 0,
+          "accountIndex": "{get('args.account-index')}",
           "addressIndex": 5
         }
       ]
     },
-    "hierarchicalDeterministic": {
+    "reward": {
       "type": "script",
+      "exportAs": "RewardAddress",
       "run": [
         {
-          "type": "script",
-          "exportAs": "RewardAddress",
-          "run": [
-            {
-              "type": "buildAddress",
-              "name": "RewardAddress",
-              "addr": {
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            }
-          ]
-        },
-        {
-          "type": "script",
-          "exportAs": "HierarchicalDeterministicWallet",
-          "run": [
-            {
-              "type": "buildAddress",
-              "name": "HierarchicalDeterministicWallet#0",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "HierarchicalDeterministicWallet#1",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.1.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "HierarchicalDeterministicWallet#2",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.2.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "HierarchicalDeterministicWallet#3",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.3.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "HierarchicalDeterministicWallet#3",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.4.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "HierarchicalDeterministicWallet#5",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.5.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            }
-          ]
-        },
-        {
-          "type": "script",
-          "exportAs": "DelegationPortfolioWallet",
-          "run": [
-            {
-              "type": "buildAddress",
-              "name": "DelegationPortfolioWallet#0",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "DelegationPortfolioWallet#1",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.1.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "DelegationPortfolioWallet#2",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.2.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "DelegationPortfolioWallet#3",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.3.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "DelegationPortfolioWallet#4",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.4.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "DelegationPortfolioWallet#5",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.5.pubKeyHashHex')}"
-              }
-            }
-          ]
-        },
-        {
-          "type": "script",
-          "exportAs": "AnonymousHierarchicalDeterministicWallet",
-          "run": [
-            {
-              "type": "buildAddress",
-              "name": "AnonymousHierarchicalDeterministicWallet#0",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "AnonymousHierarchicalDeterministicWallet#1",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.1.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "AnonymousHierarchicalDeterministicWallet#2",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.2.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "AnonymousHierarchicalDeterministicWallet#3",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.3.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "AnonymousHierarchicalDeterministicWallet#4",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.4.pubKeyHashHex')}"
-              }
-            },
-            {
-              "type": "buildAddress",
-              "name": "AnonymousHierarchicalDeterministicWallet#5",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.5.pubKeyHashHex')}"
-              }
-            }
-          ]
+          "type": "buildAddress",
+          "name": "RewardAddress",
+          "addr": {
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
         }
       ]
     },
-    "multisig": {
+    "hd": {
       "type": "script",
+      "exportAs": "HierarchicalDeterministicWallet",
+      "run": [
+        {
+          "type": "buildAddress",
+          "name": "HierarchicalDeterministicWallet#0",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "HierarchicalDeterministicWallet#1",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.1.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "HierarchicalDeterministicWallet#2",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.2.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "HierarchicalDeterministicWallet#3",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.3.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "HierarchicalDeterministicWallet#4",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.4.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "HierarchicalDeterministicWallet#5",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.5.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        }
+      ]
+    },
+    "portfolio": {
+      "type": "script",
+      "exportAs": "DelegationPortfolioWallet",
+      "run": [
+        {
+          "type": "buildAddress",
+          "name": "DelegationPortfolioWallet#0",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "DelegationPortfolioWallet#1",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.1.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "DelegationPortfolioWallet#2",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.2.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "DelegationPortfolioWallet#3",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.3.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "DelegationPortfolioWallet#4",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.4.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "DelegationPortfolioWallet#5",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.5.pubKeyHashHex')}"
+          }
+        }
+      ]
+    },
+    "anonymous": {
+      "type": "script",
+      "exportAs": "AnonymousHierarchicalDeterministicWallet",
+      "run": [
+        {
+          "type": "buildAddress",
+          "name": "AnonymousHierarchicalDeterministicWallet#0",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "AnonymousHierarchicalDeterministicWallet#1",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.1.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "AnonymousHierarchicalDeterministicWallet#2",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.2.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "AnonymousHierarchicalDeterministicWallet#3",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.3.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "AnonymousHierarchicalDeterministicWallet#4",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.4.pubKeyHashHex')}"
+          }
+        },
+        {
+          "type": "buildAddress",
+          "name": "AnonymousHierarchicalDeterministicWallet#5",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.5.pubKeyHashHex')}"
+          }
+        }
+      ]
+    },
+    "spendingScript": {
+      "type": "nativeScript",
+      "name": "spendingScript",
+      "script": {
+        "scriptHex": "820181820400"
+      }
+    },
+    "stakingScript": {
+      "type": "nativeScript",
+      "name": "stakingScript",
+      "script": {
+        "scriptHex": "82018382041a0005d90d8200581c111fc9cc6fd34bd2783001b3fbf7b456beb93a38d24a1e06542dc6fb82051a0008e909"
+      }
+    },
+    "treasuries": {
+      "type": "script",
+      "exportAs": "MultisigWallets",
       "run": {
-        "spendingScript": {
-          "type": "nativeScript",
-          "name": "spendingScript",
-          "script": {
-            "scriptHex": "820181820400"
+        "SpendingTreasuryWallet": {
+          "type": "buildAddress",
+          "name": "SpendingTreasuryWallet",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.spendingScript.scriptHashHex')}"
           }
         },
-        "stakingScript": {
-          "type": "nativeScript",
-          "name": "stakingScript",
-          "script": {
-            "scriptHex": "82018382041a0005d90d8200581c111fc9cc6fd34bd2783001b3fbf7b456beb93a38d24a1e06542dc6fb82051a0008e909"
+        "StakingTreasuryWallet": {
+          "type": "buildAddress",
+          "name": "StakingTreasuryWallet",
+          "addr": {
+            "stakeScriptHashHex": "{get('cache.stakingScript.scriptHashHex')}"
           }
         },
-        "treasuries": {
-          "type": "script",
-          "exportAs": "MultisigWallets",
-          "run": {
-            "SpendingTreasuryWallet": {
-              "type": "buildAddress",
-              "name": "SpendingTreasuryWallet",
-              "addr": {
-                "spendScriptHashHex": "{get('cache.multisig.spendingScript.scriptHashHex')}"
-              }
-            },
-            "StakingTreasuryWallet": {
-              "type": "buildAddress",
-              "name": "StakingTreasuryWallet",
-              "addr": {
-                "stakeScriptHashHex": "{get('cache.multisig.stakingScript.scriptHashHex')}"
-              }
-            },
-            "SpendingAndStakingTreasuryWallet": {
-              "type": "buildAddress",
-              "name": "SpendingAndStakingTreasuryWallet",
-              "addr": {
-                "spendScriptHashHex": "{get('cache.multisig.spendingScript.scriptHashHex')}",
-                "stakeScriptHashHex": "{get('cache.multisig.stakingScript.scriptHashHex')}"
-              }
-            }
+        "SpendingAndStakingTreasuryWallet": {
+          "type": "buildAddress",
+          "name": "SpendingAndStakingTreasuryWallet",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.spendingScript.scriptHashHex')}",
+            "stakeScriptHashHex": "{get('cache.stakingScript.scriptHashHex')}"
           }
         }
       }
     },
+    "plutusScript": {
+      "type": "plutusScript",
+      "name": "plutusScript",
+      "script": {
+        "lang": "plutus_v2",
+        "scriptHex": "4e4d01000033222220051200120011"
+      }
+    },
     "smartContracts": {
       "type": "script",
+      "exportAs": "SmartContractWallets",
       "run": {
-        "sc01": {
-          "type": "plutusScript",
-          "name": "plutusScript",
-          "script": {
-            "lang": "plutus_v2",
-            "scriptHex": "4e4d01000033222220051200120011"
+        "SmartContractWallet": {
+          "type": "buildAddress",
+          "name": "SmartContractWallet",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.plutusScript.scriptHashHex')}"
           }
         },
-        "smartContractWallet": {
-          "type": "script",
-          "exportAs": "SmartContractWallets",
-          "run": {
-            "SmartContractWallet": {
-              "type": "buildAddress",
-              "name": "SmartContractWallet",
-              "addr": {
-                "spendScriptHashHex": "{get('cache.smartContracts.sc01.scriptHashHex')}"
-              }
-            },
-            "SmartContractUserStakingWallet": {
-              "type": "buildAddress",
-              "name": "SmartContractUserStakingWallet",
-              "addr": {
-                "spendScriptHashHex": "{get('cache.smartContracts.sc01.scriptHashHex')}",
-                "stakePubKeyHashHex": "{get('cache.HDStakeKeys.0.pubKeyHashHex')}"
-              }
-            },
-            "SmartContractUserSpendingWallet": {
-              "type": "buildAddress",
-              "name": "SmartContractUserSpendingWallet",
-              "addr": {
-                "spendPubKeyHashHex": "{get('cache.HDSpendKeys.0.pubKeyHashHex')}",
-                "stakeScriptHashHex": "{get('cache.smartContracts.sc01.scriptHashHex')}"
-              }
-            },
-            "SmartContractMultiSigStakingWallet": {
-              "type": "buildAddress",
-              "name": "SmartContractMultiSigStakingWallet",
-              "addr": {
-                "spendScriptHashHex": "{get('cache.smartContracts.sc01.scriptHashHex')}",
-                "stakeScriptHashHex": "{get('cache.multisig.stakingScript.scriptHashHex')}"
-              }
-            }
+        "SmartContractUserStakingWallet": {
+          "type": "buildAddress",
+          "name": "SmartContractUserStakingWallet",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.plutusScript.scriptHashHex')}",
+            "stakePubKeyHashHex": "{get('cache.stake.0.pubKeyHashHex')}"
+          }
+        },
+        "SmartContractUserSpendingWallet": {
+          "type": "buildAddress",
+          "name": "SmartContractUserSpendingWallet",
+          "addr": {
+            "spendPubKeyHashHex": "{get('cache.spend.0.pubKeyHashHex')}",
+            "stakeScriptHashHex": "{get('cache.plutusScript.scriptHashHex')}"
+          }
+        },
+        "SmartContractMultiSigStakingWallet": {
+          "type": "buildAddress",
+          "name": "SmartContractMultiSigStakingWallet",
+          "addr": {
+            "spendScriptHashHex": "{get('cache.plutusScript.scriptHashHex')}",
+            "stakeScriptHashHex": "{get('cache.stakingScript.scriptHashHex')}"
           }
         }
       }
