@@ -1,0 +1,74 @@
+:root {
+  --ifm-font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-weight: 750;
+  --ifm-code-font-size: 88%;
+  --ifm-global-radius: 10px;
+  --ifm-navbar-height: 4.5rem;
+  --ifm-color-primary-dark: color-mix(in srgb, var(--ifm-color-primary), black 15%);
+  --ifm-color-primary-darker: color-mix(in srgb, var(--ifm-color-primary), black 25%);
+  --ifm-color-primary-darkest: color-mix(in srgb, var(--ifm-color-primary), black 40%);
+  --ifm-color-primary-light: color-mix(in srgb, var(--ifm-color-primary), white 20%);
+  --ifm-color-primary-lighter: color-mix(in srgb, var(--ifm-color-primary), white 35%);
+  --ifm-color-primary-lightest: color-mix(in srgb, var(--ifm-color-primary), white 60%);
+  --reader-surface: #fff;
+  --reader-muted: #566476;
+  --reader-border: #d6e1e7;
+}
+html[data-theme='dark'] {
+  --ifm-background-color: #0b1119;
+  --ifm-background-surface-color: #111b27;
+  --ifm-navbar-background-color: #101923;
+  --ifm-footer-background-color: #101923;
+  --ifm-font-color-base: #dfe8f0;
+  --reader-surface: #111b27;
+  --reader-muted: #a3b5c6;
+  --reader-border: #293c4b;
+}
+.navbar { border-bottom: 1px solid var(--reader-border); box-shadow: none; gap: .7rem; }
+.navbar__logo img { width: 106px; height: 30px; object-fit: contain; }
+.navbar__title { font-size: .95rem; letter-spacing: -.02em; }
+.navbar__link { font-size: .88rem; }
+.theme-doc-sidebar-container { border-right-color: var(--reader-border) !important; }
+.menu { font-size: .9rem; padding: 1.4rem .8rem !important; }
+.menu__link { border-radius: 7px; }
+.markdown { --ifm-heading-line-height: 1.22; }
+.markdown h1 { font-size: clamp(2rem, 4vw, 3.1rem); letter-spacing: -.045em; }
+.markdown h2 { margin-top: 2.5rem; letter-spacing: -.025em; }
+.markdown img { border-radius: 8px; max-height: 700px; object-fit: contain; }
+.markdown pre { border: 1px solid var(--reader-border); }
+.theme-doc-markdown { padding-top: 1rem; }
+.docs-hero { padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--reader-border); border-top: 3px solid var(--ifm-color-primary); background: var(--reader-surface); border-radius: 14px; margin: 1rem 0 2.5rem; }
+.docs-kicker { font-size: .7rem; text-transform: uppercase; letter-spacing: .16em; font-weight: 750; color: var(--ifm-color-primary); }
+.docs-hero h2 { font-size: clamp(2.4rem, 5vw, 4.2rem); letter-spacing: -.055em; line-height: 1.05; margin: 1rem 0; max-width: 9em; }
+.docs-lead { color: var(--reader-muted); font-size: 1.1rem; max-width: 35rem; }
+.docs-hero .reader-actions { justify-content: flex-start; margin: 1.5rem 0; }
+.reader-controls, .reader-actions { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+.reader-button { font: inherit; font-size: .85rem; color: var(--ifm-font-color-base); background: var(--reader-surface); border: 1px solid var(--reader-border); border-radius: 8px; padding: .5rem .7rem; cursor: pointer; }
+.reader-trigger { display: inline-flex; align-items: center; gap: .5rem; }
+.reader-trigger svg { width: 17px; height: 17px; fill: var(--reader-surface); stroke: currentColor; stroke-width: 1.7; flex: 0 0 auto; }
+:focus-visible { outline: 3px solid var(--ifm-color-primary); outline-offset: 3px; }
+.reader-dialog { position: fixed; inset: 0; margin: auto; width: min(560px, calc(100vw - 2rem)); max-height: calc(100dvh - 3rem); overflow: auto; border: 1px solid var(--reader-border); border-radius: 16px; background: var(--reader-surface); color: var(--ifm-font-color-base); padding: 1.6rem; box-shadow: 0 24px 100px #0006; }
+.reader-dialog::backdrop { background: #02070dbb; }
+.reader-dialog header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+.reader-dialog h2 { font-size: 1.4rem; margin: 0; }
+.reader-dialog label { display: block; margin: 1rem 0 .4rem; font-weight: 650; }
+.reader-dialog select, .reader-dialog input { display: block; width: 100%; padding: .7rem; color: inherit; background: var(--ifm-background-color); border: 1px solid var(--reader-border); border-radius: 8px; font: inherit; }
+.reader-dialog select:disabled { opacity: .65; }
+.reader-actions { justify-content: flex-end; margin-top: 1.6rem; }
+.search-results { list-style: none; padding: 0; }
+.search-results li { border-top: 1px solid var(--reader-border); padding: 1rem 0; }
+.search-results p { margin: .35rem 0 0; color: var(--reader-muted); font-size: .85rem; }
+.studio-example { border: 1px solid var(--reader-border); border-radius: 10px; background: var(--reader-surface); margin: 0; padding: 0; }
+.studio-example iframe { display: block; width: 100%; border: 0; border-radius: 10px; background: var(--ifm-background-color); }
+.studio-note { color: var(--reader-muted); font-size: .8rem; line-height: 1.6; margin: .8rem 0 0; }
+@media (max-width: 996px) { .reader-label { display: none; } .reader-controls { padding: .2rem; flex-wrap: nowrap; } .reader-trigger { width: 36px; height: 36px; justify-content: center; padding: 0; } .navbar__title { font-size: .85rem; } .theme-doc-markdown { padding-top: .4rem; } }
+@media (max-width: 600px) { .navbar__title { display: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+.runnable-actions { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin: .3rem .35rem .3rem 0; max-width: 100%; }
+.runnable-button { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; border-radius: var(--ifm-global-radius); font-weight: 650; text-decoration: none !important; }
+.runnable-button svg { width: 1.15em; height: 1.15em; flex: 0 0 auto; }
+.runnable-wallet { --ifm-button-background-color: #16733c; --ifm-button-border-color: #16733c; --ifm-button-color: white; }
+.runnable-ide { --ifm-button-background-color: #215fbd; --ifm-button-border-color: #215fbd; --ifm-button-color: white; }
+.runnable-button:hover { filter: brightness(1.15); color: white; }
+.wallet-qr { display: block; width: min(100%, 360px); height: auto; margin: 0 auto 1.2rem; background: white; }
+.wallet-qr-footer { margin-top: 1rem; font-size: .8rem; overflow-wrap: anywhere; }

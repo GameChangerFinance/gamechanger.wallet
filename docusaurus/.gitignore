@@ -1,0 +1,11 @@
+node_modules/
+.studio/
+.generated/
+.docusaurus/
+build/
+test-results/
+playwright-report/
+
+.env
+.env.*
+!.env.example

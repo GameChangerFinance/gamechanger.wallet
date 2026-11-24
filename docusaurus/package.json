@@ -1,0 +1,47 @@
+{
+  "name": "gamechanger-documentation",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=24.12.0"
+  },
+  "scripts": {
+    "generate": "node scripts/docs.mjs generate",
+    "start": "node scripts/docs.mjs start",
+    "build": "node scripts/docs.mjs build",
+    "serve": "node scripts/serve.mjs",
+    "test:browser": "node test/browser-studio.mjs",
+    "test": "node --test --test-isolation=none test/*.test.mjs"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/plugin-content-docs": "3.10.2",
+    "@docusaurus/theme-classic": "3.10.2",
+    "@docusaurus/theme-common": "3.10.2",
+    "@gamechanger-finance/gc": "1.2.4",
+    "@mdx-js/react": "3.1.1",
+    "jsonc-parser": "3.3.1",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "rehype-sanitize": "6.0.0",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "remark-stringify": "11.0.0",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [],
+    "overrides": {
+      "@docusaurus/core>tinypool": "2.1.2",
+      "copy-webpack-plugin>serialize-javascript": "7.1.3",
+      "css-minimizer-webpack-plugin>serialize-javascript": "7.1.3",
+      "sockjs>uuid": "11.1.1",
+      "js-yaml@4.1.1": "4.3.2"
+    }
+  },
+  "devDependencies": {
+    "js-yaml": "4.3.2"
+  }
+}

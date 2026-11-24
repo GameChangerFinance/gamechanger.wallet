@@ -19,7 +19,7 @@ Built for interoperability, GCScript can be generated and exchanged by virtually
 ### Main Tools
 
 - ⭐ [GCScript DSL skill for AI Agents](https://github.com/GameChangerFinance/gcscript-dsl-skill): Turn your agent into an GCScript DSL expert. Implement intent-based solutions for Cardano and other ecosystems even on game engines, paper, screens and hardware devices, and on any programming language and platform. Installing dependencies is not required in order to generate code and integrate.
-- [GCScript Studio IDE](https://www.npmjs.com/package/@gamechanger-finance/gc): Browser IDE for GCScript DSL. Write or edit 100+ examples. Explore as code, nodes, or blocks. Build multi-file projects. Run it in GameChanger Wallet or your wallet of choice. No installation required.
+- [GCScript Studio IDE](https://gamechangerfinance.github.io/gcscript-studio/): Browser IDE for GCScript DSL. Write or edit 100+ examples. Explore as code, nodes, or blocks. Build multi-file projects. Run it in GameChanger Wallet or your wallet of choice. No installation required.
 - [NPM lib + CLI: @gamechanger-finance/gc)](https://www.npmjs.com/package/@gamechanger-finance/gc): Typescript library + CLI. Builds and validates GCScript DSL. Outputs URL, QR integrations and auto-generates dapps and backend code in HTML, React, ExpressJs.
 
 
@@ -117,7 +117,7 @@ These networks are supported:
 
 ### Tools:
 - ⭐ [GCScript DSL skill for AI Agents](https://github.com/GameChangerFinance/gcscript-dsl-skill): Turn your agent into an GCScript DSL expert. Implement intent-based solutions for Cardano and other ecosystems even on game engines, paper, screens and hardware devices, and on any programming language and platform. Installing dependencies is not required in order to generate code and integrate.
-- [GCScript Studio IDE](https://www.npmjs.com/package/@gamechanger-finance/gc): Browser IDE for GCScript DSL. Write or edit 100+ examples. Explore as code, nodes, or blocks. Build multi-file projects. Run it in GameChanger Wallet or your wallet of choice. No installation required.
+- [GCScript Studio IDE](https://gamechangerfinance.github.io/gcscript-studio/): Browser IDE for GCScript DSL. Write or edit 100+ examples. Explore as code, nodes, or blocks. Build multi-file projects. Run it in GameChanger Wallet or your wallet of choice. No installation required.
 - [NPM lib + CLI: @gamechanger-finance/gc)](https://www.npmjs.com/package/@gamechanger-finance/gc): Typescript library + CLI. Builds and validates GCScript DSL. Outputs URL, QR integrations and auto-generates dapps and backend code in HTML, React, ExpressJs.
 - [Kitchen Sink](https://gclib-kitchen-sink.netlify.app/): URL, QR, HTML, React, ExpressJs, all output format in one example
 - [Gift Wallet Generator](https://github.com/GameChangerFinance/gift-wallet-generator): A simple dapp to generate and fund GameChanger Gift Wallets in bulk for events, workshops and classrooms:

@@ -1,0 +1,119 @@
+diff --git a/src/app/controller.ts b/src/app/controller.ts
+index ab548fb..1dde0a0 100644
+--- a/src/app/controller.ts
++++ b/src/app/controller.ts
+@@ -94,6 +94,7 @@ export function createStudioController(config: StudioConfig): StudioController {
+       persistenceError: restored.error,
+       embedded: launch.embedded,
+       mode: launch.mode ?? initial.mode,
++      options: launch.theme ? { ...restored.options, theme: launch.theme } : restored.options,
+       layout: launch.embedded
+         ? { ...restored.layout, explorer: false, inspector: false }
+         : restored.layout,
+@@ -882,6 +883,7 @@ export function createStudioController(config: StudioConfig): StudioController {
+         schema: state.schema,
+         embedded: launch.embedded,
+         mode: launch.mode ?? 'code',
++        options: { ...initial.options, theme: launch.theme ?? initial.options.theme },
+         layout: launch.embedded
+           ? { ...initial.layout, explorer: false, inspector: false }
+           : initial.layout,
+diff --git a/src/config.ts b/src/config.ts
+index 19b704d..f253e1c 100644
+--- a/src/config.ts
++++ b/src/config.ts
+@@ -36,6 +36,7 @@ export interface StudioConfig {
+   storage: { project: string; options: string; schemas: string; run: string; result: string };
+   editLinks: {
+     route: string;
++    themeParameter?: string;
+     embeddedStoragePrefix: string;
+     maxEncodedCharacters: number;
+     maxDecodedBytes: number;
+@@ -126,6 +127,7 @@ export const DEFAULT_CONFIG: StudioConfig = {
+   },
+   editLinks: {
+     route: 'api/2/edit/',
++    themeParameter: 'theme',
+     embeddedStoragePrefix: 'embed:',
+     maxEncodedCharacters: 2 * 1024 * 1024,
+     maxDecodedBytes: 8 * 1024 * 1024,
+diff --git a/src/core/project/edit-link.ts b/src/core/project/edit-link.ts
+index 54f57a2..7ab4e00 100644
+--- a/src/core/project/edit-link.ts
++++ b/src/core/project/edit-link.ts
+@@ -20,6 +20,7 @@ export type LinkView = 'code' | 'node' | 'block';
+ export interface StudioLaunch {
+   embedded: boolean;
+   mode: EditorMode | undefined;
++  theme?: 'dark' | 'light' | undefined;
+   encoded: string | null;
+ }
+ 
+@@ -32,7 +33,11 @@ export function readStudioLaunch(
+   const url = new URL(href);
+   const route = new URL(config.editLinks.route, baseURL);
+   const view = url.searchParams.get('view');
++  const theme = config.editLinks.themeParameter
++    ? url.searchParams.get(config.editLinks.themeParameter)
++    : null;
+   return {
++    theme: theme === 'dark' || theme === 'light' ? theme : undefined,
+     embedded:
+       (url.searchParams.has('embed') &&
+         ['', 'true', '1'].includes(url.searchParams.get('embed') ?? '')) ||
+diff --git a/tests/integration/controller.test.ts b/tests/integration/controller.test.ts
+index 52378d9..b3e1d2b 100644
+--- a/tests/integration/controller.test.ts
++++ b/tests/integration/controller.test.ts
+@@ -45,6 +45,28 @@ const deferred = <T>() => {
+   return { promise, resolve: (value: T) => resolve?.(value) };
+ };
+ describe('controller safety and persistence', () => {
++  it('applies a requested theme over restored embedded options and retains it on reset', async () => {
++    const normal = initialState(
++      createProject(DEFAULT_CONFIG, 'normal-theme'),
++      DEFAULT_CONFIG,
++      false,
++    );
++    persistSession(normal, DEFAULT_CONFIG, localStorage);
++    const normalOptions = localStorage.getItem(DEFAULT_CONFIG.storage.options);
++    const embeddedConfig = sessionConfig(DEFAULT_CONFIG, true);
++    persistSession(
++      { ...normal, options: { ...normal.options, theme: 'light' } },
++      embeddedConfig,
++      localStorage,
++    );
++    window.history.replaceState(null, '', '/?embed=true&theme=dark');
++    const app = await ready();
++    expect(app.store.getSnapshot().options.theme).toBe('dark');
++    expect(document.documentElement.dataset.bsTheme).toBe('dark');
++    app.reset();
++    expect(app.store.getSnapshot().options.theme).toBe('dark');
++    expect(localStorage.getItem(DEFAULT_CONFIG.storage.options)).toBe(normalOptions);
++  });
+   it('auto-opens embedded links in isolated storage and returns wallets to that session', async () => {
+     const normal = initialState(
+       createProject(DEFAULT_CONFIG, 'normal-work'),
+diff --git a/tests/integration/edit-links.test.ts b/tests/integration/edit-links.test.ts
+index e424177..b5eb64b 100644
+--- a/tests/integration/edit-links.test.ts
++++ b/tests/integration/edit-links.test.ts
+@@ -11,6 +11,17 @@ import { runtime } from '../fixtures';
+ const base = 'https://studio.test/gcscript-studio/';
+ const config = DEFAULT_CONFIG;
+ describe('GC edit-link transport', () => {
++  it('accepts explicit dark/light launch themes and ignores unsupported values', () => {
++    for (const theme of ['dark', 'light'] as const) {
++      expect(readStudioLaunch(`${base}?theme=${theme}&embed=true`, base, config).theme).toBe(theme);
++    }
++    for (const query of ['', '?theme=match', '?theme=javascript%3Aalert(1)']) {
++      expect(readStudioLaunch(base + query, base, config).theme).toBeUndefined();
++    }
++    const custom = { ...config, editLinks: { ...config.editLinks, themeParameter: 'appearance' } };
++    expect(readStudioLaunch(base + '?appearance=light', base, custom).theme).toBe('light');
++    expect(readStudioLaunch(base + '?theme=light', base, custom).theme).toBeUndefined();
++  });
+   it('preserves an ampersand-free embedded callback through repeated real builds and URL encoding', async () => {
+     const expected = JSON.parse(withWalletCallback('{}', base, 'roundtrip', true)).returnURLPattern;
+     let input = JSON.stringify({
