@@ -112,7 +112,10 @@ files remain the independent single source of truth. Docusaurus is replaceable.
 
 ## Maintenance
 
-Run `pnpm test` before `pnpm build`, then `pnpm test:browser` for Studio/return
+GitHub Actions MUST NOT run Playwright or browser tests, including smoke checks
+and wallet popup/return integration. Keep all browser checks localhost-only.
+CI retains the audit gate, Node unit tests, builds and artifact/source validation.
+Run `pnpm test` before `pnpm build`, then full `pnpm test:browser` locally for Studio/return
 changes (install its browser or set `DOCS_BROWSER_EXECUTABLE`). Inspect desktop/mobile rendering after UI
 changes. Verify source hashes and generated artifact hashes during builds. Add
 regressions for shared transform and path behavior. Never weaken link/security

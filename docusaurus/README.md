@@ -214,6 +214,11 @@ or persists exports. External **Open in IDE…** links still open the hosted ful
 Setting `studio.bundle.enabled: false` restores remote embedding, with the above
 cross-site limitation; only use it when the page and Studio share a site.
 
+GitHub Actions runs dependency installation, the high-severity audit gate, Node
+unit tests, the static build and artifact validation. Playwright and browser tests
+are localhost-only and must not be invoked by Actions, including smoke tests.
+For a quick local browser check after building, run `pnpm test:browser --smoke`.
+
 After `pnpm build`, run `pnpm test:browser --install-browser` to install Chromium
 and exercise the complete synthetic return on an automatically started localhost
 server. For an existing Chrome installation, use
@@ -222,7 +227,7 @@ server. For an existing Chrome installation, use
 Playwright from the pinned Studio checkout; screenshots go to `test-results/`.
 It sends compressed synthetic exports, deliberately removes the popup opener,
 and checks project identity, result persistence, pending cleanup, popup close and
-desktop/mobile overflow. The experimental workflow runs this after every build.
+desktop/mobile overflow. All browser checks run locally; Actions does not run Playwright.
 
 When updating Studio, pin and review a new revision, verify the adapter still
 applies, and run the build plus a browser regression with normal Chrome storage

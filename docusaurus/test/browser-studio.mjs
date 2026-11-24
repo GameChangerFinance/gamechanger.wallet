@@ -12,8 +12,8 @@ import { createPreviewServer } from '../scripts/serve.mjs';
 
 /** Simulated wallet boundary: no accounts, real wallet exports or signing are used. */
 export async function main(args = process.argv.slice(2)) {
-  const { values } = parseArgs({ args, options: { 'install-browser': { type: 'boolean' }, help: { type: 'boolean' } } });
-  if (values.help) { console.log('Usage: pnpm test:browser [--install-browser] (optional DOCS_BROWSER_EXECUTABLE, DOCS_PREVIEW_ORIGIN)'); return; }
+  const { values } = parseArgs({ args, options: { 'install-browser': { type: 'boolean' }, smoke: { type: 'boolean' }, help: { type: 'boolean' } } });
+  if (values.help) { console.log('Usage: pnpm test:browser [--smoke] [--install-browser] (optional DOCS_BROWSER_EXECUTABLE, DOCS_PREVIEW_ORIGIN)'); return; }
   const config = getBuildConfig();
   if (!config.features.studio || !config.studio.bundle.enabled) { console.log('Skipped: bundled Studio is disabled.'); return; }
   const feature = fileURLToPath(new URL('../', import.meta.url));
@@ -42,7 +42,13 @@ export async function main(args = process.argv.slice(2)) {
       await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
       origin = `http://127.0.0.1:${server.address().port}`;
     }
-    const context = await browser.newContext();
+    const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+    if (values.smoke) {
+      // Smoke tests exercise the static artifact, not external analytics or services.
+      // The schema fixture registered below takes precedence over this route.
+      await context.route('**/*', route => new URL(route.request().url()).origin === origin
+        ? route.continue() : route.abort());
+    }
     const failures = [];
     context.on('response', response => {
       if (response.status() >= 400 && new URL(response.url()).origin === origin) failures.push(`${response.status()} ${new URL(response.url()).pathname}`);
@@ -97,46 +103,48 @@ export async function main(args = process.argv.slice(2)) {
     assert.equal(new URL(await iframe.getAttribute('src'), address).origin, address.origin);
     const frame = await (await iframe.elementHandle()).contentFrame();
     await frame.locator('.monaco-editor').waitFor();
-    const runtime = await fs.readFile(path.join(source, 'src/config.ts'), 'utf8');
-    const projectKey = /project: '([^']+)'/.exec(runtime)[1];
-    const runKey = /run: '([^']+)'/.exec(runtime)[1];
-    const prefix = /embeddedStoragePrefix: '([^']+)'/.exec(runtime)[1];
-    const keys = { project: prefix + projectKey, run: prefix + runKey + ':' };
-    const launched = page.waitForEvent('popup');
-    await frame.getByRole('button', { name: 'Run', exact: true }).click();
-    const popup = await launched;
-    await popup.waitForLoadState('domcontentloaded');
-    const pending = await frame.evaluate(key => {
-      const match = Object.keys(localStorage).find(item => item.startsWith(key));
-      if (!match) throw Error('Missing synthetic pending run');
-      return JSON.parse(localStorage.getItem(match));
-    }, keys.run);
-    await popup.evaluate(() => { window.opener = null; });
-    const callback = new URL(config.studio.bundle.mount + '/index.html', address);
-    callback.searchParams.set('result', '1-' + gzipSync(JSON.stringify({ exports: { syntheticAnswer: 42 } })).toString('base64url'));
-    callback.hash = 'studioRun=' + encodeURIComponent('embed:' + pending.token);
-    const closed = popup.waitForEvent('close', { timeout: 20000 });
-    await popup.goto(callback.href).catch(error => {
-      if (!popup.isClosed() && !String(error).includes('ERR_ABORTED')) throw error;
-    });
-    await closed;
-    await frame.getByRole('status').filter({ hasText: 'Wallet exports captured' }).waitFor();
-    const saved = await frame.evaluate(({ keys, pending }) => {
-      const project = JSON.parse(localStorage.getItem(keys.project)).project;
-      return { projectId: project.id, text: project.files[pending.resultsPath]?.text, pending: localStorage.getItem(keys.run + pending.token) };
-    }, { keys, pending });
-    assert.equal(saved.projectId, pending.projectId);
-    assert.equal(JSON.parse(saved.text).exports.syntheticAnswer, 42);
-    assert.equal(saved.pending, null);
+    if (!values.smoke) {
+      const runtime = await fs.readFile(path.join(source, 'src/config.ts'), 'utf8');
+      const projectKey = /project: '([^']+)'/.exec(runtime)[1];
+      const runKey = /run: '([^']+)'/.exec(runtime)[1];
+      const prefix = /embeddedStoragePrefix: '([^']+)'/.exec(runtime)[1];
+      const keys = { project: prefix + projectKey, run: prefix + runKey + ':' };
+      const launched = page.waitForEvent('popup');
+      await frame.getByRole('button', { name: 'Run', exact: true }).click();
+      const popup = await launched;
+      await popup.waitForLoadState('domcontentloaded');
+      const pending = await frame.evaluate(key => {
+        const match = Object.keys(localStorage).find(item => item.startsWith(key));
+        if (!match) throw Error('Missing synthetic pending run');
+        return JSON.parse(localStorage.getItem(match));
+      }, keys.run);
+      await popup.evaluate(() => { window.opener = null; });
+      const callback = new URL(config.studio.bundle.mount + '/index.html', address);
+      callback.searchParams.set('result', '1-' + gzipSync(JSON.stringify({ exports: { syntheticAnswer: 42 } })).toString('base64url'));
+      callback.hash = 'studioRun=' + encodeURIComponent('embed:' + pending.token);
+      const closed = popup.waitForEvent('close', { timeout: 20000 });
+      await popup.goto(callback.href).catch(error => {
+        if (!popup.isClosed() && !String(error).includes('ERR_ABORTED')) throw error;
+      });
+      await closed;
+      await frame.getByRole('status').filter({ hasText: 'Wallet exports captured' }).waitFor();
+      const saved = await frame.evaluate(({ keys, pending }) => {
+        const project = JSON.parse(localStorage.getItem(keys.project)).project;
+        return { projectId: project.id, text: project.files[pending.resultsPath]?.text, pending: localStorage.getItem(keys.run + pending.token) };
+      }, { keys, pending });
+      assert.equal(saved.projectId, pending.projectId);
+      assert.equal(JSON.parse(saved.text).exports.syntheticAnswer, 42);
+      assert.equal(saved.pending, null);
+    }
     assert.equal(await page.locator('.studio-toolbar').count(), 0);
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       await fs.mkdir(path.join(feature, 'test-results'), { recursive: true });
-      await page.screenshot({ path: path.join(feature, 'test-results', `studio-wallet-return-${width}.png`) });
+      await page.screenshot({ path: path.join(feature, 'test-results', `studio-${values.smoke ? 'smoke' : 'wallet-return'}-${width}.png`) });
     }
     assert.deepEqual(failures, []);
-    console.log(`Passed at ${config.baseUrl}: navigation, deep-link reload, search, original files, local assets, Studio exports, pending cleanup, popup close and desktop/mobile layout.`);
+    console.log(`Passed at ${config.baseUrl}: navigation, deep-link reload, search, original files, local assets, embedded editor and desktop/mobile layout.${values.smoke ? ' Wallet popup/return integration is localhost-only and was not run.' : ' Studio exports, pending cleanup and popup close passed.'}`);
     await context.close();
   } finally {
     await browser.close();

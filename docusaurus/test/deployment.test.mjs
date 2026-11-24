@@ -11,6 +11,12 @@ test('active experiment can build artifacts but cannot publish or acquire deploy
     throw error;
   }
   const workflow = load(source);
+  for (const step of workflow.jobs.build.steps) {
+    assert.doesNotMatch(step.run ?? '', /playwright|test:browser|test:e2e|install-browser|chromium/i);
+  }
+  for (const command of ['pnpm test', 'pnpm build', 'pnpm audit --prod --audit-level high']) {
+    assert.ok(workflow.jobs.build.steps.some(step => step.run === command));
+  }
   assert.deepEqual(workflow.permissions, { contents: 'read' });
   assert.deepEqual(workflow.on.push.branches, ['feat/docusaurus']);
   assert.equal(workflow.on.workflow_dispatch, null);
@@ -25,6 +31,12 @@ test('active experiment can build artifacts but cannot publish or acquire deploy
 
 test('Pages workflow guards both jobs and grants write only to deployment', async () => {
   const workflow = load(await fs.readFile(new URL('../../.github/workflows/documentation-pages.yml', import.meta.url), 'utf8'));
+  for (const step of workflow.jobs.build.steps) {
+    assert.doesNotMatch(step.run ?? '', /playwright|test:browser|test:e2e|install-browser|chromium/i);
+  }
+  for (const command of ['pnpm test', 'pnpm build', 'pnpm audit --prod --audit-level high']) {
+    assert.ok(workflow.jobs.build.steps.some(step => step.run === command));
+  }
   assert.deepEqual(workflow.permissions, { contents: 'read' });
   assert.deepEqual(workflow.on.push.branches, ['main']);
   assert.deepEqual(Object.keys(workflow.on).sort(), ['push', 'workflow_dispatch']);

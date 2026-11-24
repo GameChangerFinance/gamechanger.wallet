@@ -32,7 +32,6 @@ jobs:
       - run: pnpm build
         env:
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
-      - run: pnpm test:browser --install-browser
       - uses: actions/upload-pages-artifact@v4
         with:
           path: docusaurus/build

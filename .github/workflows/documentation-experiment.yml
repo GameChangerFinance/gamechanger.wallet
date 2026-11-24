@@ -37,7 +37,6 @@ jobs:
       - run: pnpm build
         env:
           GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
-      - run: pnpm test:browser --install-browser
       - name: Confirm canonical tracked files are untouched
         run: git diff --exit-code -- . ':!docusaurus' ':!.github/workflows/documentation-experiment.yml'
         working-directory: .
