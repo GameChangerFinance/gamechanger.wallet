@@ -1,5 +1,7 @@
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import { visit } from 'unist-util-visit';
+import { getConfig } from './config.mjs';
+import { walletPayload } from '../src/components/studio.mjs';
 
 /** CommonMark cannot supply MDX ESM: these nodes are compiler-generated TOC
  * exports/imports. Sanitize rendered HTML without discarding that metadata. */
@@ -11,7 +13,14 @@ export default function sanitizeMarkdown() {
       code: [...(defaultSchema.attributes.code ?? []), 'metastring'],
     },
   });
+  const config = getConfig();
   return tree => {
+    visit(tree, 'element', node => {
+      if (node.tagName === 'a' && walletPayload(node.properties.href, config)) {
+        const children = node.children.filter(child => child.type !== 'text' || child.value.trim());
+        if (children.length === 1 && children[0].tagName === 'img' && new RegExp(config.transforms.runButtonImagePattern).test(children[0].properties.src)) node.children = [{ type: 'text', value: config.labels.runWallet }];
+      }
+    });
     // Docusaurus wraps the first Markdown h1 in an attribute-free MDX header,
     // even in CommonMark mode. Convert that generated wrapper back to inert
     // HTML so the sanitizer retains the document's visible title.

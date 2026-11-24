@@ -14,6 +14,7 @@ test('active experiment can build artifacts but cannot publish or acquire deploy
   assert.deepEqual(workflow.permissions, { contents: 'read' });
   assert.deepEqual(workflow.on.push.branches, ['feat/docusaurus']);
   assert.equal(workflow.on.workflow_dispatch, null);
+  assert.equal(workflow.jobs.build.steps.find(step => step.run === 'pnpm build').env.GOOGLE_ANALYTICS_ID, '${{ vars.GOOGLE_ANALYTICS_ID }}');
   assert.doesNotMatch(source, /pull_request_target|secrets\./);
   for (const job of Object.values(workflow.jobs)) {
     assert.equal(job.permissions, undefined);
@@ -22,14 +23,16 @@ test('active experiment can build artifacts but cannot publish or acquire deploy
   }
 });
 
-test('inactive Pages template guards both jobs and grants write only to deployment', async () => {
-  const workflow = load(await fs.readFile(new URL('../deployment/github-pages.yml.example', import.meta.url), 'utf8'));
+test('Pages workflow guards both jobs and grants write only to deployment', async () => {
+  const workflow = load(await fs.readFile(new URL('../../.github/workflows/documentation-pages.yml', import.meta.url), 'utf8'));
   assert.deepEqual(workflow.permissions, { contents: 'read' });
   assert.deepEqual(workflow.on.push.branches, ['main']);
+  assert.deepEqual(Object.keys(workflow.on).sort(), ['push', 'workflow_dispatch']);
+  assert.equal(workflow.jobs.build.steps.find(step => step.run === 'pnpm build').env.GOOGLE_ANALYTICS_ID, '${{ vars.GOOGLE_ANALYTICS_ID }}');
+  assert.equal(workflow.jobs.build.steps.find(step => step.uses === 'actions/upload-pages-artifact@v4').with.path, 'docusaurus/build');
   for (const name of ['build', 'deploy']) {
     const condition = workflow.jobs[name].if;
-    assert.match(condition, /DOCS_PAGES_APPROVED == 'true'/);
-    assert.equal(condition, "${{ vars.DOCS_PAGES_APPROVED == 'true' && github.ref == 'refs/heads/main' }}");
+    assert.equal(condition, "${{ github.ref == 'refs/heads/main' }}");
   }
   assert.equal(workflow.jobs.build.permissions, undefined);
   assert.deepEqual(workflow.jobs.deploy.permissions, { pages: 'write', 'id-token': 'write' });

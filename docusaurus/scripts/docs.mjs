@@ -1,7 +1,8 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
-import { parseArgs } from 'node:util';
+import fs from 'node:fs';
+import { parseArgs, parseEnv } from 'node:util';
 import { getConfig } from './config.mjs';
 
 /** Apply hosting overrides once to generation, Docusaurus, Studio and verification. */
@@ -15,13 +16,18 @@ export async function main(args = process.argv.slice(2)) {
   if (values.help) { console.log(usage); return; }
   if (values['base-url'] === '' || values.url === '') throw Error('Hosting overrides cannot be empty. ' + usage);
   if (values.port && command !== 'start') throw Error('--port is only available for start. ' + usage);
+  const feature = fileURLToPath(new URL('../', import.meta.url));
+  let localEnv = {};
+  try { localEnv = parseEnv(fs.readFileSync(path.join(feature, '.env'), 'utf8')); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+  const analyticsVariable = getConfig({}).analytics.environmentVariable;
   const env = { ...process.env,
+    [analyticsVariable]: process.env[analyticsVariable] ?? localEnv[analyticsVariable] ?? '',
     ...(values['base-url'] ? { DOCS_BASE_URL: values['base-url'] } : {}),
     ...(values.url ? { DOCS_URL: values.url } : {}),
   };
   const config = getConfig(env);
   Object.assign(env, { DOCS_BASE_URL: config.baseUrl, DOCS_URL: config.url });
-  const feature = fileURLToPath(new URL('../', import.meta.url));
   const run = scriptArgs => new Promise((resolve, reject) => {
     const child = spawn(process.execPath, scriptArgs, { cwd: feature, env, stdio: 'inherit' });
     const interrupt = signal => child.kill(signal);

@@ -1,6 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { analyticsTags } from './scripts/analytics.mjs';
 import sanitizeMarkdown from './scripts/sanitize.mjs';
 import { getConfig } from './scripts/config.mjs';
 
@@ -11,6 +12,9 @@ const routes = JSON.parse(fs.readFileSync(path.join(generated, 'routes.json'), '
 const raw = config.baseUrl + config.paths.rawMount + '/';
 
 export default {
+  favicon: config.branding.favicon,
+  headTags: [...analyticsTags(config.analytics),
+    { tagName: 'link', attributes: { rel: 'icon', type: 'image/svg+xml', href: config.baseUrl + config.branding.faviconSvg } }],
   title: config.title,
   tagline: config.tagline,
   url: config.url,
@@ -19,7 +23,7 @@ export default {
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   markdown: { format: 'detect', hooks: { onBrokenMarkdownLinks: 'throw' } },
-  staticDirectories: [config.paths.generated + '/static'],
+  staticDirectories: [config.paths.generated + '/static', config.paths.static],
   customFields: { reader: config },
   plugins: [['@docusaurus/plugin-content-docs', {
       path: config.paths.generated + '/docs',
@@ -35,6 +39,7 @@ export default {
     customCss: ['./' + config.paths.generated + '/brand.css', './src/css/custom.css'],
   }]],
   themeConfig: {
+    image: raw + config.branding.socialImage,
     colorMode: { defaultMode: config.branding.defaultTheme, respectPrefersColorScheme: false },
     navbar: {
       title: config.title,

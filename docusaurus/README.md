@@ -182,8 +182,8 @@ The parent never builds/signs/submits or receives wallet data.
 
 Recognized wallet `/api/2/run/<payload>` links get an adjacent **Open in IDE…**.
 Only explicitly allowlisted wallet origins/path patterns qualify. The encoded
-payload is retained; router, referral and callback query parameters are not copied
-into the Studio URL. Existing wallet links remain intact.
+payload, original query string and fragment are retained on the Studio link.
+Wallet launch URLs remain intact; no callback is injected.
 
 Studio contracts were checked against the [reference embed page](https://gamechangerfinance.github.io/gcscript-studio/examples/gcscript-studio-three-ides.html)
 and [Studio source](https://github.com/GameChangerFinance/gcscript-studio) on
@@ -271,14 +271,26 @@ The active `.github/workflows/documentation-experiment.yml` builds on pushes to
 deployment job, no Pages/OIDC write permissions, and uploads a standard static
 artifact. Even a manual execution on another branch cannot publish Pages.
 
-**Do not change the existing Pages publishing source or activate a replacement.**
-The inactive [Pages template](deployment/github-pages.yml.example) is
-outside `.github/workflows` and cannot execute. After explicit maintainer approval
-of a production cutover, review/copy it into workflows, set `DOCS_PAGES_APPROVED=true`
-as a repository variable, and protect the `github-pages` environment to allow only
-`main` (with required reviewers if appropriate). Both jobs enforce this branch,
-including manual runs. Only the guarded deploy job grants `pages: write`
-and `id-token: write`. Do not relax these guards for previews.
+The production workflow, [documentation-pages.yml](../.github/workflows/documentation-pages.yml),
+runs on pushes to `main` or manual dispatch. Both build and deploy jobs require
+`github.ref == 'refs/heads/main'`; manual runs from other branches skip both jobs.
+Only the guarded deploy job grants `pages: write` and `id-token: write`.
+
+To enable production publishing:
+
+1. Merge the workflow into `main`.
+2. In repository **Settings → Pages → Build and deployment**, select
+   **GitHub Actions** as the source.
+3. In **Settings → Environments → github-pages**, restrict deployment branches
+   to `main`.
+4. Push to `main` or manually run **Documentation Pages** from `main`.
+
+The workflow uploads `docusaurus/build/`. Do not select the repository root or
+`/docs` as a branch publishing folder. After successful validation and deployment,
+the configured public URL is `https://gamechangerfinance.github.io/gamechanger.wallet/`.
+No custom approval variable is required. Experimental branches cannot deploy.
+Repository Pages settings and environment protection must be configured on GitHub;
+editing or merging these files does not change those settings.
 
 For external previews, build with the required `--base-url` and optional `--url`,
 then publish `build/` contents at that path. The host must serve directory indexes
@@ -313,3 +325,72 @@ check generated diagnostics and inspect desktop/mobile, both themes, options,
 search, examples, original file links and direct subpath routes. Verify that
 canonical files and existing deployment settings remain unchanged. Never work
 around a renderer problem by rewriting the canonical docs or disabling validation.
+
+## Runnable links
+
+Wallet UDC links render as green **Run in Wallet…** buttons beside blue
+**Open in IDE…** buttons on every generated page. Legacy linked run-button images
+are normalized by the Markdown and HTML transforms. Canonical files remain intact.
+Choose **Options → Wallet links** to open a popup (default), a new tab, or a QR
+modal. This preference persists with the other options. Wallet launches retain the
+original URL, query string and fragment; no callback is inserted into the script.
+IDE links carry the original query string. A recognized testnet `networkTag`
+adds **Testnet** to the wallet label, with network details in the title.
+QR codes use the official GC library's styled `gc.encode.qr` output locally: it repacks the same
+script with the original URL pattern and query string, without adding a router
+network or changing `returnURLPattern`. Large payloads may exceed QR capacity;
+the modal includes a direct new-tab link and a middle-truncated URL in its footer.
+Only the displayed URL is shortened; its link target remains complete.
+
+To test changes in development, run from this directory:
+
+```sh
+pnpm start --port 3000
+# http://localhost:3000/gamechanger.wallet/
+```
+
+Embedded IDE rendering is controlled by Options: `always`, `never`, or
+`not on mobile` (default). The last mode uses the live viewport width, including
+DevTools resizing, with `studio.mobileMaxWidth` (996px by default) in
+`site.config.mjs`. Native code blocks remain visible when embeds are disabled.
+Changing modes or crossing the mobile breakpoint can discard editor changes;
+copy edits first. Preferences persist locally.
+
+### Optional Google Analytics
+
+Set `GOOGLE_ANALYTICS_ID` to your public GA4 measurement ID (`G-XXXXXXXXXX`)
+at build time. Missing or empty values disable analytics completely. Invalid
+nonempty IDs stop the build with a configuration error. No extra package is needed:
+the enabled build includes Google's standard asynchronous `gtag.js` snippet.
+The measurement ID is public in generated HTML; never put credentials here.
+
+For local testing, copy `.env.example` to `.env` inside `docusaurus/`, set the ID,
+then run `pnpm build` and `pnpm serve`. `pnpm start` also reads this file.
+The shell environment takes precedence over `.env`, including an explicitly empty
+value. `.env` files are ignored by Git. Rebuild after changing the ID.
+
+```sh
+GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX pnpm build
+# Explicitly disable analytics, even with a local .env:
+GOOGLE_ANALYTICS_ID= pnpm build
+```
+
+For GitHub Actions, open the repository's **Settings → Secrets and variables →
+Actions → Variables → New repository variable**. Name it `GOOGLE_ANALYTICS_ID`
+and use your GA4 measurement ID as the value. The experimental build workflow and
+production Pages workflow pass this variable into the build step. Leaving it unset
+keeps builds working without analytics. Re-run the workflow after changing it.
+
+In your GA4 web data stream, enable Enhanced Measurement page views based on
+browser history changes for client-side navigation. Verify page views in Realtime
+using the built preview; browser tracking protection may block collection.
+See [Google tag configuration](https://developers.google.com/tag-platform/gtagjs/configure)
+and [page-view measurement](https://developers.google.com/analytics/devguides/collection/ga4/views).
+
+Favicons live in `static/`; configure the ICO fallback and SVG icon through
+`branding.favicon` and `branding.faviconSvg` in `site.config.mjs`. Both icon URLs
+follow the build base path.
+
+The default social preview uses `branding.socialImage`, relative to the original
+artifact mount. Docusaurus emits absolute `og:image` and `twitter:image` URLs
+using the configured public origin and base path.

@@ -3,6 +3,10 @@ import fs from 'node:fs';
 
 export function getConfig(env = process.env) {
   const result = structuredClone(config);
+  result.analytics.measurementId = env[result.analytics.environmentVariable]?.trim() || null;
+  if (result.analytics.measurementId && !/^G-[A-Z0-9]+$/.test(result.analytics.measurementId)) {
+    throw Error('GOOGLE_ANALYTICS_ID must be a GA4 measurement ID (G-XXXXXXXXXX), or empty to disable analytics');
+  }
   result.url = env.DOCS_URL || result.url;
   result.baseUrl = env.DOCS_BASE_URL || result.baseUrl;
   if (!/^\/(?:[^?#\\]*\/)?$/.test(result.baseUrl) || result.baseUrl.includes('..') || result.baseUrl.includes('//')) {

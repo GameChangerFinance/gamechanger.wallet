@@ -43,7 +43,10 @@ files remain the independent single source of truth. Docusaurus is replaceable.
   `type` of any value, including `js`/`javascript` or unlabelled blocks. This broad
   heuristic intentionally accepts false positives; retain explicit skip markers.
   Nested types, arrays, malformed JSONC and non-string types do not qualify.
-  Replace the native code block after hydration. Render the editor
+  Replace the native code block after hydration when the persistent Embedded IDE
+  setting permits it (`always`, `never`, `not on mobile`, defaulting to the latter).
+  Use a live viewport media query with a configurable breakpoint, never user-agent
+  detection; do not mount hidden iframes on mobile. Render the editor
   flush, with no external toolbar/buttons or wrapper margin/padding. Keep native
   code in static HTML for no-JS access and as the editor error fallback.
   Estimate code-view height from line count, wrapping width and Studio chrome;
@@ -91,14 +94,16 @@ files remain the independent single source of truth. Docusaurus is replaceable.
 - Preview must serve original `.html`, `.gcscript` and extensionless files
   literally. Docusaurus's clean-URL/short-extension heuristics break these files
   at project mounts; retain the tested standard-library static preview server.
-- Pushes to `feat/docusaurus`, pull requests and manual runs may build, validate
-  and upload deployable artifacts, but MUST NOT publish production Pages.
+- Pushes to `feat/docusaurus`, pull requests and manual runs from experimental
+  branches may build and upload artifacts, but MUST NOT publish production Pages.
 - Never change the existing production publishing workflow, publishing source,
   DNS or Pages settings or activate a replacement without maintainer approval.
 - Keep the active experimental workflow read-only with no Pages/OIDC write
-  permissions and no deploy job. Keep future Pages deployment as an inactive
-  template under `deployment/` until explicitly approved.
-- Any future activated Pages workflow MUST enforce source branch `main`
+  permissions and no deploy job. The maintainer authorized the main-only production
+  workflow in `.github/workflows/documentation-pages.yml`. Keep it free of custom
+  approval variables; GitHub Pages publishing source and environment protection
+  are configured by the maintainer on GitHub.
+- The production Pages workflow MUST enforce source branch `main`
   in job conditions AND restrict Pages/OIDC write permissions to that
   guarded deployment job. Manual runs from every other branch must be unable to
   deploy. Require a protected Pages environment restricted to main.
@@ -113,3 +118,15 @@ changes. Verify source hashes and generated artifact hashes during builds. Add
 regressions for shared transform and path behavior. Never weaken link/security
 checks to get a build through. Keep dependency versions and the lockfile pinned.
 Generated files are disposable; edit generators/templates, not generated output.
+
+## Runnable link preferences
+
+Render UDC actions consistently across all generated pages: green wallet buttons,
+blue Studio buttons, distinct icons and shared Docusaurus button geometry. Normalize
+legacy linked run images in both Markdown and rendered HTML. Preserve URL query
+strings and fragments; never inject `returnURLPattern`. Options owns persistent
+popup/tab/QR launch selection. Use the official GC library high-level `gc.encode.qr` output with its GC-styled
+template, never the bare `gc.encodings.qr.encoder` renderer. Never use
+an external QR service or a separate QR encoder. QR transport may repack the same
+script but must preserve its contents and original query string. Label recognized
+testnet links explicitly; do not infer a network label when no tag exists.

@@ -1,4 +1,4 @@
-/** Pure URL adapter. Wallet query parameters/callbacks never enter editor URLs. */
+/** Pure URL adapter. Wallet launch URLs are recognized without rewriting their query strings. */
 export function walletPayload(href, config) {
   try {
     const url = new URL(href);
@@ -21,14 +21,23 @@ export function studioURL(encoded, config, preferences, colorMode, embedded = fa
   return bundled ? url.pathname + url.search : url.href;
 }
 
+/** Preserve the wallet query bytes and fragment on the corresponding Studio link. */
+export function walletIDEURL(href, config, preferences, colorMode) {
+  const payload = walletPayload(href, config);
+  const editor = payload && studioURL(payload, config, preferences, colorMode);
+  if (!editor) return null;
+  const original = new URL(href);
+  return editor + (original.search ? (editor.includes('?') ? '&' : '?') + original.search.slice(1) : '') + original.hash;
+}
+
 export function readPreferences(serialized, config) {
   try {
     const value = JSON.parse(serialized);
     if (value?.version === config.preferences.version && config.studio.views.includes(value.view) && config.studio.themes.includes(value.theme)) {
-      return { version: config.preferences.version, view: value.view, theme: value.theme };
+      return { version: config.preferences.version, view: value.view, theme: value.theme, embedMode: config.studio.embedModes.includes(value.embedMode) ? value.embedMode : config.studio.defaultEmbedMode, walletMode: config.wallet.modes.includes(value.walletMode) ? value.walletMode : config.wallet.defaultMode };
     }
   } catch { /* Unavailable, stale or malformed storage falls back to current defaults. */ }
-  return { version: config.preferences.version, view: config.studio.defaultView, theme: config.studio.defaultTheme };
+  return { version: config.preferences.version, view: config.studio.defaultView, theme: config.studio.defaultTheme, embedMode: config.studio.defaultEmbedMode, walletMode: config.wallet.defaultMode };
 }
 
 /** Estimate wrapped code height without reading a cross-origin editor DOM.
@@ -44,4 +53,11 @@ export function studioFrameHeight(source, view, width, config) {
     Math.ceil(line.replace(/\t/g, ' '.repeat(sizing.tabSize)).length / columns)), 0);
   return Math.min(sizing.maxHeight, Math.max(sizing.minHeight,
     sizing.chromeHeight + (wrappedLines + sizing.extraLines) * sizing.lineHeight));
+}
+
+/** Shorten display text only; callers retain the complete URL as the link target. */
+export function truncateURL(value, limit) {
+  if (value.length <= limit) return value;
+  const available = Math.max(2, limit - 2);
+  return value.slice(0, Math.ceil(available / 2)) + '..' + value.slice(-Math.floor(available / 2));
 }

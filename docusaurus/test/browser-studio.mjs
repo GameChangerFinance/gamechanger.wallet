@@ -61,6 +61,28 @@ export async function main(args = process.argv.slice(2)) {
     await page.reload();
     await page.locator('h1').first().waitFor();
     await page.locator('.studio-example iframe').first().waitFor();
+    // Resizing the same page must mount/unmount embeds without a reload.
+    const embeds = page.locator('.studio-example iframe');
+    const setEmbedMode = async mode => {
+      await page.getByRole('button', { name: config.labels.options, exact: true }).click();
+      await page.locator('dialog[open]').getByLabel('Embedded IDE', { exact: true }).selectOption(mode);
+      await page.getByRole('button', { name: 'Done', exact: true }).click();
+    };
+    await page.setViewportSize({ width: config.studio.mobileMaxWidth, height: 800 });
+    await embeds.first().waitFor({ state: 'detached' });
+    assert.ok(await page.locator('pre').count() > 0);
+    await setEmbedMode('always');
+    await embeds.first().waitFor();
+    await page.reload();
+    await embeds.first().waitFor();
+    await setEmbedMode('never');
+    await embeds.first().waitFor({ state: 'detached' });
+    await page.setViewportSize({ width: config.studio.mobileMaxWidth + 1, height: 800 });
+    assert.equal(await embeds.count(), 0);
+    await setEmbedMode('not on mobile');
+    await embeds.first().waitFor();
+    await page.setViewportSize({ width: 1280, height: 800 });
+    console.log('Passed embedded IDE modes, live breakpoint resizing and saved preference reload.');
     await page.getByRole('button', { name: config.labels.search, exact: true }).click();
     await page.getByLabel('Search guides and examples').fill('wallet');
     const searchResult = page.locator('.search-results a').first();

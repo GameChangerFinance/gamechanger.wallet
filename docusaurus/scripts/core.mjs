@@ -7,6 +7,7 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkStringify from 'remark-stringify';
 import { visit } from 'unist-util-visit';
+import { walletPayload } from '../src/components/studio.mjs';
 
 export const markdown = unified().use(remarkParse).use(remarkGfm).use(remarkStringify);
 
@@ -109,6 +110,12 @@ export function transform(source, context) {
     return state;
   }
   if (filter(tree).omitting) throw Error(`${filename}: unclosed omit marker`);
+  const buttonImage = new RegExp(config.transforms.runButtonImagePattern);
+  visit(tree, 'link', node => {
+    if (walletPayload(node.url, config) && node.children.length === 1 && node.children[0].type === 'image' && buttonImage.test(rewrite(node.children[0].url, true))) {
+      node.children = [{ type: 'text', value: config.labels.runWallet }];
+    }
+  });
   visit(tree, node => {
     if (['link', 'image', 'definition'].includes(node.type)) node.url = rewrite(node.url, node.type === 'image');
     if (node.type === 'text') for (const rule of textPatterns) node.value = node.value.replace(rule.regex, rule.replacement);

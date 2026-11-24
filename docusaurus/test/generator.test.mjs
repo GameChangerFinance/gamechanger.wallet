@@ -8,7 +8,7 @@ import config from '../site.config.mjs';
 import { documentInfo, encodeExample, isGCScript, markdown, navigation, transform } from '../scripts/core.mjs';
 import { cleanGenerated, inside } from '../scripts/paths.mjs';
 import { getConfig } from '../scripts/config.mjs';
-import { readPreferences, studioFrameHeight, studioURL, walletPayload } from '../src/components/studio.mjs';
+import { readPreferences, studioFrameHeight, studioURL, walletPayload, walletIDEURL } from '../src/components/studio.mjs';
 
 function render(source, filename = 'docs/test.md') {
   const documents = new Map(['README.md', 'docs/README.md', 'examples/a (b).md'].map(file => [file, documentInfo(file, config)]));
@@ -210,4 +210,47 @@ test('Studio code height grows with lines and wrapping while graphical views sta
   assert.equal(studioFrameHeight(long, 'node', 390, config), config.studio.frameHeight);
   assert.equal(studioFrameHeight(long, 'block', 390, config), config.studio.frameHeight);
   assert.equal(studioFrameHeight(long.repeat(1000), 'code', 390, config), config.studio.codeSizing.maxHeight);
+});
+
+test('Markdown run image links normalize without changing query strings', () => {
+  const href = 'https://wallet.gamechanger.finance/api/2/run/1-abc?networkTag=preprod&ref=a%2Bb&x=1&x=2#keep';
+  for (const filename of ['docs/gcscript/guide.md', 'examples/demo.md']) {
+    for (const source of [`[![Run](/docs/img/btn/run-preprod.png)](${href})`]) {
+      const result = render(source, filename);
+      assert.doesNotMatch(result.content, /run-(?:preprod|mainnet)\.png/);
+      assert.match(result.content, /Run in Wallet/);
+      assert.ok(result.content.replaceAll('&amp;', '&').replaceAll('&#x26;', '&').replaceAll('\\&', '&').includes(href));
+    }
+  }
+});
+
+
+test('wallet IDE links retain duplicate queries, encoded characters, callback parameters and fragments', () => {
+  const href = 'https://wallet.gamechanger.finance/api/2/run/1-abc?networkTag=preprod&x=a%2Bb&x=2&returnURLPattern=https%3A%2F%2Fdapp.test%2F%3Fresult%3D%7Bresult%7D#keep';
+  const result = walletIDEURL(href, config, readPreferences(null, config), 'dark');
+  assert.ok(new URL(result).search.endsWith(new URL(href).search.slice(1)));
+  assert.equal(new URL(result).hash, '#keep');
+  assert.equal(new URL(result).pathname.split('/').at(-1), '1-abc');
+  assert.equal(readPreferences(JSON.stringify({version:1,view:'code',theme:'match',walletMode:'unknown'}), config).walletMode, 'popup');
+});
+
+test('QR footer truncation changes only display text and retains both URL ends', async () => {
+  const { truncateURL } = await import('../src/components/studio.mjs');
+  assert.equal(truncateURL('abcde', 10), 'abcde');
+  const href = 'https://wallet.gamechanger.finance/api/2/run/' + 'x'.repeat(200) + '?networkTag=preprod';
+  const display = truncateURL(href, 88);
+  assert.equal(display.length, 88);
+  assert.ok(display.startsWith('https://wallet.gamechanger.finance/'));
+  assert.ok(display.endsWith('?networkTag=preprod'));
+  assert.ok(display.includes('..'));
+});
+
+test('embedded IDE preferences migrate existing settings and reject unknown modes', () => {
+  const saved = { version: 1, view: 'block', theme: 'light', walletMode: 'tab' };
+  assert.equal(readPreferences(null, config).embedMode, 'not on mobile');
+  assert.deepEqual(readPreferences(JSON.stringify(saved), config), { ...saved, embedMode: 'not on mobile' });
+  for (const embedMode of config.studio.embedModes) {
+    assert.equal(readPreferences(JSON.stringify({ ...saved, embedMode }), config).embedMode, embedMode);
+  }
+  assert.equal(readPreferences(JSON.stringify({ ...saved, embedMode: 'invalid' }), config).embedMode, 'not on mobile');
 });

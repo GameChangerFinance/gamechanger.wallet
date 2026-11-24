@@ -3,7 +3,7 @@ export default {
   title: 'GCScript DSL Docs',
   tagline: 'Intent-based Cardano development',
   description: 'GCScript DSL documentation. GameChanger Wallet guides. 100+ example dapps and integrations. Open tools for Cardano and other ecosystems.',
-  hero: { kicker: 'GameChanger / Developer documentation', note: 'Open source · User sovereign · Built on Cardano' },
+  hero: { kicker: 'Developer documentation', note: 'Open dapp ecosystems · User sovereign · Built on Cardano' },
   url: 'https://gamechangerfinance.github.io',
   baseUrl: '/gamechanger.wallet/',
   repository: 'https://github.com/GameChangerFinance/gamechanger.wallet',
@@ -11,13 +11,13 @@ export default {
   sourceSites: [{ url: 'https://gamechangerfinance.github.io', baseUrl: '/gamechanger.wallet/' }],
   sourceRoot: '..',
   paths: {
-    generated: '.generated',
+    generated: '.generated', static: 'static',
     documents: ['README.md', 'DAPP_CONNECTOR.md', 'RELEASE.md', 'docs', 'examples', 'catalyst', 'release/README.md'],
     artifacts: ['LICENSE', 'gcw-logo-300x85.png', 'img', 'docs', 'examples', 'catalyst', 'release'],
     rawMount: 'original',
     deploymentManifest: 'documentation-build.json',
   },
-  branding: { logo: 'gcw-logo-300x85.png', logoAlt: 'GameChanger Wallet', accent: '#37c9b5', lightAccent: '#08796c', defaultTheme: 'dark' },
+  branding: { socialImage: 'img/editor-screenshot.png', favicon: 'favicon.ico', faviconSvg: 'favicon.svg', logo: 'gcw-logo-300x85.png', logoAlt: 'GameChanger Wallet', accent: '#37c9b5', lightAccent: '#08796c', defaultTheme: 'dark' },
   navigation: [
     { label: 'Start here', index: 'README.md', directory: null },
     { label: 'Guides', index: 'docs/README.md', directory: 'docs' },
@@ -38,6 +38,7 @@ export default {
     forceStudio: 'docs:studio', skipStudio: 'docs:no-studio',
     codeLanguages: ['*'],
     scriptTypes: ['*'],
+    runButtonImagePattern: '(?:^|/)docs/img/btn/run-(?:preprod|mainnet)\\.png$',
     // Ordered regex replacements operate on text nodes only, never code/URLs.
     textPatterns: [],
   },
@@ -53,6 +54,7 @@ export default {
     editUrl: 'https://gamechangerfinance.github.io/gcscript-studio/api/2/edit/',
     walletOrigins: ['https://wallet.gamechanger.finance', 'https://beta-preprod-wallet.gamechanger.finance', 'https://preprod-wallet.gamechanger.finance'],
     runPathPattern: '^/api/2/run/([A-Za-z0-9_-]+)$',
+    defaultEmbedMode: 'not on mobile', embedModes: ['always', 'never', 'not on mobile'], mobileMaxWidth: 996,
     defaultView: 'code', views: ['code', 'node', 'block'],
     defaultTheme: 'match', themes: ['match', 'dark', 'light'],
     // Enable only against a Studio deployment with deployment/studio-theme.patch.
@@ -62,6 +64,9 @@ export default {
       extraLines: 2, minHeight: 240, maxHeight: 30000, tabSize: 2 },
     maxEncodedLength: 2000000,
   },
+  wallet: { defaultMode: 'popup', modes: ['popup', 'tab', 'qr'], popupFeatures: 'popup=yes,width=550,height=780', urlPreviewLength: 88, qr: { apiVersion: '2', network: 'preprod', encoding: 'gzip', qrResultType: 'png' },
+    networks: { preprod: { testnet: true, title: 'Cardano Pre Production' }, preview: { testnet: true, title: 'Cardano Preview Testnet' }, mainnet: { testnet: false, title: 'Cardano Mainnet' } } },
+  analytics: { environmentVariable: 'GOOGLE_ANALYTICS_ID', measurementId: null },
   preferences: { key: 'gc-docs-reader', version: 1 },
   preview: { host: '127.0.0.1', port: 4178,
     mimeTypes: { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
@@ -70,8 +75,8 @@ export default {
       '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.wasm': 'application/wasm' } },
   search: { limit: 12, excerptLength: 220, indexFilename: 'search-index.json' },
   labels: {
-    options: 'Reader options', search: 'Search documentation',
-    openIDE: 'Open in IDE…', fullIDE: 'Open full IDE', closeStudio: 'Close',
+    options: 'Options', search: 'Search documentation',
+    runWallet: 'Run in Wallet…', runTestnetWallet: 'Run in Testnet Wallet…', openIDE: 'Open in IDE…', fullIDE: 'Open full IDE', closeStudio: 'Close',
     original: 'Original source code',
   },
 };

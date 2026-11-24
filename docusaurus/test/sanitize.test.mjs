@@ -25,3 +25,11 @@ test('sanitization removes executable HTML while preserving generated TOC and co
   assert.equal(result.children.at(-1), metadata);
   assert.equal(result.children.find(node => node.tagName === 'header').children[0].tagName, 'h1');
 });
+
+test('HTML run image normalization preserves the entire wallet href', () => {
+  const href = 'https://wallet.gamechanger.finance/api/2/run/1-abc?networkTag=preprod&x=a%2Bb&x=2#keep';
+  const tree = { type: 'root', children: [{ type: 'element', tagName: 'a', properties: { href }, children: [{ type: 'element', tagName: 'img', properties: { src: '/original/docs/img/btn/run-preprod.png' }, children: [] }] }] };
+  const link = sanitizeMarkdown()(tree).children[0];
+  assert.equal(link.properties.href, href);
+  assert.deepEqual(link.children, [{ type: 'text', value: 'Run in Wallet…' }]);
+});

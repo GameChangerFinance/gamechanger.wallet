@@ -30,9 +30,17 @@ export default function ReaderControls() {
     {config.features.options ? <button type="button" className="reader-button reader-trigger" aria-label={config.labels.options} onClick={() => dialog.current.showModal()}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16" /><circle cx="9" cy="7" r="3" /><circle cx="15" cy="17" r="3" /></svg><span className="reader-label">{config.labels.options}</span></button> : null}
     <dialog ref={dialog} className="reader-dialog" aria-labelledby={`${controlId}-reader-title`}>
       <form method="dialog">
-        <header><h2 id={`${controlId}-reader-title`}>{config.labels.options}</h2><button className="reader-button" aria-label="Close reader options">✕</button></header>
+        <header><h2 id={`${controlId}-reader-title`}>{config.labels.options}</h2><button className="reader-button" aria-label="Close options">✕</button></header>
+        <label htmlFor={`${controlId}-wallet-mode`}>Wallet links</label>
+        <select id={`${controlId}-wallet-mode`} value={preferences.walletMode} onChange={event => setPreferences({ ...preferences, walletMode: event.target.value })}>
+          <option value="popup">Open popup</option><option value="tab">Open new tab</option><option value="qr">Show QR code</option>
+        </select>
         <label htmlFor={`${controlId}-docs-theme`}>Documentation theme</label>
         <select id={`${controlId}-docs-theme`} value={colorMode} onChange={event => setColorMode(event.target.value)}><option value="dark">Dark</option><option value="light">Light</option></select>
+        <label htmlFor={`${controlId}-studio-embed`}>Embedded IDE</label>
+        <select id={`${controlId}-studio-embed`} value={preferences.embedMode} onChange={event => setPreferences({ ...preferences, embedMode: event.target.value })}>
+          {config.studio.embedModes.map(mode => <option key={mode} value={mode}>{mode}</option>)}
+        </select>
         <label htmlFor={`${controlId}-studio-view`}>GCScript Studio view</label>
         <select id={`${controlId}-studio-view`} value={preferences.view} onChange={event => setPreferences({ ...preferences, view: event.target.value })}>
           {config.studio.views.map(view => <option key={view} value={view}>{view === 'node' ? 'Nodes' : view === 'block' ? 'Blocks' : 'Code'}</option>)}
@@ -41,7 +49,7 @@ export default function ReaderControls() {
         <select id={`${controlId}-studio-theme`} value={preferences.theme} disabled={!config.studio.themeParameter} aria-describedby={`${controlId}-studio-theme-help`} onChange={event => setPreferences({ ...preferences, theme: event.target.value })}>
           {config.studio.themes.map(theme => <option key={theme} value={theme}>{theme === 'match' ? 'Match documentation' : theme === 'dark' ? 'Dark' : 'Light'}</option>)}
         </select>
-        <p id={`${controlId}-studio-theme-help`} className="studio-note">{config.studio.themeParameter ? 'Theme follows the selected policy.' : 'Hosted Studio currently controls its own theme. Theme matching requires the documented Studio compatibility patch.'} View or theme changes reload loaded editors. Copy any edits first.</p>
+        <p id={`${controlId}-studio-theme-help`} className="studio-note">{config.studio.themeParameter ? 'Theme follows the selected policy.' : 'Hosted Studio currently controls its own theme. Theme matching requires the documented Studio compatibility patch.'} View or theme changes reload loaded editors. Disabling embeds or resizing to mobile in “not on mobile” mode closes editors. Copy any edits first.</p>
         <div className="reader-actions"><button type="button" className="button button--secondary" onClick={() => setPreferences(readPreferences(null, config))}>Reset preferences</button><button className="button button--primary">Done</button></div>
       </form>
     </dialog>
