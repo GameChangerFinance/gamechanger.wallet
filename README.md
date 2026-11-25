@@ -1,3 +1,5 @@
+[![Hits](https://hits.sh/github.com/GameChangerFinance/gamechanger.wallet.svg?extraCount=1000)](https://hits.sh/github.com/GameChangerFinance/gamechanger.wallet/)
+
 # GCScript DSL + GameChanger Wallet Documentation
 
 ## GCScript DSL : Intent-based, low-code programming
