@@ -97,7 +97,8 @@ export async function main(args = process.argv.slice(2)) {
     await page.getByRole('button', { name: 'Close search', exact: true }).click();
     const original = await context.request.get(new URL(config.paths.rawMount + '/LICENSE', address).href);
     assert.equal(original.status(), 200);
-    await page.goto(new URL('docs/gcscript/syntax/#blocks-of-code', address).href);
+    // Run a complete script: standalone function examples do not accept wallet callbacks.
+    await page.goto(new URL('docs/transactions/quick-start/', address).href);
     const iframe = page.locator('.studio-example iframe').first();
     await iframe.scrollIntoViewIfNeeded();
     assert.equal(new URL(await iframe.getAttribute('src'), address).origin, address.origin);
@@ -111,7 +112,9 @@ export async function main(args = process.argv.slice(2)) {
       const keys = { project: prefix + projectKey, run: prefix + runKey + ':' };
       const launched = page.waitForEvent('popup');
       await frame.getByRole('button', { name: 'Run', exact: true }).click();
-      const popup = await launched;
+      const popup = await launched.catch(async error => {
+        throw Error(`${error.message}\nStudio status: ${await frame.getByRole('status').allTextContents()}`);
+      });
       await popup.waitForLoadState('domcontentloaded');
       const pending = await frame.evaluate(key => {
         const match = Object.keys(localStorage).find(item => item.startsWith(key));

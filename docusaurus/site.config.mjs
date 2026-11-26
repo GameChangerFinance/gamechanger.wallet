@@ -46,7 +46,7 @@ export default {
     bundle: {
       enabled: true,
       repository: 'https://github.com/GameChangerFinance/gcscript-studio.git',
-      revision: '2b7896556f892f1f99a6ae5ce843bbe6d5e28fc3',
+      revision: '5a18cf548ee16efbc6adb12da3ce8c7bb05a680c', // Studio v0.2.0
       mount: 'studio',
       queryParameter: 'source',
       patch: 'deployment/studio-static-entry.patch',
