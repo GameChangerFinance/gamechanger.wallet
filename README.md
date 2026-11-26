@@ -1,5 +1,7 @@
 # GCScript DSL + GameChanger Wallet Documentation
 
+Docs, examples and resources of GCScript DSL, an intent-based scripting language for developing on Cardano and other ecosystems. Documentation covers examples with its first implementation on GameChanger Wallet for Cardano Blockchain.
+
 [![Hits](https://hits.sh/github.com/GameChangerFinance/gamechanger.wallet.svg?extraCount=1000)](https://hits.sh/github.com/GameChangerFinance/gamechanger.wallet/)
 
 ## GCScript DSL : Intent-based, low-code programming
