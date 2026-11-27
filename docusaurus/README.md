@@ -208,6 +208,10 @@ at `studio/index.html?source=…`; it uses Studio's existing payload decoder and
 validation. This avoids dynamic edit routes or platform-specific SPA rewrites.
 The adapter also generates static-entry URLs for Studio's new-tab control and
 file/project share links, preserving the current project and selected view.
+Previously shared `studio/api/2/edit/<payload>` links are recovered by the custom
+404 page and forwarded to the static entry with their query parameters and fragment.
+The host must serve `build/404.html` for missing paths, as GitHub Pages does; JavaScript
+is required for recovery. On other static hosts, configure that error document.
 The adapter is applied automatically only to the generated checkout. Canonical
 documentation and the upstream repository/deployment stay unchanged.
 

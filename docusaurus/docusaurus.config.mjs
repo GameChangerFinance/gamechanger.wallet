@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { analyticsTags } from './scripts/analytics.mjs';
 import sanitizeMarkdown from './scripts/sanitize.mjs';
 import { getConfig } from './scripts/config.mjs';
+import studioLegacyURL from './src/components/studioLegacyURL.mjs';
 
 const feature = path.dirname(fileURLToPath(import.meta.url));
 const generated = path.join(feature, getConfig().paths.generated);
@@ -13,7 +14,9 @@ const raw = config.baseUrl + config.paths.rawMount + '/';
 
 export default {
   favicon: config.branding.favicon,
-  headTags: [...analyticsTags(config.analytics),
+  headTags: [
+    { tagName: 'script', attributes: {}, innerHTML: `(() => { const target = (${studioLegacyURL.toString()})(window.location.href, ${JSON.stringify({ features: config.features, baseUrl: config.baseUrl, studio: config.studio }).replaceAll('<', '\\u003c')}); if (target) window.location.replace(target); })();` },
+    ...analyticsTags(config.analytics),
     { tagName: 'link', attributes: { rel: 'icon', type: 'image/svg+xml', href: config.baseUrl + config.branding.faviconSvg } }],
   title: config.title,
   tagline: config.tagline,

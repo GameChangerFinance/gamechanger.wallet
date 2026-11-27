@@ -51,7 +51,14 @@ export function createPreviewServer(root, config) {
       else await pipeline(createReadStream(result.filename), res);
     } catch (error) {
       if (res.headersSent) res.destroy();
-      else { res.writeHead(error.code === 'ENOENT' ? 404 : 400); res.end(); }
+      else if (error.code === 'ENOENT') {
+        // Mirror static hosts that serve the site's custom 404 document at the requested URL.
+        try {
+          const fallback = await fs.readFile(await inside(root, '404.html'));
+          res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
+          res.end(req.method === 'HEAD' ? undefined : fallback);
+        } catch { res.writeHead(404); res.end(); }
+      } else { res.writeHead(400); res.end(); }
     }
   });
 }

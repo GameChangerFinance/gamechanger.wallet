@@ -50,8 +50,11 @@ export async function main(args = process.argv.slice(2)) {
         ? route.continue() : route.abort());
     }
     const failures = [];
+    const expectedMissingRoutes = new Set();
     context.on('response', response => {
-      if (response.status() >= 400 && new URL(response.url()).origin === origin) failures.push(`${response.status()} ${new URL(response.url()).pathname}`);
+      const url = new URL(response.url());
+      if (response.status() >= 400 && url.origin === origin
+        && !(response.status() === 404 && expectedMissingRoutes.has(url.pathname))) failures.push(`${response.status()} ${url.pathname}`);
     });
     const schema = await fs.readFile(path.join(source, 'tests/fixtures/runtime-schema.json'), 'utf8');
     await context.route('https://wallet.gamechanger.finance/schema/**', route => route.fulfill({ body: schema, contentType: 'application/json' }));
@@ -175,6 +178,38 @@ export async function main(args = process.argv.slice(2)) {
     }
     await projectTab.close();
     console.log('Passed Studio new-tab static entry, edited project preservation and direct reload.');
+    const legacyFile = { format: 'gcscript-studio-file', version: 1, path: 'legacy.gcscript',
+      file: { text: '{"type":"script","run":{}}\n', encoding: 'utf8' } };
+    for (const [payload, embedded] of [[expectedProject, true], [legacyFile, true], [expectedProject, false], [legacyFile, false]]) {
+      const encoded = '1-' + gzipSync(JSON.stringify(payload)).toString('base64url');
+      const legacy = new URL(config.studio.bundle.mount + '/' + config.studio.bundle.legacyEditRoute + encoded, address);
+      legacy.search = `?embed=${embedded}&view=code&extra=a%20b&extra=c%2Bd`;
+      legacy.hash = 'preserved-fragment';
+      expectedMissingRoutes.add(legacy.pathname);
+      const recovered = await context.newPage();
+      const recoveryErrors = [];
+      recovered.on('pageerror', error => recoveryErrors.push(error.message));
+      const response = await recovered.goto(legacy.href, { waitUntil: 'commit' });
+      assert.equal(response.status(), 404);
+      await recovered.waitForURL(url => url.pathname === href.pathname, { waitUntil: 'domcontentloaded' }).catch(async error => {
+        throw Error(`Legacy Studio recovery failed: ${error.message}; path: ${new URL(recovered.url()).pathname}; browser errors: ${recoveryErrors.join('; ')}; page: ${(await recovered.locator('body').innerText()).slice(0, 500)}`);
+      });
+      assert.equal(new URL(recovered.url()).search, '?source=' + encoded + `&embed=${embedded}&view=code&extra=a%20b&extra=c%2Bd`);
+      assert.equal(new URL(recovered.url()).hash, '#preserved-fragment');
+      if (embedded) {
+        await recovered.getByRole('status').filter({ hasText: 'Opened IDE link in embedded workspace' }).waitFor();
+      } else {
+        if (payload === legacyFile) await recovered.getByRole('button', { name: 'Open as new project', exact: true }).click();
+        await recovered.getByRole('button', { name: 'Continue without saving', exact: true }).click();
+        await recovered.getByRole('status').filter({ hasText: payload === legacyFile ? 'Imported 1 file(s)' : 'Opened saved project' }).waitFor();
+      }
+      await recovered.locator('.monaco-editor').waitFor();
+      const embeddedKey = /embeddedStoragePrefix: '([^']+)'/.exec(runtime)[1] + projectKey;
+      const files = await recovered.evaluate(key => JSON.parse(localStorage.getItem(key)).project.files, embedded ? embeddedKey : projectKey);
+      assert.deepEqual(files, payload === legacyFile ? { [legacyFile.path]: legacyFile.file } : expectedProject.files);
+      await recovered.close();
+    }
+    console.log('Passed legacy file/project routes through the static 404 fallback with query bytes and fragments preserved.');
     assert.equal(await page.locator('.studio-toolbar').count(), 0);
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
