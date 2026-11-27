@@ -49,6 +49,7 @@ export default {
       revision: '5a18cf548ee16efbc6adb12da3ce8c7bb05a680c', // Studio v0.2.0
       mount: 'studio',
       queryParameter: 'source',
+      legacyEditRoute: 'api/2/edit/',
       patch: 'deployment/studio-static-entry.patch',
     },
     editUrl: 'https://gamechangerfinance.github.io/gcscript-studio/api/2/edit/',

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import { gzipSync } from 'node:zlib';
+import { gzipSync, gunzipSync } from 'node:zlib';
 import { execFile } from 'node:child_process';
 import { promisify, parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
@@ -20,7 +20,7 @@ export async function main(args = process.argv.slice(2)) {
   const distribution = await prepareStudio(config, feature);
   const source = path.dirname(distribution);
   const require = createRequire(path.join(source, 'package.json'));
-  const { chromium } = require('@playwright/test');
+  const { chromium, expect } = require('@playwright/test');
   if (values['install-browser']) {
     await promisify(execFile)(process.execPath, [path.join(path.dirname(require.resolve('@playwright/test')), 'cli.js'), 'install', '--with-deps', 'chromium'], { maxBuffer: 16 * 1024 * 1024 });
   }
@@ -50,8 +50,11 @@ export async function main(args = process.argv.slice(2)) {
         ? route.continue() : route.abort());
     }
     const failures = [];
+    const expectedMissingRoutes = new Set();
     context.on('response', response => {
-      if (response.status() >= 400 && new URL(response.url()).origin === origin) failures.push(`${response.status()} ${new URL(response.url()).pathname}`);
+      const url = new URL(response.url());
+      if (response.status() >= 400 && url.origin === origin
+        && !(response.status() === 404 && expectedMissingRoutes.has(url.pathname))) failures.push(`${response.status()} ${url.pathname}`);
     });
     const schema = await fs.readFile(path.join(source, 'tests/fixtures/runtime-schema.json'), 'utf8');
     await context.route('https://wallet.gamechanger.finance/schema/**', route => route.fulfill({ body: schema, contentType: 'application/json' }));
@@ -104,9 +107,9 @@ export async function main(args = process.argv.slice(2)) {
     assert.equal(new URL(await iframe.getAttribute('src'), address).origin, address.origin);
     const frame = await (await iframe.elementHandle()).contentFrame();
     await frame.locator('.monaco-editor').waitFor();
+    const runtime = await fs.readFile(path.join(source, 'src/config.ts'), 'utf8');
+    const projectKey = /project: '([^']+)'/.exec(runtime)[1];
     if (!values.smoke) {
-      const runtime = await fs.readFile(path.join(source, 'src/config.ts'), 'utf8');
-      const projectKey = /project: '([^']+)'/.exec(runtime)[1];
       const runKey = /run: '([^']+)'/.exec(runtime)[1];
       const prefix = /embeddedStoragePrefix: '([^']+)'/.exec(runtime)[1];
       const keys = { project: prefix + projectKey, run: prefix + runKey + ':' };
@@ -139,6 +142,74 @@ export async function main(args = process.argv.slice(2)) {
       assert.equal(JSON.parse(saved.text).exports.syntheticAnswer, 42);
       assert.equal(saved.pending, null);
     }
+    // Exercise Studio's own link generator, including edits made after the embed loaded.
+    const editor = frame.getByRole('textbox', { name: 'Editor content' });
+    await editor.press('Control+End');
+    await page.keyboard.insertText('\n// static-host new-tab regression');
+    const openProject = frame.getByRole('link', { name: 'Open current project in a new tab', exact: true });
+    await expect.poll(async () => {
+      const href = await openProject.getAttribute('href');
+      const encoded = href && new URL(href).searchParams.get(config.studio.bundle.queryParameter);
+      if (!encoded?.startsWith('1-')) return false;
+      const project = JSON.parse(gunzipSync(Buffer.from(encoded.slice(2), 'base64url')));
+      return Object.values(project.files).some(file => file.text.includes('// static-host new-tab regression'));
+    }).toBe(true);
+    const href = new URL(await openProject.getAttribute('href'));
+    assert.equal(href.pathname, config.baseUrl + config.studio.bundle.mount + '/index.html');
+    assert.equal(href.searchParams.get('view'), config.studio.defaultView);
+    assert.equal(href.searchParams.has('embed'), false);
+    const encodedProject = href.searchParams.get(config.studio.bundle.queryParameter);
+    assert.ok(encodedProject?.startsWith('1-'));
+    const expectedProject = JSON.parse(gunzipSync(Buffer.from(encodedProject.slice(2), 'base64url')));
+    assert.ok(Object.values(expectedProject.files).some(file => file.text.includes('// static-host new-tab regression')));
+    const opened = page.waitForEvent('popup');
+    await openProject.click();
+    const projectTab = await opened;
+    await projectTab.waitForLoadState('domcontentloaded');
+    for (const reload of [false, true]) {
+      if (reload) await projectTab.reload();
+      await projectTab.locator('.monaco-editor').waitFor();
+      // Full Studio asks before replacing its separate workspace and assigns a new project ID.
+      await projectTab.getByRole('button', { name: 'Continue without saving', exact: true }).click();
+      await expect.poll(() => projectTab.evaluate(key => JSON.parse(localStorage.getItem(key) || 'null')?.project?.files, projectKey))
+        .toEqual(expectedProject.files);
+      const importedProject = await projectTab.evaluate(key => JSON.parse(localStorage.getItem(key)).project, projectKey);
+      assert.equal(importedProject.active, expectedProject.active);
+    }
+    await projectTab.close();
+    console.log('Passed Studio new-tab static entry, edited project preservation and direct reload.');
+    const legacyFile = { format: 'gcscript-studio-file', version: 1, path: 'legacy.gcscript',
+      file: { text: '{"type":"script","run":{}}\n', encoding: 'utf8' } };
+    for (const [payload, embedded] of [[expectedProject, true], [legacyFile, true], [expectedProject, false], [legacyFile, false]]) {
+      const encoded = '1-' + gzipSync(JSON.stringify(payload)).toString('base64url');
+      const legacy = new URL(config.studio.bundle.mount + '/' + config.studio.bundle.legacyEditRoute + encoded, address);
+      legacy.search = `?embed=${embedded}&view=code&extra=a%20b&extra=c%2Bd`;
+      legacy.hash = 'preserved-fragment';
+      expectedMissingRoutes.add(legacy.pathname);
+      const recovered = await context.newPage();
+      const recoveryErrors = [];
+      recovered.on('pageerror', error => recoveryErrors.push(error.message));
+      const response = await recovered.goto(legacy.href, { waitUntil: 'commit' });
+      assert.equal(response.status(), 404);
+      await recovered.waitForURL(url => url.pathname === href.pathname, { waitUntil: 'domcontentloaded' }).catch(async error => {
+        throw Error(`Legacy Studio recovery failed: ${error.message}; path: ${new URL(recovered.url()).pathname}; browser errors: ${recoveryErrors.join('; ')}; page: ${(await recovered.locator('body').innerText()).slice(0, 500)}`);
+      });
+      assert.equal(new URL(recovered.url()).search, '?source=' + encoded + `&embed=${embedded}&view=code&extra=a%20b&extra=c%2Bd`);
+      assert.equal(new URL(recovered.url()).hash, '#preserved-fragment');
+      if (embedded) {
+        await recovered.getByRole('status').filter({ hasText: 'Opened IDE link in embedded workspace' }).waitFor();
+      } else {
+        if (payload === legacyFile) await recovered.getByRole('button', { name: 'Open as new project', exact: true }).click();
+        await recovered.getByRole('button', { name: 'Continue without saving', exact: true }).click();
+        await recovered.getByRole('status').filter({ hasText: payload === legacyFile ? 'Imported 1 file(s)' : 'Opened saved project' }).waitFor();
+      }
+      await recovered.locator('.monaco-editor').waitFor();
+      const embeddedKey = /embeddedStoragePrefix: '([^']+)'/.exec(runtime)[1] + projectKey;
+      const files = await recovered.evaluate(key => JSON.parse(localStorage.getItem(key)).project.files, embedded ? embeddedKey : projectKey);
+      assert.deepEqual(files, payload === legacyFile ? { [legacyFile.path]: legacyFile.file } : expectedProject.files);
+      await recovered.close();
+    }
+    console.log('Passed legacy file/project routes through the static 404 fallback with query bytes and fragments preserved.');
     assert.equal(await page.locator('.studio-toolbar').count(), 0);
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
