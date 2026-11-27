@@ -1,5 +1,25 @@
+diff --git a/src/adapters/edit-links.ts b/src/adapters/edit-links.ts
+index 716fb08..9c3980f 100644
+--- a/src/adapters/edit-links.ts
++++ b/src/adapters/edit-links.ts
+@@ -36,7 +36,14 @@ export async function encodeEditLink(
+     throw Error('IDE link is too large. Export a project archive instead.');
+   if (options.embed) url.searchParams.set('embed', 'true');
+   if (options.view) url.searchParams.set('view', options.view);
+-  return url.href;
++  // Static hosts cannot resolve dynamic edit routes generated inside the bundled IDE.
++  const entry = new URL('index.html', baseURL);
++  entry.search = url.search;
++  entry.searchParams.set(
++    '__DOCS_STUDIO_SOURCE_PARAMETER__',
++    url.pathname.slice(new URL(config.editLinks.route, baseURL).pathname.length),
++  );
++  return entry.href;
+ }
+
+ /** Decode through GC, then validate paths, version and size before exposing editable state. */
 diff --git a/src/core/project/edit-link.ts b/src/core/project/edit-link.ts
-index 54f57a2..9705716 100644
+index df3a2bd..f67b3e6 100644
 --- a/src/core/project/edit-link.ts
 +++ b/src/core/project/edit-link.ts
 @@ -31,6 +31,7 @@ export function readStudioLaunch(
@@ -20,9 +40,9 @@ index 54f57a2..9705716 100644
 +          : null,
    };
  }
- 
+
 diff --git a/tests/integration/edit-links.test.ts b/tests/integration/edit-links.test.ts
-index e424177..efe5ef3 100644
+index e424177..7c77229 100644
 --- a/tests/integration/edit-links.test.ts
 +++ b/tests/integration/edit-links.test.ts
 @@ -11,6 +11,13 @@ import { runtime } from '../fixtures';
@@ -39,3 +59,39 @@ index e424177..efe5ef3 100644
    it('preserves an ampersand-free embedded callback through repeated real builds and URL encoding', async () => {
      const expected = JSON.parse(withWalletCallback('{}', base, 'roundtrip', true)).returnURLPattern;
      let input = JSON.stringify({
+@@ -44,8 +51,11 @@ describe('GC edit-link transport', () => {
+   it('uses the actual GC gzip codec under a deployment subpath without wallet parameters', async () => {
+     const script = { type: 'script', run: { address: { type: 'getCurrentAddress' } } };
+     const url = await encodeEditLink(script, base, config, { embed: true, view: 'node' });
+-    expect(url).toMatch(/^https:\/\/studio.test\/gcscript-studio\/api\/2\/edit\/1-H4s/);
+-    expect(new URL(url).search).toBe('?embed=true&view=node');
++    expect(new URL(url).pathname).toBe('/gcscript-studio/index.html');
++    expect(new URL(url).searchParams.get('__DOCS_STUDIO_SOURCE_PARAMETER__')).toMatch(/^1-H4s/);
++    expect([...new URL(url).searchParams.keys()].sort()).toEqual([
++      '__DOCS_STUDIO_SOURCE_PARAMETER__', 'embed', 'view',
++    ].sort());
+     const launch = readStudioLaunch(url, base, config);
+     expect(launch).toMatchObject({ embedded: true, mode: 'nodes' });
+     const imported = await decodeEditLink(launch.encoded!, config);
+@@ -78,6 +88,21 @@ describe('GC edit-link transport', () => {
+       project,
+     });
+   });
++  it('generates static project links at root and nested deployment mounts for every view', async () => {
++    const project = put(createProject(config, 'static-share'), 'lib/note.txt', {
++      text: 'unsaved source\n', encoding: 'utf8',
++    });
++    for (const mount of ['https://studio.test/', base, 'https://studio.test/docs/studio/']) {
++      for (const view of ['code', 'node', 'block'] as const) {
++        const url = new URL(await encodeEditLink(project, mount, config, { view }));
++        expect(url.pathname).toBe(new URL('index.html', mount).pathname);
++        expect(url.searchParams.get('view')).toBe(view);
++        expect(url.searchParams.has('embed')).toBe(false);
++        expect(await decodeEditLink(readStudioLaunch(url.href, mount, config).encoded!, config))
++          .toEqual({ kind: 'project', project });
++      }
++    }
++  });
+   it('rejects corrupt, excessive, version-incompatible and unsafe payloads', async () => {
+     for (const payload of [
+       '',

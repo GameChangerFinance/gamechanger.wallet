@@ -206,6 +206,8 @@ content-addressed checkout under `.studio/`. The small
 [static-entry adapter](deployment/studio-static-entry.patch) adds source loading
 at `studio/index.html?source=…`; it uses Studio's existing payload decoder and
 validation. This avoids dynamic edit routes or platform-specific SPA rewrites.
+The adapter also generates static-entry URLs for Studio's new-tab control and
+file/project share links, preserving the current project and selected view.
 The adapter is applied automatically only to the generated checkout. Canonical
 documentation and the upstream repository/deployment stay unchanged.
 
@@ -228,7 +230,8 @@ server. For an existing Chrome installation, use
 Playwright from the pinned Studio checkout; screenshots go to `test-results/`.
 It sends compressed synthetic exports, deliberately removes the popup opener,
 and checks project identity, result persistence, pending cleanup, popup close and
-desktop/mobile overflow. All browser checks run locally; Actions does not run Playwright.
+desktop/mobile overflow. It also opens an edited embedded project in a new tab
+and reloads its static-entry URL. All browser checks run locally; Actions does not run Playwright.
 
 When updating Studio, pin and review a new revision, verify the adapter still
 applies, and run the build plus a browser regression with normal Chrome storage

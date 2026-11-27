@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
-import { gzipSync } from 'node:zlib';
+import { gzipSync, gunzipSync } from 'node:zlib';
 import { execFile } from 'node:child_process';
 import { promisify, parseArgs } from 'node:util';
 import { fileURLToPath } from 'node:url';
@@ -20,7 +20,7 @@ export async function main(args = process.argv.slice(2)) {
   const distribution = await prepareStudio(config, feature);
   const source = path.dirname(distribution);
   const require = createRequire(path.join(source, 'package.json'));
-  const { chromium } = require('@playwright/test');
+  const { chromium, expect } = require('@playwright/test');
   if (values['install-browser']) {
     await promisify(execFile)(process.execPath, [path.join(path.dirname(require.resolve('@playwright/test')), 'cli.js'), 'install', '--with-deps', 'chromium'], { maxBuffer: 16 * 1024 * 1024 });
   }
@@ -104,9 +104,9 @@ export async function main(args = process.argv.slice(2)) {
     assert.equal(new URL(await iframe.getAttribute('src'), address).origin, address.origin);
     const frame = await (await iframe.elementHandle()).contentFrame();
     await frame.locator('.monaco-editor').waitFor();
+    const runtime = await fs.readFile(path.join(source, 'src/config.ts'), 'utf8');
+    const projectKey = /project: '([^']+)'/.exec(runtime)[1];
     if (!values.smoke) {
-      const runtime = await fs.readFile(path.join(source, 'src/config.ts'), 'utf8');
-      const projectKey = /project: '([^']+)'/.exec(runtime)[1];
       const runKey = /run: '([^']+)'/.exec(runtime)[1];
       const prefix = /embeddedStoragePrefix: '([^']+)'/.exec(runtime)[1];
       const keys = { project: prefix + projectKey, run: prefix + runKey + ':' };
@@ -139,6 +139,42 @@ export async function main(args = process.argv.slice(2)) {
       assert.equal(JSON.parse(saved.text).exports.syntheticAnswer, 42);
       assert.equal(saved.pending, null);
     }
+    // Exercise Studio's own link generator, including edits made after the embed loaded.
+    const editor = frame.getByRole('textbox', { name: 'Editor content' });
+    await editor.press('Control+End');
+    await page.keyboard.insertText('\n// static-host new-tab regression');
+    const openProject = frame.getByRole('link', { name: 'Open current project in a new tab', exact: true });
+    await expect.poll(async () => {
+      const href = await openProject.getAttribute('href');
+      const encoded = href && new URL(href).searchParams.get(config.studio.bundle.queryParameter);
+      if (!encoded?.startsWith('1-')) return false;
+      const project = JSON.parse(gunzipSync(Buffer.from(encoded.slice(2), 'base64url')));
+      return Object.values(project.files).some(file => file.text.includes('// static-host new-tab regression'));
+    }).toBe(true);
+    const href = new URL(await openProject.getAttribute('href'));
+    assert.equal(href.pathname, config.baseUrl + config.studio.bundle.mount + '/index.html');
+    assert.equal(href.searchParams.get('view'), config.studio.defaultView);
+    assert.equal(href.searchParams.has('embed'), false);
+    const encodedProject = href.searchParams.get(config.studio.bundle.queryParameter);
+    assert.ok(encodedProject?.startsWith('1-'));
+    const expectedProject = JSON.parse(gunzipSync(Buffer.from(encodedProject.slice(2), 'base64url')));
+    assert.ok(Object.values(expectedProject.files).some(file => file.text.includes('// static-host new-tab regression')));
+    const opened = page.waitForEvent('popup');
+    await openProject.click();
+    const projectTab = await opened;
+    await projectTab.waitForLoadState('domcontentloaded');
+    for (const reload of [false, true]) {
+      if (reload) await projectTab.reload();
+      await projectTab.locator('.monaco-editor').waitFor();
+      // Full Studio asks before replacing its separate workspace and assigns a new project ID.
+      await projectTab.getByRole('button', { name: 'Continue without saving', exact: true }).click();
+      await expect.poll(() => projectTab.evaluate(key => JSON.parse(localStorage.getItem(key) || 'null')?.project?.files, projectKey))
+        .toEqual(expectedProject.files);
+      const importedProject = await projectTab.evaluate(key => JSON.parse(localStorage.getItem(key)).project, projectKey);
+      assert.equal(importedProject.active, expectedProject.active);
+    }
+    await projectTab.close();
+    console.log('Passed Studio new-tab static entry, edited project preservation and direct reload.');
     assert.equal(await page.locator('.studio-toolbar').count(), 0);
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: 900 });
