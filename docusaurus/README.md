@@ -187,7 +187,8 @@ Wallet launch URLs remain intact; no callback is injected.
 
 Studio contracts were checked against the [reference embed page](https://gamechangerfinance.github.io/gcscript-studio/examples/gcscript-studio-three-ides.html)
 and [Studio source](https://github.com/GameChangerFinance/gcscript-studio) on
-2026-10-28, revision `2b7896556f892f1f99a6ae5ce843bbe6d5e28fc3`.
+2026-11-26, [v0.2.0](https://github.com/GameChangerFinance/gcscript-studio/releases/tag/v0.2.0),
+revision `5a18cf548ee16efbc6adb12da3ce8c7bb05a680c`.
 
 ### Wallet popup returns and same-site hosting
 
