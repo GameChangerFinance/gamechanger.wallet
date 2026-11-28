@@ -1,7 +1,7 @@
 {
   "type": "script",
   "title": "Multi Stake Withdrawal",
-  "description": "Script that requests 3 child wallet's reward addresses from an specific workspace, to later withdraw some staking rewards from each of them on a single transaction. You need to have staking rewards on each child wallet and run 'Multi Stake Delegation' demo first or load its wallet configuration on this device",
+  "description": "Withdraws the staking rewards of the 3 reward addresses of the 'demos' workspace in one transaction. Run 'Multi Stake Delegation' first and wait for rewards. Each quantity must equal the whole reward balance at build time",
   "require": {
     "not": {
       "walletTypeIn": [
@@ -9,8 +9,20 @@
       ]
     }
   },
-  "exportAs": "MultiWithdrawlDemo",
+  "exportAs": "MultiWithdrawalDemo",
+  "return": {
+    "mode": "last"
+  },
+  "args": {
+    "quantity-a": "1000000",
+    "quantity-b": "1000000",
+    "quantity-c": "1000000"
+  },
   "run": {
+    "argumentGuards": {
+      "type": "macro",
+      "run": "{assert(and(cmpBigNum('gt',get('args.quantity-a'),'0'),cmpBigNum('gt',get('args.quantity-b'),'0'),cmpBigNum('gt',get('args.quantity-c'),'0')),'quantities must be lovelace greater than 0')}"
+    },
     "setWorkspace": {
       "type": "setCurrentWorkspace",
       "workspaceId": "demos"
@@ -18,10 +30,6 @@
     "dependencies": {
       "type": "script",
       "run": {
-        "rewardValue": {
-          "type": "data",
-          "value": "1000000"
-        },
         "addresses": {
           "type": "getAddresses",
           "keyPattern": "{artifactName}"
@@ -30,6 +38,7 @@
     },
     "txs": {
       "type": "script",
+      "args": "{get('args')}",
       "run": {
         "buildWithdraw": {
           "type": "buildTx",
@@ -38,15 +47,15 @@
             "withdrawals": {
               "A": {
                 "address": "{get('cache.dependencies.addresses.RewardAddress-A.address')}",
-                "quantity": "{get('cache.dependencies.rewardValue')}"
+                "quantity": "{get('args.quantity-a')}"
               },
               "B": {
                 "address": "{get('cache.dependencies.addresses.RewardAddress-B.address')}",
-                "quantity": "{get('cache.dependencies.rewardValue')}"
+                "quantity": "{get('args.quantity-b')}"
               },
               "C": {
                 "address": "{get('cache.dependencies.addresses.RewardAddress-C.address')}",
-                "quantity": "{get('cache.dependencies.rewardValue')}"
+                "quantity": "{get('args.quantity-c')}"
               }
             }
           }
