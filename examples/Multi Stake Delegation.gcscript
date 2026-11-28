@@ -233,6 +233,14 @@
     "sign": {
       "type": "signTxs",
       "detailedPermissions": false,
+      "multisig": [
+        {
+          "kind": "MainAddress"
+        },
+        {
+          "kind": "CurrentWorkspace"
+        }
+      ],
       "txs": [
         "{get('cache.build.txHex')}"
       ]
