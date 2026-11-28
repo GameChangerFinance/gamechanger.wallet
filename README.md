@@ -173,6 +173,7 @@ These networks are supported:
 - [GCScript documentation](https://wallet.gamechanger.finance/doc/api/v2)
 - [Playground IDE in GameChanger Wallet ](https://wallet.gamechanger.finance/playground)
 - [Catalyst](catalyst/CATALYST.md)
+- [Contributing: example style guide](CONTRIBUTING.md)
 - [Youtube Tutorials](https://www.youtube.com/@gamechanger.finance)
 - [Discord Support](https://discord.gg/vpbfyRaDKG)
 - [Twitter News](https://twitter.com/GameChangerOk)
